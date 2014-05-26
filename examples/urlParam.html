@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  	<head>
+    	<meta charset="utf-8">
+    	<title>Demo - url</title>
+      <script src="../src/setup.js"></script>
+  	</head>
+  	<body>
+    	<script>
+            seajs.use("url",function(url){
+                var search = "?a=123&b=abc456";
+                if(window.location.search != search){
+                    window.location.search = search;
+                };
+                alert(url.getParam("a"))
+            })
+     	</script>
+  	</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>开发规范</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <h2>编码</h2>
+                    <p>统一用 utf-8</p>
+                </li>
+                <li>
+                    <h2>长度</h2>
+                    <p>长度不超过 80 个字符。别小看这一条规则，如果严格去遵循，你会发现代码变清晰了。而且，你一定能做到的。</p>
+                </li>
+                <li>
+                    <h2>缩进</h2>
+                    <p>缩进使用 4个 空格。</p>
+                </li>
+                <li>
+                    <h2>花括号</h2>
+                    <p>缩进使用 4个 空格。</p>
+                </li>
+                <li>
+                    <h2>缩进</h2>
+                    <h3>花括号不换行</h3>
+                    <p>好</p>
+ <pre><code>if (foo) {
+
+}
+ </code></pre>
+                    <p>坏</p>
+ <pre><code>if (foo)
+{
+
+}
+ </code></pre>
+                    <h3>不允许一行判断，一律换行</h3>
+                    <p>坏</p>
+<pre><code>if (foo) return;
+</code></pre>
+                </li>
+                <li>
+                    <h2>空格</h2>
+                    <h3>操作符之间需要空格</h3>
+                    <p>好</p>
+ <pre><code>var x = y + z
+ </code></pre>
+                    <p>坏</p>
+<pre><code>var x=y+z
+</code></pre>
+                    <h3>只空一格</h3>
+                    <p>好</p>
+ <pre><code>{
+     a: 'short',
+     looooongname: 'long'
+}
+ </code></pre>
+                    <p>坏</p>
+<pre><code>{
+    a           : 'short',
+    looooongname: 'long'
+}
+</code></pre>
+                </li>
+                <li>
+                    <h2>逗号与换行</h2>
+                    <h3>自然人的处理方法，不要以操作符开头，将操作符放在一行最后。</h3>
+                    <p>好</p>
+<pre><code>{
+    a: 'a',
+    b: 'b',
+    c: 'c'
+}
+</code></pre>
+<pre><code>var str = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" +
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" +
+            "ccccccccccccccccccccccccccccccccccccccccccccccccc";
+</code></pre>
+                    <p>坏</p>
+<pre><code>{
+    a: 'a'
+    ,b: 'b'
+    ,c: 'c'
+}
+</code></pre>
+<pre><code>var str = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            + "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            + "ccccccccccccccccccccccccccccccccccccccccccccccc";
+</code></pre>
+                </li>
+                <li>
+                        <h2>多变量写法</h2>
+                        <h3>使用 <code>var</code> 风格，一个变量一个var</h3>
+                        <p>好</p>
+<pre><code>var $ = require('jquery');
+var position = require('position');
+var useIframe = $.browser.msie &amp;&amp; Number($.browser.version) &lt; 7;
+</code></pre>
+                        <p>坏</p>
+<pre><code>var cache, event, all, list, i, len, rest = [], args;
+</code></pre>
+               </li>
+                <li>
+                    <h2>文档中，中英文夹杂时的风格</h2>
+                    <h3>含有中文时，用中文全角标点</h3>
+                    <h3>中文和英文之间，空一个英文空格</h3>
+                    <strong></strong>
+                </li>
+            </ul>
+
+        </nav>
+    </body>
+</html>

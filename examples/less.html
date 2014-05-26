@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=320,user-scalable=no" />
+        <link rel="stylesheet/less" href="../res/less/example.less" />
+        <script src="../src/base/less.js"></script>
+        <title>life - Less</title>
+        <script src="http://appmedia.qq.com/media/jslib/1.5/src/mobile/jquery-2.1.0.min.js"></script>
+        <script src="http://appmedia.qq.com/media/jslib/1.5/src/mobile/mobileui.js"></script>
+        <style>
+            ul,li{
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+            body.i_mui_dark{
+                background: #2e3138;
+                color: #fff;
+            }
+            body.i_mui_light{
+                background: #fff;
+                color: #000;
+            }
+            #themeConfig,
+            #colorConfig{
+                height: 80px;
+            }
+            #themeConfig li,
+            #colorConfig li{
+                width: 60px;
+                height: 60px;
+                margin: 5px;
+                float: left;
+                font-size: 12px;
+                line-height: 30px;
+                cursor: pointer;
+                text-align: center;
+            }
+            #themeConfig li{
+                line-height: 60px;
+            }
+            #themeConfig li.active,
+            #colorConfig li.active{
+                outline: 3px solid blue;
+            }
+            .code{
+                border: 2px solid #ccc;
+                padding: 0 15px;
+            }
+            #qrcode{
+                position: fixed;
+                top: 20px;
+                right: 20px;
+            }
+            td{
+                width: 50px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+            }
+        </style>
+        <script>
+            var getUrlParam = function(paramName){
+                var reg = new RegExp("(^|&)" + paramName + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return r[2]; return null;
+            }
+            var getMachineType = function(){
+                var type = 'pc';
+                var u = navigator.userAgent.toLowerCase();
+                if(u.indexOf('mobile') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('iphone') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('ipad') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('phone') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('blackberry') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('meego') > -1){
+                    type = 'mobile';
+                }else if(u.indexOf('rim') > -1){
+                    type = 'mobile';
+                }
+                return type;
+            }
+            var skin = getUrlParam('skin') || 'red';
+            var skinClass = 'i_mui_' + skin;
+            var theme = getUrlParam('theme') || 'dark';
+            var themeClass = 'i_mui_' + theme;
+        </script>
+    </head>
+
+    <body>
+    <h2>风格选择</h2>
+    <ul id="themeConfig">
+        <li data_class="i_mui_dark" style="background: #444;color: #fff;">深色风格</li>
+        <li data_class="i_mui_light" style="background: #ccc;color: #000">清新风格</li>
+    </ul>
+
+    <h2>颜色选择</h2>
+    <ul id="colorConfig">
+        <li data_class="i_mui_red" style="background: #ee4e10">红色<br />#ee4e10</li>
+        <li data_class="i_mui_blue" style="background: #2aa1d3">蓝色<br />#2aa1d3</li>
+        <li data_class="i_mui_yellow" style="background: #f0b017">黄色<br />#f0b017</li>
+        <li data_class="i_mui_green" style="background: #8ab71b">绿色<br />#8ab71b</li>
+        <li data_class="i_mui_purple" style="background: #bf58cb">紫色<br />#bf58cb</li>
+        <!--<li data_class="i_mui_gray" style="background: #e6e0d5">灰色<br />#e6e0d5</li>-->
+    </ul>
+    <h2>原生控件</h2>
+    <ul>
+        <li>
+            <h3>table</h3>
+            <div class="demo">
+                <table class="i_mui_table">
+                    <tr>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li>
+            <h3>input</h3>
+            <div class="demo">
+                <label for="input_1">输入框：</label>
+                <input id="input_1" type="text" class="i_mui_input" placeholder="请输入" />
+            </div>
+            <br />
+            <br />
+            <div class="demo">
+                <table class="i_mui_table">
+                    <tr>
+                        <td><label for="input_2">输入框</label></td>
+                        <td><input id="input_2" type="text" class="i_mui_input i_mui_simple" placeholder="请输入" /></td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li>
+            <h3>checkbox:</h3>
+            <div class="demo">
+                <label for="checkbox_1">
+                    <input id="checkbox_1" type="checkbox" name="checkbox1" class="i_mui_checkbox" checked="checked" />第一项
+                </label>
+                <label for="checkbox_2">
+                    <input id="checkbox_2" type="checkbox" name="checkbox1" class="i_mui_checkbox" />第二项
+                </label>
+                <label for="checkbox_3">
+                    <input id="checkbox_3" type="checkbox" name="checkbox1" class="i_mui_checkbox" />第三项
+                </label>
+            </div>
+        </li>
+        <li>
+            <h3>radio:</h3>
+            <div class="demo">
+                <label for="radio_1">
+                    <input id="radio_1" type="radio" name="radio1" class="i_mui_radio" checked="checked" />第一项
+                </label>
+                <label for="radio_2">
+                    <input id="radio_2" type="radio" name="radio1" class="i_mui_radio" />第二项
+                </label>
+                <label for="radio_3">
+                    <input id="radio_3" type="radio" name="radio1" class="i_mui_radio" />第三项
+                </label>
+            </div>
+        </li>
+        <li>
+            <h3>select:</h3>
+            <div class="demo">
+                <select class="i_mui_select" name="select1">
+                    <option value="1">选项一</option>
+                    <option value="2">选项二</option>
+                    <option value="3">选项三</option>
+                </select>
+            </div>
+            <br />
+            <br />
+            <div class="demo">
+                <table class="i_mui_table">
+                    <tr>
+                        <td>
+                            下拉框
+                        </td>
+                        <td>
+                            <select class="i_mui_select i_mui_simple" name="select2">
+                                <option value="1">选项一</option>
+                                <option value="2">选项二</option>
+                                <option value="3">选项三</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </li>
+        <li>
+            <h3>button</h3>
+            <div class="demo">
+                <button class="i_mui_button">按钮</button>
+                <br />
+                <br />
+                <button class="i_mui_button">
+                    <span class="i_mui_button_icon"></span>
+                    <span class="i_mui_button_text">图标按钮</span>
+                </button>
+            </div>
+
+        </li>
+    </ul>
+
+    <h2>自定义控件</h2>
+    <ul>
+    <li>
+        <h3>警告框[alert]</h3>
+        <a id="button1" class="i_mui_button">警告框</a>
+        <div class="demo">
+            <script>
+                $("#button1").click(function(){
+                    Act.mui.alert({
+                        title: '',
+                        content: '这是一个警告框',
+                        skin: skin,
+                        onOk: function(){
+                            alert('你点击了确认')
+                        }
+                    })
+                })
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>确认框[confirm]</h3>
+        <a id="button2" class="i_mui_button">确认框</a>
+        <div class="demo">
+            <script>
+                $("#button2").click(function(){
+                    Act.mui.confirm({
+                        content: '这是一个确认框',
+                        skin: skin,
+                        onOk: function(){
+                            alert('你点击了确认')
+                        },
+                        onCancel: function(){
+                            alert('你点击了取消')
+                        }
+                    })
+                })
+            </script>
+        </div>
+    </li>
+
+    <li>
+        <h3>数字输入控件[number]</h3>
+        <div id="i_mui_number"></div>
+        <div class="demo">
+            <script>
+                var number = Act.mui.number({
+                    id: 'i_mui_number',
+                    initData: 80,
+                    step: 5,
+                    min: 0,
+                    max: 100,
+                    skin: skin,
+                    theme: theme,
+                    onChange: function(value){
+                        console.log('number is change', value)
+                        progress.setValue(value);
+                    },
+                    callback: function(value){
+                        console.log('number is create', value)
+                    },
+                    isModify: true
+                })
+                setTimeout(function(){
+                    console.log(number.getValue());
+                },1000)
+
+                setTimeout(function(){
+                    number.setValue(98);
+                },2000);
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>进度条控件[progress]</h3>
+        <div id="i_mui_progress"></div>
+        <div class="demo">
+            <script>
+                var progress = Act.mui.progress({
+                    id: 'i_mui_progress',
+                    width: 250,
+                    initData: 25,
+                    skin: skin,
+                    theme: theme,
+                    callback: function(){
+                        console.log('progress is create');
+                    },
+                    onChange: function(value){
+                        console.log('progress is change', value);
+                    },
+                    onComplete: function(){
+                        console.log('progress is complete')
+                    },
+                    isAnimate: true
+                })
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>切换开关控件[switchBar]</h3>
+        <div id="i_mui_switchBar"></div>
+        <div class="demo">
+            <script>
+                var switchBar = Act.mui.switchBar({
+                    id: 'i_mui_switchBar',
+                    initData: 'on',
+                    skin: skin,
+                    theme: theme,
+                    callback: function(){
+                        console.log('switchBar is create');
+                    },
+                    onChange: function(status){
+                        console.log('switchBar is change', status);
+                    },
+                    isAnimate: true
+                })
+
+                setTimeout(function(){
+                    console.log('the switchBar status is :', switchBar.getValue())
+                },2000)
+
+                setTimeout(function(){
+                    switchBar.setValue('off')
+                },4000)
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>滑动条控件[slideBar]</h3>
+        <div id="i_mui_slideBar"></div>
+        <div class="demo">
+            <script>
+                var slideBar = Act.mui.slideBar({
+                    id: 'i_mui_slideBar',
+                    initData: '52',
+                    min: 0,
+                    max: 100,
+                    theme: theme,
+                    skin: skin,
+                    type: 'int',
+                    callback: function(){
+                        console.log('slideBar is create');
+                    },
+                    onChange: function(value){
+                        console.log('slideBar is change', value);
+                    }
+                })
+
+                setTimeout(function(){
+                    console.log('the slideBar value is :', slideBar.getValue())
+                },2000)
+
+                setTimeout(function(){
+                    slideBar.setValue(88)
+                },4000)
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>区间滑动条控件[rangeBar]</h3>
+        <div id="i_mui_rangeBar"></div>
+        <div class="demo">
+            <script>
+                var rangeBar = Act.mui.rangeBar({
+                    id: 'i_mui_rangeBar',
+                    initData: [33,88],
+                    min: 0,
+                    max: 100,
+                    theme: theme,
+                    skin: skin,
+                    type: 'float',
+                    callback: function(){
+                        console.log('rangeBar is create');
+                    },
+                    onChange: function(values){
+                        console.log('rangeBar is change', values);
+                    }
+                })
+
+                setTimeout(function(){
+                    console.log('the rangeBar value is :', rangeBar.getValue())
+                },2000)
+
+                setTimeout(function(){
+                    rangeBar.setValue([22,66])
+                },4000)
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>日期选择器控件[calendar]</h3>
+        <div class="demo">
+            <p>
+                <label>日期</label>
+                <input type="text" id="i_mui_calendar" class="i_mui_input" name="calendar1">
+            </p>
+            <p>
+                <label>时间</label>
+                <input type="text" id="i_mui_calendar2" class="i_mui_input" name="calendar2">
+            </p>
+            <script>
+                var calendar = Act.mui.calendar({
+                    id: 'i_mui_calendar',
+                    initData: '2012-12-23',
+                    min: '2012-6-6',
+                    max: '2015-8-8',
+                    type: 'date',
+                    skin: skin,
+                    onChange: function(date){
+                        console.log('the date is change',date)
+                    }
+                })
+
+                var calendar = Act.mui.calendar({
+                    id: 'i_mui_calendar2',
+                    initData: '2012-12-23',
+                    min: '10:20',
+                    max: '20:40',
+                    type: 'time',
+                    skin: skin,
+                    onChange: function(time){
+                        console.log('the time is change',time)
+                    }
+                })
+            </script>
+        </div>
+    </li>
+    <li>
+        <h3>回到顶部控件[goTop]</h3>
+        <div class="demo">
+            <script>
+                var goTop = Act.mui.goTop({
+                    position: {
+                        right: '20px',
+                        bottom: '100px'
+                    },
+                    skin: skin,
+                    isAnimate: true
+                })
+            </script>
+        </div>
+    </li>
+    </ul>
+
+    <script>
+
+        $("#colorConfig li,#themeConfig li").click(function(){
+            $(this).parents("ul").find("li").removeClass("active");
+            $(this).addClass("active");
+            var themeClass =  $("#themeConfig li.active").attr("data_class");
+            var skinClass = $("#colorConfig li.active").attr("data_class");
+            var url = 'http://life.qq.com：8080/examples/less.html?skin=' + skinClass.replace("i_mui_","") + '&theme=' + themeClass.replace("i_mui_","");
+            document.location.href = url;
+        })
+
+        $("#themeConfig li[data_class='" + themeClass + "']").addClass("active");
+        $("#colorConfig li[data_class='" + skinClass + "']").addClass("active");
+
+
+        $(".skin").text(skinClass);
+        $(".theme").text(themeClass);
+        $("body,.i_mui_input,.i_mui_checkbox,.i_mui_radio,.i_mui_select,.i_mui_button,.i_mui_table").addClass(skinClass).addClass(themeClass);
+
+    </script>
+    </body>
+</html>

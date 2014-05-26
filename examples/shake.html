@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=320,user-scalable=no" />
+        <title>life - 摇一摇</title>
+        <script src="../src/setup.js"></script>
+    </head>
+    <body>
+        <div id="shake"></div>
+
+        <script>
+            var options = {
+                id: 'shake',
+                width: 200,
+                height: 200,
+                row: 5,
+                line: 5,
+                wallImg: '../res/img/shake/shake.jpg',
+                thanksImg: '../../res/img/roulette/thanks.png',
+                onCheckDraw: function(){
+
+                },
+                onDraw: function(){
+
+                },
+                onUnAllow: function(){
+
+                },
+                callback: function(){
+
+                },
+                exClass: 'myShake'
+            }
+            life.shake(options);
+        </script>
+    </body>
+</html>

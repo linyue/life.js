@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>注释规范</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <h2>总原则</h2>
+                    <ol>
+                        <li><strong>As short as possible（如无必要，勿增注释）</strong>。尽量提高代码本身的清晰性、可读性。</li>
+                        <li><strong>As long as necessary（如有必要，尽量详尽）</strong>。合理的注释、空行排版等，可以让代码更易阅读、更具美感。</li>
+                    </ol>
+                </li>
+                <li>
+                    <h2>什么时候需要添加注释</h2>
+                    <ol>
+                        <li>
+                            <p>某段代码的写法，需要注释说明 why 时：
+                            </p>
+                            <div class="highlight"><pre><span class="c1">// Using loop is more efficient than `rest = slice.call(arguments, 1)`.</span>
+<span class="k">for</span> <span class="p">(</span><span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">len</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">len</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">rest</span><span class="p">[</span><span class="nx">i</span> <span class="o">-</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+                        </li>
+                        <li>
+                            <p>添加上注释，能让代码结构更清晰时：
+                            </p>
+                            <div class="highlight"><pre><span class="nx">init</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">selector</span><span class="p">,</span> <span class="nx">context</span><span class="p">,</span> <span class="nx">rootjQuery</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">match</span><span class="p">,</span> <span class="nx">elem</span><span class="p">,</span> <span class="nx">ret</span><span class="p">,</span> <span class="nx">doc</span><span class="p">;</span>
+
+    <span class="c1">// Handle $(""), $(null), or $(undefined)</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="o">!</span><span class="nx">selector</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="c1">// Handle $(DOMElement)</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="nx">selector</span><span class="p">.</span><span class="nx">nodeType</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+    <span class="p">}</span>
+
+    <span class="c1">// The body element only exists once, optimize finding it</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="k">typeof</span> <span class="nx">selector</span> <span class="o">===</span> <span class="s2">"string"</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="p">...</span>
+     <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+                        </li>
+                        <li>
+                            <p>有借鉴第三方代码，需要说明时：
+                            </p>
+                            <div class="highlight"><pre><span class="c1">// Inspired by https://github.com/jquery/jquery/blob/master/src/core.js</span>
+<span class="kd">function</span> <span class="nx">ready</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">...</span>
+<span class="p">}</span>
+</pre></div>
+                        </li>
+                    </ol>
+                </li>
+                <li>
+                    <h2>注释书写规范</h2>
+                    <ol>
+                        <li>源码中的注释，推荐用英文。</li>
+                        <li>含有中文时，标点符号用中文全角。</li>
+                        <li>中英文夹杂时，英文与中文之间要用一个空格分开。</li>
+                        <li>注释标识符与注释内容要用一个空格分开：<code>// 注释</code> 与 <code>/* 注释 */</code>。</li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>通用报名</title>
+        <script src="../src/setup.js"></script>
+        <style>
+            ul,li{
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            .i_register{
+                min-width: 300px;
+                max-width: 360px;
+                margin: 10px;
+                font-family: "Microsoft Yahei", "微软雅黑", Tahoma, Arial, sans-serif;
+            }
+            .i_register_title{
+                height: 50px;
+                border-bottom: 2px solid #2f82c8;
+                margin: 10px 0;
+                font-size: 22px;
+                font-weight: normal;
+                text-indent: 40px;
+                line-height: 50px;
+                position: relative;
+            }
+            .i_register_title_icon_dark{
+                width: 14px;
+                height: 14px;
+                border: 2px solid #2f82c8;
+                display: block;
+                position: absolute;
+                top: 12px;
+                left: 8px;
+            }
+            .i_register_title_icon_light{
+                width: 14px;
+                height: 14px;
+                border: 2px solid #97c0e3;
+                display: block;
+                position: absolute;
+                top: 18px;
+                left: 14px;
+            }
+            .i_register_content li{
+                height: 80px;
+                border: 1px solid #cfcfcf;
+                margin-top: -1px;
+                line-height: 80px;
+                font-size: 22px;
+                color: #222;
+            }
+            .i_register_content li label{
+                width: 29%;
+                height: 78px;
+                display: inline-block;
+                float: left;
+                overflow: hidden;
+                text-align: center;
+            }
+            .i_register_content li input{
+                width: 69%;
+                height: 78px;
+                border: none;
+                float: left;
+                line-height: 30px;
+                font-size: 22px;
+            }
+            .i_register_content li input:focus{
+                border: none;
+                outline: none;
+            }
+            .i_register_content li select{
+                width: 69%;
+                border: none;
+                float: left;
+                padding: 27px 0 22px;
+                font-size: 22px;
+            }
+            .i_register_content li select:focus{
+                border: none;
+                outline: none;
+            }
+            .i_register_submit{
+                width: 100%;
+                height: 57px;
+                background: #2f82c8;
+                display: block;
+                color: #fff;
+                line-height: 60px;
+                font-size: 30px;
+                text-align: center;
+                border-radius: 8px;
+                margin-top: 10px;
+                border-bottom: 4px solid #1c64a0;
+            }
+
+            .i_register_dark .i_register_title{
+                background: #2f82c8;
+                border-radius: 10px 10px 0 0;
+                color: #fff;
+                margin: 3px 0;
+            }
+            .i_register_dark .i_register_title_icon_dark{
+                border-color: #fff;
+            }
+            .i_register_dark .i_register_content{
+                background: #2f82c8;
+                border-radius: 0 0 10px 10px;
+                padding: 10px 0;
+            }
+            .i_register_dark .i_register_content li{
+                height: 90px;
+                border: none;
+                margin-bottom: 10px;
+                font-size: 18px;
+            }
+            .i_register_dark .i_register_content li label{
+                width: 90%;
+                height: 40px;
+                margin: 0 5%;
+                color: #fff;
+                text-align: left;
+                text-indent: 8%;
+                line-height: 40px;
+            }
+            .i_register_dark .i_register_content li input{
+                width: 74%;
+                height: 50px;
+                margin: 0 5%;
+                padding: 0 8%;
+                text-align: left;
+                line-height: 30px;
+                border-radius: 50px;
+            }
+            .i_register_dark .i_register_content li select{
+                width: 90%;
+                height: 50px;
+                margin: 0 5%;
+                padding: 12px 20px 12px;
+                text-align: left;
+                line-height: 50px;
+                border-radius: 60px;
+            }
+
+            .i_register_blue .i_register_title{
+                border-bottom: 2px solid #2f82c8;
+            }
+            .i_register_blue .i_register_title_icon_dark{
+                border: 2px solid #1c64a0;
+            }
+            .i_register_blue .i_register_title_icon_light{
+                border: 2px solid #97c0e3;
+            }
+            .i_register_blue .i_register_submit{
+                background: #2f82c8;
+                border-bottom: 4px solid #1c64a0;
+            }
+            .i_register_blue .i_register_dark .i_register_title{
+                background: #2f82c8;
+            }
+            .i_register_blue .i_register_dark .i_register_content{
+                background: #2f82c8;
+            }
+
+            .i_register_red .i_register_title{
+                border-bottom: 2px solid #e96862;
+            }
+            .i_register_red .i_register_title_icon_dark{
+                border: 2px solid #ba504a;
+            }
+            .i_register_red .i_register_title_icon_light{
+                border: 2px solid #eea3a3;
+            }
+            .i_register_red .i_register_submit{
+                background: #e96862;
+                border-bottom: 4px solid #ba504a;
+            }
+            .i_register_red.i_register_dark .i_register_title{
+                background: #e96862;
+            }
+            .i_register_red.i_register_dark .i_register_content{
+                background: #e96862;
+            }
+
+            .i_register_green .i_register_title{
+                border-bottom: 2px solid #7baf5b;
+            }
+            .i_register_green .i_register_title_icon_dark{
+                border: 2px solid #597d43;
+            }
+            .i_register_green .i_register_title_icon_light{
+                border: 2px solid #93d26d;
+            }
+            .i_register_green .i_register_submit{
+                background: #7baf5b;
+                border-bottom: 4px solid #597d43;
+            }
+            .i_register_green.i_register_dark .i_register_title{
+                background: #7baf5b;
+            }
+            .i_register_green.i_register_dark .i_register_content{
+                background: #7baf5b;
+            }
+
+            .i_register_grey .i_register_title{
+                border-bottom: 2px solid #777777;
+            }
+            .i_register_grey .i_register_title_icon_dark{
+                border: 2px solid #555555;
+            }
+            .i_register_grey .i_register_title_icon_light{
+                border: 2px solid #999999;
+            }
+            .i_register_grey .i_register_submit{
+                background: #777777;
+                border-bottom: 4px solid #555555;
+            }
+            .i_register_grey.i_register_dark .i_register_title{
+                background: #777777;
+            }
+            .i_register_grey.i_register_dark .i_register_content{
+                background: #777777;
+            }
+
+            .i_register_yellow .i_register_title{
+                border-bottom: 2px solid #e8b84c;
+            }
+            .i_register_yellow .i_register_title_icon_dark{
+                border: 2px solid #cfa23b;
+            }
+            .i_register_yellow .i_register_title_icon_light{
+                border: 2px solid #f5dfab;
+            }
+            .i_register_yellow .i_register_submit{
+                background: #e8b84c;
+                border-bottom: 4px solid #cfa23b;
+            }
+            .i_register_yellow.i_register_dark .i_register_title{
+                background: #e8b84c;
+            }
+            .i_register_yellow.i_register_dark .i_register_content{
+                background: #e8b84c;
+            }
+        </style>
+    </head>
+    <body style="padding: 0;margin: 0">
+        <p>
+            <label>风格：</label>
+            <input name="theme" type="radio" value="light" checked="checked" />清爽风
+            <input name="theme" type="radio" value="dark" />厚重风
+        </p>
+        <p>
+            <label>颜色：</label>
+            <input name="color" type="radio" value="blue" checked="checked" />蓝
+            <input name="color" type="radio" value="red" />红
+            <input name="color" type="radio" value="green" />绿
+            <input name="color" type="radio" value="yellow" />黄
+            <input name="color" type="radio" value="grey" />灰
+        </p>
+        <div id="register">
+            <div class="i_register">
+                <h2 class="i_register_title">
+                    <span class="i_register_title_icon">
+                        <span class="i_register_title_icon_light"></span>
+                        <span class="i_register_title_icon_dark"></span>
+                    </span>
+                    通用报名
+                </h2>
+                <div class="i_register_content">
+                    <ul>
+                        <li>
+                            <label>姓名：</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>手机：</label>
+                            <input type="text">
+                        </li>
+                        <li>
+                            <label>手机：</label>
+                            <select>
+                                <option>16岁以下</option>
+                                <option>16到24岁</option>
+                                <option>24到30岁</option>
+                                <option>30岁以上</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label>邮箱：</label>
+                            <input type="text">
+                        </li>
+                    </ul>
+                </div>
+                <a class="i_register_submit">提交</a>
+            </div>
+        </div>
+        <script>
+            seajs.use(['$'],function($){
+                $("input[name='theme']").change(function(){
+                    $(".i_register").removeClass('i_register_dark').removeClass('i_register_light');
+                    $(".i_register").addClass('i_register_' + $(this).val());
+                })
+                $("input[name='color']").change(function(){
+                    $(".i_register").removeClass('i_register_red').removeClass('i_register_blue')
+                                    .removeClass('i_register_green').removeClass('i_register_grey').removeClass('i_register_yellow');
+
+                    $(".i_register").addClass('i_register_' + $(this).val());
+                })
+            })
+        </script>
+    </body>
+</html>

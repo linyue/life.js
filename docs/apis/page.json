@@ -1,0 +1,190 @@
+{
+	"name": "life.page(options)",
+	"explain": "分页组件。",
+    "version": "1.0",
+    "auth": "elianlin@tencent.com",
+    "updateTime": "2013-11-1",
+    "compatibility": ["IE6+", "FireFox", "Chrome", "safari"],
+    "examples": "../examples/page.html",
+    "debug": "http://www.gbin1.com/gb/debug/2bc8f759-344b-404c-8105-2cb556e71cdc.htm",
+    "tests": "../tests/page.html",
+	"param": {
+		"id": {
+			"dataType": "string",
+			"explain": "容器 DOM 节点 ID",
+			"value": [],
+			"optional": false,
+			"defaultVal": "",
+			"options": []
+		},
+		"funName": {
+			"dataType": "string",
+			"explain": "点击页码后执行的JS函数。函数原型为：function(curPage, pageSize[, exParams]){ }",
+			"value": [],
+			"optional": false,
+			"defaultVal": "",
+			"options": ["curPage", "pageSize", "exParams"]
+		},
+		"curPage": {
+			"dataType": "int",
+			"explain": "当前页码",
+			"value": [],
+			"optional": false,
+			"defaultVal": "1",
+			"options": []
+		},
+		"totalItem": {
+			"dataType": "int",
+			"explain": "列表数据总数，由cgi返回",
+			"value": [],
+			"optional": false,
+			"defaultVal": "1",
+			"options": []
+		},
+		"pageSize": {
+			"dataType": "int",
+			"explain": "每页显示的数据条数",
+			"value": [],
+			"optional": false,
+			"defaultVal": "10",
+			"options": []
+		},
+        "callback": {
+            "dataType": "function",
+            "explain": "加载完成后执行的回调函数",
+            "value": [],
+            "optional": true,
+            "defaultVal": "",
+            "options": ["curPage", "pageSize", "totalItem"]
+        },
+        "exClass": {
+            "dataType": "string",
+            "explain": "附加的 class",
+            "value": [],
+            "optional": true,
+            "defaultVal": "",
+            "options": []
+        },
+        "exParams": {
+            "dataType": "object",
+            "explain": "附加参数，在回调中被使用",
+            "value": [],
+            "optional": true,
+            "defaultVal": "",
+            "options": []
+        },
+        "type": {
+            "dataType": "enum string",
+            "explain": "组件类型",
+            "value": ["normal", "number", "simple"],
+            "optional": true,
+            "defaultVal": "normal",
+            "options": []
+        },
+        "theme": {
+            "dataType": "enum string",
+            "explain": "样式主题",
+            "value": ["default", "bootstrap", "metro"],
+            "optional": true,
+            "defaultVal": "default",
+            "options": []
+        },
+        "skin": {
+            "dataType": "enum string",
+            "explain": "主题颜色",
+            "value": ["grey", "red", "blue", "green", "orange", "purple"],
+            "optional": true,
+            "defaultVal": "grey",
+            "options": []
+        },
+		"align": {
+			"dataType": "enum string",
+			"explain": "对齐方式",
+			"value": ["left", "center", "right"],
+			"optional": true,
+			"defaultVal": "center",
+			"options": []
+		},
+        "pageLimit": {
+            "dataType": "int",
+            "explain": "页码显示个数，当 isShowNum 为 true 时有效，不小于3",
+            "value": [],
+            "optional": true,
+            "defaultVal": "1",
+            "options": []
+        },
+        "sizeList": {
+            "dataType": "array",
+            "explain": "每页条数选择设置，当 isShowSize 为 true 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "[10, 20, 30, 50, 100]",
+            "options": []
+        },
+        "isShowSize": {
+            "dataType": "boolen",
+            "explain": "是否支持每页条数选择，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowInfo": {
+            "dataType": "boolen",
+            "explain": "是否显示列表信息，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowPN": {
+            "dataType": "boolen",
+            "explain": "是否显示上一页和下一页按钮，当 type 不为 numbel 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowFE": {
+            "dataType": "boolen",
+            "explain": "是否显示首页和尾页按钮，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowNum": {
+            "dataType": "boolen",
+            "explain": "是否显示数字页面，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowSkip": {
+            "dataType": "boolen",
+            "explain": "是否显示跳转按钮，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isShowSkip": {
+            "dataType": "boolen",
+            "explain": "是否显示跳转按钮，当 type 为 normal 时有效",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        },
+        "isKeyControl": {
+            "dataType": "boolen",
+            "explain": "是否支持键盘左右键进行前后页控制",
+            "value": [],
+            "optional": true,
+            "defaultVal": "true",
+            "options": []
+        }
+	},
+	"return": null
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>CSS代码规范</title>
+        <style>
+            #colorMatch div{
+                width: 100px;
+                height: 60px;
+                display: inline-block;
+                margin: 10px;
+                line-height: 60px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <h2>代码风格</h2>
+                    <ul>
+                        <li>分行式书写，压缩交给工具来处理</li>
+                        <li>命名方式采用驼峰命名和蛇形命名结合的方式：单词书写采用驼峰法，层级间用下划线连接</li>
+                        <li>中划线（-）和下划线（_）：使用下划线，避免使用中划线，防止和减号混淆</li>
+                        <li>避免使用表达式，如需动态计算可使用less</li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>皮肤颜色</h2>
+                    <ul id="colorMatch">
+                        <li>
+                            <h3>灰色（grey）</h3>
+                            <div style="background: #e6e6e6">#e6e6e6</div>
+                            <div style="background: #eeeeee">#eeeeee</div>
+                            <div style="background: #f5f5f5">#f5f5f5</div>
+                            <div style="background: #ffffff">#ffffff</div>
+                            <div style="background: #909090; color: #fff;">#909090</div>
+                            <div style="background: #777777; color: #fff;">#777777</div>
+                            <div style="background: #333333; color: #fff;">#333333</div>
+                            <div style="background: #000000; color: #fff;">#000000</div>
+                        </li>
+                        <li>
+                            <h3>蓝色（blue）</h3>
+                            <div style="background: #0088cc">#0088cc</div>
+                            <div style="background: #39ade6">#39ade6</div>
+                            <div style="background: #67bce6">#67bce6</div>
+                            <div style="background: #267499">#267499</div>
+                            <div style="background: #005985">#005985</div>
+                        </li>
+                        <li>
+                            <h3>绿色（green）</h3>
+                            <div style="background: #77bb00">#77bb00</div>
+                            <div style="background: #a0dd37">#a0dd37</div>
+                            <div style="background: #b0dd63">#b0dd63</div>
+                            <div style="background: #658c23">#658c23</div>
+                            <div style="background: #4d7a00">#4d7a00</div>
+                        </li>
+                        <li>
+                            <h3>紫色（purple）</h3>
+                            <div style="background: #aa44ff">#aa44ff</div>
+                            <div style="background: #c073ff">#c073ff</div>
+                            <div style="background: #d198ff">#d198ff</div>
+                            <div style="background: #9056bf">#9056bf</div>
+                            <div style="background: #6516a6">#6516a6</div>
+                        </li>
+                        <li>
+                            <h3>红色（red）</h3>
+                            <div style="background: #dd4444">#dd4444</div>
+                            <div style="background: #ee7272">#ee7272</div>
+                            <div style="background: #ee9393">#ee9393</div>
+                            <div style="background: #a65050">#a65050</div>
+                            <div style="background: #901616">#901616</div>
+                        </li>
+                        <li>
+                            <h3>橙色（orange）</h3>
+                            <div style="background: #faa732">#faa732</div>
+                            <div style="background: #fdbe65">#fdbe65</div>
+                            <div style="background: #fdce8d">#fdce8d</div>
+                            <div style="background: #bb8d4b">#bb8d4b</div>
+                            <div style="background: #a36610">#a36610</div>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <h2>CSS属性书写顺序：</h2>
+                    <ol>
+                        <li><h3>自身属性类</h3>
+                            <ol>
+                                <li>width</li>
+                                <li>height</li>
+                                <li>background</li>
+                                <li>border、border-collapse</li>
+                                <li>outline</li>
+                            </ol>
+                        </li>
+                        <li><h3>布局定位属性类</h3>
+                            <ol>
+                                <li>display</li>
+                                <li>float、position</li>
+                                <li>margin</li>
+                                <li>padding</li>
+                                <li>overflow</li>
+                                <li>clear</li>
+                                <li>visibility</li>
+                                <li>z-index</li>
+                            </ol>
+                        </li>
+                        <li><h3>文本属性类</h3>
+                            <ol>
+                                <li>color</li>
+                                <li>font</li>
+                                <li>text</li>
+                                <li>line-height</li>
+                                <li>white-space、word-break</li>
+                            </ol>
+                        </li>
+                        <li><h3>特性属性类</h3>
+                            <ol>
+                                <li>list-style</li>
+                                <li>cursor</li>
+                                <li>transition</li>
+                                <li>scrollbar</li>
+                                <li>filter</li>
+                                <li>zoom</li>
+                            </ol>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <h2>常用命名</h2>
+                    <ol>
+                        <li>头：header </li>
+                        <li>内容：content/container </li>
+                        <li>尾：footer </li>
+                        <li>导航：nav </li>
+                        <li>侧栏：sidebar </li>
+                        <li>栏目：column </li>
+                        <li>页面外围控制整体布局宽度：wrapper </li>
+                        <li>左右中：left right center </li>
+                        <li>登录条：loginbar </li>
+                        <li>标志：logo </li>
+                        <li>广告：banner </li>
+                        <li>页面主体：main </li>
+                        <li>热点：hot </li>
+                        <li>新闻：news </li>
+                        <li>下载：download </li>
+                        <li>子导航：subnav </li>
+                        <li>菜单：menu </li>
+                        <li>子菜单：submenu </li>
+                        <li>搜索：search </li>
+                        <li>友情链接：friendlink </li>
+                        <li>页脚：footer </li>
+                        <li>版权：copyright </li>
+                        <li>滚动：scroll </li>
+                        <li>内容：content </li>
+                        <li>标签页：tab  </li>
+                        <li>文章列表：list </li>
+                        <li>提示信息：msg </li>
+                        <li>小技巧：tips </li>
+                        <li>栏目标题：title </li>
+                        <li>加入：joinus </li>
+                        <li>指南：guild </li>
+                        <li>服务：service </li>
+                        <li>注册：regsiter </li>
+                        <li>状态：status </li>
+                        <li>投票：vote </li>
+                        <li>合作伙伴：partner </li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

@@ -1,0 +1,29 @@
+.i_shake{
+    position: relative;
+}
+.i_shake_prize{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.i_shake_wall{
+    position: relative;
+    cursor: pointer;
+}
+.i_shake_wall_img {
+    position: relative;
+    float: left;
+}
+.i_shake_tip{
+    background: #f8cb9c;
+    border: 2px solid #fff;
+    display: none;
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    margin-left: -48px;
+    padding: 5px;
+    font-size: 14px;
+}

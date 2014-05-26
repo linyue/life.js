@@ -1,0 +1,80 @@
+/*默认样式*/
+.i_page{
+    padding: 5px;
+    font-size: 12px;
+}
+.i_page a{
+	margin-left: -1px;
+}
+.i_page .i_pageSize{
+    width: 90px;
+    margin-right: 15px;
+}
+.i_page .i_pageInfo{
+    margin-right: 15px;
+}
+.i_page .i_pageinfo strong{
+    font-weight: bold;
+}
+.i_page .i_pageinfo_totpage{
+    margin: 0 15px;
+}
+.i_page .i_pageFirst{
+	margin-right: 8px;
+}
+.i_page .i_pageEnd{
+	margin-left: 7px;
+}
+.i_page .i_pagePrev{
+	margin-right: 6px;
+}
+.i_page .i_pageNext{
+	margin-left: 5px;
+}
+.i_page .i_pageSkip{
+    margin-left: 15px;
+}
+.i_page .i_pageSkip_input{
+    width: 35px;
+    margin: 0 3px;
+    text-align: center;
+}
+.i_page .i_pageSkip_submit{
+    margin-left: 10px;
+}
+
+/*仿bootsrtap样式*/
+.i_page.i_bootstrap a {
+    border-radius: 0;
+	margin-left: -1px;
+}
+.i_page.i_bootstrap .i_pageSize{
+    width: 100px;
+}
+.i_page.i_bootstrap .i_pageControl a:first-child{
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    border-left-width: 1px;
+}
+.i_page.i_bootstrap .i_pageControl a:last-child{
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+.i_page.i_bootstrap .i_pageFirst{
+    margin-right: 0;
+}
+.i_page.i_bootstrap .i_pagePrev{
+    margin-right: 0;
+}
+.i_page.i_bootstrap .i_pageSkip_submit{
+    margin-left: 10px;
+    border-radius: 4px;
+}
+
+/*仿metro样式*/
+.i_page.i_metro a {
+	margin: 3px;
+}
+.i_page.i_metro .i_pageSkip_submit{
+    margin-left: 10px;
+}

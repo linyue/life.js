@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+  	<head>
+    	<meta charset="utf-8">
+    	<title>Demo - Include</title>
+      <script src="../src/setup.js"></script>
+  	</head>
+  	<body>
+        <div id="show"></div>
+    	<script>
+            document.domain = "qq.com"
+            life.include({
+                url: "http://life.qq.com/site/show.html",
+                id: 'show'
+            })
+
+     	</script>
+  	</body>
+</html>

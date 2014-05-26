@@ -1,0 +1,119 @@
+html {
+    background: url("images/html_bg.png") repeat-x scroll 0 0 #5F5F5F;
+    overflow-y: scroll;
+}
+body{
+	 background: url("images/body_bg.jpg") no-repeat scroll center top transparent;
+}
+#wrapper{
+    margin: 20px auto;
+    position: relative;
+    width: 1300px;
+}
+#content-wrapper{
+	background: url("images/content_bg.png") repeat-y scroll 0 0 #FFFFFF;
+}
+#content{
+	background: url("images/content_body_bg.png") no-repeat scroll 0 13px transparent;
+}
+.content-top {
+    background: url("images/content_top_bg.png") repeat scroll 0 0 transparent;
+    font-size: 1px;
+    height: 13px;
+}
+
+/*api菜单*/
+.nav {
+    width: 210px;
+    border-right: 1px solid #CCCCCC;
+    padding: 0 20px 20px 20px;
+    float: left;    
+}
+.apiType li h2{
+    margin-top: 20px;
+}
+.apiType li h2 a{
+    border-bottom: 1px solid #F0F0F0;
+    display: block;
+    padding-bottom: 5px;
+    padding-left: 8px;    
+    color: #E87B10;
+    font-size: 16px;
+}
+.apiType li ul li {
+    border-bottom: 1px solid #F0F0F0;
+    color: #555555;
+    padding: 1px 0 3px 20px;
+    position: relative;
+    cursor: pointer;
+}
+.apiType li ul li:hover{
+    background: #eee;
+}
+.apiType li ul li.active{
+    background: #ddd;
+}
+.apiType li ul li h4{
+    color: #999;
+    font-size: 12px;
+    font-weight: normal;
+    text-indent: 1em;
+}
+.subNav{
+    display: none;
+}
+
+/*api说明*/
+.api{
+    border-left: 1px solid #CCCCCC;
+	margin-left: 250px;
+	padding: 0 15px 20px 12px;
+}
+.api .name{
+	margin: 20px 0 5px;
+	line-height: 60px;
+	color: #fff;
+	border-radius: 5px;
+	background: #222;
+	font-size: 18px;
+	text-indent: 20px;
+}
+.api .explain{
+	line-height: 20px;
+    text-indent: 2em;
+}
+.api h3{
+	line-height: 35px;
+	background: #777;
+    border-radius: 2px;
+	margin-top: 15px;
+    font-size: 15px;
+	text-indent: 10px;
+	color: #fff;
+}
+.api .param li,
+.api .return li{
+	line-height: 28px;
+	background: #eee;
+	margin-top: 3px;
+	text-indent: 2em;
+}
+.api .open{
+    margin-right: 10px;
+    float: right;
+    color: #E87B10;
+    font-size: 12px;
+}
+.api .demoWrapper{
+    width: 1020px;
+    height: 702px;
+    border: 1px solid #444;
+    border-width: 0 2px 2px 0;
+    margin: 10px 0; 
+    overflow: hidden;   
+}
+.api .demo{
+    width: 1218px;
+    height: 700px;
+    margin-left: -200px;
+}

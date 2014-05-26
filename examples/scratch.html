@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=320,user-scalable=no" />
+        <title>life - 刮刮乐</title>
+        <script src="../src/setup.js"></script>
+        <style>
+            html,body{
+                margin: 0;
+                padding: 0;
+            }
+            #scratchCard{
+                width: 280px;
+                height: 263px;
+                background: url(http://appmedia.qq.com/media/act/631007094/20140114v1/styles/h5/img/prize-bg.png) no-repeat;
+                position: relative;
+            }
+            #scratch{
+                width: 150px;
+                height: 40px;
+                position: absolute;
+                left: 110px;
+                top: 150px;
+                overflow: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="scratchCard">
+            <div id="scratch">
+
+            </div>
+        </div>
+        <script>
+            seajs.use(['$'],function($){
+                var options = {
+                    id: 'scratch',
+                    width: 150,
+                    height: 40,
+                    onDraw: function(){},
+                    onSuccess: function(){},
+                    exClass: ''
+                }
+
+                life.scratch(options);
+
+                var scratch = function(){
+
+                    var canvasNode = $(".i_scratch_canvas");
+                    var canvas = canvasNode[0];
+
+                    var context;
+                    var width = canvasNode.width();
+                    var height = canvasNode.height();
+                    var offsetX = canvasNode.offset().left;
+                    var offsetY = canvasNode.offset().top;
+                    var mousedown = false;
+
+                    function layer(context) {
+                        context.fillStyle = 'gray';
+                        context.fillRect(0, 0, width, height);
+                    }
+
+                    function eventDown(e){
+                        e.preventDefault();
+                        mousedown=true;
+                    }
+
+                    function eventUp(e){
+                        e.preventDefault();
+                        mousedown = false;
+                        var data=context.getImageData(0, 0, width, height).data;
+                        for(var i=0,j=0;i<data.length;i+=4){
+                            if(data[i] && data[i+1] && data[i+2] && data[i+3]){
+                                j++;
+                            }
+                        }
+                        if(j <= width * height * 0.6){
+                            alert('ok');
+                        }
+                    }
+
+                    function eventMove(e){
+                        e.preventDefault();
+                        if(mousedown) {
+                            if(e.changedTouches){
+                                e = e.changedTouches[e.changedTouches.length-1];
+                            }
+                            var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0;
+                            var y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
+                            with(context) {
+                                beginPath();
+                                arc(x, y, 5, 0, Math.PI * 2);
+                                fill();
+                            }
+                        }
+                    }
+
+                    canvas.width=width;
+                    canvas.height=height;
+                    context=canvas.getContext('2d');
+                    context.fillStyle='transparent';
+                    context.fillRect(0, 0, width, height);
+                    layer(context);
+
+                    context.globalCompositeOperation = 'destination-out';
+
+                    canvas.addEventListener('touchstart', eventDown);
+                    canvas.addEventListener('touchend', eventUp);
+                    canvas.addEventListener('touchmove', eventMove);
+                    canvas.addEventListener('mousedown', eventDown);
+                    canvas.addEventListener('mouseup', eventUp);
+                    canvas.addEventListener('mousemove', eventMove);
+                }
+//                scratch();
+            })
+        </script>
+    </body>
+</html>

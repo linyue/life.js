@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta content="ie=edge" http-equiv="x-ua-compatible">
+		<title>API文档</title>
+		<link rel="stylesheet" type="text/css" href="base.css" />
+		<link rel="stylesheet" type="text/css" href="doc.css" />
+        <script src="../src/setup.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div id="content-wrapper">
+				<div id="content">
+					<div class="content-top"></div>
+					<div class="nav">
+						<ul class="apiType">
+
+						</ul>
+					</div>
+					<div class="api">
+						<div class="nameContent">
+                            <h1 class="name"></h1>
+                            <div class="info"></div>
+                            <div class="compatibility"></div>
+						</div>
+						<p class="explain"></p>
+						<h3>参数</h3>
+						<ul class="param">
+
+						</ul>
+                        <h3>接口</h3>
+                        <ul class="param">
+
+                        </ul>
+						<h3>返回值</h3>
+						<ul class="return">
+
+						</ul>
+						<h3>示例<a class="open">在新窗口中打开</a></h3>
+                        <div class="examplesContent">
+                            <iframe id="examples" name="examples" src=""></iframe>
+                        </div>
+						<h3>在线调试<a class="open">在新窗口中打开</a></h3>
+						<div class="debugContent">
+							<iframe id="debug" name="debug" src=""></iframe>
+						</div>
+					</div>
+					<div class="cb"></div>
+				</div>
+			</div>
+		</div>
+		<script id="nav" type="text/html">
+			<li>
+				<h2><a><%= type %><span>(<%= apiList.length %>)</span></a></h2>
+				<ul class="subNav">
+
+				</ul>
+			</li>
+		</script>
+		<script id="subNav" type="text/html">
+			<li>
+				<h3><a><%= api %></a></h3>
+				<h4><%= name %></h4>
+			</li>
+		</script>
+		<script id="param" type="text/html">
+			<li>
+				<strong class="key"><%= key %></strong>
+				<span class="dataType"> ( <%= dataType %> )：</span>
+			<% if(optional){ %>
+				<span class="optional">【可选】</span>
+			<% } %>
+			<% if(value.length > 0){ %>
+				<span class="value">可设置值：[<%= value.join(" , ") %>]，</span>
+			<% } %>
+			<% if(defaultVal){ %>
+				<span class="defaultVal">默认值为：<%= defaultVal %>。</span>
+			<% } %>
+				<span class="explain"><%= explain %></span>
+			</li>
+		</script>
+		<script id="return" type="text/html">
+			<li>
+				<span class="dataType">(<%= dataType %>)：</span>
+				<span class="explain"><%= explain %></span>
+			</li>
+		</script>
+		<script id="examples" type="text/html">
+			<li><a class="title"><%= title %></a></li>
+		</script>
+		<script type="text/javascript" src="doc.js"></script>
+	</body>
+</html>

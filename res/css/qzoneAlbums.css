@@ -1,0 +1,177 @@
+/*默认样式*/
+.i_qzoneAlbums{
+    height: 570px;
+}
+.i_qzoneAlbums ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.i_qzoneAlbums_albumContainer{
+    width: 160px;
+    height: 415px;
+    float: left;
+    overflow: auto;
+}
+.i_qzoneAlbums_albumContainer li{
+    width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 15px;
+    padding: 5px;
+    float: left;
+    cursor: pointer;
+}
+.i_qzoneAlbums_albumContainer li:hover{
+    background: #eee;
+}
+.i_qzoneAlbums_albumContainer li.active{
+    background: #ddd;
+}
+.i_qzoneAlbums_albumContainer li img{
+    width: 100px;
+}
+.i_qzoneAlbums_albumContainer li h3{
+    width: 100px;
+    height: 25px;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    line-height: 25px;
+    font-size: 12px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.i_qzoneAlbums_photosContainer{
+    width: 640px;
+    height: 415px;
+    position: relative;
+    float: left;
+    overflow: auto;
+    clear: right;
+}
+.i_qzoneAlbums_info{
+    height: 30px;
+    border-bottom: 2px solid #999;
+    margin: 5px 10px 0;
+    text-indent: 20px;
+    line-height: 30px;
+    font-size: 14px;
+}
+.i_qzoneAlbums_photosContainer ul{
+    height: 320px;
+}
+.i_qzoneAlbums_photosContainer li{
+    float: left;
+    position: relative;
+    margin: 10px 6px 15px;
+    padding: 7px 7px 0;
+    cursor: pointer;
+}
+.i_qzoneAlbums_photosContainer li.active{
+    background: #ddd;
+}
+.i_qzoneAlbums_photosContainer li .box,
+.i_qzoneAlbums_selectedContainer li .box{
+    width: 100px;
+    height: 100px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    display:table-cell;
+    vertical-align:middle;
+}
+.i_qzoneAlbums_photosContainer li .mid,
+.i_qzoneAlbums_selectedContainer li .mid{
+    width:100px;
+    position:static;
+    +position:absolute;
+    top:50%;
+    left:0;
+    text-align:center;
+}
+.i_qzoneAlbums_photosContainer li img,
+.i_qzoneAlbums_selectedContainer li img{
+    position:static;
+    +position:relative;
+    top:-50%;
+    vertical-align:middle;
+}
+.i_qzoneAlbums_photosContainer li.active .i_qzoneAlbums_checked{
+    width: 32px;
+    height: 32px;
+    background: url('../img/qzoneAlbums/checked.png') no-repeat;
+    display: block;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+}
+.i_qzoneAlbums_photosContainer li .i_qzoneAlbums_checked{
+    display: none;
+}
+
+.i_qzoneAlbums_photosContainer li p{
+    width: 100px;
+    height: 25px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    line-height: 25px;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
+.i_qzoneAlbums_photosContainer_tip{
+    width: 100%;
+    height: 100%;
+    background: url("../img/qzoneAlbums/photosContainer_tip.png") no-repeat 50% -250%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.i_qzoneAlbums_tipContainer{
+    width: 100%;
+    height: 30px;
+    border-top: 1px solid #E6E6E6;
+    float: left;
+    line-height: 30px;
+    text-indent: 20px;
+}
+.i_qzoneAlbums_remaining{
+    padding: 0 5px;
+    font-size: 14px;
+}
+.i_qzoneAlbums_selectedContainer{
+    width: 100%;
+    height: 125px;
+    position: relative;
+    overflow: auto;
+    float: left;
+}
+.i_qzoneAlbums_selectedContainer li{
+    background: #ddd;
+    float: left;
+    position: relative;
+    margin: 7px 10px;
+    padding: 5px;
+}
+.i_qzoneAlbums_selectedContainer_tip{
+    width: 100%;
+    height: 100%;
+    background: url('../img/qzoneAlbums/selectedContainer_tip.png') no-repeat 50% 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.i_qzoneAlbums_del{
+    width: 24px;
+    height: 24px;
+    background: url('../img/qzoneAlbums/delete.png') no-repeat;
+    display: block;
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    cursor: pointer;
+}

@@ -1,0 +1,122 @@
+<html>
+	<head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>life - 幻灯片</title>
+        <script src="../src/setup.js"></script>
+        <style>
+            #mobileNav{
+                position: absolute;
+            }
+        </style>
+	</head>
+	<body style="height: 700px;padding: 30px;">
+        <div style="width: 700px;height: 700px;background: #eee;position: relative;">
+            <div id="mobileNav">
+
+            </div>
+        </div>
+        <ul id="defineParams">
+            <li>
+                <label for="id">id:</label>
+                <input id="id" type="text" value="mobileNav" readonly="readonly">
+            </li>
+            <li>
+                <label for="width">width:</label>
+                <input id="width" type="text" value="400">
+            </li>
+            <li>
+                <label for="height">height:</label>
+                <input id="height" type="height" value="320">
+            </li>
+            <li>
+                <label for="callback">callback:</label>
+                <input id="callback" name="callback" type="text" value="function(){console.log('我是回调函数');}">
+            </li>
+            <li>
+                <label for="exClass">exClass:</label>
+                <input id="exClass" name="exClass" type="text" value="myNav">
+            </li>
+            <li>
+                <label>theme:</label>
+                <input type="radio" name="theme" value="normal" checked="checked"> normal
+                <input type="radio" name="theme" value="button"> button
+                <input type="radio" name="theme" value="line"> line
+            </li>
+            <li>
+                <label>direction:</label>
+                <input type="radio" name="direction" value="t" checked="checked"> 向上
+                <input type="radio" name="direction" value="rt"> 右上
+                <input type="radio" name="direction" value="r"> 向右
+                <input type="radio" name="direction" value="rb"> 右下
+                <input type="radio" name="direction" value="b"> 向下
+                <input type="radio" name="direction" value="lb"> 左下
+                <input type="radio" name="direction" value="l"> 向左
+                <input type="radio" name="direction" value="lt"> 左上
+            </li>
+            <li>
+                <label for="zIndex">zIndex:</label>
+                <input id="zIndex" name="zIndex" type="text" value="10000">
+            </li>
+            <li>
+                <label>isDefaultOpen:</label>
+                <input type="radio" name="isDefaultOpen" value="true" checked="checked"> 默认打开
+                <input type="radio" name="isDefaultOpen" value="false"> 默认关闭
+            </li>
+        </ul>
+        <script>
+            seajs.use(['$'],function($){
+
+                var mobileNav = function(){
+
+                    var theme = $("input[name='theme']:checked").val();
+                    if(theme == 'button'){
+                        $("#mobileNav").css({
+                            top: '50%',
+                            left: '50%'
+                        })
+                    }else{
+                        $("#mobileNav").css({
+                            top: '50%',
+                            left: 0
+                        })
+                    }
+
+                    var options = {
+                        id: $("#id").val(),
+                        width: $("#width").val(),
+                        height: $("#height").val(),
+                        data: [{
+                            url: 'http://www.qq.com',
+                            name: '首页',
+                            isActive: true
+                        },{
+                            url: 'http://jslib.qq.com',
+                            name: '菜单二'
+                        },{
+                            url: 'http://kuai.qq.com',
+                            name: '菜单三'
+                        },{
+                            url: 'http://kuai.qq.com',
+                            name: '菜单四'
+                        },{
+                            url: 'http://kuai.qq.com',
+                            name: '菜单五'
+                        }],
+                        theme: $("input[name='theme']:checked").val(),
+                        direction: $("input[name='direction']:checked").val(),
+                        callback: eval("(" + $("#callback").val() + ")" ),
+                        exClass: $("#exClass").val(),
+                        zIndex: $("#zIndex").val(),
+                        isDefaultOpen: $("input[name='isDefaultOpen']:checked").val() == "true"
+                    }
+                    life.mobileNav(options);
+                }
+                $("#defineParams input").change(function(){
+                    mobileNav();
+                });
+                mobileNav();
+            })
+        </script>
+	</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+  	<head>
+    	<meta charset="utf-8">
+    	<title>Demo - urlParam</title>
+        <script src="../src/setup.js"></script>
+  	</head>
+  	<body>
+    	<script>
+            seajs.use("Class",function(Class){
+                var Person = Class.extend({
+                    name: '',
+                    init: function(name){
+                        this.name = name;
+                    },
+                    say: function(){
+                       console.log(this.name);
+                    }
+                });
+
+                var Elian = Person.extend({
+                    age: 25,
+                    hello: function(){
+                        console.log("my name is elian,hello world!I`m" + this.age);
+                    },
+                    say:function(){
+                        console.log('haha');
+                        this._super()
+                    }
+                })
+
+                var linyue = new Person('linyue');
+                linyue.say();
+
+                var elian = new Elian('elianlin');
+                elian.say();
+                elian.hello();
+
+            })
+     	</script>
+  	</body>
+</html>

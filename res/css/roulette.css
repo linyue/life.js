@@ -1,0 +1,87 @@
+/*默认样式*/
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.i_roulette{
+    width: 280px;
+    height: 280px;
+    position: relative;
+}
+.i_roulette_dial{
+    width: 280px;
+    height: 280px;
+    position: absolute;
+    background-size: 280px;
+    top: 0;
+    left: 0;
+}
+.i_roulette_font.i_roulette_2 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_font_2.png");
+}
+.i_roulette_font.i_roulette_3 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_font_3.png");
+}
+.i_roulette_font.i_roulette_4 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_font_4.png");
+}
+.i_roulette_font.i_roulette_5 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_font_5.png");
+}
+
+.i_roulette_image.i_roulette_2 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_image_2.png");
+}
+.i_roulette_image.i_roulette_3 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_image_3.png");
+}
+.i_roulette_image.i_roulette_4 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_image_4.png");
+}
+.i_roulette_image.i_roulette_5 .i_roulette_dial{
+    background-image: url("../img/roulette/pan_image_5.png");
+}
+.i_roulette_dial li{
+    width: 280px;
+    height: 280px;
+    position: absolute;
+}
+.i_roulette_dial li p{
+    width: 100%;
+    position: absolute;
+    top: 10px;
+    text-align: center;
+}
+.i_roulette_dial li img{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 115px;
+    top: 45px;
+}
+.i_roulette_hands_button{
+    width: 70px;
+    height: 70px;
+    display: block;
+    background-image: url("../img/roulette/pan-button.png");
+    background-size: 70px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -35px;
+    margin-top: -35px;
+    cursor: pointer;
+}
+.i_roulette_hands_arrow{
+    width: 110px;
+    height: 110px;
+    display: block;
+    background-image: url("../img/roulette/pan-arrow.png");
+    background-size: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -55px;
+    margin-top: -55px;
+}

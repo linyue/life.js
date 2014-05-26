@@ -1,0 +1,230 @@
+ul,li{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+a,
+a:hover,
+a:active{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Microsoft Yahei', Tahoma, '宋体', sans-serif;
+}
+.i_mobileNav{
+    position: relative;
+    overflow: hidden;
+}
+
+/*normal样式*/
+.i_mobileNav_normal .i_mobileNav_container{
+    width: 100%;
+    background: #000;
+    position: absolute;
+}
+.i_mobileNav_normal .i_mobileNav_container li{
+    background: #000;
+    border-bottom: 1px solid #333;
+    float: left;
+}
+
+.i_mobileNav_normal .i_mobileNav_container li.active{
+    background-color: #297c40;
+    background-image: linear-gradient(to bottom, #297c40, #46ae64);
+    border: none;
+    position: relative;
+}
+.i_mobileNav_normal .i_mobileNav_container li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: hidden;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Microsoft Yahei', Tahoma, '宋体', sans-serif;
+}
+
+.i_mobileNav_normal_t .i_mobileNav_container{
+    margin-top: 6px;
+}
+.i_mobileNav_normal_b .i_mobileNav_container{
+    bottom: 6px;
+}
+.i_mobileNav_normal_t .i_mobileNav_container li.active,
+.i_mobileNav_normal_t .i_mobileNav_container li.active a{
+    margin-top: -6px;
+}
+.i_mobileNav_normal_t .i_mobileNav_viewLeft,
+.i_mobileNav_normal_t .i_mobileNav_viewRight,
+.i_mobileNav_normal_b .i_mobileNav_viewLeft,
+.i_mobileNav_normal_b .i_mobileNav_viewRight{
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 3px;
+    display: none;
+    position: absolute;
+}
+.i_mobileNav_normal_t .i_mobileNav_viewLeft{
+    border-color: rgba(0, 0, 0, 0) #00410b #00410b rgba(0, 0, 0, 0);
+    left: -6px;
+    top: 0;
+}
+.i_mobileNav_normal_t .i_mobileNav_viewRight{
+    border-color: rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0) #00410b #00410b;
+    right: -6px;
+    top: 0;
+}
+.i_mobileNav_normal_b .i_mobileNav_viewLeft{
+    border-color: #00410b #00410b rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0);
+    left: -6px;
+    bottom: 0;
+}
+.i_mobileNav_normal_b .i_mobileNav_viewRight{
+    border-color: #00410b rgba(0, 0, 0, 0)  rgba(0, 0, 0, 0) #00410b;
+    right: -6px;
+}
+
+li.active .i_mobileNav_viewLeft,
+li.active .i_mobileNav_viewRight{
+    display: block;
+}
+
+
+/*button样式*/
+.i_mobileNav_button.i_mobileNav{
+    position: absolute;
+}
+.i_mobileNav_button .i_mobileNav_bar{
+    position: absolute;
+}
+.i_mobileNav_button .i_mobileNav_collapse{
+    width: 70px;
+    height: 70px;
+    display: block;
+    border: 1px solid #959595;
+    border-radius: 70px;
+    background-image: radial-gradient(#fefefe,#d4d4d4);
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+.i_mobileNav_button .i_mobileNav_collapse span{
+    width: 50%;
+    height: 6%;
+    border: 1px solid #5d5d5d;
+    border-radius: 5px;
+    background: #5d5d5d;
+    display: block;
+    margin: 10% auto;
+}
+.i_mobileNav_button .i_mobileNav_collapse span:first-child{
+    margin-top: 26%;
+}
+.i_mobileNav_button .i_mobileNav_container{
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: none;
+}
+.i_mobileNav_button .i_mobileNav_container.active{
+    display: block;
+}
+.i_mobileNav_button .i_mobileNav_container li{
+    width: 100%;
+    height: 64px;
+    background: rgba(0, 0, 0, 0.5);
+    border-bottom: 1px solid #8c8c8c;
+    line-height: 64px;
+    font-size: 20px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+}
+.i_mobileNav_button .i_mobileNav_container li:hover,
+.i_mobileNav_button .i_mobileNav_container li.active{
+    background: rgba(100, 100, 100, 0.5);
+}
+.i_mobileNav_button .i_mobileNav_container li:last-child{
+    border-bottom: none;
+}
+.i_mobileNav_button .i_mobileNav_container li a{
+    cursor: pointer;
+    text-decoration: none;
+    font-family: 'Microsoft Yahei', Tahoma, '宋体', sans-serif;
+}
+
+
+.i_mobileNav.i_mobileNav_line{
+    position: relative;
+}
+.i_mobileNav_line .i_mobileNav_bar{
+    height: 20%;
+    background-color: #ff7200;
+    background-image: linear-gradient(to bottom, #ff7200, #e23600);
+}
+.i_mobileNav_line .i_mobileNav_collapse{
+    width: 15%;
+    height: 100%;
+    display: block;
+    float: right;
+    margin-right: 5%;
+    cursor: pointer;
+}
+.i_mobileNav_line .i_mobileNav_collapse span{
+    width: 100%;
+    height: 12%;
+    border-radius: 15px;
+    background: #fff;
+    display: block;
+}
+.i_mobileNav_line .i_mobileNav_container{
+    width: 40%;
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+    position: absolute;
+    top: 80px;
+    right: 3%;
+    display: none;
+}
+.i_mobileNav_line .i_mobileNav_container.active{
+    display: block;
+}
+/*.i_mobileNav_line .i_mobileNav_container:after{*/
+    /*display: block;*/
+    /*position: absolute;*/
+    /*right: 20%;*/
+    /*top: -16px;*/
+    /*color: #fff;*/
+    /*content: "▲";*/
+    /*text-shadow: 1px 1px 1px #fff;*/
+    /*opacity: 0.9;*/
+/*}*/
+.i_mobileNav_line .i_mobileNav_container li{
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    line-height: 50px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.i_mobileNav_line .i_mobileNav_container li a{
+    color: #444;
+}
+.i_mobileNav_line .i_mobileNav_container li:hover,
+.i_mobileNav_line .i_mobileNav_container li.active{
+    background: #eee;
+}
+.i_mobileNav_line .i_mobileNav_container li:last-child{
+    border-bottom: none;
+    border-radius: 0 0 5px 5px;
+}
+.i_mobileNav_line .i_mobileNav_bar{
+    width: 100%;
+    position: absolute;
+    left: 0;
+}

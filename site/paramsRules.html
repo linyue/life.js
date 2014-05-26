@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="ie=edge" http-equiv="x-ua-compatible">
+        <title>参数设计风格</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li>
+                    <h2>两种方式</h2>
+                    <ol>
+                        <li><strong>枚举式</strong>，参数个数不超过三个时，允许使用该方式，但必须同时支持对象式。</li>
+                        <li><strong>对象式</strong>，参数名统一为：<strong>options</strong>。只要有参数就得支持该方式，当参数不超过三个时，可以在组件内部实现枚举式</li>
+                    </ol>
+                </li>
+                <li>
+                    <h2>参数设计规范</h2>
+                    <ol>
+                        <li>使用驼峰命名法，语义清晰</li>
+                        <li>参数顺序：必填参数 ==》 选填参数，属性参数 ==》 方法参数（callback||onXxx）。</li>
+                        <li>参数单层级，除了参数 data 外，尽量使参数保持在一个层级。</li>
+                    </ol>
+                </li>
+                <li>
+                    <h2>常用参数</h2>
+                    <ol>
+                        <li><strong>id</strong>,关联的 DOM 节点 ID，当组件只跟一个 DOM 节点关联时，使用该参数</li>
+                        <li><strong>class</strong>,关联的 DOM 节点 Class。当组件和多个 DOM 节点关联时，使用该参数</li>
+                        <li><strong>exClass</strong>, UI 组件附加的 Class，为增加 UI 组件的定制性可实现该接口</li>
+                        <li><strong>exParams</strong>, 当参数可作为回调函数或关联函数的扩展参数</li>
+                        <li><strong>type</strong>,当组件只持多种模式时，可使用该参数</li>
+                        <li><strong>theme</strong>,当组件只持多种主题风格时，可使用该参数</li>
+                        <li><strong>skin</strong>,当组件只持多种颜色的皮肤时，可使用该参数</li>
+                        <li><strong>onXxx</strong>,组件支持的事件</li>
+                        <li><strong>isXxx</strong>,开启或关闭某项功能</li>
+                        <li><strong>callback</strong>,回调函数，注意与onXxx事件的区别</li>
+                        <li><strong>funName</strong>,绑定的函数名，相应函数必须定义在可调用的相同作用域或在全局作用域中</li>
+                        <li><strong>width</strong>,设置组件的宽</li>
+                        <li><strong>height</strong>,设置组件的高</li>
+                        <li><strong>align</strong>,设置组件的对齐方式</li>
+                        <li><strong>zIndex</strong>,设置组件的层级</li>
+                        <li><strong>timeout</strong>,设置组件的过期时间</li>
+                        <li><strong>left</strong>,设置组件的位置 left</li>
+                        <li><strong>top</strong>,设置组件的位置 top</li>
+                        <li><strong>data</strong>,组件要用到的数据，array|json 格式</li>
+                        <li><strong>template</strong>,组件内允许自定义的 html 模板</li>
+                        <li><strong>text</strong>,文本、字符串</li>
+                        <li><strong>number</strong>,数字</li>
+                        <li><strong>url</strong>,链接</li>
+                        <li><strong>animate</strong>,切换效果</li>
+                        <li><strong>direction</strong>,方向</li>
+                        <li><strong>interval</strong>,间隔时间</li>
+                    </ol>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>

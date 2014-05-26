@@ -1,0 +1,202 @@
+[{
+	"type": "登录类",
+	"apiList": [{
+		"name": "登录QQ",
+		"api": "$.loginQQ()"	
+	},{
+		"name": "退出QQ登录",
+		"api": "$.logoutQQ()"
+	},{
+		"name": "检查是否已登录QQ",
+		"api": "$.isLoginQQ()"
+	},{
+		"name": "检查是否已登录QQ(包含弱登录)",
+		"api": "$.isLLoginQQ()"
+	},{
+		"name": "获取当前登录的QQ号",
+		"api": "$.getQQ()"
+	},{
+		"name": "获取一个CSRF校验的Token",
+		"api": "$.getCSRFToken()"
+	}]
+},{
+	"type": "弹层类",
+	"apiList": [{
+		"name": "通用弹层",
+		"api": "$.dialog()"	
+	},{
+		"name": "确认框",
+		"api": "$.confirm()"	
+	},{
+		"name": "警告框",
+		"api": "$.alert()"	
+	},{
+		"name": "消息框",
+		"api": "$.tip()"	
+	},{
+		"name": "工具提示框",
+		"api": "$.tooltip()"	
+	},{
+		"name": "iframe弹层",
+		"api": "$.iframe()"	
+	},{
+		"name": "显示loading浮层",
+		"api": "$.fn.loading()"	
+	},{
+		"name": "隐藏loading浮层",
+		"api": "$.fn.unloading()"	
+	},{
+		"name": "弹出遮罩",
+		"api": "$.overlay.show()"	
+	},{
+		"name": "隐藏遮罩",
+		"api": "$.overlay.hide()"	
+	}]
+},{
+	"type": "服务类",
+	"apiList": [{
+		"name": "通用上传",
+		"api": "$.upload()"
+	},{
+		"name": "图片上传",
+		"api": "$.uploadPic()"	
+	},{
+		"name": "视频上传",
+		"api": "$.uploadVideo()"	
+	},{
+		"name": "上传结果验证",
+		"api": "$.uploadCheck()"	
+	},{
+		"name": "点击按钮上传图片(风驰定制)",
+		"api": "$.fn.uploadPicBtn()"	
+	},{
+		"name": "获取图片地址(风驰定制)",
+		"api": "$.fn.getPicUrl()"	
+	},{
+		"name": "设置图片地址(风驰定制)",
+		"api": "$.fn.setPicUrl()"	
+	},{
+		"name": "弹出验证码输入框",
+		"api": "$.vcodeShow()"	
+	},{
+		"name": "更新验证码",
+		"api": "$.vcodeChange()"
+	}]
+},{
+	"type": "组件类",
+	"apiList": [{
+		"name": "幻灯片",
+		"api": "$.albums()"
+	},{
+		"name": "奖品幻灯片(风驰定制)",
+		"api": "$.fn.prizeAlbums()"	
+	},{
+		"name": "跑马灯",
+		"api": "$.scroll()"	
+	},{
+		"name": "自动补全",
+		"api": "$.fn.autoComplete()"	
+	},{
+		"name": "日期选择器",
+		"api": "$.calendar()"	
+	},{
+		"name": "分页组件",
+		"api": "$.page()"	
+	},{
+		"name": "表单验证",
+		"api": "$.validate()"	
+	}]
+},{
+	"type": "分享类",
+	"apiList": [{
+		"name": "空间分享",
+		"api": "$.shareQzone()"
+	},{
+		"name": "微博分享",
+		"api": "$.shareWeibo()"	
+	},{
+		"name": "QQ分享",
+		"api": "$.shareQQ()"	
+	}]
+},{
+	"type": "工具类",
+	"apiList": [{
+		"name": "渲染模版文件",
+		"api": "$.template.runURL()"	
+	},{
+		"name": "渲染模版变量",
+		"api": "$.template.runSource()"	
+	},{
+		"name": "渲染页面中script标签中的模版",
+		"api": "$.template.runId()"	
+	},{
+		"name": "获取url参数",
+		"api": "$.urlParam()"
+	},{
+		"name": "获取浏览器信息",
+		"api": "$.browserInfo()"	
+	},{
+		"name": "cookie设置",
+		"api": "$.cookie()"	
+	},{
+		"name": "cookie删除",
+		"api": "$.removeCookie()"	
+	},{
+		"name": "文本复制",
+		"api": "$.copyText()"	
+	},{
+		"name": "倒计时",
+		"api": "$.countdown()"	
+	},{
+		"name": "日期格式化",
+		"api": "$.formatDate()"	
+	},{
+		"name": "数字格式化",
+		"api": "$.formatNum()"	
+	},{
+		"name": "数字格式化输入框",
+		"api": "$.fn.numInput()"	
+	},{
+		"name": "flash加载器",
+		"api": "$.fn.swf()"	
+	},{
+		"name": "腾讯视频加载器",
+		"api": "$.fn.qqVideo()"	
+	},{
+		"name": "URL格式判断",
+		"api": "$.isUrl()"	
+	},{
+		"name": "XSS过滤器",
+		"api": "$.filterXss()"	
+	},{
+		"name": "日志工具，兼容IE",
+		"api": "$.log()"	
+	}]
+},{
+	"type": "上报类",
+	"apiList": [{
+		"name": "通用上报",
+		"api": "$.report()"
+	},{
+		"name": "网页速度上报",
+		"api": "$.speedReport()"	
+	},{
+		"name": "页面出错上报",
+		"api": "$.rpt.pageError()"	
+	},{
+		"name": "ajax出错上报",
+		"api": "$.rpt.ajaxError()"	
+	},{
+		"name": "ajax超时上报",
+		"api": "$.rpt.ajaxTimeout()"	
+	},{
+		"name": "ajax解析出错上报",
+		"api": "$.rpt.ajaxNotJson()"	
+	},{
+		"name": "api使用上报",
+		"api": "$.rpt.apiUsage()"	
+	},{
+		"name": "数据上报",
+		"api": "$.rpt.dataReport()"	
+	}]
+}]
