@@ -19,11 +19,7 @@ seajs.config({
     vars: {
 
     },
-<<<<<<< HEAD
     paths: {
-=======
-    path: {
->>>>>>> parent of ebaaa6c... Merge branch 'master' of https://github.com/linyue/life.js
         'src': window.location.protocol + '//www.xiaomanfile.com/life.js/src/',
         'res': window.location.protocol + '//www.xiaomanfile.com/life.js/res/'
     },
