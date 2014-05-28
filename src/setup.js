@@ -19,7 +19,11 @@ seajs.config({
     vars: {
 
     },
+<<<<<<< HEAD
     path: {
+=======
+    paths: {
+>>>>>>> FETCH_HEAD
         'src': window.location.protocol + '//www.xiaomanfile.com/life.js/src/',
         'res': window.location.protocol + '//www.xiaomanfile.com/life.js/res/'
     },
