@@ -20,8 +20,8 @@ seajs.config({
 
     },
     path: {
-        'src': 'http://www.life.com:8080/src/',
-        'res': 'http://www.life.com:8080/res/'
+        'src': 'http://www.xiaomanfile.com/life.js/src/',
+        'res': 'http://www.xiaomanfile.com/life.js/res/'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
