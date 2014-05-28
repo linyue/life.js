@@ -19,7 +19,7 @@ seajs.config({
     vars: {
 
     },
-    path: {
+    paths: {
         'src': window.location.protocol + '//www.xiaomanfile.com/lifejs/src/',
         'res': window.location.protocol + '//www.xiaomanfile.com/lifejs/res/'
     },
