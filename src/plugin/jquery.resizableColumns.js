@@ -100,7 +100,7 @@ define(function(require,exports,moudles){
                 _ref.remove();
               }
               this.$table.before((this.$handleContainer = $("<div class='rc-handle-container' />").css({
-                  position: 'relative'
+                  position: 'absolute'
               })));
               this.$tableHeaders.each((function(_this) {
                 return function(i, el) {
