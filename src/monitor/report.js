@@ -51,11 +51,11 @@ define(function (require, exports, module) {
         var self = this;
         if(document.all) {
             window.attachEvent('onload', function(){
-                exports.report(url, _getInfo());
+                exports.report(url, self.deviceInfo());
             });
         } else {
             window.addEventListener('load', function(){
-                exports.report(url, _getInfo());
+                exports.report(url, self.deviceInfo());
             }, false);
         }
     }
