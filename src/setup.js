@@ -39,6 +39,7 @@ seajs.config({
         'copyText': 'src/utils/copyText',
         'areaSelect': 'src/utils/areaSelect',
         'draggable': 'src/utils/draggable',
+        'report': 'scr/monitor/report',
         'page': 'src/ui/page',
         'dialog': 'src/ui/dialog',
         'gallery': 'src/ui/gallery',
