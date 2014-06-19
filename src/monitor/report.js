@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 
     "use strict";
 
-    var _getInfo = function(){
+    exports.deviceInfo = function(){
 
         var timing = window.performance ? window.performance.timing : '';
 
@@ -48,7 +48,7 @@ define(function (require, exports, module) {
     }
 
     exports.visit = function(url){
-
+        var self = this;
         if(document.all) {
             window.attachEvent('onload', function(){
                 exports.report(url, _getInfo());
