@@ -29,7 +29,7 @@ define(function (require, exports, module) {
             t_request: timing ? (timing.responseStart - timing.requestStart) : 'unknow',
             t_response: timing ? (timing.responseEnd - timing.responseStart) : 'unknow',
             t_dom: timing ? (timing.domComplete - timing.domLoading) : 'unknow',
-            t_all: timing ? (timing.domComplete - (timing.redirectStart == 0 ? timing.unloadEventStart : timing.redirectStart)) : 'unknow'
+            t_all: timing ? (timing.domComplete - timing.navigationStart) : 'unknow'
         }
 
         return info;
