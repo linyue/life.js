@@ -20,9 +20,8 @@ seajs.config({
 
     },
     paths: {
-        'src': window.location.protocol + '//lifejs.quinlan.com:8080/src',
-        'res': window.location.protocol + '//lifejs.quinlan.com:8080/res'
-        /*'res': window.location.protocol + '//res.xiaoman.cn/life.js/res/'*/
+        'src': window.location.protocol + '//res.xiaoman.cn/src',
+        'res': window.location.protocol + '//res.xiaoman.cn/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
