@@ -20,8 +20,9 @@ seajs.config({
 
     },
     paths: {
-        'src': window.location.protocol + '//res.xiaoman.cn/life.js/src/',
-        'res': window.location.protocol + '//res.xiaoman.cn/life.js/res/'
+        'src': window.location.protocol + '//lifejs.quinlan.com:8080/src',
+        'res': window.location.protocol + '//lifejs.quinlan.com:8080/res'
+        /*'res': window.location.protocol + '//res.xiaoman.cn/life.js/res/'*/
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -49,7 +50,8 @@ seajs.config({
         'qzoneAlbums': 'src/qq/qzoneAlbums',
         'scratch': 'src/qq/scratch',
         'roulette': 'src/qq/roulette',
-        'shake': 'src/qq/shake'
+        'shake': 'src/qq/shake',
+        'charts': 'src/plugin/highcharts/highcharts'
 	},
     preload: [
         this.$ ? '' : '$'
@@ -149,7 +151,11 @@ life.draggable = function(options){
     })
 }
 
-
+life.charts = function(options){
+    seajs.use("charts", function(Charts){
+        new Charts(options);
+    })
+}
 
 
 
