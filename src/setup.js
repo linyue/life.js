@@ -50,8 +50,7 @@ seajs.config({
         'scratch': 'src/qq/scratch',
         'roulette': 'src/qq/roulette',
         'shake': 'src/qq/shake',
-        'charts': 'src/plugin/highcharts/highcharts'，
-        'charts_more': 'src/plugin/highcharts/highcharts-more'
+        'charts': 'src/plugin/highcharts/highcharts'
 	},
     preload: [
         this.$ ? '' : '$'
