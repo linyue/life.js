@@ -12,6 +12,8 @@ define(function (require, exports, module) {
      *
      * Date: Tue Nov 13 2012 08:20:33 GMT-0500 (Eastern Standard Time)
      */
+     if(typeof $ == 'undefined'){
+         
     (function( window, undefined ) {
         var
         // A central reference to the root jQuery(document)
@@ -9471,6 +9473,6 @@ define(function (require, exports, module) {
         }
 
     })( window );
-
+}
     module.exports = $;
 })
