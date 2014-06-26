@@ -20,8 +20,8 @@ seajs.config({
 
     },
     paths: {
-        'src': window.location.protocol + '//res.xiaoman.cn/life.js/src',
-        'res': window.location.protocol + '//res.xiaoman.cn/life.js/res'
+        'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/src',
+        'res': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -50,7 +50,9 @@ seajs.config({
         'scratch': 'src/qq/scratch',
         'roulette': 'src/qq/roulette',
         'shake': 'src/qq/shake',
-        'charts': 'src/plugin/highcharts/highcharts'
+        'charts': 'src/plugin/highcharts/highcharts',
+        'charts_more': 'src/plugin/highcharts/highcharts-more'
+
 	},
     preload: [
         this.$ ? '' : '$'

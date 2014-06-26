@@ -1,3 +1,4 @@
+define(function(require,exports,moudles){
 /*
  Highcharts JS v4.0.1 (2014-04-24)
 
@@ -5,6 +6,8 @@
 
  License: www.highcharts.com/license
 */
+return function(Highcharts ){
+
 (function(m,C){function K(a,b,c){this.init.call(this,a,b,c)}var O=m.arrayMin,P=m.arrayMax,s=m.each,F=m.extend,o=m.merge,Q=m.map,q=m.pick,x=m.pInt,p=m.getOptions().plotOptions,h=m.seriesTypes,u=m.extendClass,L=m.splat,r=m.wrap,M=m.Axis,y=m.Tick,H=m.Point,R=m.Pointer,S=m.CenteredSeriesMixin,z=m.TrackerMixin,t=m.Series,v=Math,D=v.round,A=v.floor,T=v.max,U=m.Color,w=function(){};F(K.prototype,{init:function(a,b,c){var d=this,e=d.defaultOptions;d.chart=b;if(b.angular)e.background={};d.options=a=o(e,a);
 (a=a.background)&&s([].concat(L(a)).reverse(),function(a){var g=a.backgroundColor,a=o(d.defaultBackgroundOptions,a);if(g)a.backgroundColor=g;a.color=a.backgroundColor;c.options.plotBands.unshift(a)})},defaultOptions:{center:["50%","50%"],size:"85%",startAngle:0},defaultBackgroundOptions:{shape:"circle",borderWidth:1,borderColor:"silver",backgroundColor:{linearGradient:{x1:0,y1:0,x2:0,y2:1},stops:[[0,"#FFF"],[1,"#DDD"]]},from:Number.MIN_VALUE,innerRadius:0,to:Number.MAX_VALUE,outerRadius:"105%"}});
 var G=M.prototype,y=y.prototype,V={getOffset:w,redraw:function(){this.isDirty=!1},render:function(){this.isDirty=!1},setScale:w,setCategories:w,setTitle:w},N={isRadial:!0,defaultRadialGaugeOptions:{labels:{align:"center",x:0,y:null},minorGridLineWidth:0,minorTickInterval:"auto",minorTickLength:10,minorTickPosition:"inside",minorTickWidth:1,tickLength:10,tickPosition:"inside",tickWidth:2,title:{rotation:0},zIndex:2},defaultRadialXOptions:{gridLineWidth:1,labels:{align:null,distance:15,x:0,y:null},
@@ -49,3 +52,6 @@ o;d?(c=["C",a.rightContX||a.plotX,a.rightContY||a.plotY,h||e,m||j,e,j],a.rightCo
 b)});r(c,"animate",b);r(c,"setTooltipPoints",function(a,b){this.chart.polar&&F(this.xAxis,{tooltipLen:360});return a.call(this,b)});if(h.column)e=h.column.prototype,r(e,"animate",b),r(e,"translate",function(a){var b=this.xAxis,c=this.yAxis.len,d=b.center,e=b.startAngleRad,h=this.chart.renderer,i,m;this.preventPostTranslate=!0;a.call(this);if(b.isRadial){b=this.points;for(m=b.length;m--;)i=b[m],a=i.barX+e,i.shapeType="path",i.shapeArgs={d:h.symbols.arc(d[0],d[1],c-i.plotY,null,{start:a,end:a+i.pointWidth,
 innerR:c-q(i.yBottom,c)})},this.toXY(i),i.tooltipPos=[i.plotX,i.plotY],i.ttBelow=i.plotY>d[1]}}),r(e,"alignDataLabel",function(a,b,d,e,h,j){if(this.chart.polar){a=b.rectPlotX/Math.PI*180;if(e.align===null)e.align=a>20&&a<160?"left":a>200&&a<340?"right":"center";if(e.verticalAlign===null)e.verticalAlign=a<45||a>315?"bottom":a>135&&a<225?"top":"middle";c.alignDataLabel.call(this,b,d,e,h,j)}else a.call(this,b,d,e,h,j)});r(d,"getIndex",function(a,b){var c,d=this.chart,e;d.polar?(e=d.xAxis[0].center,c=
 b.chartX-e[0]-d.plotLeft,d=b.chartY-e[1]-d.plotTop,c=180-Math.round(Math.atan2(c,d)/Math.PI*180)):c=a.call(this,b);return c});r(d,"getCoordinates",function(a,b){var c=this.chart,d={xAxis:[],yAxis:[]};c.polar?s(c.axes,function(a){var e=a.isXAxis,f=a.center,h=b.chartX-f[0]-c.plotLeft,f=b.chartY-f[1]-c.plotTop;d[e?"xAxis":"yAxis"].push({axis:a,value:a.translate(e?Math.PI-Math.atan2(h,f):Math.sqrt(Math.pow(h,2)+Math.pow(f,2)),!0)})}):d=a.call(this,b);return d})})()})(Highcharts);
+
+}(Highcharts);
+})
