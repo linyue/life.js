@@ -626,6 +626,23 @@
     };
 
 
+    template.includeTpl = function(tplUrl){
+        var tplId = 'tpl_container' + tplUrl.replace(/\/|\./g, '_');
+
+        //拉取模板
+        if($("#" + tplId).length == 0){
+            $.ajax({
+                url: tplUrl,
+                dataType: 'html',
+                async: false,
+                cache: true,
+                success: function(res){
+                    $("<div></div>").attr("id", tplId).append(res).appendTo($('body')).hide();
+                }
+            })
+        }
+    }
+
     // RequireJS && SeaJS
     if (typeof define === 'function') {
         define(function() {
