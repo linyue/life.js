@@ -2,17 +2,53 @@
 <html>
   	<head>
     	<meta charset="utf-8">
-    	<title>Demo - url</title>
+    	<title>Demo - time</title>
       <script src="../src/setup.js"></script>
   	</head>
   	<body>
+        <h2>将字符串转成Date对象：</h2>
+        <label for="time_input">请输入时间字符串：</label>
+        <input type="text" id="time_input" value="2012-12-21 13:00:00">
+        <a id="e_string2date">马上转化</a>
+
+        <h2>倒计时：</h2>
+        <label for="deadline">截止时间：</label>
+        <input type="text" id="deadline" value="2014-06-27 09:31:20">
+        <p id="countdown" style="height: 35px;color: green;"></p>
+        <a id="e_countdown">开始倒计时</a>
+
     	<script>
-            seajs.use("url",function(url){
-                var search = "?a=123&b=abc456";
-                if(window.location.search != search){
-                    window.location.search = search;
-                };
-                alert(url.getParam("a"))
+
+            seajs.use("time", function(time){
+                $("#e_string2date").click(function(){
+                    life.time.string2Date({
+                        time: $("#time_input").val(),
+                        callback: function(date){
+                            alert(date);
+                        }
+                    })
+                })
+//                $("#now").val(time.format());
+
+//                $("#e_string2date").click(function(){
+//                    var str = $("#time_input").val();
+//                    var date = time.string2Date(str);
+//                    alert(date);
+//                })
+
+                $("#e_countdown").click(function(){
+                    time.countdown({
+                        now: new Date(),
+                        deadline: $("#deadline").val(),
+                        interval: 2,
+                        onInterval: function(data){
+                            console.log(data)
+                        },
+                        onTimeUp: function(){
+                            console.log('time up');
+                        }
+                    })
+                })
             })
      	</script>
   	</body>

@@ -1,6 +1,6 @@
 /**
  * 数组对象扩充方法
- * Created by adam on 14-2-11.
+ * Created by adam[linyue@live.cn] on 14-2-11.
  */
 
 /*将数组随机排列*/

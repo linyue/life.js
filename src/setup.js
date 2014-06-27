@@ -35,6 +35,7 @@ seajs.config({
         'type': 'src/utils/type',
         'verify': 'src/utils/verify',
         'url': 'src/utils/url',
+        'time': 'src/utils/time',
         'include': 'src/utils/include',
         'copyText': 'src/utils/copyText',
         'areaSelect': 'src/utils/areaSelect',
@@ -46,10 +47,9 @@ seajs.config({
         'mobileNav': 'src/ui/mobileNav',
         'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
-        'qzoneAlbums': 'src/qq/qzoneAlbums',
-        'scratch': 'src/qq/scratch',
-        'roulette': 'src/qq/roulette',
-        'shake': 'src/qq/shake',
+        'scratch': 'src/lottery/scratch',
+        'roulette': 'src/lottery/roulette',
+        'shake': 'src/lottery/shake',
         'charts': 'src/plugin/highcharts/highcharts',
         'charts_more': 'src/plugin/highcharts/highcharts-more'
 
@@ -157,6 +157,26 @@ life.charts = function(options){
         new Charts(options);
     })
 }
+
+life.time = {};
+life.time.string2Date = function(options){
+    seajs.use("time", function(time){
+        var date = time.string2Date(options.time);
+        options.callback(date);
+    })
+}
+life.time.format = function(options){
+    seajs.use("time", function(time){
+        var format = time.format(options.formatStr, options.date);
+        options.callback(format);
+    })
+}
+life.time.format = function(options){
+    seajs.use("time", function(time){
+        time.countdown(options);
+    })
+}
+
 
 
 
