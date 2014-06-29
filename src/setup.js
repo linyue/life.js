@@ -178,7 +178,7 @@ life.time.format = function(options){
         options.callback(format);
     })
 }
-life.time.format = function(options){
+life.time.countdown = function(options){
     seajs.use("time", function(time){
         time.countdown(options);
     })
