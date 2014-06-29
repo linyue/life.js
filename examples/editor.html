@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - Editor</title>
+
+    <script src="../src/setup.js"></script>
+
+</head>
+<body>
+    <textarea id="editor" placeholder="请在这里输入内容" style="width: 520px; height: 300px;"></textarea>
+    <a id="getValue">获取值</a>
+
+
+<script type="text/javascript">
+
+    seajs.use('editor', function(editor){
+
+        var options = {
+            textarea: $('#editor'),
+            upload: {
+                url: 'https://tower.im/teams/d7bfbd0f735a4448bee20d644c66b3bc/upload/attachments/'
+//                params: null,
+//                connectionCount: 1,
+//                leaveConfirm: '正在上传文件，如果离开上传会自动取消'
+            },
+            pasteImage: true,
+            placeholder: '请在这里输入内容'
+        };
+        var editor = editor(options);
+
+        editor.setValue('adfasdfa')
+
+        $("#getValue").click(function(){
+            console.log(111, editor.getValue())
+            console.log(222, $('#editor').val())
+        })
+
+    });
+</script>
+
+</body>
+</html>
