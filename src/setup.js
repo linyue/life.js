@@ -25,11 +25,11 @@ seajs.config({
     },
 	alias: {
         'baseCss': 'res/css/base.css',
-        '$': 'src/lib/jquery-1.8.3.js',
-//        '$': 'src/plugin/simditor/scripts/js/jquery.min.js',
+
         'Class': 'src/base/class',
         'JSON': 'src/base/json2',
         'Array': 'src/base/array',
+
         'md5': 'src/utils/md5',
         'base64': 'src/utils/base4',
         'template': 'src/utils/template',
@@ -41,7 +41,9 @@ seajs.config({
         'copyText': 'src/utils/copyText',
         'areaSelect': 'src/utils/areaSelect',
         'draggable': 'src/utils/draggable',
+
         'report': 'src/monitor/report',
+
         'page': 'src/ui/page',
         'dialog': 'src/ui/dialog',
         'gallery': 'src/ui/gallery',
@@ -49,9 +51,12 @@ seajs.config({
         'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
         'editor': 'src/ui/editor',
+
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
         'shake': 'src/lottery/shake',
+
+        '$': 'src/plugin/jquery.js',
         'jqueryui': 'src/plugin/jquery.ui',
         'charts': 'src/plugin/highcharts/highcharts',
         'charts_more': 'src/plugin/highcharts/highcharts-more'
