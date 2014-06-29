@@ -8,7 +8,9 @@
 
 </head>
 <body>
-    <textarea id="editor" placeholder="请在这里输入内容" style="width: 520px; height: 300px;"></textarea>
+    <textarea id="editor" placeholder="请在这里输入内容" style="width: 520px; height: 300px;">
+        aDASDFADFA
+    </textarea>
     <a id="getValue">获取值</a>
 
 
@@ -25,16 +27,23 @@
 //                leaveConfirm: '正在上传文件，如果离开上传会自动取消'
             },
             pasteImage: true,
-            placeholder: '请在这里输入内容'
+            placeholder: '请在这里输入内容',
+            callback: function(edit){
+                $("#getValue").click(function(){
+                    console.log(edit);
+                })
+            }
         };
-        var editor = editor(options);
 
-        editor.setValue('adfasdfa')
-
-        $("#getValue").click(function(){
-            console.log(111, editor.getValue())
-            console.log(222, $('#editor').val())
-        })
+        life.editor(options);
+//        var editor = editor(options);
+//
+//        editor.setValue('adfasdfa')
+//
+//        $("#getValue").click(function(){
+//            console.log(111, editor.getValue())
+//            console.log(222, $('#editor').val())
+//        })
 
     });
 </script>

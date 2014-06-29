@@ -26,6 +26,7 @@ seajs.config({
 	alias: {
         'baseCss': 'res/css/base.css',
         '$': 'src/lib/jquery-1.8.3.js',
+//        '$': 'src/plugin/simditor/scripts/js/jquery.min.js',
         'Class': 'src/base/class',
         'JSON': 'src/base/json2',
         'Array': 'src/base/array',
@@ -47,12 +48,13 @@ seajs.config({
         'mobileNav': 'src/ui/mobileNav',
         'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
+        'editor': 'src/ui/editor',
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
         'shake': 'src/lottery/shake',
+        'jqueryui': 'src/plugin/jquery.ui',
         'charts': 'src/plugin/highcharts/highcharts',
         'charts_more': 'src/plugin/highcharts/highcharts-more'
-
 	},
     preload: [
         this.$ ? '' : '$'
@@ -174,6 +176,13 @@ life.time.format = function(options){
 life.time.format = function(options){
     seajs.use("time", function(time){
         time.countdown(options);
+    })
+}
+
+life.editor = function(options){
+    seajs.use("editor", function(editor){
+        var edit = editor(options);
+        options.callback && options.callback(edit);
     })
 }
 

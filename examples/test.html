@@ -1,31 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-    <script type="text/javascript">
-        function allowDrop(ev)
-        {
-            ev.preventDefault();
-        }
+    <link rel="stylesheet" type="text/css" href="/life.js/src/plugin/simditor/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="/life.js/src/plugin/simditor/simditor.css" />
 
-        function drag(ev)
-        {
-            ev.dataTransfer.setData("Text",ev.target.id);
-        }
-
-        function drop(ev)
-        {
-            ev.preventDefault();
-            var data=ev.dataTransfer.getData("Text");
-            ev.target.appendChild(document.getElementById(data));
-        }
-    </script>
+    <script type="text/javascript" src="/life.js/src/plugin/simditor/jquery.min.js"></script>
+    <script type="text/javascript" src="/life.js/src/plugin/simditor/simditor-all.js"></script>
 </head>
 <body>
 
-<div id="div1" ondrop="drop(event)"
-     ondragover="allowDrop(event)"></div>
-<img id="drag1" src="../res/img/mobileUI/select.png" draggable="true"
-     ondragstart="drag(event)" width="336" height="69" />
-
+<textarea id="editor" placeholder="这里输入内容" autofocus></textarea>
+<script>
+    var editor = new Simditor({
+        textarea: $('#editor')
+    });
+</script>
 </body>
 </html>
