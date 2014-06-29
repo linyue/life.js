@@ -1,5 +1,5 @@
-life.js
-=======
+<h1>life.js</h1>
+<pre>
 -- index.html               life站点首页
   -- build                    压缩加密后的发布文件，由压缩工具生成
   -- src                      框架源代码
@@ -33,3 +33,4 @@ life.js
        -- show.html           全站目录结构说明
   -- HISTORY.md               版本更新说明
   -- README.md                组件总体说明
+</pre>
