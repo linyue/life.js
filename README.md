@@ -1,6 +1,6 @@
 <h1>life.js</h1>
 <pre>
--- index.html               life站点首页
+-- index.html                 life站点首页
   -- build                    压缩加密后的发布文件，由压缩工具生成
   -- src                      框架源代码
        -- base                      基本核心组件
