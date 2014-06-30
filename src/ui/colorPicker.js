@@ -25,8 +25,8 @@ define(function (require, exports, module) {
             isFlat: false,
             isShowPalette: true,
             isShowPicker: true,
-            onChange: function(hexColor, rgbColor){},
-            onMove: function(hexColor, rgbColor){}
+            onChange: function(color){},
+            onMove: function(color){}
         },
 
         colorNode: null,
@@ -105,12 +105,20 @@ define(function (require, exports, module) {
                 change: function(color) {
                     var hexColor = color.toHexString();
                     var rgbColor = color.toRgbString();
-                    options.onChange && options.onChange(hexColor, rgbColor, color);
+                    var colorObj = {
+                        hexColor: hexColor,
+                        rgbColor: rgbColor
+                    }
+                    options.onChange && options.onChange(colorObj, color);
                 },
                 move: function(color){
                     var hexColor = color.toHexString();
                     var rgbColor = color.toRgbString();
-                    options.onMove && options.onMove(hexColor, rgbColor, color);
+                    var colorObj = {
+                        hexColor: hexColor,
+                        rgbColor: rgbColor
+                    }
+                    options.onMove && options.onMove(colorObj, color);
                 }
             }
             opt = $.extend({}, self.spectrumOptions, opt);
