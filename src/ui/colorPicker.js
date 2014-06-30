@@ -75,8 +75,8 @@ define(function (require, exports, module) {
 
             //设置扩展类
             if (this.options.exClass) {
-                this.spectrumOptions.containerClassName += ' i_' + this.options.exClass;
-                this.spectrumOptions.replacerClassName += ' i_' + this.options.exClass;
+                this.spectrumOptions.containerClassName += ' ' + this.options.exClass;
+                this.spectrumOptions.replacerClassName += ' ' + this.options.exClass;
             }
 
         },
