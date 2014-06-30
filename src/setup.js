@@ -200,6 +200,13 @@ life.colorPicker = function(options){
     })
 }
 
+life.sidebar = function(options){
+    seajs.use("sidebar", function(Sidebar){
+        var sidebar = new Sidebar(options);
+        options.callback && options.callback(sidebar);
+    })
+}
+
 
 
 

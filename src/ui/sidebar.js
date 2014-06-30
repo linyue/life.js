@@ -27,6 +27,8 @@ define(function (require, exports, module) {
             background: '#3e3e3e',          //背景颜色
             padding: '10px',                //内容区域内边距
             zIndex: 10000,                  //浮层z-index
+            onOpen: function(){},           //打开事件回调
+            onClose: function(){},          //关闭事件回调
             isMask: true,                   //是否显示遮罩
             isBlur: false,                  //是否使用毛玻璃效果
             isShowCloseBtn: true,           //是否显示关闭按钮
@@ -209,6 +211,8 @@ define(function (require, exports, module) {
             if(options.isMask){
                 self.mask.show();
             }
+
+            options.onOpen && options.onOpen(self);
         },
 
         close: function(){
@@ -244,6 +248,8 @@ define(function (require, exports, module) {
             if(options.isMask){
                 self.mask.hide();
             }
+
+            options.onClose && options.onClose(self);
         },
 
         remove: function(){

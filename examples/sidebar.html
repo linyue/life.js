@@ -9,6 +9,7 @@
 
         <a id="open1">打开sidebar1</a>
         <a id="open2">打开sidebar2</a>
+        <a id="open3">打开sidebar3</a>
         <script>
             seajs.use('sidebar', function(Sidebar){
                 var options1 = {
@@ -36,6 +37,16 @@
                 $("#open2").click(function(){
                     sidebar2.open();
                 })
+            })
+
+            life.sidebar({
+                width: 200,
+                content: '我是一测试内容',
+                callback: function(sidebar){
+                    $("#open3").click(function(){
+                        sidebar.open();
+                    })
+                }
             })
         </script>
     </body>
