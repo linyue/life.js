@@ -513,6 +513,9 @@
 .simditor {
     display: inline-block;
 }
+.simditor .simditor-wrapper .simditor-placeholder {
+    padding: 15px;
+}
 .simditor .simditor-body {
     padding: 15px;
 }
