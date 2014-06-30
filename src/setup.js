@@ -51,6 +51,7 @@ seajs.config({
         'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
         'editor': 'src/ui/editor',
+        'colorPicker': 'src/ui/colorPicker',
 
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
@@ -188,6 +189,13 @@ life.editor = function(options){
     seajs.use("editor", function(editor){
         var edit = editor(options);
         options.callback && options.callback(edit);
+    })
+}
+
+life.colorPicker = function(options){
+    seajs.use("colorPicker", function(ColorPicker){
+        var colorPicker = new ColorPicker(options);
+        options.callback && options.callback(colorPicker);
     })
 }
 
