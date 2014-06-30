@@ -52,6 +52,7 @@ seajs.config({
         'mobileUI': 'src/ui/mobileUI',
         'editor': 'src/ui/editor',
         'colorPicker': 'src/ui/colorPicker',
+        'sidebar': 'src/ui/sidebar',
 
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
