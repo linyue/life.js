@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=320,user-scalable=no" />
+        <title>scroll</title>
+        <style type="text/css">
+        	.container{
+        		width: 130px;
+        	}
+	        ul,li {
+				list-style: none;
+				margin: 0px;
+				padding: 0px;
+			}
+			.scroll_area{
+				height: 120px;
+				overflow: hidden;
+				width: 100px;
+			}
+			.scroll_bar{
+				float: right;
+				display: block;
+			}
+			#scrollOuter{
+				background-color: red;
+				width: 10px;
+				height: 96px;
+				display: block;
+				position: relative;
+			}
+			#scrollInner{
+				background-color: #333;
+				width: 10px;
+				height:20px;
+				display: block;
+				position: absolute;
+			}
+        </style>
+        <script type="text/javascript" src="js/jquery.js"></script>
+    </head>
+    <body>
+   		<div class="container">
+   			<div class="scroll_bar" style="height:120px;" id="scrollMove">
+   				<i><a href="javascript:void(0);" onclick="return false" id="moveUp">上</a></i>
+   				<span id="scrollOuter">
+   					<i style="top:0px;" id="scrollInner"></i>
+   				</span>
+   				<i><a href="javascript:void(0);" onclick="return false" id="moveDown">下</a></i>
+   			</div>
+   			<div class="scroll_area" id="scrollArea">
+   				<ul>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh`</li>
+   					<li>heh123</li>
+   				</ul>
+   			</div>
+   			
+   		</div>
+    	<script type="text/javascript" src="../src/ui/scroll.js"></script>
+    	<script type="text/javascript">
+    		new Xscroller($('#scrollArea')[0], 
+    			$('#scrollOuter')[0],
+    			$('#scrollInner')[0],
+    			{'moveUp' : $("#moveUp"), 'moveDown' : $("#moveDown")}
+    			);
+    	</script>
+    </body>
+</html>
