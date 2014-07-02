@@ -53,6 +53,7 @@ seajs.config({
         'editor': 'src/ui/editor',
         'colorPicker': 'src/ui/colorPicker',
         'sidebar': 'src/ui/sidebar',
+        'upload': 'src/ui/upload',
 
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
@@ -204,6 +205,13 @@ life.sidebar = function(options){
     seajs.use("sidebar", function(Sidebar){
         var sidebar = new Sidebar(options);
         options.callback && options.callback(sidebar);
+    })
+}
+
+life.upload = {};
+life.upload.common = function(options){
+    seajs.use("upload", function(upload){
+        upload.common(options);
     })
 }
 
