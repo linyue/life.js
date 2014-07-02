@@ -216,7 +216,12 @@ life.upload.common = function(options){
 }
 
 
-
+life.upload = {};
+life.upload.common = function(options){
+    seajs.use("upload", function(upload){
+        upload.common(options);
+    })
+}
 
 
 
