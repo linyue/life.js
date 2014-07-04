@@ -11,8 +11,8 @@
         <h2>参数配置</h2>
         <ul id="defineParams">
             <li>
-                <label for="id">id：</label>
-                <input id="id" name="id" type="text" value="page" readonly="readonly">
+                <label for="query">query：</label>
+                <input id="query" name="query" type="text" value="#page" readonly="readonly">
             </li>
             <li>
                 <label for="funName">funName:</label>
@@ -121,7 +121,7 @@
             window.getList = function(curPage, pageSize){
                 //这里进行后台数据拉取
                 var options = {
-                    id: $("#id").val(),
+                    query: $("#query").val(),
                     funName: $("#funName").val(),
                     curPage: curPage,
                     totalItem: $("#totalItem").val(),

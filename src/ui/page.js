@@ -19,7 +19,7 @@ define(function (require, exports, module) {
     var Page = Class.extend({
         //可配置参数
         options: {
-            id: '',                         //容器 DOM 节点 ID
+            query: '',                      //容器 DOM 节点选择器
             scope: window,                  //回调函数的this指向
             funName: '',                    //点击页码后执行的JS函数。函数原型为：function(curPage, pageSize[, exParams]){ }
             curPage: 1,                     //当前页码
@@ -80,7 +80,7 @@ define(function (require, exports, module) {
             this.options = $.extend({}, this.options, options);
 
             this.checkOptions();
-            this.container = $("#" + this.options.id).html("");
+            this.container = $(this.options.query).html("");
             this.content = $('<div>').addClass('i_page');
             this.setStype();
             this.setInfo();
@@ -260,14 +260,62 @@ define(function (require, exports, module) {
 
             });
 
+            //跳转输入框事件
+            self.content.delegate('input', 'blur', function(){
+                var curPage = parseInt($(this).val());
+
+                if(isNaN(curPage)){
+                    curPage = 1;
+                }
+                if(curPage < 1){
+                    curPage = 1;
+                }
+                if(curPage > self.info.totalPage){
+                    curPage = self.info.totalPage;
+                }
+
+                $(this).val(curPage);
+            });
+
             //跳转特定页事件
             self.content.delegate('.i_pageSkip_submit', 'click', function(){
                 var curPage = self.content.find('input').val();
                 var pageSize = self.info.pageSize;
 
+                if(isNaN(curPage)){
+                    curPage = 1;
+                }
+                if(curPage < 1){
+                    curPage = 1;
+                }
+                if(curPage > self.info.totalPage){
+                    curPage = self.info.totalPage;
+                }
+
                 self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
 
             });
+
+            //回车跳转页面
+            self.content.find('input').keyup(function(event){
+                if(event.keyCode==13){
+                    var curPage = $(this).val();
+                    var pageSize = self.info.pageSize;
+
+                    if(isNaN(curPage)){
+                        curPage = 1;
+                    }
+                    if(curPage < 1){
+                        curPage = 1;
+                    }
+                    if(curPage > self.info.totalPage){
+                        curPage = self.info.totalPage;
+                    }
+
+                    self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
+                }
+            });
+
 
             //键盘快捷键事件
             if(self.options.isKeyControl){
@@ -434,7 +482,7 @@ define(function (require, exports, module) {
             //跳转控制
             if(show.skip){
                 var skip = $('<span>').addClass('i_pageSkip');
-                skip.append('跳转到第<input type="text" class="i_pageSkip_input i_text" value="' + info.curPage + '">页');
+                skip.append('跳转到<input type="text" class="i_pageSkip_input i_text" value="' + info.curPage + '">');
                 skip.append($('<a>').text('确定').addClass('i_pageSkip_submit i_btn'));
                 content.append(skip);
             }
