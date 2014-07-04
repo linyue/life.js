@@ -360,7 +360,16 @@ define(function (require, exports, module) {
                 });
 
                 if(info.curPage == 1){
-                    prev.addClass('i_disable');
+                    if(options.type == 'mail'){
+                        prev.hide();
+                    }else{
+                        prev.addClass('i_disable');
+                    }
+                    if(options.type == 'mail'){
+                        prev.hide();
+                    }else{
+                        prev.addClass('i_disable');
+                    }
                 }
 
                 if(options.type == 'mail'){
@@ -393,7 +402,11 @@ define(function (require, exports, module) {
                 });
 
                 if(info.curPage == info.totalPage){
-                    next.addClass('i_disable');
+                    if(options.type == 'mail'){
+                        next.hide();
+                    }else{
+                        next.addClass('i_disable');
+                    }
                 }
 
                 if(options.type == 'mail'){
