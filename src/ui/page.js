@@ -44,7 +44,7 @@ define(function (require, exports, module) {
         },
 
         //枚举值
-        type: ['normal', 'number', 'simple'],
+        type: ['normal', 'number', 'simple', 'mail'],
         theme: ['default', 'bootstrap', 'metro'],
         skin: ['grey', 'red', 'blue', 'green', 'orange', 'purple'],
         align: [ 'center', 'left', 'right'],
@@ -142,40 +142,57 @@ define(function (require, exports, module) {
         setShow: function () {
             var options = this.options;
 
-            if (options.type == 'simple') {
-                this.show = {
-                    size: false,
-                    info: false,
-                    first: false,
-                    prev: true,
-                    numble: false,
-                    next: true,
-                    end: false,
-                    skip: false
-                }
-            }else if(options.type == 'number') {
-                this.show = {
-                    size: false,
-                    info: false,
-                    first: false,
-                    prev: false,
-                    numble: true,
-                    next: false,
-                    end: false,
-                    skip: false
-                }
-            }else{
-                this.show = {
-                    size: options.isShowSize && true,
-                    info: options.isShowInfo && true,
-                    first: options.isShowFE && true,
-                    prev: options.isShowPN && true,
-                    numble: options.isShowNum && true,
-                    next: options.isShowPN && true,
-                    end: options.isShowFE && true,
-                    skip: options.isShowSkip && true
-                }
+            switch (options.type){
+                case 'simple':
+                    this.show = {
+                        size: false,
+                        info: false,
+                        first: false,
+                        prev: true,
+                        numble: false,
+                        next: true,
+                        end: false,
+                        skip: false
+                    }
+                    break;
+                case 'number':
+                    this.show = {
+                        size: false,
+                        info: false,
+                        first: false,
+                        prev: false,
+                        numble: true,
+                        next: false,
+                        end: false,
+                        skip: false
+                    }
+                    break;
+                case 'mail':
+                    console.log(111)
+                    this.show = {
+                        size: false,
+                        info: true,
+                        first: false,
+                        prev: true,
+                        numble: false,
+                        next: true,
+                        end: false,
+                        skip: true
+                    }
+                    break;
+                default :
+                    this.show = {
+                        size: options.isShowSize && true,
+                        info: options.isShowInfo && true,
+                        first: options.isShowFE && true,
+                        prev: options.isShowPN && true,
+                        numble: options.isShowNum && true,
+                        next: options.isShowPN && true,
+                        end: options.isShowFE && true,
+                        skip: options.isShowSkip && true
+                    }
             }
+            console.log('show', this.show)
         },
 
         //设置列表信息
@@ -308,9 +325,14 @@ define(function (require, exports, module) {
             //列表信息显示
             if(show.info){
                 var infoContent = $('<span>').addClass('i_pageInfo');
-                infoContent.append($('<span>').html('第 <strong>' + info.curPage + '</strong> 页').addClass('i_pageInfo_CurPage'));
-                infoContent.append($('<span>').html('共 <strong>' + info.totalPage + '</strong> 页').addClass('i_pageInfo_totPage'));
-                infoContent.append($('<span>').html('共 <strong>' + info.totalItem + '</strong> 条记录').addClass('i_pageInfo_totalItem'));
+                if(options.type == 'mail'){
+                    infoContent.append($('<span>').html('<strong>' + info.curPage + '</strong>/<strong>' + info.totalPage + '</strong>').addClass('i_pageInfo_CurPage'));
+                }else{
+                    infoContent.append($('<span>').html('第 <strong>' + info.curPage + '</strong> 页').addClass('i_pageInfo_CurPage'));
+                    infoContent.append($('<span>').html('共 <strong>' + info.totalPage + '</strong> 页').addClass('i_pageInfo_totPage'));
+                    infoContent.append($('<span>').html('共 <strong>' + info.totalItem + '</strong> 条记录').addClass('i_pageInfo_totalItem'));
+                }
+
                 content.append(infoContent);
             }
 
@@ -331,7 +353,7 @@ define(function (require, exports, module) {
 
             //上一页菜单控制
             if (show.prev) {
-                var text = options.type == 'simple' ? '上一页' : '‹';
+                var text = options.type == 'simple' || options.type == 'mail' ? '上一页' : '‹';
                 var prev = $('<a>').text(text).addClass('i_pagePrev i_btn').attr({
                     title: '上一页',
                     data_index: info.curPage == 1 ? 1 : (info.curPage - 1)
@@ -339,6 +361,10 @@ define(function (require, exports, module) {
 
                 if(info.curPage == 1){
                     prev.addClass('i_disable');
+                }
+
+                if(options.type == 'mail'){
+                    prev.removeClass("i_btn");
                 }
                 controlContent.append(prev);
             }
@@ -360,7 +386,7 @@ define(function (require, exports, module) {
 
             //下一页菜单控制
             if (show.next) {
-                var text = options.type == 'simple' ? '下一页' : '›';
+                var text = options.type == 'simple' || options.type == 'mail' ? '下一页' : '›';
                 var next = $('<a>').text(text).addClass('i_pageNext i_btn').attr({
                     title: '下一页',
                     data_index: info.curPage == info.totalPage ? info.totalPage : (info.curPage + 1)
@@ -369,6 +395,11 @@ define(function (require, exports, module) {
                 if(info.curPage == info.totalPage){
                     next.addClass('i_disable');
                 }
+
+                if(options.type == 'mail'){
+                    next.removeClass("i_btn");
+                }
+
                 controlContent.append(next);
             }
 
@@ -390,9 +421,14 @@ define(function (require, exports, module) {
             //跳转控制
             if(show.skip){
                 var skip = $('<span>').addClass('i_pageSkip');
-                skip.append('到第<input type="text" class="i_pageSkip_input i_text" value="' + info.curPage + '">页');
+                skip.append('跳转到第<input type="text" class="i_pageSkip_input i_text" value="' + info.curPage + '">页');
                 skip.append($('<a>').text('确定').addClass('i_pageSkip_submit i_btn'));
                 content.append(skip);
+            }
+
+            //mail样式下调整info顺序
+            if(options.type == 'mail'){
+                infoContent.insertAfter(prev);
             }
         }
     })
