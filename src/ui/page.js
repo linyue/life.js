@@ -168,7 +168,6 @@ define(function (require, exports, module) {
                     }
                     break;
                 case 'mail':
-                    console.log(111)
                     this.show = {
                         size: false,
                         info: true,
@@ -192,7 +191,6 @@ define(function (require, exports, module) {
                         skip: options.isShowSkip && true
                     }
             }
-            console.log('show', this.show)
         },
 
         //设置列表信息
