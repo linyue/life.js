@@ -1,58 +1,25 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
-<head>
-    <meta charset="UTF-8">
-    <title>Demo - colorPicker</title>
-    <script src="../src/setup.js"></script>
-</head>
-<body>
-    <input id="color">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo - Editor</title>
 
-    <a id="getValue">获取</a>
+        <script src="../src/setup.js"></script>
 
-<script type="text/javascript">
-    var options = {
-        query: '#color',
-        initData: '#ff00ff',
-        isShowPalette: true,
-        isShowPicker: true,
-        isFlat: false,
-        skin: 'blue',
-        onChange: function(color){
-            console.log('change', color)
-        },
-        onMove: function(color){
-            console.log('move', color)
-        },
-        callback: function(colorPicker){
-            setTimeout(function(){
-                colorPicker.setValue('#00ffff')
-            }, 2000);
+    </head>
+    <body>
+        <div class="time i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
 
-            $("#getValue").click(function(){
-                var color = colorPicker.getValue();
-                console.log('color', color)
-            })
-        }
-    }
+        <input class="time" type="text" />
 
-    life.colorPicker(options);
-
-//    seajs.use('colorPicker', function(ColorPicker){
-//
-//        options.query = '#color';
-//        var colorPicker = new ColorPicker(options);
-//
-//        setTimeout(function(){
-//            colorPicker.setValue('#00ffff')
-//        }, 2000);
-//
-//        $("#getValue").click(function(){
-//            var color = colorPicker.getValue();
-//            console.log('color', color)
-//        })
-//    })
-</script>
-
-</body>
-</html>
+        <script type="text/javascript">
+            life.datePicker({
+                query: '.time',
+                format: 'yyyy-MM-dd hh:mm:00'
+            });
+        </script>
+    </body>
+<html>

@@ -52,6 +52,7 @@ seajs.config({
         'mobileUI': 'src/ui/mobileUI',
         'editor': 'src/ui/editor',
         'colorPicker': 'src/ui/colorPicker',
+        'datePicker': 'src/ui/datePicker',
         'sidebar': 'src/ui/sidebar',
         'upload': 'src/ui/upload',
 
@@ -184,6 +185,12 @@ life.time.format = function(options){
 life.time.countdown = function(options){
     seajs.use("time", function(time){
         time.countdown(options);
+    })
+}
+life.datePicker = function(options){
+    seajs.use('datePicker', function(datePicker){
+        var picker = datePicker(options);
+        options.callback && options.callback(picker);
     })
 }
 
