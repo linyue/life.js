@@ -241,7 +241,7 @@ define(function (require, exports, module) {
             var self = this;
 
             //页码点击事件
-            self.content.delegate('a', 'click', function(){
+            self.content.delegate('.i_pageControl a', 'click', function(){
                 var curPage = $(this).attr('data_index') * 1;
                 var pageSize = self.info.pageSize;
 
@@ -279,7 +279,6 @@ define(function (require, exports, module) {
             self.content.delegate('.i_pageSkip_submit', 'click', function(){
                 var curPage = self.content.find('.i_pageSkip_input').val() * 1;
                 var pageSize = self.info.pageSize;
-
 
                 if(isNaN(curPage)){
                     curPage = 1;
