@@ -107,8 +107,8 @@ define(function (require, exports, module) {
 
             self.closeBtn.css({
                 position: 'absolute',
-                top: '5px',
-                right: '5px',
+                top: '10px',
+                right: '15px',
                 fontSize: '24px',
                 color: '#fff',
                 textDecoration: 'none',
