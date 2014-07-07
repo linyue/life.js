@@ -260,7 +260,7 @@ define(function (require, exports, module) {
 
             //跳转输入框事件
             self.content.delegate('input', 'blur', function(){
-                var curPage = parseInt($(this).val());
+                var curPage = $(this).val() * 1;
 
                 if(isNaN(curPage)){
                     curPage = 1;
@@ -296,16 +296,14 @@ define(function (require, exports, module) {
             //回车跳转页面
             self.content.find('.i_pageSkip_input').keyup(function(event){
                 if(event.keyCode==13){
-                    var curPage = $(this).val();
+                    var curPage = $(this).val() * 1;
                     var pageSize = self.info.pageSize;
 
                     if(isNaN(curPage)){
                         curPage = 1;
-                    }
-                    if(curPage < 1){
+                    }else if(curPage < 1){
                         curPage = 1;
-                    }
-                    if(curPage > self.info.totalPage){
+                    }else if(curPage > self.info.totalPage){
                         curPage = self.info.totalPage;
                     }
 
@@ -328,11 +326,9 @@ define(function (require, exports, module) {
 
                             if(isNaN(curPage)){
                                 curPage = 1;
-                            }
-                            if(curPage < 1){
+                            }else if(curPage < 1){
                                 curPage = 1;
-                            }
-                            if(curPage > self.info.totalPage){
+                            }else if(curPage > self.info.totalPage){
                                 curPage = self.info.totalPage;
                             }
 
@@ -349,11 +345,9 @@ define(function (require, exports, module) {
 
                             if(isNaN(curPage)){
                                 curPage = 1;
-                            }
-                            if(curPage < 1){
+                            }else if(curPage < 1){
                                 curPage = 1;
-                            }
-                            if(curPage > self.info.totalPage){
+                            }else if(curPage > self.info.totalPage){
                                 curPage = self.info.totalPage;
                             }
 
