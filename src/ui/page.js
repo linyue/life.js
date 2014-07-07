@@ -277,7 +277,7 @@ define(function (require, exports, module) {
 
             //跳转事件
             self.content.delegate('.i_pageSkip_submit', 'click', function(){
-                var curPage = self.content.find('.i_pageSkip_input').val() * 1;
+                var curPage = $(this).parents(".i_pageSkip").find('.i_pageSkip_input').val() * 1;
                 var pageSize = self.info.pageSize;
 
                 if(isNaN(curPage)){
@@ -288,7 +288,6 @@ define(function (require, exports, module) {
                     curPage = self.info.totalPage;
                 }
 
-                console.log('i_pageSkip_submit', curPage, pageSize);
                 self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
 
             });
