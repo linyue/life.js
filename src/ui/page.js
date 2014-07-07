@@ -288,6 +288,7 @@ define(function (require, exports, module) {
                     curPage = self.info.totalPage;
                 }
 
+                console.log('i_pageSkip_submit', curPage, pageSize);
                 self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
 
             });
