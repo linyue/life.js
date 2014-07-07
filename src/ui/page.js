@@ -242,7 +242,7 @@ define(function (require, exports, module) {
 
             //页码点击事件
             self.content.delegate('a', 'click', function(){
-                var curPage = $(this).attr('data_index');
+                var curPage = $(this).attr('data_index') * 1;
                 var pageSize = self.info.pageSize;
 
                 self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
@@ -275,18 +275,17 @@ define(function (require, exports, module) {
                 $(this).val(curPage);
             });
 
-            //跳转特定页事件
+            //跳转事件
             self.content.delegate('.i_pageSkip_submit', 'click', function(){
-                var curPage = self.content.find('input').val();
+                var curPage = self.content.find('.i_pageSkip_input').val() * 1;
                 var pageSize = self.info.pageSize;
+
 
                 if(isNaN(curPage)){
                     curPage = 1;
-                }
-                if(curPage < 1){
+                }else if(curPage < 1){
                     curPage = 1;
-                }
-                if(curPage > self.info.totalPage){
+                }else if(curPage > self.info.totalPage){
                     curPage = self.info.totalPage;
                 }
 
@@ -295,7 +294,7 @@ define(function (require, exports, module) {
             });
 
             //回车跳转页面
-            self.content.find('input').keyup(function(event){
+            self.content.find('.i_pageSkip_input').keyup(function(event){
                 if(event.keyCode==13){
                     var curPage = $(this).val();
                     var pageSize = self.info.pageSize;
@@ -327,6 +326,16 @@ define(function (require, exports, module) {
                             var curPage = self.info.curPage - 1;
                             var pageSize = self.info.pageSize;
 
+                            if(isNaN(curPage)){
+                                curPage = 1;
+                            }
+                            if(curPage < 1){
+                                curPage = 1;
+                            }
+                            if(curPage > self.info.totalPage){
+                                curPage = self.info.totalPage;
+                            }
+
                             self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
 
                             break;
@@ -337,6 +346,16 @@ define(function (require, exports, module) {
                             self.info.keyEvnet = false;
                             var curPage = self.info.curPage + 1;
                             var pageSize = self.info.pageSize;
+
+                            if(isNaN(curPage)){
+                                curPage = 1;
+                            }
+                            if(curPage < 1){
+                                curPage = 1;
+                            }
+                            if(curPage > self.info.totalPage){
+                                curPage = self.info.totalPage;
+                            }
 
                             self.options.scope[self.options.funName](curPage, pageSize, self.options.exParams);
 
