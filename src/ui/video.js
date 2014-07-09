@@ -23,7 +23,7 @@ define(function(require, exports, module){
             if(!container[0]){
                 var videoArr = ['<div id="video_container" style="display: none;">',
                                     ' <div class="video_close" style="position: relative;">',
-                                        '<a id="close_video" href="javascript:void(0);" title="关闭视频" style="position: absolute;top:0px; right: 0px; margin-top: -20px;color: #fff;text-decoration: none;display: block;padding: 1px 3px 1px 3px;">关闭</a>',
+                                        '<a id="close_video" href="javascript:void(0);" title="关闭视频" style="position: absolute;top:0px; right: 0px; margin-top: -28px;color: #fff;text-decoration: none;display: block;padding: 5px 5px 5px 8px;background-color: #696969;">关闭</a>',
                                     '</div>',
                                     '<div class="video"></div>',
                                '</div>'].join("");
@@ -47,7 +47,10 @@ define(function(require, exports, module){
         showVideo : function(videoSource, opt){
             opt = opt || {};
             opt.width = opt.width || 640;
-            opt.height = opt.height||360
+            opt.height = opt.height||360;
+            if(opt.autoplay != false){
+                opt.autoplay = true;
+            }
             if(!videoSource || videoSource.length < 1){
                 alert("没有视频源");
                 return;
@@ -60,20 +63,27 @@ define(function(require, exports, module){
             }
             var playStr = [
                 '<video id="help_video" class="video-js"',
-                'controls  width="' + opt.width +'" height="' + opt.height+ '">',
+                ' controls="controls" preload="auto" width="' + opt.width +'" height="' + opt.height+ '" >',
                 source,
                 '</video>'
             ].join("");
             self.showMask();
             self.createVideoContainer && self.createVideoContainer(opt.width, opt.height);
-            $("#video_container").find(".video").html(playStr)
+            $("#video_container").find(".video").html(playStr);
+            videojs.options.flash.swf = "https://res.xiaoman.cn/life.js/res/swf/video-js.swf";
             self.videoPlayer = videojs("help_video", {
-                "autoplay": opt.autoplay || true,
-                "preload": opt.preload || "auto"
+                "autoplay": opt.autoplay,
+                "preload": opt.preload || "auto",
+                "controls": true,
+                "loop" : opt.loop || 'true'
             }, function(){
                 // Player (this) is initialized and ready.
+                if(opt.controls){
+                    $("#help_video video").attr("controls", "controls");
+                }
                 $("#video_container").show();
             });
+
         }
     }
 });
