@@ -10,6 +10,7 @@ define(function (require) {
     "use strict";
 
     var $ = require('$');
+    var $ = require('editorStyle');
     var Simditor = require('src/plugin/simditor/simditor-all');
 
     require('src/plugin/simditor/simditor.css');

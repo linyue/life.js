@@ -25,6 +25,7 @@ seajs.config({
     },
 	alias: {
         'baseCss': 'res/css/base.css',
+        'editorStyle': 'res/css/editor.css',
 
         'Class': 'src/base/class',
         'JSON': 'src/base/json2',
