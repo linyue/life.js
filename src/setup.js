@@ -56,6 +56,7 @@ seajs.config({
         'datePicker': 'src/ui/datePicker',
         'sidebar': 'src/ui/sidebar',
         'upload': 'src/ui/upload',
+        'floatText': 'src/ui/floatText',
 
         'scratch': 'src/lottery/scratch',
         'roulette': 'src/lottery/roulette',
@@ -231,5 +232,9 @@ life.upload.common = function(options){
     })
 }
 
-
+life.floatText = function(options){
+    seajs.use('floatText', function(FloatText){
+        new FloatText(options);
+    })
+}
 
