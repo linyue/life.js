@@ -69,8 +69,10 @@ define(function (require, exports, module) {
                 icon.addClass(this.dateIcon);
             }
 
+
             this.widget = $(getTemplate(this.timeIcon, options.pickDate, options.pickTime, options.pick12HourFormat, options.pickSeconds, options.collapse)).appendTo('body');
-            this.minViewMode = options.minViewMode||this.$element.data('date-minviewmode')||0;
+            this.minViewMode = options.minViewMode||this.$element.data('date-minviewmode')||0
+
             if (typeof this.minViewMode === 'string') {
                 switch (this.minViewMode) {
                     case 'months':
@@ -661,6 +663,11 @@ define(function (require, exports, module) {
                 this._date.setUTCHours(hour);
             },
 
+            showMonths: function(){
+                this.widget.find('.datepicker > div:not(.datepicker-months)').hide();
+                this.widget.find('.datepicker .datepicker-months').show();
+            },
+
             showPicker: function() {
                 this.widget.find('.timepicker > div:not(.timepicker-picker)').hide();
                 this.widget.find('.timepicker .timepicker-picker').show();
@@ -1236,11 +1243,13 @@ define(function (require, exports, module) {
             DPGlobal.contTemplate+
             '</table>'+
             '</div>';
+
     var TPGlobal = {
         hourTemplate: '<span data-action="showHours" data-time-component="hours" class="timepicker-hour"></span>',
         minuteTemplate: '<span data-action="showMinutes" data-time-component="minutes" class="timepicker-minute"></span>',
         secondTemplate: '<span data-action="showSeconds" data-time-component="seconds" class="timepicker-second"></span>'
     };
+
     TPGlobal.getTemplate = function(is12Hours, showSeconds) {
         return (
             '<div class="timepicker-picker">' +
@@ -1307,15 +1316,49 @@ define(function (require, exports, module) {
 
         opt = $.extend({}, opt, options);
 
+        var setting = {
+            pickTime: false,
+            pickDate: true,
+            minViewMode: 0,
+            viewMode: 0
+        }
+        switch (opt.type){
+            case 'datetime':
+                setting.pickTime = true;
+                break;
+            case 'time':
+                setting.pickTime = false;
+                setting.pickDate = true;
+                break;
+            case 'date':
+                setting.pickTime = true;
+                setting.pickDate = false;
+                break;
+            case 'month':
+                setting.pickTime = true;
+                setting.pickDate = false;
+                setting.minViewMode = 'months';
+                setting.viewMode = 'months';
+                break;
+            case 'year':
+                setting.pickTime = true;
+                setting.pickDate = false;
+                setting.minViewMode = 'years';
+                setting.viewMode = 'years';
+                break;
+        }
+
         var datePicker = $(opt.query).datetimepicker({
             format: opt.format,
-            pickDate: opt.type == "datetime" || opt.type == "date",
-            pickTime: opt.type == "datetime" || opt.type == "time",
+            pickDate: setting.pickTime,
+            pickTime: setting.pickDate,
             startDate: opt.startDate == "" ? -Infinity : time.string2Date(opt.startDate),
             endDate: opt.endDate == "" ? Infinity : time.string2Date(opt.endDate),
             maskInput: true,           // disables the text input mask
             pick12HourFormat: false,   // enables the 12-hour format time picker
             language: 'zh-CN',
+            minViewMode: setting.minViewMode,
+            viewMode: setting.viewMode,
             pickSeconds: opt.format.indexOf("ss") > 0
         });
 

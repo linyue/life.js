@@ -7,18 +7,86 @@
         <script src="../src/setup.js"></script>
 
     </head>
-    <body>
-        <div class="time i_datePicker_input">
+    <body style="padding: 20px 100px">
+        <h2>日期 + 时间</h2>
+        <div id="datetime" class="i_datePicker_input">
             <input type="text" />
             <span class="i_datePicker_input_icon"><i></i></span>
         </div>
+<pre>life.datePicker({
+    query: '#datetime',
+    format: 'yyyy-MM-dd hh:mm:00',
+    type: 'datetime'
+});
+        </pre>
 
-        <input class="time" type="text" />
+        <h2>时间</h2>
+        <div id="time" class=" i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
+<pre>life.datePicker({
+    query: '#time',
+    format: 'hh:mm:00',
+    type: 'time'
+});
+</pre>
+
+        <h2>日期</h2>
+        <div id="date" class="i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
+<pre>life.datePicker({
+    query: '#date',
+    format: 'dd/MM/yyyy',
+    type: 'date'
+});
+</pre>
+
+        <h2>月份</h2>
+        <input id="month" type="text" />
+<pre>life.datePicker({
+    query: '#month',
+    format: 'yyyy年MM月',
+    type: 'month'
+});
+</pre>
+
+        <h2>年份</h2>
+        <input id="year" type="text" />
+<pre>life.datePicker({
+    query: '#year',
+    format: 'yyyy年',
+    type: 'year'
+});
+</pre>
 
         <script type="text/javascript">
             life.datePicker({
-                query: '.time',
-                format: 'yyyy-MM-dd hh:mm:00'
+                query: '#datetime',
+                format: 'yyyy-MM-dd hh:mm:00',
+                type: 'datetime'
+            });
+            life.datePicker({
+                query: '#time',
+                format: 'hh:mm:00',
+                type: 'time'
+            });
+            life.datePicker({
+                query: '#date',
+                format: 'dd/MM/yyyy',
+                type: 'date'
+            });
+            life.datePicker({
+                query: '#month',
+                format: 'yyyy年MM月',
+                type: 'month'
+            });
+            life.datePicker({
+                query: '#year',
+                format: 'yyyy年',
+                type: 'year'
             });
         </script>
     </body>
