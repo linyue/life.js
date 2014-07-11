@@ -1427,7 +1427,7 @@ define(function (require, exports, module) {
                 }
                 this.editor.inputManager.addKeystrokeHandler('8', '*', function (e) {
                     var $prevBlockEl, $rootBlock;
-                    $rootBlock = _this.editor.util.furthestBlockEl();
+                    $rootBlock = _this.editor.util.furthestBlockEl(e.target);
                     $prevBlockEl = $rootBlock.prev();
                     if ($prevBlockEl.is('hr') && _this.editor.selection.rangeAtStartOf($rootBlock)) {
                         _this.editor.selection.save();
