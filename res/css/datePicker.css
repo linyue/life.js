@@ -379,7 +379,7 @@
 
 .i_datePicker td span {
     display: block;
-    width: 55px;
+    width: 53px;
     height: 54px;
     line-height: 54px;
     float: left;
@@ -419,7 +419,7 @@
 }
 
 .i_datePicker td span.active:active, .i_datePicker td span.active.active {
-    background-color: #039 \9
+    background-color: #039;
 }
 
 .i_datePicker td span.old {
