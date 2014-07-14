@@ -35,6 +35,7 @@ define(function (require, exports, module) {
             this.pickTime = options.pickTime;
             this.isInput = this.$element.is('input');
             this.component = false;
+            this.showStatus = false;
 
             if (this.$element.find('.input-append') || this.$element.find('.input-prepend'))
                 this.component = this.$element.find('.i_datePicker_input_icon');
@@ -116,6 +117,9 @@ define(function (require, exports, module) {
         },
 
         show: function(e) {
+
+            this.showStatus = true;
+
             this.widget.show();
             this.height = this.component &&  this.component.outerHeight() ? this.component.outerHeight() : this.$element.outerHeight();
             this.place();
@@ -140,6 +144,14 @@ define(function (require, exports, module) {
         },
 
         hide: function() {
+
+            var self = this;
+            if(self.showStatus){
+                setTimeout(function(){
+                    self.options.onClose && self.options.onClose();
+                }, 100);
+            }
+
             // Ignore event if in the middle of a picker transition
             var collapse = this.widget.find('.collapse')
             for (var i = 0; i < collapse.length; i++) {
@@ -156,6 +168,8 @@ define(function (require, exports, module) {
                 date: this._date
             });
             this._detachDatePickerGlobalEvents();
+
+            this.showStatus = false;
         },
 
         set: function() {
@@ -795,6 +809,7 @@ define(function (require, exports, module) {
         },
 
         change: function(e) {
+            console.log(444)
             var input = $(e.target);
             var val = input.val();
             if (this._formatPattern.test(val)) {
@@ -1081,7 +1096,7 @@ define(function (require, exports, module) {
                 options = typeof option === 'object' && option;
             if (!data) {
                 $this.data('datetimepicker', (data = new DateTimePicker(
-                    this, $.extend({}, $.fn.datetimepicker.defaults,options))));
+                    this, $.extend({}, $.fn.datetimepicker.defaults, options))));
             }
             if (typeof option === 'string') data[option](val);
         });
@@ -1311,7 +1326,8 @@ define(function (require, exports, module) {
             format: 'yyyy-MM-dd hh:mm:00',
             type: 'datetime',               //date,time,datetime
             startDate: '',
-            endDate: ''
+            endDate: '',
+            onClose: function(){}
         }
 
         opt = $.extend({}, opt, options);
@@ -1359,7 +1375,8 @@ define(function (require, exports, module) {
             language: 'zh-CN',
             minViewMode: setting.minViewMode,
             viewMode: setting.viewMode,
-            pickSeconds: opt.format.indexOf("ss") > 0
+            pickSeconds: opt.format.indexOf("ss") > 0,
+            onClose: opt.onClose
         });
 
         return datePicker;

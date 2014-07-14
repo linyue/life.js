@@ -16,7 +16,10 @@
 <pre>life.datePicker({
     query: '#datetime',
     format: 'yyyy-MM-dd hh:mm:00',
-    type: 'datetime'
+    type: 'datetime',
+    onClose: function(){
+        alert($("#datetime input").val())
+    }
 });
         </pre>
 
@@ -49,7 +52,10 @@
 <pre>life.datePicker({
     query: '#month',
     format: 'yyyy年MM月',
-    type: 'month'
+    type: 'month',
+    onClose: function(){
+        alert($("#month").val())
+    }
 });
 </pre>
 
@@ -62,32 +68,42 @@
 });
 </pre>
 
+        <p id="test">test</p>
+
         <script type="text/javascript">
-            life.datePicker({
-                query: '#datetime',
-                format: 'yyyy-MM-dd hh:mm:00',
-                type: 'datetime'
-            });
-            life.datePicker({
-                query: '#time',
-                format: 'hh:mm:00',
-                type: 'time'
-            });
-            life.datePicker({
-                query: '#date',
-                format: 'dd/MM/yyyy',
-                type: 'date'
-            });
-            life.datePicker({
-                query: '#month',
-                format: 'yyyy年MM月',
-                type: 'month'
-            });
-            life.datePicker({
-                query: '#year',
-                format: 'yyyy年',
-                type: 'year'
-            });
+            seajs.use("$", function($){
+                life.datePicker({
+                    query: '#datetime',
+                    format: 'yyyy-MM-dd hh:mm:00',
+                    type: 'datetime',
+                    onClose: function(){
+                        alert($("#datetime input").val())
+                    }
+                });
+                life.datePicker({
+                    query: '#time',
+                    format: 'hh:mm:00',
+                    type: 'time'
+                });
+                life.datePicker({
+                    query: '#date',
+                    format: 'dd/MM/yyyy',
+                    type: 'date'
+                });
+                life.datePicker({
+                    query: '#month',
+                    format: 'yyyy年MM月',
+                    type: 'month',
+                    onClose: function(){
+                        alert($("#month").val())
+                    }
+                });
+                life.datePicker({
+                    query: '#year',
+                    format: 'yyyy年',
+                    type: 'year'
+                });
+            })
         </script>
     </body>
 <html>
