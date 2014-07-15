@@ -902,3 +902,42 @@ body.vjs-full-window {
 /* -----------------------------------------------------------------------------
 The original source of this file lives at
 https://github.com/videojs/video.js/blob/master/src/css/video-js.less */
+#video_container .video_list{
+    background-color: #fff;
+    width:198px;
+    height:100%;
+    float: left;
+    color:#000;
+    overflow: auto;
+}
+ul,li {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+#video_container .video_list ul{
+   padding-top: 10px;
+   margin-right: 8px;
+   margin-left: 8px;
+}
+#video_container .video_list ul li{
+    color: #666;
+    height: 32px;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    border-bottom: 1px solid #ebebeb;
+    padding-top: 5px;
+    text-align: center;
+}
+#video_container .video_list ul li:hover{
+    background-color: #26a9e3;
+    color: #fff;
+}
+#video_container .video_list ul li.current{
+    background-color: #26a9e3;
+    color: #fff;
+}
