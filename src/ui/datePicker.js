@@ -147,8 +147,18 @@ define(function (require, exports, module) {
 
             var self = this;
             if(self.showStatus){
+                var date = '';
+                var input = this.$element;
+
+                if (!this._unset) {
+                    date = this.formatDate(this._date);
+                }
+                if (!this.isInput && this.component){
+                    input = this.$element.find('input');
+                }
+
                 setTimeout(function(){
-                    self.options.onClose && self.options.onClose();
+                    self.options.onClose && self.options.onClose(date, input);
                 }, 100);
             }
 

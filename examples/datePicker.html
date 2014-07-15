@@ -17,7 +17,8 @@
     query: '#datetime',
     format: 'yyyy-MM-dd hh:mm:00',
     type: 'datetime',
-    onClose: function(){
+    onClose: function(date, input){
+        console.log(date, input)
         alert($("#datetime input").val())
     }
 });
@@ -53,7 +54,8 @@
     query: '#month',
     format: 'yyyy年MM月',
     type: 'month',
-    onClose: function(){
+    onClose: function(date, input){
+        console.log(date, input)
         alert($("#month").val())
     }
 });
@@ -76,7 +78,8 @@
                     query: '#datetime',
                     format: 'yyyy-MM-dd hh:mm:00',
                     type: 'datetime',
-                    onClose: function(){
+                    onClose: function(date, input){
+                        console.log(date, input)
                         alert($("#datetime input").val())
                     }
                 });
@@ -94,7 +97,8 @@
                     query: '#month',
                     format: 'yyyy年MM月',
                     type: 'month',
-                    onClose: function(){
+                    onClose: function(date, input){
+                        console.log(date, input)
                         alert($("#month").val())
                     }
                 });
