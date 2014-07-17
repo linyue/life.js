@@ -910,7 +910,7 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */
     color:#000;
     overflow: auto;
 }
-ul,li {
+#video_container ul,#video_container li{
     list-style: none;
     margin: 0px;
     padding: 0px;

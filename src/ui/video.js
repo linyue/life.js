@@ -79,6 +79,10 @@ define(function(require, exports, module){
                $(this).addClass("current");
                self.showVideo(src, self.opt);
            });
+           //禁止右键
+            $("#video_container").bind("contextmenu", function(){
+               return false;
+           });
         },
         videoPlayer : null,
         opt : null,
@@ -88,8 +92,8 @@ define(function(require, exports, module){
             var self = this;
             self.videoPlayer && self.videoPlayer.dispose();
             opt = opt || {};
-            opt.width = opt.width || 640;
-            opt.height = opt.height||360;
+            opt.width = (opt.width || 640);
+            opt.height = (opt.height||360);
             if(opt.autoplay != false){
                 opt.autoplay = true;
             }
@@ -117,7 +121,7 @@ define(function(require, exports, module){
                 self.currentVideo = videoSource[0].url;
             }
             var playStr = [
-                '<video id="help_video" class="video-js"',
+                '<video id="help_video" class="video-js vjs-default-skin vjs-big-play-centered"',
                 ' controls="controls" autoplay="auto" preload="auto" width="' + opt.width +'" height="' + opt.height+ '" >',
                 source,
                 '</video>'
@@ -140,10 +144,6 @@ define(function(require, exports, module){
                 "controls": true,
                 "loop" : opt.loop || 'true'
             }, function(){
-                // Player (this) is initialized and ready.
-                if(opt.controls){
-                    $("#help_video video").attr("controls", "controls");
-                }
                 $("#video_container").show();
             });
 
