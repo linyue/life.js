@@ -144,6 +144,7 @@ define(function(require, exports, module){
                 "controls": true,
                 "loop" : opt.loop || 'true'
             }, function(){
+                $(".vjs-playback-rate, .vjs-live-controls").hide();
                 $("#video_container").show();
             });
 
