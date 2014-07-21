@@ -26,19 +26,19 @@ define(function(require, exports, module){
             var container = $("#video_container");
             if(!container[0]){
                 var videoArr = ['<div id="video_container" style="display: none;">',
-                                    '<div class="video_list">',
-                                    '</div>',
-                                    ' <div class="video_close" style="position: relative;">',
-                                        '<a id="close_video" href="javascript:void(0);" title="关闭视频" style="position: absolute;top:0px; right: 0px; margin-top: -28px;color: #fff;text-decoration: none;display: block;padding: 5px 5px 5px 8px;background-color: #696969;">关闭</a>',
-                                    '</div>',
-                                    '<div class="video" style="margin-left: 200px;"></div>',
-                               '</div>'];
+                    '<div class="video_list">',
+                    '</div>',
+                    ' <div class="video_close" style="position: relative;">',
+                    '<a id="close_video" href="javascript:void(0);" title="关闭视频" style="position: absolute;top:0px; right: 0px; margin-top: -28px;color: #fff;text-decoration: none;display: block;padding: 5px 5px 5px 8px;background-color: #696969;">关闭</a>',
+                    '</div>',
+                    '<div class="video" style="margin-left: 200px;"></div>',
+                    '</div>'];
                 var videoListTemp = [
-                                    '<ul>',
-                                        '<%for(var i=0; i<list.length; i++){%>',
-                                        '<li _datahref="<%=list[i].video_url%>"><%=list[i].video_name%></li>',
-                                        '<%}%>',
-                                    '</ul>'].join("");
+                    '<ul>',
+                    '<%for(var i=0; i<list.length; i++){%>',
+                    '<li _datahref="<%=list[i].video_url%>"><%=list[i].video_name%></li>',
+                    '<%}%>',
+                    '</ul>'].join("");
                 if(videoList){
                     if(self.getType(videoList) == "array"){
                         var render = template.compile(videoListTemp);
@@ -59,30 +59,30 @@ define(function(require, exports, module){
             self.bindEvent();
         },
         bindEvent : function(){
-           var self = this;
-           $("#video_container #close_video").bind("click", function(){
-               //销毁播放器
-               self.videoPlayer.dispose();
-               self.videoPlayer = null;
-               $("#video_container").hide();
-               self.hideMask();
-           });
-           //事件代理绑定切换视频
-           $("#video_container .video_list").delegate('li', 'click', function(){
-               var src = $(this).attr("_datahref");
-               if(!src){
-                   return;
-               }
-               self.videoPlayer.dispose();
-               self.videoPlayer = null;
-               $(".video_list li").removeClass("current");
-               $(this).addClass("current");
-               self.showVideo(src, self.opt);
-           });
-           //禁止右键
+            var self = this;
+            $("#video_container #close_video").bind("click", function(){
+                //销毁播放器
+                self.videoPlayer.dispose();
+                self.videoPlayer = null;
+                $("#video_container").hide();
+                self.hideMask();
+            });
+            //事件代理绑定切换视频
+            $("#video_container .video_list").delegate('li', 'click', function(){
+                var src = $(this).attr("_datahref");
+                if(!src){
+                    return;
+                }
+                self.videoPlayer.dispose();
+                self.videoPlayer = null;
+                $(".video_list li").removeClass("current");
+                $(this).addClass("current");
+                self.showVideo(src, self.opt);
+            });
+            //禁止右键
             $("#video_container").bind("contextmenu", function(){
-               return false;
-           });
+                return false;
+            });
         },
         videoPlayer : null,
         opt : null,
@@ -108,7 +108,7 @@ define(function(require, exports, module){
                 var type = videoSource.lastIndexOf(".");
                 var video = videoSource;
                 if(type != -1){
-                   video = videoSource.substring(0, type);
+                    video = videoSource.substring(0, type);
                 }
                 self.currentVideo = video;
                 source += '<source src="'+ video +'.mp4" type="video/mp4" />';
@@ -121,7 +121,7 @@ define(function(require, exports, module){
                 self.currentVideo = videoSource[0].url;
             }
             var playStr = [
-                '<video id="help_video" class="video-js vjs-default-skin vjs-big-play-centered"',
+                '<video id="help_video" class="video-js vjs-sublime-skin"',
                 ' controls="controls" autoplay="auto" preload="auto" width="' + opt.width +'" height="' + opt.height+ '" >',
                 source,
                 '</video>'
