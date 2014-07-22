@@ -917,20 +917,19 @@ https://github.com/videojs/video.js/blob/master/src/css/video-js.less */
     height: 100%;
 }
 #video_container .video_list ul{
-   padding-top: 10px;
-   margin-right: 8px;
-   margin-left: 8px;
+    padding: 10px 0px;
+    background-color: #fafafa;
 }
 #video_container .video_list ul li{
     color: #666;
     height: 32px;
-    font-size: 16px;
+    font-size: 12px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     cursor: pointer;
     border-bottom: 1px solid #ebebeb;
-    padding-top: 5px;
+    padding-top: 8px;
     text-align: center;
 }
 #video_container .video_list ul li:hover{
