@@ -510,7 +510,7 @@ define(function (require, exports, module) {
                 var args;
                 args = 1 <= arguments.length ? __slice.call(arguments, 0) : [];
                 Selection.__super__.constructor.apply(this, args);
-                this.sel = document.getSelection();
+                this.sel = document.getSelection ? document.getSelection() : document.selection;
                 this.editor = this.widget;
             }
 
