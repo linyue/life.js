@@ -3783,7 +3783,11 @@ define(function (require, exports, module) {
                 });
                 this.editor.on('selectionchanged.image', function () {
                     var $contents, $img, range;
-                    range = _this.editor.selection.sel.getRangeAt(0);
+
+                    if(_this.editor.selection.sel.getRangeAt){
+                        range = _this.editor.selection.sel.getRangeAt(0);
+                    }
+
                     if (range == null) {
                         return;
                     }
