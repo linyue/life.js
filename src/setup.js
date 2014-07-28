@@ -16,7 +16,7 @@
 //获取版本时间戳
 var lifeScript = document.getElementById('lifeScript');
 var version = lifeScript && lifeScript.getAttribute('version') ? lifeScript.getAttribute('version') : "";
-console.log('version', version, lifeScript);
+
 //seajs配置
 seajs.config({
 	base : '/',
