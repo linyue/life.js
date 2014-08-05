@@ -85,7 +85,7 @@
 
         format: function(formatStr, date){
             var format = formatStr ? formatStr : 'yyyy-MM-DD HH:mm:ss';
-            var date = date ? this(date) : new Date();
+            var time = date ? this.string2Date(date) : new Date();
 
             var week = ['日','一','二','三','四','五','六'];
             var weekName = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];

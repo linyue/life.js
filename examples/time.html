@@ -11,6 +11,11 @@
         <input type="text" id="time_input" value="2012-12-21 13:00:00">
         <a id="e_string2date">马上转化</a>
 
+        <h2>时间格式化：</h2>
+        <label for="time_input2">请输入时间字符串：</label>
+        <input type="text" id="time_input2" value="2012-12-21 13:00:00">
+        <a id="e_timeformat">马上转化</a>
+
         <h2>倒计时：</h2>
         <label for="deadline">截止时间：</label>
         <input type="text" id="deadline" value="2014-06-27 09:31:20">
@@ -28,6 +33,13 @@
                         }
                     })
                 })
+
+                $("#e_timeformat").click(function(){
+                    var format = time.format('yyyy年M月d日', $("#time_input2").val());
+                    alert(format);
+                })
+
+
 //                $("#now").val(time.format());
 
 //                $("#e_string2date").click(function(){
