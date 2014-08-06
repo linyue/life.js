@@ -15,7 +15,7 @@
 
 //获取版本时间戳
 var lifeScript = document.getElementById('lifeScript');
-var version = lifeScript && lifeScript.getAttribute('version') ? lifeScript.getAttribute('version') : "";
+var fileVersion = lifeScript && lifeScript.getAttribute('version') ? lifeScript.getAttribute('version') : "";
 
 //seajs配置
 seajs.config({
@@ -75,12 +75,14 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     'map': [
-        [ /^(.*\.(?:css|js))(.*)$/i, '$1?' + version ]
+        [ /^(.*\.(?:css|js))(.*)$/i, '$1?' + fileVersion ]
     ],
     charset: 'utf-8'
 });
 
 var life = {};
+
+life.fileVersion = fileVersion;
 
 life.page = function(options){
     seajs.use("page",function(Page){

@@ -622,12 +622,15 @@
                 .replace(/\n/g, '\\n') + "'";
         }
 
-
     };
 
 
     template.includeTpl = function(tplUrl){
         var tplId = 'tpl_container' + tplUrl.replace(/\/|\./g, '_');
+
+        var v = typeof fileVersion == 'undefined' ? '' : fileVersion;
+
+        tplUrl = tplUrl.indexOf("?") > 0 ? (tplUrl + '&v_=' + v) : tplUrl + '?v_=' + v;
 
         //拉取模板
         if($("#" + tplId).length == 0){
