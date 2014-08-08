@@ -3967,24 +3967,24 @@ define(function (require, exports, module) {
                     var height, width;
                     width = img.width;
                     height = img.height;
-                    if (width > _this.maxWidth) {
-                        height = _this.maxWidth * height / width;
-                        width = _this.maxWidth;
-                    }
-                    if (height > _this.maxHeight) {
-                        width = _this.maxHeight * width / height;
-                        height = _this.maxHeight;
-                    }
+//                    if (width > _this.maxWidth) {
+//                        height = _this.maxWidth * height / width;
+//                        width = _this.maxWidth;
+//                    }
+//                    if (height > _this.maxHeight) {
+//                        width = _this.maxHeight * width / height;
+//                        height = _this.maxHeight;
+//                    }
                     $img.attr({
                         src: src,
                         width: width,
-                        height: height,
+                        maxWidth: '100%',
                         'data-image-size': img.width + ',' + img.height
                     });
                     if ($img.hasClass('uploading')) {
                         $mask.css({
-                            width: width,
-                            height: height
+                            width: $img.width(),
+                            height: $img.height()
                         });
                     } else {
                         $mask.remove();
