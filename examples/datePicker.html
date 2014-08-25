@@ -1,0 +1,113 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo - Editor</title>
+
+        <script src="../src/setup.js"></script>
+
+    </head>
+    <body style="padding: 20px 100px">
+        <h2>日期 + 时间</h2>
+        <div id="datetime" class="i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
+<pre>life.datePicker({
+    query: '#datetime',
+    format: 'yyyy-MM-dd hh:mm:00',
+    type: 'datetime',
+    onClose: function(date, input){
+        console.log(date, input)
+        alert($("#datetime input").val())
+    }
+});
+        </pre>
+
+        <h2>时间</h2>
+        <div id="time" class=" i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
+<pre>life.datePicker({
+    query: '#time',
+    format: 'hh:mm:00',
+    type: 'time'
+});
+</pre>
+
+        <h2>日期</h2>
+        <div id="date" class="i_datePicker_input">
+            <input type="text" />
+            <span class="i_datePicker_input_icon"><i></i></span>
+        </div>
+<pre>life.datePicker({
+    query: '#date',
+    format: 'dd/MM/yyyy',
+    type: 'date'
+});
+</pre>
+
+        <h2>月份</h2>
+        <input id="month" type="text" />
+<pre>life.datePicker({
+    query: '#month',
+    format: 'yyyy年MM月',
+    type: 'month',
+    onClose: function(date, input){
+        console.log(date, input)
+        alert($("#month").val())
+    }
+});
+</pre>
+
+        <h2>年份</h2>
+        <input id="year" type="text" />
+<pre>life.datePicker({
+    query: '#year',
+    format: 'yyyy年',
+    type: 'year'
+});
+</pre>
+
+        <p id="test">test</p>
+
+        <script type="text/javascript">
+            seajs.use("$", function($){
+                life.datePicker({
+                    query: '#datetime',
+                    format: 'yyyy-MM-dd hh:mm:00',
+                    type: 'datetime',
+                    onClose: function(date, input){
+                        console.log(date, input)
+                        alert($("#datetime input").val())
+                    }
+                });
+                life.datePicker({
+                    query: '#time',
+                    format: 'hh:mm:00',
+                    type: 'time'
+                });
+                life.datePicker({
+                    query: '#date',
+                    format: 'dd/MM/yyyy',
+                    type: 'date'
+                });
+                life.datePicker({
+                    query: '#month',
+                    format: 'yyyy年MM月',
+                    type: 'month',
+                    onClose: function(date, input){
+                        console.log(date, input)
+                        alert($("#month").val())
+                    }
+                });
+                life.datePicker({
+                    query: '#year',
+                    format: 'yyyy年',
+                    type: 'year'
+                });
+            })
+        </script>
+    </body>
+<html>

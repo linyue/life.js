@@ -8,7 +8,7 @@ define(function (require, exports, module) {
 
     "use strict";
 
-    var _getInfo = function(){
+    exports.deviceInfo = function(){
 
         var timing = window.performance ? window.performance.timing : '';
 
@@ -23,12 +23,13 @@ define(function (require, exports, module) {
             isPortrait: window.orientation ? Math.abs(window.orientation) !== 90 : 'unknow',
             isLandscape: window.orientation ? Math.abs(window.orientation) === 90 : 'unknow',
 
-            t_redirect: timing.redirectEnd - timing.redirectStart,
-            t_dns: timing.domainLookupEnd - timing.domainLookupStart,
-            t_tcp: timing.connectEnd - timing.connectStart,
-            t_request: timing.responseStart - timing.requestStart,
-            t_response: timing.responseEnd - timing.responseStart,
-            t_dom: timing.domComplete - timing.domLoading
+            t_redirect: timing ? (timing.redirectEnd - timing.redirectStart) : 'unknow',
+            t_dns: timing ? (timing.domainLookupEnd - timing.domainLookupStart) : 'unknow',
+            t_tcp: timing ? (timing.connectEnd - timing.connectStart) : 'unknow',
+            t_request: timing ? (timing.responseStart - timing.requestStart) : 'unknow',
+            t_response: timing ? (timing.responseEnd - timing.responseStart) : 'unknow',
+            t_dom: timing ? (timing.domComplete - timing.domLoading) : 'unknow',
+            t_all: timing ? (timing.domComplete - timing.navigationStart) : 'unknow'
         }
 
         return info;
@@ -48,14 +49,14 @@ define(function (require, exports, module) {
     }
 
     exports.visit = function(url){
-
+        var self = this;
         if(document.all) {
             window.attachEvent('onload', function(){
-                exports.report(url, _getInfo());
+                exports.report(url, self.deviceInfo());
             });
         } else {
             window.addEventListener('load', function(){
-                exports.report(url, _getInfo());
+                exports.report(url, self.deviceInfo());
             }, false);
         }
     }

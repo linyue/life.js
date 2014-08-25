@@ -6,7 +6,7 @@
  * Website: http://code.google.com/p/jqueryrotate/ 
  */
 
-define(function(require,exports,moudles){
+define(function(require,exports,module){
     return function(jquery){
         (function($) {
             var supportedCSS,supportedCSSOrigin, styles=document.getElementsByTagName("head")[0].style,toCheck="transformProperty WebkitTransform OTransform msTransform MozTransform".split(" ");

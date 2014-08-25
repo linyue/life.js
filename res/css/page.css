@@ -8,16 +8,17 @@
 }
 .i_page .i_pageSize{
     width: 90px;
-    margin-right: 15px;
+    margin: 0 8px;
 }
 .i_page .i_pageInfo{
-    margin-right: 15px;
+    margin: 0 8px;
 }
 .i_page .i_pageinfo strong{
     font-weight: bold;
 }
-.i_page .i_pageinfo_totpage{
-    margin: 0 15px;
+.i_page .i_pageinfo_totpage,
+.i_page .i_pageControl{
+    margin: 0 8px;
 }
 .i_page .i_pageFirst{
 	margin-right: 8px;
@@ -27,12 +28,14 @@
 }
 .i_page .i_pagePrev{
 	margin-right: 6px;
+    cursor: pointer;
 }
 .i_page .i_pageNext{
 	margin-left: 5px;
+    cursor: pointer;
 }
 .i_page .i_pageSkip{
-    margin-left: 15px;
+    margin: 0 8px;
 }
 .i_page .i_pageSkip_input{
     width: 35px;

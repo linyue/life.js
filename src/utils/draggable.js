@@ -120,7 +120,7 @@ define(function (require, exports, module) {
             obj.addEventListener('mousemove', function(e){
                 self.eventMove(e)
             });
-        },
+        }
 
     });
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>examples - sidebar</title>
+        <script src="../src/setup.js"></script>
+    </head>
+    <body>
+
+        <a id="open1">打开sidebar1</a>
+        <a id="open2">打开sidebar2</a>
+        <a id="open3">打开sidebar3</a>
+        <script>
+            seajs.use('sidebar', function(Sidebar){
+                var options1 = {
+                    width: 560,
+                    content: 'http://www.baidu.com/',
+                    contentType: 'iframe'
+                };
+
+                var sidebar1 = new Sidebar(options1);
+
+                $("#open1").click(function(){
+                    sidebar1.open();
+                })
+
+
+                var options2 = {
+                    width: 560,
+                    content: 'sidebar_test.html',
+                    contentType: 'html',
+                    animate: 'fade'
+                };
+
+                var sidebar2 = new Sidebar(options2);
+
+                $("#open2").click(function(){
+                    sidebar2.open();
+                })
+            })
+
+            life.sidebar({
+                width: 200,
+                content: '我是一测试内容',
+                callback: function(sidebar){
+                    $("#open3").click(function(){
+                        sidebar.open();
+                    })
+                }
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - Editor</title>
+
+    <script src="../src/setup.js"></script>
+
+</head>
+<body>
+    <textarea id="editor" placeholder="请在这里输入内容" style="width: 520px; height: 330px;">
+        aDASDFADFA
+    </textarea>
+    <a id="getValue">获取值</a>
+
+
+    <p id="paste" style="width: 300px;height: 300px;background: #ccc;">
+
+
+    </p>
+
+<script type="text/javascript">
+
+    seajs.use('editor', function(editor){
+
+        var options = {
+            textarea: $('#editor'),
+            pasteImage: true,
+            placeholder: '请在这里输入内容',
+            callback: function(edit){
+                $("#getValue").click(function(){
+                    console.log(edit);
+                })
+            }
+        };
+
+        life.editor(options);
+//        var editor = editor(options);
+//
+//        editor.setValue('adfasdfa')
+//
+//        $("#getValue").click(function(){
+//            console.log(111, editor.getValue())
+//            console.log(222, $('#editor').val())
+//        })
+
+        document.getElementById("paste").addEventListener('paste', function(e) {
+            var clipboard = e.clipboardData;
+            console.log('clipboardData', clipboard)
+            for(var i=0,len=clipboard.items.length; i<len; i++) {
+                console.log('kind', clipboard.items[i].kind)
+            }
+//
+//            for(var i=0,len=clipboard.items.length; i<len; i++) {
+//                if(clipboard.items[i].kind == 'file' || clipboard.items[i].type.indexOf('image') > -1) {
+//                    var imageFile = clipboard.items[i].getAsFile();
+//                    var form = new FormData;
+//                    form.append('t', 'ajax-uploadpic');
+//                    form.append('avatar', imageFile);
+//                    var callback = G.uploadpicCallback || function(type, data){};
+//                    $.ajax({
+//                        url: G.ROOT_URL+'sys/ajax',
+//                        type: "POST",
+//                        data: form,
+//                        processData: false,
+//                        contentType: false,
+//                        beforeSend: function() {
+//                            callback('before');
+//                        },
+//                        error: function() {
+//                            callback('error');
+//                        },
+//                        success: function(url) {
+//                            callback('success', url);
+//                        }
+//                    })
+//                    e.preventDefault();
+//                }
+//            }
+        })
+
+    });
+</script>
+
+</body>
+</html>

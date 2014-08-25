@@ -19,15 +19,18 @@ define(function (require, exports, module) {
         options: {
             width:  250,
             content: '',
+            contentType: 'string',          //内容类型，可设置项有：html、iframe、string
             target: 'self',                 //要弹层的页面,可设置项有：self、parent、top
             direction: 'right',             //方向,可选值有：left， right
             animate: 'slide',               //切换效果,可选值有：toggle， fade， slide
             exClass: '',                    //附加的 class
-            background: '#3e3e3e',
+            background: '#3e3e3e',          //背景颜色
             padding: '10px',                //内容区域内边距
-            zIndex: 10000,
+            zIndex: 10000,                  //浮层z-index
+            onOpen: function(){},           //打开事件回调
+            onClose: function(){},          //关闭事件回调
             isMask: true,                   //是否显示遮罩
-            isBlur: false,
+            isBlur: false,                  //是否使用毛玻璃效果
             isShowCloseBtn: true,           //是否显示关闭按钮
             isMaskClose: true,              //是否点击遮罩就关闭浮层
             isKeyControl: true              //是否开启esc快捷键关闭浮层
@@ -104,12 +107,13 @@ define(function (require, exports, module) {
 
             self.closeBtn.css({
                 position: 'absolute',
-                top: '5px',
-                right: '5px',
+                top: '10px',
+                right: '15px',
                 fontSize: '24px',
                 color: '#fff',
                 textDecoration: 'none',
                 fontWeight: 'normal',
+                cursor: 'pointer',
                 zIndex: options.zIndex + 10
             })
 
@@ -118,7 +122,7 @@ define(function (require, exports, module) {
                 position: 'absolute',
                 top: 0,
                 left: 0,
-                padding: options.padding
+                padding: options.contentType != 'iframe' ? options.padding : 0
             })
 
             self.mask.css({
@@ -207,6 +211,8 @@ define(function (require, exports, module) {
             if(options.isMask){
                 self.mask.show();
             }
+
+            options.onOpen && options.onOpen(self);
         },
 
         close: function(){
@@ -242,6 +248,8 @@ define(function (require, exports, module) {
             if(options.isMask){
                 self.mask.hide();
             }
+
+            options.onClose && options.onClose(self);
         },
 
         remove: function(){
@@ -254,6 +262,37 @@ define(function (require, exports, module) {
             var self = this;
             var options = self.options;
 
+            var content = null;
+            switch (options.contentType){
+                case 'string':
+                    content = options.content;
+                    break;
+                case 'html':
+                    $.ajax({
+                        url: options.content,
+                        dataType: 'html',
+                        async: false,
+                        success: function(res){
+                            content = res;
+                        }
+                    })
+                    break;
+                case 'iframe':
+                    content = $("<iframe></iframe>").addClass("i_sidebar_iframe").attr({
+                        src: options.content,
+                        name: 'i_sidebar_iframe'
+                    }).css({
+                        width: options.width,
+                        height: $(window).height(),
+                        border: 'none'
+                    }).hide();
+
+                    content.load(function(){
+                        content.show();
+                    })
+                    break;
+            }
+
             self.content.html("");
 
             self.mask = $("<div></div>").addClass("i_sidebar_mask i_mask");
@@ -261,7 +300,7 @@ define(function (require, exports, module) {
 
             self.closeBtn = $("<a></a>").addClass("i_sidebar_colse").text('×');
 
-            self.main = $("<div></div>").addClass("i_sidebar_main").html(options.content);
+            self.main = $("<div></div>").addClass("i_sidebar_main").html(content);
 
             self.content.append(self.bgMask);
             self.content.append(self.closeBtn);
@@ -283,9 +322,16 @@ define(function (require, exports, module) {
                 self.close();
             })
 
+            if(options.contentType == 'iframe'){
+                $(window).resize(function(){
+                    self.main.find(".i_sidebar_iframe").height($(window).height());
+                })
+            }
+
             if (options.isKeyControl) {
                 $(window).bind('keydown', function (event) {
                     switch (event.keyCode) {
+                        //esc
                         case 27:
                             self.close();
                             break;

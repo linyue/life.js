@@ -13,6 +13,10 @@
     a?e.use(c,function(){c.splice(0,a);e.preload(b)},h.cwd+"_preload_"+w++):b()};f.use=function(b,c){e.preload(function(){e.use(b,c,h.cwd+"_use_"+w++)});return f};e.define.cmd={};t.define=e.define;f.Module=e;h.fetchedList=H;h.cid=Q;f.resolve=K;f.require=function(b){return(r[e.resolve(b)]||{}).exports};h.base=(k.match(/^(.+?\/)(\?\?)?(seajs\/)+/)||["",k])[1];h.dir=k;h.cwd=B;h.charset="utf-8";var B=h,P=[],q=q.search.replace(/(seajs-\w+)(&|$)/g,"$1=1$2"),q=q+(" "+n.cookie);q.replace(/(seajs-\w+)=1/g,function(b,
     c){P.push(c)});B.preload=P;f.config=function(b){for(var c in b){var a=b[c],d=h[c];if(d&&X(d))for(var e in a)d[e]=a[e];else A(d)?a=d.concat(a):"base"===c&&("/"===a.slice(-1)||(a+="/"),a=I(a)),h[c]=a}m("config",b);return f}}})(this);
 
+//获取版本时间戳
+var lifeScript = document.getElementById('lifeScript');
+var fileVersion = lifeScript && lifeScript.getAttribute('version') ? lifeScript.getAttribute('version') : "";
+
 //seajs配置
 seajs.config({
 	base : '/',
@@ -20,43 +24,65 @@ seajs.config({
 
     },
     paths: {
-        'src': window.location.protocol + '//res.xiaoman.cn/life.js/src/',
-        'res': window.location.protocol + '//res.xiaoman.cn/life.js/res/'
+        'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
+        'res': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
-        '$': 'src/lib/jquery-1.8.3.js',
+        'editorStyle': 'res/css/editor.css',
+
         'Class': 'src/base/class',
         'JSON': 'src/base/json2',
         'Array': 'src/base/array',
+
         'md5': 'src/utils/md5',
         'base64': 'src/utils/base4',
         'template': 'src/utils/template',
         'type': 'src/utils/type',
         'verify': 'src/utils/verify',
         'url': 'src/utils/url',
+        'time': 'src/utils/time',
         'include': 'src/utils/include',
         'copyText': 'src/utils/copyText',
         'areaSelect': 'src/utils/areaSelect',
         'draggable': 'src/utils/draggable',
+
+        'report': 'src/monitor/report',
+
         'page': 'src/ui/page',
         'dialog': 'src/ui/dialog',
         'gallery': 'src/ui/gallery',
         'mobileNav': 'src/ui/mobileNav',
         'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
-        'qzoneAlbums': 'src/qq/qzoneAlbums',
-        'scratch': 'src/qq/scratch',
-        'roulette': 'src/qq/roulette',
-        'shake': 'src/qq/shake'
+        'editor': 'src/ui/editor',
+        'colorPicker': 'src/ui/colorPicker',
+        'datePicker': 'src/ui/datePicker',
+        'sidebar': 'src/ui/sidebar',
+        'upload': 'src/ui/upload',
+        'floatText': 'src/ui/floatText',
+
+        'scratch': 'src/lottery/scratch',
+        'roulette': 'src/lottery/roulette',
+        'shake': 'src/lottery/shake',
+
+        '$': 'src/plugin/jquery.js',
+        'jqueryui': 'src/plugin/jquery.ui',
+        'charts': 'src/plugin/highcharts/highcharts',
+        'charts_more': 'src/plugin/highcharts/highcharts-more'
 	},
     preload: [
         this.$ ? '' : '$'
+    ],
+    'map': [
+        [ /^(.*\.(?:css|js))(.*)$/i, '$1?' + fileVersion ]
     ],
     charset: 'utf-8'
 });
 
 var life = {};
+
+life.fileVersion = fileVersion;
 
 life.page = function(options){
     seajs.use("page",function(Page){
@@ -148,9 +174,76 @@ life.draggable = function(options){
     })
 }
 
+life.charts = function(options){
+    seajs.use("charts", function(Charts){
+        new Charts(options);
+    })
+}
+
+life.time = {};
+life.time.string2Date = function(options){
+    seajs.use("time", function(time){
+        var date = time.string2Date(options.time);
+        options.callback(date);
+    })
+}
+life.time.format = function(options){
+    seajs.use("time", function(time){
+        var format = time.format(options.formatStr, options.date);
+        options.callback(format);
+    })
+}
+life.time.countdown = function(options){
+    seajs.use("time", function(time){
+        time.countdown(options);
+    })
+}
+life.datePicker = function(options){
+    seajs.use('datePicker', function(datePicker){
+        var picker = datePicker(options);
+        options.callback && options.callback(picker);
+    })
+}
+
+life.editor = function(options){
+    seajs.use("editor", function(editor){
+        var edit = editor(options);
+        options.callback && options.callback(edit);
+    })
+}
+
+life.colorPicker = function(options){
+    seajs.use("colorPicker", function(ColorPicker){
+        var colorPicker = new ColorPicker(options);
+        options.callback && options.callback(colorPicker);
+    })
+}
+
+life.sidebar = function(options){
+    seajs.use("sidebar", function(Sidebar){
+        var sidebar = new Sidebar(options);
+        options.callback && options.callback(sidebar);
+    })
+}
+
+life.upload = {};
+life.upload.common = function(options){
+    seajs.use("upload", function(upload){
+        upload.common(options);
+    })
+}
 
 
+life.upload = {};
+life.upload.common = function(options){
+    seajs.use("upload", function(upload){
+        upload.common(options);
+    })
+}
 
-
-
+life.floatText = function(options){
+    seajs.use('floatText', function(FloatText){
+        new FloatText(options);
+    })
+}
 

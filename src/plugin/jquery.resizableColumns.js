@@ -1,4 +1,4 @@
-define(function(require,exports,moudles){
+define(function(require,exports,module){
 
     /**
      * 修改记录：
