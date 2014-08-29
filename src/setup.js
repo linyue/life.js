@@ -72,7 +72,8 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820']
+        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20140829']
     ],
     charset: 'utf-8'
 });
