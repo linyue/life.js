@@ -17,11 +17,11 @@
 seajs.config({
 	base : '/',
     vars: {
-        versionGlobal: '20140829'
+        versionGlobal: ''
     },
     paths: {
-        'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
-        'res': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/res'
+        'src': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
+        'res': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -72,8 +72,7 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20140829']
+        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820']
     ],
     charset: 'utf-8'
 });
