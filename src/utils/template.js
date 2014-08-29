@@ -628,7 +628,7 @@
     template.includeTpl = function(tplUrl){
         var tplId = 'tpl_container' + tplUrl.replace(/\/|\./g, '_');
 
-        var v = typeof fileVersion == 'undefined' ? '' : fileVersion;
+        var v = typeof seajs.data.vars.versionGlobal == 'undefined' ? '' : seajs.data.vars.versionGlobal;
 
         tplUrl = tplUrl.indexOf("?") > 0 ? (tplUrl + '&v_=' + v) : tplUrl + '?v_=' + v;
 

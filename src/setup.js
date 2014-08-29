@@ -13,15 +13,11 @@
     a?e.use(c,function(){c.splice(0,a);e.preload(b)},h.cwd+"_preload_"+w++):b()};f.use=function(b,c){e.preload(function(){e.use(b,c,h.cwd+"_use_"+w++)});return f};e.define.cmd={};t.define=e.define;f.Module=e;h.fetchedList=H;h.cid=Q;f.resolve=K;f.require=function(b){return(r[e.resolve(b)]||{}).exports};h.base=(k.match(/^(.+?\/)(\?\?)?(seajs\/)+/)||["",k])[1];h.dir=k;h.cwd=B;h.charset="utf-8";var B=h,P=[],q=q.search.replace(/(seajs-\w+)(&|$)/g,"$1=1$2"),q=q+(" "+n.cookie);q.replace(/(seajs-\w+)=1/g,function(b,
     c){P.push(c)});B.preload=P;f.config=function(b){for(var c in b){var a=b[c],d=h[c];if(d&&X(d))for(var e in a)d[e]=a[e];else A(d)?a=d.concat(a):"base"===c&&("/"===a.slice(-1)||(a+="/"),a=I(a)),h[c]=a}m("config",b);return f}}})(this);
 
-//获取版本时间戳
-var lifeScript = document.getElementById('lifeScript');
-var fileVersion = lifeScript && lifeScript.getAttribute('version') ? lifeScript.getAttribute('version') : "";
-
 //seajs配置
 seajs.config({
 	base : '/',
     vars: {
-
+        versionGlobal: ''
     },
     paths: {
         'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
@@ -30,6 +26,7 @@ seajs.config({
 	alias: {
         'baseCss': 'res/css/base.css',
         'editorStyle': 'res/css/editor.css',
+        'jqueryuicss': 'res/css/jquery-ui.css',
 
         'Class': 'src/base/class',
         'JSON': 'src/base/json2',
@@ -74,15 +71,46 @@ seajs.config({
     preload: [
         this.$ ? '' : '$'
     ],
-    'map': [
-        [ /^(.*\.(?:css|js))(.*)$/i, '$1?' + fileVersion ]
+    map: [
+        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820']
     ],
     charset: 'utf-8'
 });
 
 var life = {};
 
-life.fileVersion = fileVersion;
+life.setConfig = function(options){
+
+    var opt = {
+        versionMap: {},
+        versionGlobal: ''
+    }
+
+    for(var o in opt){
+        if(typeof options[o] != 'undefined'){
+            opt[o] = options[o];
+        }
+    }
+
+    var versionMap = opt.versionMap;
+    var map = [];
+
+    //将所加载文件的文件名加上version
+    for(var k in versionMap){
+        if(versionMap[k]){
+            map.push([k, versionMap[k]]);
+        }
+    }
+
+    map.push([/^(.*\.(?:css|js))(.*)$/i, '$1?_v=' + opt.versionGlobal]);
+
+    seajs.config({
+        map: map,
+        vars: {
+            versionGlobal: opt.versionGlobal
+        }
+    })
+}
 
 life.page = function(options){
     seajs.use("page",function(Page){
