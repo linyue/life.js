@@ -83,7 +83,8 @@ life.setConfig = function(options){
 
     var opt = {
         versionMap: {},
-        versionGlobal: ''
+        versionGlobal: '',
+        cdnBase: ''
     }
 
     for(var o in opt){
@@ -98,7 +99,7 @@ life.setConfig = function(options){
     //将所加载文件的文件名加上version
     for(var k in versionMap){
         if(versionMap[k]){
-            map.push([k, versionMap[k]]);
+            map.push([k, opt.cdnBase + versionMap[k]]);
         }
     }
 
