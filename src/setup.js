@@ -17,7 +17,7 @@
 seajs.config({
 	base : '/',
     vars: {
-        versionGlobal: ''
+        versionGlobal: '20140829'
     },
     paths: {
         'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
