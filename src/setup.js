@@ -94,11 +94,9 @@ life.setConfig = function(options){
     }
 
     if(opt.base){
-        console.log(1111,opt.base)
         seajs.config({
             base: opt.base
         })
-        console.log(2222,seajs)
     }
 
     var versionMap = opt.versionMap;
