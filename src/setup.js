@@ -84,7 +84,7 @@ life.setConfig = function(options){
     var opt = {
         versionMap: {},
         versionGlobal: '',
-        cdnBase: ''
+        base: ''
     }
 
     for(var o in opt){
@@ -93,13 +93,19 @@ life.setConfig = function(options){
         }
     }
 
+    if(opt.base){
+        seajs.config({
+            base: opt.base
+        })
+    }
+
     var versionMap = opt.versionMap;
     var map = [];
 
     //将所加载文件的文件名加上version
     for(var k in versionMap){
         if(versionMap[k]){
-            map.push([k, opt.cdnBase + versionMap[k]]);
+            map.push([k, versionMap[k]]);
         }
     }
 
