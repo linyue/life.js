@@ -17,7 +17,8 @@
 seajs.config({
 	base : '/',
     vars: {
-        versionGlobal: ''
+        versionGlobal: '',
+        cdnBase: 'http://dn-v3-beta.qbox.me/v3/'
     },
     paths: {
         'src': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/src',
@@ -93,25 +94,21 @@ life.setConfig = function(options){
         }
     }
 
-    if(opt.base){
-        seajs.config({
-            base: opt.base
-        })
-    }
-
     var versionMap = opt.versionMap;
+    var alias = {};
     var map = [];
 
     //将所加载文件的文件名加上version
     for(var k in versionMap){
         if(versionMap[k]){
-            map.push([k, versionMap[k]]);
+            alias[k] = opt.base + versionMap[k];
         }
     }
 
     map.push([/^(.*\.(?:css|js))(.*)$/i, '$1?_v=' + opt.versionGlobal]);
 
     seajs.config({
+        alias: alias,
         map: map,
         vars: {
             versionGlobal: opt.versionGlobal
