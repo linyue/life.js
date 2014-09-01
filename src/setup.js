@@ -17,8 +17,7 @@
 seajs.config({
 	base : '/',
     vars: {
-        versionGlobal: '',
-        cdnBase: 'http://dn-v3-beta.qbox.me/v3/'
+        versionGlobal: ''
     },
     paths: {
         'src': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/src',
