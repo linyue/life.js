@@ -154,11 +154,13 @@ define(function (require, exports, module) {
 
             //设置图片和缩略图的尺寸
             self.list.width(self.imgWidth).height(self.imgHeight);
-            self.list.find("img").width('auto').height(self.imgHeight).load(function(){
-                $(this).css({
-                    marginLeft: -($(this).width() / 2)
-                })
-            });
+            self.list.find("img").width('auto').height(self.imgHeight).each(function(){
+                $(this).load(function(){
+                    $(this).css({
+                        marginLeft: -($(this).width() / 2)
+                    })
+                });
+            })
 
             if(self.show.thumbs){
                 self.thumbs.find("img").width(self.thumbWidth).height(self.thumbHeight);
