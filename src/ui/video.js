@@ -53,10 +53,15 @@ define(function(require, exports, module){
                 }
                 $(document.body).append( videoArr.join(""));
                 container = $("#video_container")[0];
-                container.style.cssText='position: absolute;height: '+ height +'px;width: '+ width +'px;top: 50%;left: 50%;margin-left: -'+(width/2)+'px;margin-top: -'+(height/2)+'px;z-index: 5000;';
+                var topMargin = $(document.body).scrollTop();
+                topMargin = -(height/2) + topMargin;
+                container.style.cssText='position: absolute;height: '+ height +'px;width: '+ width +'px;top: 50%;left: 50%;margin-left: -'+(width/2)+'px;margin-top: '+ topMargin +'px;z-index: 5000;';
+                self.bindEvent();
+            }else{
+                var topMargin = $(document.body).scrollTop();
+                topMargin = -(height/2) + topMargin;
+                container.css('marginTop', topMargin + 'px');
             }
-            self.createVideoContainer = null;
-            self.bindEvent();
         },
         bindEvent : function(){
             var self = this;
