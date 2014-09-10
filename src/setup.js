@@ -73,7 +73,8 @@ seajs.config({
     ],
     map: [
         [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
-        [/(life.js\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910']
+        [/(life.js\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910'],
+        [/(life.js\/src\/ui\/video\.js)$/i, '$1?_v=20140910']
     ],
     charset: 'utf-8'
 });
