@@ -72,9 +72,11 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/(life.js\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
-        [/(life.js\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910'],
-        [/(life.js\/src\/ui\/video\.js)$/i, '$1?_v=20140910']
+        [/(\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
+        [/(\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910'],
+        [/(\/src\/ui\/video\.js)$/i, '$1?_v=20140910'],
+        [/(\/src\/ui\/datePicker\.js)$/i, '$1?_v=20140930'],
+        [/(\/res\/css\/datePicker\.css)$/i, '$1?_v=20140930']
     ],
     charset: 'utf-8'
 });
