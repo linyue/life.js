@@ -75,8 +75,8 @@ seajs.config({
         [/(\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
         [/(\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910'],
         [/(\/src\/ui\/video\.js)$/i, '$1?_v=20140910'],
-        [/(\/src\/ui\/datePicker\.js)$/i, '$1?_v=20140930'],
-        [/(\/res\/css\/datePicker\.css)$/i, '$1?_v=20140930']
+        [/(\/src\/ui\/datePicker\.js)$/i, '$1?_v=2014093001'],
+        [/(\/res\/css\/datePicker\.css)$/i, '$1?_v=2014093001']
     ],
     charset: 'utf-8'
 });

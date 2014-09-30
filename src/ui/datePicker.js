@@ -1,14 +1,10 @@
 define(function (require, exports, module) {
     /**
-     *
-     *
-     * @author linyue
-     * @time 14-7-7
+     * @author adam(linyue@live.cn)
+     * @time 2014-07-07
      */
 
-
     "use strict";
-
 
     var $ = require('$');
     var time = require('time');
@@ -37,13 +33,21 @@ define(function (require, exports, module) {
             this.component = false;
             this.showStatus = false;
 
-            if (this.$element.find('.input-append') || this.$element.find('.input-prepend'))
+            console.log(this.options)
+
+            if (this.$element.find('.input-append') || this.$element.find('.input-prepend')){
                 this.component = this.$element.find('.i_datePicker_input_icon');
+            }
             this.format = options.format;
             if (!this.format) {
-                if (this.isInput) this.format = this.$element.data('format');
-                else this.format = this.$element.find('input').data('format');
-                if (!this.format) this.format = 'MM/dd/yyyy';
+                if (this.isInput){
+                    this.format = this.$element.data('format');
+                }else {
+                    this.format = this.$element.find('input').data('format');
+                }
+                if (!this.format) {
+                    this.format = 'MM/dd/yyyy';
+                }
             }
 
             this._compileFormat();
@@ -71,7 +75,7 @@ define(function (require, exports, module) {
             }
 
 
-            this.widget = $(getTemplate(this.timeIcon, options.pickDate, options.pickTime, options.pick12HourFormat, options.pickSeconds, options.collapse)).appendTo('body');
+            this.widget = $(getTemplate(this.options.skin, this.timeIcon, options.pickDate, options.pickTime, options.pick12HourFormat, options.pickSeconds, options.collapse)).appendTo('body');
             this.minViewMode = options.minViewMode||this.$element.data('date-minviewmode')||0
 
             if (typeof this.minViewMode === 'string') {
@@ -158,7 +162,7 @@ define(function (require, exports, module) {
                 }
 
                 setTimeout(function(){
-                    self.options.onClose && self.options.onClose(date, input);
+                    $.trim(input.val()) != "" && self.options.onClose && self.options.onClose(date, input);
                 }, 100);
             }
 
@@ -172,7 +176,10 @@ define(function (require, exports, module) {
             this.widget.hide();
             this.viewMode = this.startViewMode;
             this.showMode();
-            this.set();
+
+            //隐藏时不再默认设值
+//            this.set();
+
             this.$element.trigger({
                 type: 'hide',
                 date: this._date
@@ -379,6 +386,8 @@ define(function (require, exports, module) {
                 this._date.getUTCDate(),
                 0, 0, 0, 0
             );
+            var todayDate = new  Date();
+
             var startYear  = typeof this.startDate === 'object' ? this.startDate.getUTCFullYear() : -Infinity;
             var startMonth = typeof this.startDate === 'object' ? this.startDate.getUTCMonth() : -1;
             var endYear  = typeof this.endDate === 'object' ? this.endDate.getUTCFullYear() : Infinity;
@@ -392,8 +401,7 @@ define(function (require, exports, module) {
                 dates[this.language].months[month] + ' ' + year);
 
             var prevMonth = UTCDate(year, month-1, 28, 0, 0, 0, 0);
-            var day = DPGlobal.getDaysInMonth(
-                prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
+            var day = DPGlobal.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
             prevMonth.setUTCDate(day);
             prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.weekStart + 7) % 7);
             if ((year == startYear && month <= startMonth) || year < startYear) {
@@ -410,10 +418,16 @@ define(function (require, exports, module) {
             var row;
             var clsName;
             while (prevMonth.valueOf() < nextMonth) {
+                var inputVal = $.trim(this.$element.find('input').val());
+                if (this.isInput) {
+                    inputVal = $.trim(this.$element.val());
+                }
+
                 if (prevMonth.getUTCDay() === this.weekStart) {
                     row = $('<tr>');
                     html.push(row);
                 }
+
                 clsName = '';
                 if (prevMonth.getUTCFullYear() < year ||
                     (prevMonth.getUTCFullYear() == year &&
@@ -424,8 +438,11 @@ define(function (require, exports, module) {
                         prevMonth.getUTCMonth() > month)) {
                     clsName += ' new';
                 }
-                if (prevMonth.valueOf() === currentDate.valueOf()) {
+                if (prevMonth.valueOf() === currentDate.valueOf() && inputVal != "") {
                     clsName += ' active';
+                }
+                if (prevMonth.getDate() === todayDate.getDate() && prevMonth.getMonth() === todayDate.getMonth()) {
+                    clsName += ' nowDate';
                 }
                 if ((prevMonth.valueOf() + 86400000) <= this.startDate) {
                     clsName += ' disabled';
@@ -438,11 +455,14 @@ define(function (require, exports, module) {
             }
             this.widget.find('.datepicker-days tbody').empty().append(html);
             var currentYear = this._date.getUTCFullYear();
+            var todayYear = todayDate.getUTCFullYear();
 
-            var months = this.widget.find('.datepicker-months').find(
-                'th:eq(1)').text(year).end().find('span').removeClass('active');
+            var months = this.widget.find('.datepicker-months').find('th:eq(1)').text(year).end().find('span').removeClass('active');
             if (currentYear === year) {
                 months.eq(this._date.getUTCMonth()).addClass('active');
+            }
+            if (todayYear === year) {
+                months.eq(todayDate.getUTCMonth()).addClass('nowDate');
             }
             if (currentYear - 1 < startYear) {
                 this.widget.find('.datepicker-months th:eq(0)').addClass('disabled');
@@ -460,8 +480,7 @@ define(function (require, exports, module) {
 
             html = '';
             year = parseInt(year/10, 10) * 10;
-            var yearCont = this.widget.find('.datepicker-years').find(
-                'th:eq(1)').text(year + '-' + (year + 9)).end().find('td');
+            var yearCont = this.widget.find('.datepicker-years').find('th:eq(1)').text(year + '-' + (year + 9)).end().find('td');
             this.widget.find('.datepicker-years').find('th').removeClass('disabled');
             if (startYear > year) {
                 this.widget.find('.datepicker-years').find('th:eq(0)').addClass('disabled');
@@ -471,24 +490,25 @@ define(function (require, exports, module) {
             }
             year -= 1;
             for (var i = -1; i < 11; i++) {
-                html += '<span class="year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + ((year < startYear || year > endYear) ? ' disabled' : '') + '">' + year + '</span>';
+                html += '<span class="year' + (i === -1 || i === 10 ? ' old' : '') + (currentYear === year ? ' active' : '') + (todayYear === year ? ' nowDate' : '') + ((year < startYear || year > endYear) ? ' disabled' : '') + '">' + year + '</span>';
                 year += 1;
             }
             yearCont.html(html);
         },
 
         fillHours: function() {
-            var table = this.widget.find(
-                '.timepicker .timepicker-hours table');
+            var table = this.widget.find('.timepicker .timepicker-hours table');
             table.parent().hide();
             var html = '';
+            var nowHours = new Date().getHours();
             if (this.options.pick12HourFormat) {
                 var current = 1;
                 for (var i = 0; i < 3; i += 1) {
                     html += '<tr>';
                     for (var j = 0; j < 4; j += 1) {
                         var c = current.toString();
-                        html += '<td class="hour">' + padLeft(c, 2, '0') + '</td>';
+                        var hours = padLeft(c, 2, '0');
+                        html += '<td class="hour ' + (parseInt(hours) === (nowHours % 12) ? 'nowDate' : '') + '">' + hours + '</td>';
                         current++;
                     }
                     html += '</tr>'
@@ -499,7 +519,8 @@ define(function (require, exports, module) {
                     html += '<tr>';
                     for (var j = 0; j < 4; j += 1) {
                         var c = current.toString();
-                        html += '<td class="hour">' + padLeft(c, 2, '0') + '</td>';
+                        var hours = padLeft(c, 2, '0');
+                        html += '<td class="hour ' + (parseInt(hours) === nowHours ? 'nowDate' : '') + '">' + hours + '</td>';
                         current++;
                     }
                     html += '</tr>'
@@ -509,16 +530,17 @@ define(function (require, exports, module) {
         },
 
         fillMinutes: function() {
-            var table = this.widget.find(
-                '.timepicker .timepicker-minutes table');
+            var table = this.widget.find('.timepicker .timepicker-minutes table');
             table.parent().hide();
             var html = '';
             var current = 0;
+            var nowMinutes = new Date().getMinutes();
             for (var i = 0; i < 5; i++) {
                 html += '<tr>';
                 for (var j = 0; j < 4; j += 1) {
                     var c = current.toString();
-                    html += '<td class="minute">' + padLeft(c, 2, '0') + '</td>';
+                    var minute = padLeft(c, 2, '0');
+                    html += '<td class="minute ' + (parseInt(minute) === nowMinutes ? 'nowDate' : '') + '">' + minute + '</td>';
                     current += 3;
                 }
                 html += '</tr>';
@@ -527,8 +549,7 @@ define(function (require, exports, module) {
         },
 
         fillSeconds: function() {
-            var table = this.widget.find(
-                '.timepicker .timepicker-seconds table');
+            var table = this.widget.find('.timepicker .timepicker-seconds table');
             table.parent().hide();
             var html = '';
             var current = 0;
@@ -545,8 +566,9 @@ define(function (require, exports, module) {
         },
 
         fillTime: function() {
-            if (!this._date)
+            if (!this._date){
                 return;
+            }
             var timeComponents = this.widget.find('.timepicker span[data-time-component]');
             var table = timeComponents.closest('table');
             var is12HourFormat = this.options.pick12HourFormat;
@@ -556,8 +578,7 @@ define(function (require, exports, module) {
                 if (hour >= 12) period = 'PM';
                 if (hour === 0) hour = 12;
                 else if (hour != 12) hour = hour % 12;
-                this.widget.find(
-                    '.timepicker [data-action=togglePeriod]').text(period);
+                this.widget.find('.timepicker [data-action=togglePeriod]').text(period);
             }
             hour = padLeft(hour.toString(), 2, '0');
             var minute = padLeft(this._date.getUTCMinutes().toString(), 2, '0');
@@ -587,8 +608,8 @@ define(function (require, exports, module) {
                                     var step = DPGlobal.modes[this.viewMode].navStep;
                                     if (target[0].className === 'prev') step = step * -1;
                                     vd['set' + navFnc](vd['get' + navFnc]() + step);
-                                    this.fillDate();
                                     this.set();
+                                    this.fillDate();
                                     break;
                             }
                             break;
@@ -613,8 +634,8 @@ define(function (require, exports, module) {
                                 this.notifyChange();
                             }
                             this.showMode(-1);
-                            this.fillDate();
                             this.set();
+                            this.fillDate();
                             break;
                         case 'td':
                             if (target.is('.day')) {
@@ -645,8 +666,8 @@ define(function (require, exports, module) {
                                 );
                                 this.viewDate = UTCDate(
                                     year, month, Math.min(28, day) , 0, 0, 0, 0);
-                                this.fillDate();
                                 this.set();
+                                this.fillDate();
                                 this.notifyChange();
                             }
                             break;
@@ -819,7 +840,6 @@ define(function (require, exports, module) {
         },
 
         change: function(e) {
-            console.log(444)
             var input = $(e.target);
             var val = input.val();
             if (this._formatPattern.test(val)) {
@@ -834,8 +854,6 @@ define(function (require, exports, module) {
             } else {
                 if (this._date) {
                     this.setValue(null);
-                    // unset the date when the input is
-                    // erased
                     this.notifyChange();
                     this._unset = true;
                 }
@@ -845,11 +863,9 @@ define(function (require, exports, module) {
 
         showMode: function(dir) {
             if (dir) {
-                this.viewMode = Math.max(this.minViewMode, Math.min(
-                    2, this.viewMode + dir));
+                this.viewMode = Math.max(this.minViewMode, Math.min(2, this.viewMode + dir));
             }
-            this.widget.find('.datepicker > div').hide().filter(
-                '.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
+            this.widget.find('.datepicker > div').hide().filter('.datepicker-'+DPGlobal.modes[this.viewMode].clsName).show();
         },
 
         destroy: function() {
@@ -863,8 +879,9 @@ define(function (require, exports, module) {
         formatDate: function(d) {
             return this.format.replace(formatReplacer, function(match) {
                 var methodName, property, rv, len = match.length;
-                if (match === 'ms')
+                if (match === 'ms'){
                     len = 1;
+                }
                 property = dateFormatComponents[match].property
                 if (property === 'Hours12') {
                     rv = d.getUTCHours();
@@ -1165,7 +1182,6 @@ define(function (require, exports, module) {
     var formatReplacer = new RegExp(keys.join('\\b|'), 'g');
 
     function escapeRegExp(str) {
-        // http://stackoverflow.com/questions/3446170/escape-string-for-use-in-javascript-regex
         return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
     }
 
@@ -1174,41 +1190,41 @@ define(function (require, exports, module) {
         else return Array(l - s.length + 1).join(c || ' ') + s;
     }
 
-    function getTemplate(timeIcon, pickDate, pickTime, is12Hours, showSeconds, collapse) {
+    function getTemplate(skin, timeIcon, pickDate, pickTime, is12Hours, showSeconds, collapse) {
         if (pickDate && pickTime) {
             return (
-                '<div class="i_datePicker dropdown-menu">' +
+                '<div class="i_datePicker i_' + skin + ' dropdown-menu">' +
                     '<ul>' +
-                    '<li' + (collapse ? ' class="collapse in"' : '') + '>' +
-                    '<div class="datepicker">' +
-                    DPGlobal.template +
-                    '</div>' +
-                    '</li>' +
-                    '<li class="picker-switch accordion-toggle"><a><i class="' + timeIcon + '"></i></a></li>' +
-                    '<li' + (collapse ? ' class="collapse"' : '') + '>' +
-                    '<div class="timepicker">' +
-                    TPGlobal.getTemplate(is12Hours, showSeconds) +
-                    '</div>' +
-                    '</li>' +
+                        '<li' + (collapse ? ' class="collapse in"' : '') + '>' +
+                            '<div class="datepicker">' +
+                                DPGlobal.template +
+                            '</div>' +
+                        '</li>' +
+                        '<li class="picker-switch accordion-toggle"><a><i class="' + timeIcon + '"></i></a></li>' +
+                        '<li' + (collapse ? ' class="collapse"' : '') + '>' +
+                            '<div class="timepicker">' +
+                            TPGlobal.getTemplate(is12Hours, showSeconds) +
+                            '</div>' +
+                        '</li>' +
                     '</ul>' +
-                    '</div>'
-                );
+                '</div>'
+            );
         } else if (pickTime) {
             return (
-                '<div class="i_datePicker dropdown-menu">' +
+                '<div class="i_datePicker i_' + skin + ' dropdown-menu">' +
                     '<div class="timepicker">' +
-                    TPGlobal.getTemplate(is12Hours, showSeconds) +
+                        TPGlobal.getTemplate(is12Hours, showSeconds) +
                     '</div>' +
-                    '</div>'
-                );
+                '</div>'
+            );
         } else {
             return (
-                '<div class="i_datePicker dropdown-menu">' +
+                '<div class="i_datePicker i_' + skin + ' dropdown-menu">' +
                     '<div class="datepicker">' +
-                    DPGlobal.template +
+                        DPGlobal.template +
                     '</div>' +
-                    '</div>'
-                );
+                '</div>'
+            );
         }
     }
 
@@ -1242,30 +1258,30 @@ define(function (require, exports, module) {
         headTemplate:
             '<thead>' +
                 '<tr>' +
-                '<th class="prev">&lsaquo;</th>' +
-                '<th colspan="5" class="switch"></th>' +
-                '<th class="next">&rsaquo;</th>' +
+                    '<th class="prev">&lsaquo;</th>' +
+                    '<th colspan="5" class="switch"></th>' +
+                    '<th class="next">&rsaquo;</th>' +
                 '</tr>' +
-                '</thead>',
+            '</thead>',
         contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>'
     };
     DPGlobal.template =
         '<div class="datepicker-days">' +
             '<table class="table-condensed">' +
-            DPGlobal.headTemplate +
+                DPGlobal.headTemplate +
             '<tbody></tbody>' +
             '</table>' +
             '</div>' +
             '<div class="datepicker-months">' +
             '<table class="table-condensed">' +
-            DPGlobal.headTemplate +
-            DPGlobal.contTemplate+
+                DPGlobal.headTemplate +
+                DPGlobal.contTemplate+
             '</table>'+
             '</div>'+
             '<div class="datepicker-years">'+
             '<table class="table-condensed">'+
-            DPGlobal.headTemplate+
-            DPGlobal.contTemplate+
+                DPGlobal.headTemplate+
+                DPGlobal.contTemplate+
             '</table>'+
             '</div>';
 
@@ -1332,11 +1348,12 @@ define(function (require, exports, module) {
 
     return function(options){
         var opt = {
-            query: '',
-            format: 'yyyy-MM-dd hh:mm:00',
-            type: 'datetime',               //date,time,datetime
-            startDate: '',
-            endDate: '',
+            query: '',                      //选择器
+            format: 'yyyy-MM-dd hh:mm:00',  //格式
+            type: 'datetime',               //类型，可设置项有：date,time,datetime
+            startDate: '',                  //最小限制
+            endDate: '',                    //最大限制
+            skin: 'blue',                   //主题颜色，可设置项有：red、blue、green、orange、purple
             onClose: function(){}
         }
 
@@ -1380,13 +1397,14 @@ define(function (require, exports, module) {
             pickTime: setting.pickDate,
             startDate: opt.startDate == "" ? -Infinity : time.string2Date(opt.startDate),
             endDate: opt.endDate == "" ? Infinity : time.string2Date(opt.endDate),
-            maskInput: true,           // disables the text input mask
-            pick12HourFormat: false,   // enables the 12-hour format time picker
+            maskInput: true,
+            pick12HourFormat: false,
             language: 'zh-CN',
             minViewMode: setting.minViewMode,
             viewMode: setting.viewMode,
             pickSeconds: opt.format.indexOf("ss") > 0,
-            onClose: opt.onClose
+            onClose: opt.onClose,
+            skin: opt.skin
         });
 
         return datePicker;
