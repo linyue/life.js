@@ -169,6 +169,7 @@
     background-image: -o-linear-gradient(top, #08c, #0077b3);
     background-image: linear-gradient(to bottom, #08c, #0077b3);
     background-repeat: repeat-x;
+    cursor: pointer;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0077b3', GradientType=0)
 }
 
@@ -342,7 +343,10 @@
 .i_datePicker td.old, .i_datePicker td.new {
     color: #999
 }
-
+.i_datePicker td.nowDate{
+    color: #0088cc;
+    font-weight: bold;
+}
 .i_datePicker td.active, .i_datePicker td.active:hover {
     color: #fff;
     background-color: #006dcc;
@@ -394,6 +398,10 @@
     background: #eee;
 }
 
+.i_datePicker td span.today {
+    color: #0088cc;
+    font-weight: bold;
+}
 .i_datePicker td span.active {
     color: #fff;
     background-color: #006dcc;
@@ -420,10 +428,6 @@
 
 .i_datePicker td span.active:active, .i_datePicker td span.active.active {
     background-color: #039;
-}
-
-.i_datePicker td span.old {
-    color: #999
 }
 
 .i_datePicker td span.disabled, .i_datePicker td span.disabled:hover {
@@ -454,7 +458,7 @@
     background: #eee
 }
 
-.input-append.date .add-on i, .input-prepend.date .add-on i {
+.i_datePicker .input-append.date .add-on i, .input-prepend.date .add-on i {
     display: block;
     cursor: pointer;
     width: 16px;
@@ -469,4 +473,371 @@
 .i_datePicker.left-oriented:after {
     left: auto;
     right: 7px
+}
+
+/*自定义颜色：蓝色*/
+.i_blue.i_datePicker.dropdown-menu li > a:hover{
+    background-color: #0088cc;
+    background-image: -moz-linear-gradient(top, #0088cc, #267499);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#267499));
+    background-image: -webkit-linear-gradient(top, #0088cc, #267499);
+    background-image: -o-linear-gradient(top, #0088cc, #267499);
+    background-image: linear-gradient(to bottom, #0088cc, #267499);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff267499', GradientType=0)
+}
+.i_blue.i_datePicker td.nowDate{
+    color: #0088cc;
+}
+.i_blue.i_datePicker td.active,
+.i_blue.i_datePicker td.active:hover {
+    color: #fff;
+    background-color: #0088cc;
+    background-image: -moz-linear-gradient(top, #0088cc, #005985);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#005985));
+    background-image: -webkit-linear-gradient(top, #0088cc, #005985);
+    background-image: -o-linear-gradient(top, #0088cc, #005985);
+    background-image: linear-gradient(to bottom, #0088cc, #005985);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #005985 #005985 #014364;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_blue.i_datePicker td.active:hover,
+.i_blue.i_datePicker td.active:hover:hover,
+.i_blue.i_datePicker td.active:active,
+.i_blue.i_datePicker td.active:hover:active,
+.i_blue.i_datePicker td.active.active,
+.i_blue.i_datePicker td.active:hover.active,
+.i_blue.i_datePicker td.active.disabled,
+.i_blue.i_datePicker td.active:hover.disabled,
+.i_blue.i_datePicker td.active[disabled],
+.i_blue.i_datePicker td.active:hover[disabled] {
+    background-color: #005985;
+}
+
+.i_blue.i_datePicker td.active:active,
+.i_blue.i_datePicker td.active:hover:active,
+.i_blue.i_datePicker td.active.active,
+.i_blue.i_datePicker td.active:hover.active {
+    background-color: #014364;
+}
+.i_blue.i_datePicker td span.nowDate {
+    color: #0088cc;
+}
+.i_blue.i_datePicker td span.active {
+    color: #fff;
+    background-color: #0088cc;
+    background-image: -moz-linear-gradient(top, #0088cc, #005985);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0088cc), to(#005985));
+    background-image: -webkit-linear-gradient(top, #0088cc, #005985);
+    background-image: -o-linear-gradient(top, #0088cc, #005985);
+    background-image: linear-gradient(to bottom, #0088cc, #005985);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff0088cc', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #005985 #005985 #014364;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_blue.i_datePicker td span.active:hover,
+.i_blue.i_datePicker td span.active:active,
+.i_blue.i_datePicker td span.active.active,
+.i_blue.i_datePicker td span.active.disabled,
+.i_blue.i_datePicker td span.active[disabled] {
+    background-color: #005985;
+}
+
+.i_blue.i_datePicker td span.active:active,
+.i_blue.i_datePicker td span.active.active {
+    background-color: #014364;
+}
+
+/*自定义颜色：绿色*/
+.i_green.i_datePicker.dropdown-menu li > a:hover{
+    background-color: #77bb00;
+    background-image: -moz-linear-gradient(top, #77bb00, #658c23);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#77bb00), to(#658c23));
+    background-image: -webkit-linear-gradient(top, #77bb00, #658c23);
+    background-image: -o-linear-gradient(top, #77bb00, #658c23);
+    background-image: linear-gradient(to bottom, #77bb00, #658c23);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff77bb00', endColorstr='#ff658c23', GradientType=0)
+}
+.i_green.i_datePicker td.nowDate{
+    color: #77bb00;
+}
+.i_green.i_datePicker td.active,
+.i_green.i_datePicker td.active:hover {
+    color: #fff;
+    background-color: #77bb00;
+    background-image: -moz-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#77bb00), to(#4d7a00));
+    background-image: -webkit-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: -o-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: linear-gradient(to bottom, #77bb00, #4d7a00);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff77bb00', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #4d7a00 #4d7a00 #335101;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_green.i_datePicker td.active:hover,
+.i_green.i_datePicker td.active:hover:hover,
+.i_green.i_datePicker td.active:active,
+.i_green.i_datePicker td.active:hover:active,
+.i_green.i_datePicker td.active.active,
+.i_green.i_datePicker td.active:hover.active,
+.i_green.i_datePicker td.active.disabled,
+.i_green.i_datePicker td.active:hover.disabled,
+.i_green.i_datePicker td.active[disabled],
+.i_green.i_datePicker td.active:hover[disabled] {
+    background-color: #4d7a00;
+}
+
+.i_green.i_datePicker td.active:active,
+.i_green.i_datePicker td.active:hover:active,
+.i_green.i_datePicker td.active.active,
+.i_green.i_datePicker td.active:hover.active {
+    background-color: #335101;
+}
+.i_green.i_datePicker td span.nowDate {
+    color: #77bb00;
+}
+.i_green.i_datePicker td span.active {
+    color: #fff;
+    background-color: #77bb00;
+    background-image: -moz-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#77bb00), to(#4d7a00));
+    background-image: -webkit-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: -o-linear-gradient(top, #77bb00, #4d7a00);
+    background-image: linear-gradient(to bottom, #77bb00, #4d7a00);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff77bb00', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #4d7a00 #4d7a00 #335101;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_green.i_datePicker td span.active:hover,
+.i_green.i_datePicker td span.active:active,
+.i_green.i_datePicker td span.active.active,
+.i_green.i_datePicker td span.active.disabled,
+.i_green.i_datePicker td span.active[disabled] {
+    background-color: #4d7a00;
+}
+
+.i_green.i_datePicker td span.active:active,
+.i_green.i_datePicker td span.active.active {
+    background-color: #335101;
+}
+
+
+/*自定义颜色：紫色*/
+.i_purple.i_datePicker.dropdown-menu li > a:hover{
+    background-color: #aa44ff;
+    background-image: -moz-linear-gradient(top, #aa44ff, #9056bf);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aa44ff), to(#9056bf));
+    background-image: -webkit-linear-gradient(top, #aa44ff, #9056bf);
+    background-image: -o-linear-gradient(top, #aa44ff, #9056bf);
+    background-image: linear-gradient(to bottom, #aa44ff, #9056bf);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaa44ff', endColorstr='#ff9056bf', GradientType=0)
+}
+.i_purple.i_datePicker td.nowDate{
+    color: #aa44ff;
+}
+.i_purple.i_datePicker td.active,
+.i_purple.i_datePicker td.active:hover {
+    color: #fff;
+    background-color: #aa44ff;
+    background-image: -moz-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aa44ff), to(#6516a6));
+    background-image: -webkit-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: -o-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: linear-gradient(to bottom, #aa44ff, #6516a6);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaa44ff', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #6516a6 #6516a6 #370065;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_purple.i_datePicker td.active:hover,
+.i_purple.i_datePicker td.active:hover:hover,
+.i_purple.i_datePicker td.active:active,
+.i_purple.i_datePicker td.active:hover:active,
+.i_purple.i_datePicker td.active.active,
+.i_purple.i_datePicker td.active:hover.active,
+.i_purple.i_datePicker td.active.disabled,
+.i_purple.i_datePicker td.active:hover.disabled,
+.i_purple.i_datePicker td.active[disabled],
+.i_purple.i_datePicker td.active:hover[disabled] {
+    background-color: #6516a6;
+}
+
+.i_purple.i_datePicker td.active:active,
+.i_purple.i_datePicker td.active:hover:active,
+.i_purple.i_datePicker td.active.active,
+.i_purple.i_datePicker td.active:hover.active {
+    background-color: #370065;
+}
+.i_purple.i_datePicker td span.nowDate {
+    color: #aa44ff;
+}
+.i_purple.i_datePicker td span.active {
+    color: #fff;
+    background-color: #aa44ff;
+    background-image: -moz-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#aa44ff), to(#6516a6));
+    background-image: -webkit-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: -o-linear-gradient(top, #aa44ff, #6516a6);
+    background-image: linear-gradient(to bottom, #aa44ff, #6516a6);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffaa44ff', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #6516a6 #6516a6 #370065;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_purple.i_datePicker td span.active:hover,
+.i_purple.i_datePicker td span.active:active,
+.i_purple.i_datePicker td span.active.active,
+.i_purple.i_datePicker td span.active.disabled,
+.i_purple.i_datePicker td span.active[disabled] {
+    background-color: #6516a6;
+}
+
+.i_purple.i_datePicker td span.active:active,
+.i_purple.i_datePicker td span.active.active {
+    background-color: #370065;
+}
+
+/*自定义颜色：红色*/
+.i_red.i_datePicker.dropdown-menu li > a:hover{
+    background-color: #dd4444;
+    background-image: -moz-linear-gradient(top, #dd4444, #a65050);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4444), to(#a65050));
+    background-image: -webkit-linear-gradient(top, #dd4444, #a65050);
+    background-image: -o-linear-gradient(top, #dd4444, #a65050);
+    background-image: linear-gradient(to bottom, #dd4444, #a65050);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4444', endColorstr='#ffa65050', GradientType=0)
+}
+.i_red.i_datePicker td.nowDate{
+    color: #dd4444;
+}
+.i_red.i_datePicker td.active,
+.i_red.i_datePicker td.active:hover {
+    color: #fff;
+    background-color: #dd4444;
+    background-image: -moz-linear-gradient(top, #dd4444, #901616);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4444), to(#901616));
+    background-image: -webkit-linear-gradient(top, #dd4444, #901616);
+    background-image: -o-linear-gradient(top, #dd4444, #901616);
+    background-image: linear-gradient(to bottom, #dd4444, #901616);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4444', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #901616 #901616 #730000;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_red.i_datePicker td.active:hover,
+.i_red.i_datePicker td.active:hover:hover,
+.i_red.i_datePicker td.active:active,
+.i_red.i_datePicker td.active:hover:active,
+.i_red.i_datePicker td.active.active,
+.i_red.i_datePicker td.active:hover.active,
+.i_red.i_datePicker td.active.disabled,
+.i_red.i_datePicker td.active:hover.disabled,
+.i_red.i_datePicker td.active[disabled],
+.i_red.i_datePicker td.active:hover[disabled] {
+    background-color: #901616;
+}
+
+.i_red.i_datePicker td.active:active,
+.i_red.i_datePicker td.active:hover:active,
+.i_red.i_datePicker td.active.active,
+.i_red.i_datePicker td.active:hover.active {
+    background-color: #730000;
+}
+.i_red.i_datePicker td span.nowDate {
+    color: #dd4444;
+}
+.i_red.i_datePicker td span.active {
+    color: #fff;
+    background-color: #dd4444;
+    background-image: -moz-linear-gradient(top, #dd4444, #901616);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dd4444), to(#901616));
+    background-image: -webkit-linear-gradient(top, #dd4444, #901616);
+    background-image: -o-linear-gradient(top, #dd4444, #901616);
+    background-image: linear-gradient(to bottom, #dd4444, #901616);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffdd4444', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #901616 #901616 #730000;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_red.i_datePicker td span.active:hover,
+.i_red.i_datePicker td span.active:active,
+.i_red.i_datePicker td span.active.active,
+.i_red.i_datePicker td span.active.disabled,
+.i_red.i_datePicker td span.active[disabled] {
+    background-color: #901616;
+}
+
+.i_red.i_datePicker td span.active:active,
+.i_red.i_datePicker td span.active.active {
+    background-color: #730000;
+}
+
+
+/*自定义颜色：橙色*/
+.i_orange.i_datePicker.dropdown-menu li > a:hover{
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(top, #faa732, #bb8d4b);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#faa732), to(#bb8d4b));
+    background-image: -webkit-linear-gradient(top, #faa732, #bb8d4b);
+    background-image: -o-linear-gradient(top, #faa732, #bb8d4b);
+    background-image: linear-gradient(to bottom, #faa732, #bb8d4b);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffaa732', endColorstr='#ffbb8d4b', GradientType=0)
+}
+.i_orange.i_datePicker td.nowDate{
+    color: #faa732;
+}
+.i_orange.i_datePicker td.active,
+.i_orange.i_datePicker td.active:hover {
+    color: #fff;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(top, #faa732, #a36610);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#faa732), to(#a36610));
+    background-image: -webkit-linear-gradient(top, #faa732, #a36610);
+    background-image: -o-linear-gradient(top, #faa732, #a36610);
+    background-image: linear-gradient(to bottom, #faa732, #a36610);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffaa732', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #a36610 #a36610 #7a4801;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_orange.i_datePicker td.active:hover,
+.i_orange.i_datePicker td.active:hover:hover,
+.i_orange.i_datePicker td.active:active,
+.i_orange.i_datePicker td.active:hover:active,
+.i_orange.i_datePicker td.active.active,
+.i_orange.i_datePicker td.active:hover.active,
+.i_orange.i_datePicker td.active.disabled,
+.i_orange.i_datePicker td.active:hover.disabled,
+.i_orange.i_datePicker td.active[disabled],
+.i_orange.i_datePicker td.active:hover[disabled] {
+    background-color: #a36610;
+}
+
+.i_orange.i_datePicker td.active:active,
+.i_orange.i_datePicker td.active:hover:active,
+.i_orange.i_datePicker td.active.active,
+.i_orange.i_datePicker td.active:hover.active {
+    background-color: #7a4801;
+}
+.i_orange.i_datePicker td span.nowDate {
+    color: #faa732;
+}
+.i_orange.i_datePicker td span.active {
+    color: #fff;
+    background-color: #faa732;
+    background-image: -moz-linear-gradient(top, #faa732, #a36610);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#faa732), to(#a36610));
+    background-image: -webkit-linear-gradient(top, #faa732, #a36610);
+    background-image: -o-linear-gradient(top, #faa732, #a36610);
+    background-image: linear-gradient(to bottom, #faa732, #a36610);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffaa732', endColorstr='#ff0044cc', GradientType=0);
+    border-color: #a36610 #a36610 #7a4801;
+    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+.i_orange.i_datePicker td span.active:hover,
+.i_orange.i_datePicker td span.active:active,
+.i_orange.i_datePicker td span.active.active,
+.i_orange.i_datePicker td span.active.disabled,
+.i_orange.i_datePicker td span.active[disabled] {
+    background-color: #a36610;
+}
+
+.i_orange.i_datePicker td span.active:active,
+.i_orange.i_datePicker td span.active.active {
+    background-color: #7a4801;
 }
