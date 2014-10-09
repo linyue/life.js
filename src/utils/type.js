@@ -5,7 +5,7 @@ define(function(require, exports, module) {
      *
      * @param object obj 要获取类型的变量
      * @return string value
-     * @author elianlin@tencent.com
+     * @author adam[linyue@live.cn]
      * @time 2013-11-17
      */
 
@@ -13,12 +13,12 @@ define(function(require, exports, module) {
 
     var type = function (obj) {
  
-        // handle null in old IE
+        //判断null
         if (obj === null) {
             return 'null';
         }
      
-        // handle DOM elements
+        //判断 DOM elements
         if (obj && (obj.nodeType === 1 || obj.nodeType === 9)) {
             return 'element';
         }
@@ -26,7 +26,7 @@ define(function(require, exports, module) {
         var s = Object.prototype.toString.call(obj);
         var type = s.match(/\[object (.*?)\]/)[1].toLowerCase();
      
-        // handle NaN and Infinity
+        //判断 NaN 和 Infinity
         if (type === 'number') {
             if (isNaN(obj)) {
                 return 'nan';

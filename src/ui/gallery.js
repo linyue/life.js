@@ -21,7 +21,7 @@ define(function (require, exports, module) {
             id: '',                         //容器 DOM 节点 ID
             width: '',                      //宽度
             height: '',                     //高度
-            data: [],                       //组件数据,数据格式：[{url: '',link: '',title: '图片一',des: '我是图片一'}]
+            data: [],                       //组件数据,数据格式：[{url: '',link: '',title: '图片一',des: '我是图片一',target:'_blank'}]
             animate: 'toggle',              //切换效果,可选值有：toggle， fade， slide， scroll
             navTheme: 'none',               //导航风格,可选值有：none， point， number， line
             direction: 'left',              //切换方向,可选值有：top，bottom， left， right
@@ -33,8 +33,8 @@ define(function (require, exports, module) {
             thumbsLayout: 'bottom',         //缩略图布局,可选值有：none， top， bottom， left， right
             navLayout: 'bottom',            //导航布局，可选值有：top， bottom
             infoLayout: 'bottom',           //图片信息布局，可选值有：top， bottom
-            zIndex: 1,                      //起如zIndex
-            isLoop: false,                  //是否循环播放
+            zIndex: 1,                      //起始zIndex
+            isLoop: true,                   //是否循环播放
             isShowPN: true,                 //是否显示上一页和下一页按钮
             isShowTitle: true,              //是否显示标题
             isShowDes: true,                //是否显示描述内容
@@ -443,6 +443,7 @@ define(function (require, exports, module) {
 
         autoPlay: function(){
             var self = this;
+            console.log(111)
             if(self.options.interval != 0){
                 self.playInterval = setInterval(function(){
                     self.setCurImg(self.curImg + 1);

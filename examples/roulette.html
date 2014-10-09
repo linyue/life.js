@@ -8,33 +8,115 @@
         <script src="../src/setup.js"></script>
     </head>
     <body>
-        <div id="roulette">
+        <h1>大转盘</h1>
+        <ul>
+            <li>
+                <h2>图片型</h2>
+                <div id="roulette_image">
 
-        </div>
+                </div>
+            </li>
+            <li>
+                <h2>文字型</h2>
+                <div id="roulette_font">
+
+                </div>
+            </li>
+        </ul>
+
         <script>
-                var options = {
-                    id: 'roulette',
-                    data: [{
-                        grade : 1,
-                        name : '一等奖',
-                        img : '../../res/img/roulette/one.png'
-                    },{
-                        grade : 2,
-                        name : '二等奖',
-                        img : '../../res/img/roulette/two.png'
-                    },{
-                        grade : 3,
-                        name : '三等奖',
-                        img : '../../res/img/roulette/three.png'
-                    }],
-                    thanksImg: '../../res/img/roulette/thanks.png',
-                    onCheckDraw: function(){},
-                    onDraw: function(){},
-                    type: 'image',
-                    exClass: ''
-                }
+            var prize = [{
+                grade : 1,
+                name : '一等奖',
+                img : '../../res/img/roulette/one.png'
+            },{
+                grade : 2,
+                name : '二等奖',
+                img : '../../res/img/roulette/two.png'
+            },{
+                grade : 3,
+                name : '三等奖',
+                img : '../../res/img/roulette/three.png'
+            }];
 
-                life.roulette(options);
+            var resultArr = [{
+                grade: 0,
+                msg: '很遗憾，您没有中奖'
+            },{
+                grade: 1,
+                msg: '恭喜您抽中一等奖'
+            },{
+                grade: 2,
+                msg: '恭喜您抽中二等奖'
+            },{
+                grade: 3,
+                msg: '恭喜您抽中三等奖'
+            }]
+
+            var checkArr = [{
+                code: -1,
+                msg: '您没有抽奖资格'
+            },{
+                code: 0,
+                msg: '允许抽奖'
+            }]
+
+            var options1 = {
+                query: '#roulette_image',
+                data: prize,
+                thanksImg: '../../res/img/roulette/thanks.png',
+                type: 'image',
+                exClass: '',
+                checkDraw: function(){
+                    return checkArr[parseInt(Math.random() * 1000) % 2]
+                },
+                draw: function(){
+                    return {
+                        code: 0,
+                        msg: '抽奖成功',
+                        data: resultArr[parseInt(Math.random() * 1000) % 4]
+                    }
+                },
+                onReady: function(){
+                    console.log('加载完成！');
+                },
+                onError: function(msg){
+                    alert(msg)
+                },
+                onSuccess: function(drawResult){
+                    alert(drawResult.msg)
+                }
+            }
+
+            life.roulette(options1);
+
+            var options2 = {
+                query: '#roulette_font',
+                data: prize,
+                thanksImg: '../../res/img/roulette/thanks.png',
+                type: 'font',
+                exClass: '',
+                checkDraw: function(){
+                    return checkArr[parseInt(Math.random() * 1000) % 2]
+                },
+                draw: function(){
+                    return {
+                        code: 0,
+                        msg: '抽奖成功',
+                        data: resultArr[parseInt(Math.random() * 1000) % 4]
+                    }
+                },
+                onReady: function(){
+                    console.log('加载完成！');
+                },
+                onError: function(msg){
+                    alert(msg)
+                },
+                onSuccess: function(drawResult){
+                    alert(drawResult.msg)
+                }
+            }
+            life.roulette(options2);
         </script>
     </body>
 </html>

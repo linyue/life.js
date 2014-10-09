@@ -44,7 +44,7 @@ define(function (require, exports, module) {
 
         var surl = url + (url.indexOf("?") > 0 ? '&' : '?') + s.join('&');
 
-        window['i-report'] = new Image;
+        window['i-report'] = new Image();
         window['i-report'].src = surl;
     }
 

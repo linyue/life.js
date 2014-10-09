@@ -11,16 +11,12 @@ define(function (require, exports, module) {
     var $ = require('$');
     var Class = require('Class');
 
-    require('baseCss');
-    var dialogCss = require('res/css/dialog.css');
-    console.log(dialogCss)
-
     var Dialog = Class.extend({
         //可配置参数
         options: {
             id: null,                       //浮层ID
             width: 400,                     //浮层的宽
-            height: 300,                    //浮层的高
+            height: 'auto',                 //浮层的高
             title: '',                      //浮层标题
             content: '',                    //浮层内容
             btns: [],                       //定义浮层按钮,结构：{text: '确定', class: 'submitBtn', callback:function(){}}
@@ -29,7 +25,7 @@ define(function (require, exports, module) {
             onOpenAfter: function(){},      //浮层打开后的事件
             onCloseBefore: function(){},    //关闭浮层前触发的事件
             onCloseAfter: function(){},     //关闭浮层后触发的事件
-            timeout: 0,                     //自动关闭时间，单位为毫秒，设0为不关闭
+            timeout: 0,                     //自动关闭时间，单位为秒，设0为不关闭
             exClass: '',                    //附加的 class
             theme: 'default',               //样式主题，可设置项有：default、bootstrap、metro
             skin: 'grey',                   //主题颜色，可设置项有：grey、red、blue、green、orange、purple
@@ -41,8 +37,8 @@ define(function (require, exports, module) {
             zIndex: 10000,                  //浮层的层级
             isMask: true,                   //是否显示浮层
             isFixed: true,                  //是否fixed定否
-            isShowColseBtn: true,           //是否显示关闭按钮
-            isMaskColse: true,              //是否点击遮罩就关闭浮层
+            isShowCloseBtn: true,           //是否显示关闭按钮
+            isMaskClose: false,              //是否点击遮罩就关闭浮层
             isKeyControl: true              //是否开启esc快捷键关闭浮层
         },
 
@@ -51,12 +47,13 @@ define(function (require, exports, module) {
         doc: null,
         container: null,
         content: null,
+        contentBar: null,
         mask: null,
 
         show: {
             titleBar: true,
             btnsBar: true,
-            colseBtn: true
+            closeBtn: true
         },
 
         init: function (options) {
@@ -82,8 +79,8 @@ define(function (require, exports, module) {
             }
 
             this.setShow();
-            this.setStype();
             this.render();
+            this.setStyle();
             this.bindEvent();
             this.container.append(this.content);
             this.setLayout();
@@ -145,11 +142,21 @@ define(function (require, exports, module) {
         },
 
         insertCss: function(){
-            var baseCss = '<link charset="utf-8" rel="stylesheet" href="http://www.life.com:8080/res/css/base.css">';
-            var dialogCss = '<link charset="utf-8" rel="stylesheet" href="http://www.life.com:8080/res/css/dialog.css">';
+            var self = this;
 
-            this.doc.find("head").append(baseCss).append(dialogCss);
+            var baseCss = seajs.data.paths.res + '/css/base.css';
+            var dialogCss = seajs.data.paths.res + '/css/dialog.css';
 
+            var baseCssStyle = '<link charset="utf-8" rel="stylesheet" href="' + baseCss + '">';
+            var dialogCssStyle = '<link charset="utf-8" rel="stylesheet" href="' + dialogCss + '">';
+
+            if(self.doc.find("link[href='" + baseCss + "']").length == 0){
+                self.doc.find("head").append(baseCssStyle);
+            }
+
+            if(self.doc.find("link[href='" + dialogCss + "']").length == 0){
+                self.doc.find("head").append(dialogCssStyle);
+            }
         },
 
         setShow: function () {
@@ -163,31 +170,35 @@ define(function (require, exports, module) {
                 this.show.btnsBar = false;
             }
 
-            this.show.colseBtn = options.isShowColseBtn && true;
+            this.show.closeBtn = options.isShowCloseBtn && true;
         },
 
         //设置样式
-        setStype: function () {
-            var options = this.options;
+        setStyle: function () {
+            var self = this;
+            var options = self.options;
 
             //设置主题风格样式
-            this.content.addClass('i_' + this.options.theme);
+            self.content.addClass('i_' + this.options.theme);
 
             //设置主题颜色
-            this.content.addClass('i_' + this.options.skin);
+            self.content.addClass('i_' + this.options.skin);
 
             //设置扩展类
-            if (this.options.exClass) {
-                this.content.addClass(this.options.exClass);
+            if (self.options.exClass) {
+                self.content.addClass(this.options.exClass);
             }
 
-            this.content.css({
-                width: options.width,
-                height: isNaN(options.height) ? options.height : options.height + 'px',
+            self.content.css({
                 zIndex: options.zIndex
             });
 
-            this.setLayout();
+            self.contentBar.css({
+                width: options.width,
+                height: isNaN(options.height) ? options.height : options.height + 'px'
+            })
+
+            self.setLayout();
         },
 
         //设置定位
@@ -195,8 +206,8 @@ define(function (require, exports, module) {
             var options = this.options;
             var winWidth = this.win.width();
             var winHeight = this.win.height();
-            var dialogWidth = this.content.width();
-            var dialogHeight = this.content.height();
+            var dialogWidth = this.content.width() + 2;
+            var dialogHeight = this.content.height() + 2;
 
             var position = {
                 position: options.isFixed ? 'fixed' : 'absolute',
@@ -237,28 +248,28 @@ define(function (require, exports, module) {
                 });
             }
 
-            if (self.mask && options.isMaskColse) {
+            //点击浮层关闭
+            if (self.mask && options.isMaskClose) {
                 self.mask.click(function () {
-                    self.colse();
+                    self.close();
                 })
             }
 
+            //esc快捷键关闭
             if (options.isKeyControl) {
                 $(window).bind('keydown', function (event) {
-                    switch (event.keyCode) {
-                        case 27:
-                            self.colse();
-                            break;
+                    if(event.keyCode == 27){
+                        self.close();
                     }
                 })
             }
 
+            //自动关闭
             if(options.timeout > 0){
                 setTimeout(function(){
-                    self.colse();
-                }, options.timeout)
+                    self.close();
+                }, options.timeout * 1000)
             }
-
         },
 
         //渲染组件
@@ -277,26 +288,26 @@ define(function (require, exports, module) {
                 content.append(titleBar);
             }
 
-            if (show.colseBtn) {
-                var colseBtn = $("<a>").text("×").addClass("i_colseBtn").click(function () {
-                    self.colse();
+            if (show.closeBtn) {
+                var closeBtn = $("<a>").text("×").addClass("i_closeBtn").click(function () {
+                    self.close();
                 })
 
                 if (options.theme == "metro") {
-                    colseBtn.addClass("i_btn");
+                    closeBtn.addClass("i_btn");
                 }
 
                 if (show.titleBar) {
-                    colseBtn.appendTo(titleBar);
+                    closeBtn.appendTo(titleBar);
                 } else {
-                    colseBtn.appendTo(content);
+                    closeBtn.appendTo(content);
                 }
             }
 
-            var contentBar = $("<div>").html(options.content).addClass("i_dialogContent").css({
+            self.contentBar = $("<div>").html(options.content).addClass("i_dialogContent").css({
                 padding: options.padding
             });
-            content.append(contentBar);
+            content.append(self.contentBar);
 
             if (show.btnsBar) {
                 var btnsBar = $("<div>").addClass("i_dialogBtns");
@@ -305,7 +316,7 @@ define(function (require, exports, module) {
                         $("<a>").addClass("i_btn").addClass(options.btns[i].class).text(options.btns[i].text).click(function () {
                             var rs = options.btns[i].callback();
                             if(rs || typeof rs == "undefined"){
-                                self.colse();
+                                self.close();
                             };
                         }).appendTo(btnsBar);
                     }(i));
@@ -314,7 +325,7 @@ define(function (require, exports, module) {
             }
         },
 
-        colse: function () {
+        close: function () {
             //触发关闭前事件
             if (this.options.onCloseBefore) {
                 this.options.onCloseBefore();

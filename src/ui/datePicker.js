@@ -33,8 +33,6 @@ define(function (require, exports, module) {
             this.component = false;
             this.showStatus = false;
 
-            console.log(this.options)
-
             if (this.$element.find('.input-append') || this.$element.find('.input-prepend')){
                 this.component = this.$element.find('.i_datePicker_input_icon');
             }

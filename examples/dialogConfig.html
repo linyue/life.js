@@ -5,8 +5,8 @@
     	<title>Demo - Dialog</title>
         <script src="../src/setup.js"></script>
   	</head>
-  	<body>
-    <h1>示例：分页组件【life.dialog()】</h1>
+  	<body style="background: #ffe8f5;">
+    <h1>示例：对话框组件【life.dialog()】</h1>
     <ul>
         <li>
             <label for="id">id:</label>
@@ -18,7 +18,7 @@
         </li>
         <li>
             <label for="height">height:</label>
-            <input id="height" type="text" value="400">
+            <input id="height" type="text" value="auto">
         </li>
         <li>
             <label for="title">title:</label>
@@ -30,7 +30,7 @@
         </li>
         <li>
             <label for="btns">btns:</label>
-            <input id="btns" type="text" value="[{text: '确定', callback: function(){alert('我是确定按钮，我被点击了！'); return false;}}, {text: '取消', callback: function(){alert('我是取消按钮，我被点击了，马上要关闭浮层！');}}]">
+            <input id="btns" type="text" value="[{text: '确定', callback: function(){alert('我是确定按钮，我被点击了！返回值是false,将不关闭。'); return false;}}, {text: '取消', callback: function(){alert('我是取消按钮，我被点击了，马上要关闭浮层！');}}]">
         </li>
         <li>
             <label>target:</label>
@@ -112,14 +112,14 @@
             <input type="radio" name="isMask" value="false"> 隐藏
         </li>
         <li>
-            <label>isShowColseBtn:</label>
-            <input type="radio" name="isShowColseBtn" value="true" checked="checked"> 显示
-            <input type="radio" name="isShowColseBtn" value="false"> 隐藏
+            <label>isShowCloseBtn:</label>
+            <input type="radio" name="isShowCloseBtn" value="true" checked="checked"> 显示
+            <input type="radio" name="isShowCloseBtn" value="false"> 隐藏
         </li>
         <li>
-            <label>isMaskColse:</label>
-            <input type="radio" name="isMaskColse" value="true" checked="checked"> 开启
-            <input type="radio" name="isMaskColse" value="false"> 关闭
+            <label>isMaskClose:</label>
+            <input type="radio" name="isMaskClose" value="true"> 开启
+            <input type="radio" name="isMaskClose" value="false" checked="checked"> 关闭
         </li>
         <li>
             <label>isKeyControl:</label>
@@ -129,6 +129,7 @@
     </ul>
 
     <a id="dialog">弹出</a>
+
     <script>
         seajs.use(['$'],function($){
             $("#dialog").click(function(){
@@ -156,8 +157,8 @@
                     zIndex: $("#zIndex").val(),
                     isFixed: $("input[name='isFixed']:checked").val() == "true",
                     isMask: $("input[name='isMask']:checked").val() == "true",
-                    isShowColseBtn: $("input[name='isShowColseBtn']:checked").val() == "true",
-                    isMaskColse: $("input[name='isMaskColse']:checked").val() == "true",
+                    isShowCloseBtn: $("input[name='isShowCloseBtn']:checked").val() == "true",
+                    isMaskClose: $("input[name='isMaskClose']:checked").val() == "true",
                     isKeyControl: $("input[name='isKeyControl']:checked").val() == "true"
                 }
                 life.dialog(options)

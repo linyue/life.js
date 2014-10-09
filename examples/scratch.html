@@ -11,13 +11,13 @@
                 margin: 0;
                 padding: 0;
             }
-            #scratchCard{
+            .scratchCard{
                 width: 280px;
                 height: 263px;
                 background: url(http://appmedia.qq.com/media/act/631007094/20140114v1/styles/h5/img/prize-bg.png) no-repeat;
                 position: relative;
             }
-            #scratch{
+            #scratch1{
                 width: 150px;
                 height: 40px;
                 position: absolute;
@@ -25,97 +25,133 @@
                 top: 150px;
                 overflow: hidden;
             }
+            #scratch2{
+                width: 150px;
+                height: 150px;
+                position: absolute;
+                overflow: hidden;
+            }
         </style>
     </head>
     <body>
-        <div id="scratchCard">
-            <div id="scratch">
+        <h1>刮刮乐抽奖</h1>
+        <ul>
+            <li>
+                <h2>文字型</h2>
+                <div class="scratchCard">
+                    <div id="scratch1">
 
-            </div>
-        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <h2>图片型</h2>
+                <div style="position: relative;">
+                    <div id="scratch2">
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+
         <script>
-            seajs.use(['$'],function($){
-                var options = {
-                    id: 'scratch',
-                    width: 150,
-                    height: 40,
-                    onDraw: function(){},
-                    onSuccess: function(){},
-                    exClass: ''
+            var prize = [{
+                grade : 1,
+                name : '一等奖',
+                img : '../../res/img/roulette/one.png'
+            },{
+                grade : 2,
+                name : '二等奖',
+                img : '../../res/img/roulette/two.png'
+            },{
+                grade : 3,
+                name : '三等奖',
+                img : '../../res/img/roulette/three.png'
+            }];
+
+            var resultArr = [{
+                grade: 0,
+                msg: '很遗憾，您没有中奖'
+            },{
+                grade: 1,
+                msg: '恭喜您抽中一等奖'
+            },{
+                grade: 2,
+                msg: '恭喜您抽中二等奖'
+            },{
+                grade: 3,
+                msg: '恭喜您抽中三等奖'
+            }]
+
+            var checkArr = [{
+                code: -1,
+                msg: '您没有抽奖资格'
+            },{
+                code: 0,
+                msg: '允许抽奖'
+            }]
+
+            var options1 = {
+                query: '#scratch1',
+                data: prize,
+                width: 150,
+                height: 40,
+                type: 'font',
+                exClass: '',
+                checkDraw: function(){
+                    return checkArr[parseInt(Math.random() * 1000) % 2]
+                },
+                draw: function(){
+                    return {
+                        code: 0,
+                        msg: '抽奖成功',
+                        data: resultArr[parseInt(Math.random() * 1000) % 4]
+                    }
+                },
+                onReady: function(){
+                    console.log('加载完成！');
+                },
+                onError: function(msg){
+                    alert(msg)
+                },
+                onSuccess: function(drawResult){
+                    alert(drawResult.msg)
                 }
+            }
 
-                life.scratch(options);
+            life.scratch(options1);
 
-                var scratch = function(){
-
-                    var canvasNode = $(".i_scratch_canvas");
-                    var canvas = canvasNode[0];
-
-                    var context;
-                    var width = canvasNode.width();
-                    var height = canvasNode.height();
-                    var offsetX = canvasNode.offset().left;
-                    var offsetY = canvasNode.offset().top;
-                    var mousedown = false;
-
-                    function layer(context) {
-                        context.fillStyle = 'gray';
-                        context.fillRect(0, 0, width, height);
+            var options2 = {
+                query: '#scratch2',
+                data: prize,
+                width: 150,
+                height: 150,
+                type: 'image',
+                exClass: '',
+                checkDraw: function(){
+                    return checkArr[1]
+                    return checkArr[parseInt(Math.random() * 1000) % 2]
+                },
+                draw: function(){
+                    return {
+                        code: 0,
+                        msg: '抽奖成功',
+                        data: resultArr[parseInt(Math.random() * 1000) % 4],
+                        data: resultArr[2]
                     }
-
-                    function eventDown(e){
-                        e.preventDefault();
-                        mousedown=true;
-                    }
-
-                    function eventUp(e){
-                        e.preventDefault();
-                        mousedown = false;
-                        var data=context.getImageData(0, 0, width, height).data;
-                        for(var i=0,j=0;i<data.length;i+=4){
-                            if(data[i] && data[i+1] && data[i+2] && data[i+3]){
-                                j++;
-                            }
-                        }
-                        if(j <= width * height * 0.6){
-                            alert('ok');
-                        }
-                    }
-
-                    function eventMove(e){
-                        e.preventDefault();
-                        if(mousedown) {
-                            if(e.changedTouches){
-                                e = e.changedTouches[e.changedTouches.length-1];
-                            }
-                            var x = (e.clientX + document.body.scrollLeft || e.pageX) - offsetX || 0;
-                            var y = (e.clientY + document.body.scrollTop || e.pageY) - offsetY || 0;
-                            with(context) {
-                                beginPath();
-                                arc(x, y, 5, 0, Math.PI * 2);
-                                fill();
-                            }
-                        }
-                    }
-
-                    canvas.width=width;
-                    canvas.height=height;
-                    context=canvas.getContext('2d');
-                    context.fillStyle='transparent';
-                    context.fillRect(0, 0, width, height);
-                    layer(context);
-
-                    context.globalCompositeOperation = 'destination-out';
-
-                    canvas.addEventListener('touchstart', eventDown);
-                    canvas.addEventListener('touchend', eventUp);
-                    canvas.addEventListener('touchmove', eventMove);
-                    canvas.addEventListener('mousedown', eventDown);
-                    canvas.addEventListener('mouseup', eventUp);
-                    canvas.addEventListener('mousemove', eventMove);
+                },
+                onReady: function(){
+                    console.log('加载完成！');
+                },
+                onError: function(msg){
+                    alert(msg)
+                },
+                onSuccess: function(drawResult){
+                    alert(drawResult.msg)
                 }
-//                scratch();
-            })
+            }
+
+            life.scratch(options2);
         </script>
     </body>
 </html>

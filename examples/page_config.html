@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+  	<head>
+    	<meta charset="utf-8">
+    	<title>Demo - Page</title>
+      <script src="../src/setup.js"></script>
+  	</head>
+  	<body>
+    <h1>示例：分页组件【life.page()】</h1>
+    <div>
+        <h2>参数配置</h2>
+        <p>
+            <a href="page.html">一览</a>
+        </p>
+        <ul id="defineParams">
+            <li>
+                <label for="query">query：</label>
+                <input id="query" name="query" type="text" value="#page" readonly="readonly">
+            </li>
+            <li>
+                <label for="funName">funName:</label>
+                <input id="funName" name="funName" type="text" value="getList" readonly="readonly">
+            </li>
+            <li>
+                <label for="curPage">curPage:</label>
+                <input id="curPage" name="curPage" type="text" value="3">
+            </li>
+            <li>
+                <label for="totalItem">totalItem:</label>
+                <input id="totalItem" name="totalItem" type="text" value="198">
+            </li>
+            <li>
+                <label for="pageSize">pageSize:</label>
+                <input id="pageSize" name="pageSize" type="text" value="20">
+            </li>
+            <li>
+                <label for="exClass">exClass:</label>
+                <input id="exClass" name="exClass" type="text" value="myPage">
+            </li>
+            <li>
+                <label for="exParams">exParams:</label>
+                <input id="exParams" name="exParams" type="text" value="{a:123, b: 456}">
+            </li>
+            <li>
+                <label>type:</label>
+                <input type="radio" name="type" value="normal" checked="checked"> normal
+                <input type="radio" name="type" value="number"> number
+                <input type="radio" name="type" value="simple"> simple
+                <input type="radio" name="type" value="mail"> mail
+            </li>
+            <li>
+                <label>theme:</label>
+                <input type="radio" name="theme" value="default" checked="checked"> default
+                <input type="radio" name="theme" value="bootstrap"> bootstrap
+                <input type="radio" name="theme" value="metro"> metro
+            </li>
+            <li>
+                <label>skin:</label>
+                <input type="radio" name="skin" value="grey" checked="checked"> grey
+                <input type="radio" name="skin" value="red"> red
+                <input type="radio" name="skin" value="blue"> blue
+                <input type="radio" name="skin" value="green"> green
+                <input type="radio" name="skin" value="orange"> orange
+                <input type="radio" name="skin" value="purple"> purple
+            </li>
+            <li>
+                <label>align:</label>
+                <input type="radio" name="align" value="left"> left
+                <input type="radio" name="align" value="center" checked="checked"> center
+                <input type="radio" name="align" value="right"> right
+            <li>
+                <label for="pageLimit">pageLimit:</label>
+                <input id="pageLimit" name="pageLimit" type="text" value="20">
+            </li>
+            <li>
+                <label for="sizeList">sizeList:</label>
+                <input id="sizeList" name="sizeList" type="text" value="[10, 20, 30, 50, 100]">
+            </li>
+            <li>
+                <label>isShowSize:</label>
+                <input type="radio" name="isShowSize" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowSize" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isShowInfo:</label>
+                <input type="radio" name="isShowInfo" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowInfo" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isShowFE:</label>
+                <input type="radio" name="isShowFE" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowFE" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isShowPN:</label>
+                <input type="radio" name="isShowPN" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowPN" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isShowNum:</label>
+                <input type="radio" name="isShowNum" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowNum" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isShowSkip:</label>
+                <input type="radio" name="isShowSkip" value="true" checked="checked"> 显示
+                <input type="radio" name="isShowSkip" value="false"> 隐藏
+            </li>
+            <li>
+                <label>isKeyControl:</label>
+                <input type="radio" name="isKeyControl" value="true" checked="checked"> 开启
+                <input type="radio" name="isKeyControl" value="false"> 关闭
+            </li>
+        </ul>
+    </div>
+    <div>
+        <h2>预览</h2>
+        <div id="preview">
+            <div id="page"> </div>
+        </div>
+    </div>
+    <script>
+        seajs.use(['$'],function($){
+            window.getList = function(curPage, pageSize){
+                //这里进行后台数据拉取
+                var options = {
+                    query: $("#query").val(),
+                    funName: $("#funName").val(),
+                    curPage: curPage,
+                    totalItem: $("#totalItem").val(),
+                    pageSize: pageSize,
+                    exClass: $("#exClass").val(),
+                    exParams: eval("(" + $("#exParams").val() + ")" ),
+                    type: $("input[name='type']:checked").val(),
+                    theme: $("input[name='theme']:checked").val(),
+                    skin: $("input[name='skin']:checked").val(),
+                    align: $("input[name='align']:checked").val(),
+                    pageLimit: $("#pageLimit").val(),
+                    sizeList: eval("(" + $("#sizeList").val() + ")" ),
+                    isShowSize: $("input[name='isShowSize']:checked").val() == "true",
+                    isShowInfo: $("input[name='isShowInfo']:checked").val() == "true",
+                    isShowFE: $("input[name='isShowFE']:checked").val() == "true",
+                    isShowPN: $("input[name='isShowPN']:checked").val() == "true",
+                    isShowNum: $("input[name='isShowNum']:checked").val() == "true",
+                    isShowSkip: $("input[name='isShowSkip']:checked").val() == "true",
+                    isKeyControl: $("input[name='isKeyControl']:checked").val() == "true"
+                };
+                console.log(options);
+                life.page(options);
+            }
+            getList($("#curPage").val(), $("#pageSize").val());
+            $("#defineParams input").change(function(){
+                getList($("#curPage").val(), $("#pageSize").val());
+            });
+        })
+    </script>
+  	</body>
+</html>

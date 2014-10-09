@@ -334,10 +334,12 @@
     display: inline-block;
 }
 .simditor .simditor-wrapper .simditor-placeholder {
-    padding: 15px;
+    padding: 10px;
+    font-size: 14px;
+    line-height: 1em;
 }
 .simditor .simditor-body {
-    padding: 15px;
+    padding: 10px;
 }
 .simditor .simditor-toolbar > ul {
     width: 2000px;

@@ -39,8 +39,8 @@
             </li>
             <li>
                 <label>theme:</label>
-                <input type="radio" name="theme" value="normal" checked="checked"> normal
-                <input type="radio" name="theme" value="button"> button
+                <input type="radio" name="theme" value="normal"> normal
+                <input type="radio" name="theme" value="button" checked="checked"> button
                 <input type="radio" name="theme" value="line"> line
             </li>
             <li>
@@ -89,18 +89,20 @@
                         data: [{
                             url: 'http://www.qq.com',
                             name: '首页',
-                            isActive: true
+                            isActive: true,
+                            target: '_blank'
                         },{
                             url: 'http://jslib.qq.com',
-                            name: '菜单二'
+                            name: '菜单二',
+                            target: '_blank'
                         },{
-                            url: 'http://kuai.qq.com',
+                            url: 'http://www.baidu.com',
                             name: '菜单三'
                         },{
-                            url: 'http://kuai.qq.com',
+                            url: 'http://www.xiaoman.cn',
                             name: '菜单四'
                         },{
-                            url: 'http://kuai.qq.com',
+                            url: 'http://b2b.xiaoman.cn',
                             name: '菜单五'
                         }],
                         theme: $("input[name='theme']:checked").val(),
@@ -112,6 +114,7 @@
                     }
                     life.mobileNav(options);
                 }
+
                 $("#defineParams input").change(function(){
                     mobileNav();
                 });

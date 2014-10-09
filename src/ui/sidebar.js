@@ -285,11 +285,8 @@ define(function (require, exports, module) {
                         width: options.width,
                         height: $(window).height(),
                         border: 'none'
-                    }).hide();
+                    });
 
-                    content.load(function(){
-                        content.show();
-                    })
                     break;
             }
 

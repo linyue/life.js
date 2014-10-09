@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  	<head>
+    	<meta charset="utf-8">
+    	<title>Demo - qrcode</title>
+        <script src="../src/setup.js"></script>
+        <style>
+            a{
+                cursor: pointer;
+            }
+            input[type='text']{
+                width: 200px;
+            }
+        </style>
+  	</head>
+  	<body>
+        <h1>二维码组件</h1>
+        <label for="content">内容 ：</label>
+        <input type="text" id="content" value="测试内容:abc123">
+        <br />
+        <br />
+        <label for="logoImg">Logo ：</label>
+        <input type="text" id="logoImg" value="img/logo.png">
+        <br />
+        <br />
+        <label for="width">width ：</label>
+        <input type="width" id="width" value="200">
+        <br />
+        <br />
+        <label for="height">height ：</label>
+        <input type="text" id="height" value="200">
+        <br />
+        <br />
+        <label>颜色 ：</label>
+        <input type="radio" name="skin" value="grey" checked="checked"> grey
+        <input type="radio" name="skin" value="red"> red
+        <input type="radio" name="skin" value="blue"> blue
+        <input type="radio" name="skin" value="green"> green
+        <input type="radio" name="skin" value="orange"> orange
+        <input type="radio" name="skin" value="purple"> purple
+        <br />
+        <br />
+        <a id="e_qrcode">生成二维码</a>
+        <br />
+        <br />
+        <div id="qrcode_img">
+
+        </div>
+    	<script>
+
+            seajs.use(['$'], function($){
+                var init = function(){
+                    life.qrcode({
+                        query: '#qrcode_img',
+                        width: $("#width").val(),
+                        height: $("#height").val(),
+                        content: $("#content").val(),
+                        skin: $("input[name='skin']:checked").val(),
+                        logoImg: $("#logoImg").val(),
+                        callback: function(){
+                            console.log('渲染完成')
+                        }
+                    })
+                }
+                $("input").change(init);
+                init();
+            })
+     	</script>
+  	</body>
+</html>

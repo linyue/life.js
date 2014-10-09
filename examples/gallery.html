@@ -6,12 +6,10 @@
         <script src="../src/setup.js"></script>
 	</head>
 	<body style="height: 700px;padding: 30px;">
-    <p><a href="tel:10086">拨打10086 </a></p>
-    <p><a href="sms:10086;">将10086存储至德律风簿 </a></p>
     <ul id="defineParams">
             <li>
                 <label for="id">id:</label>
-                <input id="id" type="text" value="gallery" readonly="readonly">
+                <input id="id" type="text" disabled="disabled" value="gallery" readonly="readonly">
             </li>
             <li>
                 <label for="width">width:</label>
@@ -23,19 +21,19 @@
             </li>
             <li>
                 <label for="interval">interval:</label>
-                <input id="interval" type="text" value="2000">
+                <input id="interval" type="text" value="2">
             </li>
             <li>
                 <label for="callback">callback:</label>
-                <input id="callback" name="callback" type="text" value="function(files){console.log('我是回调函数');console.log(gallery)}">
+                <input id="callback" name="callback" type="text" value="function(){console.log('我是回调函数');}">
             </li>
             <li>
                 <label for="onToggleBefore">onToggleAfter:</label>
-                <input id="onToggleBefore" name="onToggleBefore" type="text" value="function(files){console.log('我是切换前的回调函数');console.log(gallery)}">
+                <input id="onToggleBefore" name="onToggleBefore" type="text" value="function(){console.log('我是切换前的回调函数');}">
             </li>
             <li>
                 <label for="onToggleAfter">onToggleAfter:</label>
-                <input id="onToggleAfter" name="onToggleAfter" type="text" value="function(files){console.log('我是切换后的回调函数');console.log(gallery)}">
+                <input id="onToggleAfter" name="onToggleAfter" type="text" value="function(){console.log('我是切换后的回调函数');}">
             </li>
             <li>
                 <label for="exClass">exClass:</label>
@@ -102,15 +100,12 @@
             </li>
             <li>
                 <label>isLoop:</label>
-                <input type="radio" name="isLoop" value="true"> 循环
-                <input type="radio" name="isLoop" value="false" checked="checked"> 不循环
+                <input type="radio" name="isLoop" value="true" checked="checked"> 循环
+                <input type="radio" name="isLoop" value="false"> 不循环
             </li>
         </ul>
 
-        <div id="gallery">
-
-        </div>
-        <div id="log" style="position: absolute; top:200px;right: 100px;border: 1px solid #ccc">
+        <div id="gallery" style="margin-top: 30px;">
 
         </div>
 
@@ -122,26 +117,33 @@
                         width: $("#width").val(),
                         height: $("#height").val(),
                         data: [{
-                            url: 'http://shp.qpic.cn/app_actsec/4376ae1e0cf0ccce588659a0308f08f2d85192822e9eba53399677ac7296fcb8c3093d08cae8f51bc38f8eb3b1e92143b540f194a22b6a94/0',
-                            link: 'http://www.qq.com',
+                            url: 'img/gallery/gallery_1.jpg',
                             title: '图片一',
-                            des: '我是图片一'
+                            des: '我是图片一',
+                            target: '_blank'
                         },{
-                            url: 'http://shp.qpic.cn/app_actsec/4376ae1e0cf0ccce588659a0308f08f2d85192822e9eba53399677ac7296fcb8c3093d08cae8f51b52eaa2615d99c4aefae5f84e94ae2434/0',
+                            url: 'img/gallery/gallery_2.jpg',
                             link: 'http://jslib.qq.com',
-                            title: '图片二图片二图片二图片二图片二图片二图片二图片二图片二图片二图片二',
-                            des: '我是图片二我是图片二我是图片二我是图片二我是图片二我是图片二我是图片二我是图片二我是图片二'
+                            title: '图片二',
+                            des: '我是图片二',
+                            target: '_blank'
                         },{
-                            url: 'http://shp.qpic.cn/app_actsec/4376ae1e0cf0ccce588659a0308f08f2d85192822e9eba53399677ac7296fcb8c3093d08cae8f51bd90b62fcd646dc2274871181e66f76af/0',
-                            link: 'http://kuai.qq.com',
+                            url: 'img/gallery/gallery_3.jpg',
+                            link: 'http://www.xiaoman.cn',
                             title: '图片三',
-                            des: '我是图片三'
+                            des: '我是图片三',
+                            target: '_blank'
+                        },{
+                            url: 'img/gallery/gallery_4.jpg',
+                            title: '图片四',
+                            des: '我是图片四',
+                            target: '_blank'
                         }],
                         animate: $("input[name='animate']:checked").val(),
                         navTheme: $("input[name='navTheme']:checked").val(),
                         navLayout: $("input[name='navLayout']:checked").val(),
                         direction: $("input[name='direction']:checked").val(),
-                        interval: $("#interval").val(),
+                        interval: parseInt($("#interval").val()),
                         callback: eval("(" + $("#callback").val() + ")" ),
                         onToggleBefore: eval("(" + $("#onToggleBefore").val() + ")" ),
                         onToggleAfter: eval("(" + $("#onToggleAfter").val() + ")" ),
