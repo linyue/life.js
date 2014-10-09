@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=320,user-scalable=no" />
+        <title>life - 剪贴板</title>
+        <script src="../src/setup.js"></script>
+    </head>
+    <body>
+        <h1>剪贴板</h1>
+        <p>
+            <label for="text1">内容1:</label>
+            <br />
+            <input id="text1" type="text" value="1、这是第一段测试文本" style="width: 200px;">
+        </p>
+        <p>
+            <label for="text2">内容2:</label>
+            <br />
+            <input id="text2" type="text" value="2、这是第二段测试文本" style="width: 200px;">
+        </p>
+        <p>
+            <label for="check">粘贴:</label>
+            <br />
+            <textarea id="check" style="width: 200px;height: 200px;"></textarea>
+        </p>
+        <p>
+            <a id="copy1" style="cursor: pointer;">复制内容1</a>
+            <br />
+            <br />
+            <a id="copy2" style="cursor: pointer;">复制内容2</a>
+        </p>
+        <script>
+
+            seajs.use([
+                'src/utils/clipboard'
+            ], function(Clipboard){
+                var clipboard1 = new Clipboard({
+                    query: '#copy1',
+                    content: $("#text1").val(),
+                    callback: function(content){
+                       alert('内容已添加到剪贴板:' + content)
+                    }
+                })
+
+                $("#text1").change(function(){
+                    clipboard1.setText($(this).val());
+                })
+
+                var clipboard2 = new Clipboard({
+                    query: '#copy2',
+                    content: $("#text2").val(),
+                    callback: function(content){
+                        alert('内容已添加到剪贴板:' + content)
+                    }
+                })
+
+                $("#text2").change(function(){
+                    clipboard2.setText($(this).val());
+                })
+
+            })
+
+        </script>
+    </body>
+</html>

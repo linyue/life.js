@@ -13,18 +13,53 @@ define(function (require, exports, module) {
     require('baseCss');
     require('res/css/roulette.css');
 
+    var resPath = seajs.data.paths.res;
+
     var Roulette = Class.extend({
         //可配置参数
         options: {
-            id: null,                       //浮层ID
-            data: {
+            query: null,                           //容器选择器
+            data: [{
+                grade : 1,
+                name : '一等奖',
+                img : resPath + '/img/roulette/one.png'
+            },{
+                grade : 2,
+                name : '二等奖',
+                img : resPath + '/img/roulette/two.png'
+            },{
+                grade : 3,
+                name : '三等奖',
+                img : resPath + '/img/roulette/three.png'
+            }],
+            thanksImg: resPath + '/img/roulette/thanks.png',
+            type: 'font',
+            exClass: '',                     //附加的 class
+            checkDraw: function(){
+                return {
+                    code: 0,
+                    msg: '允许抽奖'
+                }
+            },
+            draw: function(){
+                return {
+                    code: 0,
+                    msg: '抽奖成功',
+                    data: {
+                        grade: 0,
+                        msg: '很遗憾，您没有中奖'
+                    }
+                }
+            },
+            onReady: function(){
 
             },
-            thanksImg: '',
-            onCheckDraw: null,
-            onDraw: null,
-            type: 'font',
-            exClass: ''                     //附加的 class
+            onError: function(msg){
+                alert(msg)
+            },
+            onSuccess: function(drawResult){
+                alert(drawResult.msg)
+            }
         },
 
         //枚举值
@@ -80,13 +115,15 @@ define(function (require, exports, module) {
 
             this.checkOptions();
 
-            this.container = $("#" + this.options.id).html("");
+            this.container = $(this.options.query).html("");
             this.content = $('<div>').addClass('i_roulette');
 
             this.render();
-            this.setStype();
+            this.setStyle();
             this.bindEvent();
             this.container.append(this.content);
+
+            this.options.onReady && this.options.onReady()
         },
 
         //参数校验
@@ -98,7 +135,7 @@ define(function (require, exports, module) {
 
 
         //设置样式
-        setStype: function () {
+        setStyle: function () {
             var options = this.options;
 
             //设置扩展类
@@ -111,22 +148,42 @@ define(function (require, exports, module) {
 
         },
 
+        drawPlay: function(result){
+            var self = this;
+            var options = self.options;
+            var awardNum = self.options.data.length;
+            var grade = result.grade;
+            var dict =  self.rotates[awardNum][grade][parseInt(Math.random() * 1000) % self.rotates[awardNum][grade].length];
+
+            self.arrow.rotate({
+                duration: 6000,
+                angle: 0,  //开始角度
+                animateTo: 3600 + dict, //转动角度，10圈+
+                callback: function(){ //回调函数
+                    options.onSuccess(result);
+                }
+            });
+        },
+
 
         bindEvent: function () {
             var self = this;
+            var options = self.options;
 
             self.button.click(function(){
-                var awardNum = self.options.data.length;
-                var grade = parseInt(Math.random() * 1000) % (awardNum + 1);
-                var dict =  self.rotates[awardNum][grade][parseInt(Math.random() * 1000) % self.rotates[awardNum][grade].length];
-                self.arrow.rotate({
-                    duration: 4000,
-                    angle: 0,  //开始角度
-                    animateTo: 1800 + dict, //转动角度，10圈+
-                    callback: function(){ //回调函数
-                        alert(self.map[grade]);
+                var checkRs = options.checkDraw();
+                if(checkRs.code == 0){
+                    var drawRs = options.draw();
+                    if(drawRs.code != 0){
+                        self.drawPlay({
+                            grade: 0,
+                            msg: '很遗憾，没有中奖！'
+                        });
                     }
-                });
+                    self.drawPlay(drawRs.data);
+                }else{
+                    options.onError(checkRs.msg);
+                }
             });
         },
 
@@ -167,7 +224,8 @@ define(function (require, exports, module) {
                                 grade.css({
                                     "-moz-transform" : 'rotate('+i+'deg)',
                                     "-webkit-transform" : 'rotate('+i+'deg)',
-                                    "-o-transform" : 'rotate('+i+'deg)'
+                                    "-o-transform" : 'rotate('+i+'deg)',
+                                    "transform" : 'rotate('+i+'deg)'
                                 })
 
                                 this.dial.append(grade);

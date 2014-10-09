@@ -2,13 +2,15 @@
 <html lang="en-US">
     <head>
         <meta charset="UTF-8">
-        <title>Demo - Editor</title>
+        <title>Demo - datePicker</title>
 
         <script src="../src/setup.js"></script>
 
     </head>
-    <body style="padding: 20px 100px">
-        <h2>日期 + 时间</h2>
+    <body>
+        <h1>日期选择器</h1>
+        <div style="padding: 20px 100px">
+        <h2>日期 + 时间 + 限制时间范围</h2>
         <div id="datetime" class="i_datePicker_input">
             <input type="text" />
             <span class="i_datePicker_input_icon"><i></i></span>
@@ -17,6 +19,9 @@
     query: '#datetime',
     format: 'yyyy-MM-dd hh:mm:00',
     type: 'datetime',
+    startDate: '2014-09-10',
+    endDate: '2014-09-25',
+    skin: 'blue',
     onClose: function(date, input){
         console.log(date, input)
         alert($("#datetime input").val())
@@ -32,7 +37,8 @@
 <pre>life.datePicker({
     query: '#time',
     format: 'hh:mm:00',
-    type: 'time'
+    type: 'time',
+    skin: 'red'
 });
 </pre>
 
@@ -44,7 +50,8 @@
 <pre>life.datePicker({
     query: '#date',
     format: 'dd/MM/yyyy',
-    type: 'date'
+    type: 'date',
+    skin: 'green'
 });
 </pre>
 
@@ -54,6 +61,7 @@
     query: '#month',
     format: 'yyyy年MM月',
     type: 'month',
+    skin: 'purple'
     onClose: function(date, input){
         console.log(date, input)
         alert($("#month").val())
@@ -66,18 +74,20 @@
 <pre>life.datePicker({
     query: '#year',
     format: 'yyyy年',
-    type: 'year'
+    type: 'year',
+    skin: 'orange'
 });
 </pre>
-
-        <p id="test">test</p>
-
+</div>
         <script type="text/javascript">
             seajs.use("$", function($){
                 life.datePicker({
                     query: '#datetime',
                     format: 'yyyy-MM-dd hh:mm:00',
                     type: 'datetime',
+                    startDate: '2014-09-10',
+                    endDate: '2014-09-25',
+                    skin: 'blue',
                     onClose: function(date, input){
                         console.log(date, input)
                         alert($("#datetime input").val())
@@ -86,17 +96,20 @@
                 life.datePicker({
                     query: '#time',
                     format: 'hh:mm:00',
-                    type: 'time'
+                    type: 'time',
+                    skin: 'red'
                 });
                 life.datePicker({
                     query: '#date',
                     format: 'dd/MM/yyyy',
-                    type: 'date'
+                    type: 'date',
+                    skin: 'green'
                 });
                 life.datePicker({
                     query: '#month',
                     format: 'yyyy年MM月',
                     type: 'month',
+                    skin: 'purple',
                     onClose: function(date, input){
                         console.log(date, input)
                         alert($("#month").val())
@@ -105,7 +118,8 @@
                 life.datePicker({
                     query: '#year',
                     format: 'yyyy年',
-                    type: 'year'
+                    type: 'year',
+                    skin: 'orange'
                 });
             })
         </script>

@@ -2,11 +2,11 @@
     position: relative;
 }
 .i_shake_prize{
-    width: 150px;
-    height: 150px;
+    width: 70%;
+    height: 70%;
     position: absolute;
-    top: 0;
-    left: 0;
+    top: 15%;
+    left: 15%;
 }
 .i_shake_wall{
     position: relative;

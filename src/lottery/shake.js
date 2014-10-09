@@ -13,25 +13,57 @@ define(function (require, exports, module) {
     require('baseCss');
     require('res/css/shake.css');
 
+    var resPath = seajs.data.paths.res;
+
     var Shake = Class.extend({
         //可配置参数
         options: {
-            id: null,
+            query: null,
+            data: [{
+                grade : 1,
+                name : '一等奖',
+                img : resPath + '/img/shake/one.png'
+            },{
+                grade : 2,
+                name : '二等奖',
+                img : resPath + '/img/shake/two.png'
+            },{
+                grade : 3,
+                name : '三等奖',
+                img : resPath + '/img/shake/three.png'
+            }],
             width: 200,
             height: 200,
             row: 5,
             line: 5,
-            wallImg: 'res/img/shake/shake.jpg',
-            thanksImg: 'res/img/shake/thanks.png',
-            onCheckDraw: function(){
-                return true;
+            wallImg: resPath + '/img/shake/wall_red.png',
+            thanksImg: resPath + '/img/shake/thanks.png',
+            exClass: '',                                //附加的 class
+            checkDraw: function(){
+                return {
+                    code: 0,
+                    msg: '允许抽奖'
+                }
             },
-            onDraw: function(){
-                return 0;
+            draw: function(){
+                return {
+                    code: 0,
+                    msg: '抽奖成功',
+                    data: {
+                        grade: 0,
+                        msg: '很遗憾，您没有中奖'
+                    }
+                }
             },
-            onUnAllow: null,
-            callback: null,
-            exClass: ''
+            onReady: function(){
+
+            },
+            onError: function(msg){
+                alert(msg)
+            },
+            onSuccess: function(drawResult){
+                alert(drawResult.msg)
+            }
         },
 
         //枚举值
@@ -59,11 +91,11 @@ define(function (require, exports, module) {
 
             this.checkOptions();
 
-            this.container = $("#" + this.options.id).html("");
+            this.container = $(this.options.query).html("");
             this.content = $('<div>').addClass('i_shake');
 
             this.render();
-            this.setStype();
+            this.setStyle();
             this.bindEvent();
             this.container.append(this.content);
         },
@@ -73,10 +105,11 @@ define(function (require, exports, module) {
 
         },
 
-
         //设置样式
-        setStype: function () {
+        setStyle: function () {
             var options = this.options;
+
+            this.content.width(options.width).height(options.height);
 
             //设置扩展类
             if (this.options.exClass) {
@@ -84,12 +117,48 @@ define(function (require, exports, module) {
             }
         },
 
+        setPrize: function(result){
+            var self = this;
+            var options = self.options;
 
-        draw: function(grade){
+            if(result.grade == 0){
+                self.prize.attr({
+                    src: options.thanksImg
+                })
+            }else{
+                self.prize.attr({
+                    src: options.data[result.grade - 1].img
+                })
+            }
+        },
+
+        drawAction: function(){
             var self = this;
 
-            self.tip.hide(); //隐藏提示
+            var checkRs = options.checkDraw();
+            if(checkRs.code == 0){
+                var drawRs = options.draw();
+                var result = {};
+                if(drawRs.code != 0){
+                    result = {
+                        grade: 0,
+                        msg: '很遗憾，没有中奖！'
+                    }
+                }else{
+                    result = drawRs.data
+                }
+                self.setPrize(result);
+                self.drawPlay(result);
+            }else{
+                options.onError(checkRs.msg);
+            }
+        },
 
+        drawPlay: function(result){
+            var self = this;
+            var options = self.options;
+
+            self.tip.hide(); //隐藏提示
             //加锁
             if(self.isShake){
                 return;
@@ -105,8 +174,11 @@ define(function (require, exports, module) {
             var index = 0;
             var interval = setInterval(function(){
                 self.shake(walls[index]);
-                if(index == 24){
-                    clearInterval(interval)
+                if(index == options.row * options.line - 1){
+                    clearInterval(interval);
+                    setTimeout(function(){
+                        options.onSuccess && options.onSuccess(result);
+                    }, 2500)
                 }else{
                     index++;
                 }
@@ -116,8 +188,7 @@ define(function (require, exports, module) {
         shake: function(wall){
             var range = 1;
             var direction = 1;
-            var top = 0;
-            var interval1,interval2;
+            var interval1;
 
             interval1 = setInterval(function(){
                 direction = ((direction + 1) % 4);
@@ -176,7 +247,7 @@ define(function (require, exports, module) {
                         self.devicemotionInfo.status = true;
                     },1000);
 
-                    self.draw();
+                    self.drawAction();
                 }
                 last_x=x;
                 last_y=y;
@@ -196,7 +267,7 @@ define(function (require, exports, module) {
             }
 
             self.wall.click(function(){
-                self.draw();
+                self.drawAction();
             })
         },
 
@@ -206,7 +277,9 @@ define(function (require, exports, module) {
             var options = this.options;
             var content = this.content.html("");
 
-            self.prize = $("<div></div>").addClass("i_shake_prize");
+            self.prize = $("<img>").addClass("i_shake_prize").attr({
+                src: options.thanksImg
+            });
             content.append(self.prize);
 
             self.wall = $("<div></div>").width(options.width).height(options.height).addClass("i_shake_wall");

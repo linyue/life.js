@@ -1,4 +1,3 @@
-
 /*按钮*/
 /*默认样式*/
 .i_btn{
@@ -132,11 +131,18 @@
 }
 .i_blue.i_bootstrap .i_btn:hover,
 .i_blue .i_bootstrap .i_btn:hover,
-.i_bootstrap .i_blue .i_btn:hover,
+.i_bootstrap .i_blue .i_btn:hover{
+    background-image: linear-gradient(to bottom, #67bce6, #67bce6);
+    transition: background-position 0.5s linear 0s;
+}
+
+.i_blue.i_bootstrap .i_btn:active,
+.i_blue .i_bootstrap .i_btn:active,
+.i_bootstrap .i_blue .i_btn:active,
 .i_blue.i_bootstrap .i_btn.i_active,
 .i_blue .i_bootstrap .i_btn.i_active,
 .i_bootstrap .i_blue .i_btn.i_active{
-    background-image: linear-gradient(to bottom, #67bce6, #67bce6);
+    background-image: linear-gradient(to bottom, #0088cc, #67bce6);
     transition: background-position 0.5s linear 0s;
 }
 .i_blue.i_bootstrap .i_btn.i_disable,
@@ -156,12 +162,18 @@
 }
 .i_blue.i_metro .i_btn:hover,
 .i_blue .i_metro .i_btn:hover,
-.i_metro .i_blue .i_btn:hover,
+.i_metro .i_blue .i_btn:hover{
+    background-color: #267499;
+    background-image: linear-gradient(to bottom, #267499, #267499);
+}
+
+.i_blue.i_metro .i_btn:active,
+.i_blue .i_metro .i_btn:active,
+.i_metro .i_blue .i_btn:active,
 .i_blue.i_metro .i_btn.i_active,
 .i_blue .i_metro .i_btn.i_active,
 .i_metro .i_blue .i_btn.i_active{
-    background-color: #267499;
-    background-image: linear-gradient(to bottom, #267499, #267499);
+    background: #005985;
 }
 .i_blue.i_metro .i_btn.i_disable,
 .i_blue .i_metro .i_btn.i_disable,
@@ -214,11 +226,18 @@
 }
 .i_purple.i_bootstrap .i_btn:hover,
 .i_purple .i_bootstrap .i_btn:hover,
-.i_bootstrap .i_purple .i_btn:hover,
+.i_bootstrap .i_purple .i_btn:hover{
+    background-image: linear-gradient(to bottom, #d198ff, #d198ff);
+    transition: background-position 0.5s linear 0s;
+}
+
+.i_purple.i_bootstrap .i_btn:active,
+.i_purple .i_bootstrap .i_btn:active,
+.i_bootstrap .i_purple .i_btn:active,
 .i_purple.i_bootstrap .i_btn.i_active,
 .i_purple .i_bootstrap .i_btn.i_active,
 .i_bootstrap .i_purple .i_btn.i_active{
-    background-image: linear-gradient(to bottom, #d198ff, #d198ff);
+    background-image: linear-gradient(to bottom, #aa44ff, #d198ff);
     transition: background-position 0.5s linear 0s;
 }
 .i_purple.i_bootstrap .i_btn.i_disable,
@@ -238,12 +257,18 @@
 }
 .i_purple.i_metro .i_btn:hover,
 .i_purple .i_metro .i_btn:hover,
-.i_metro .i_purple .i_btn:hover,
+.i_metro .i_purple .i_btn:hover{
+    background-color: #d198ff;
+    background-image: linear-gradient(to bottom, #d198ff, #d198ff);
+}
+
+.i_purple.i_metro .i_btn:active,
+.i_purple .i_metro .i_btn:active,
+.i_metro .i_purple .i_btn:active,
 .i_purple.i_metro .i_btn.i_active,
 .i_purple .i_metro .i_btn.i_active,
 .i_metro .i_purple .i_btn.i_active{
-    background-color: #d198ff;
-    background-image: linear-gradient(to bottom, #d198ff, #d198ff);
+    background: #6516a6;
 }
 .i_purple.i_metro .i_btn.i_disable,
 .i_purple .i_metro .i_btn.i_disable,
@@ -296,11 +321,18 @@
 }
 .i_green.i_bootstrap .i_btn:hover,
 .i_green .i_bootstrap .i_btn:hover,
-.i_bootstrap .i_green .i_btn:hover,
+.i_bootstrap .i_green .i_btn:hover{
+    background-image: linear-gradient(to bottom, #a0dd37, #a0dd37);
+    transition: background-position 0.5s linear 0s;
+}
+
+.i_green.i_bootstrap .i_btn:active,
+.i_green .i_bootstrap .i_btn:active,
+.i_bootstrap .i_green .i_btn:active,
 .i_green.i_bootstrap .i_btn.i_active,
 .i_green .i_bootstrap .i_btn.i_active,
 .i_bootstrap .i_green .i_btn.i_active{
-    background-image: linear-gradient(to bottom, #a0dd37, #a0dd37);
+    background-image: linear-gradient(to bottom, #77bb00, #a0dd37);
     transition: background-position 0.5s linear 0s;
 }
 .i_green.i_bootstrap .i_btn.i_disable,
@@ -320,12 +352,18 @@
 }
 .i_green.i_metro .i_btn:hover,
 .i_green .i_metro .i_btn:hover,
-.i_metro .i_green .i_btn:hover,
+.i_metro .i_green .i_btn:hover{
+    background-color: #b0dd63;
+    background-image: linear-gradient(to bottom, #b0dd63, #b0dd63);
+}
+
+.i_green.i_metro .i_btn:active,
+.i_green .i_metro .i_btn:active,
+.i_metro .i_green .i_btn:active,
 .i_green.i_metro .i_btn.i_active,
 .i_green .i_metro .i_btn.i_active,
 .i_metro .i_green .i_btn.i_active{
-    background-color: #b0dd63;
-    background-image: linear-gradient(to bottom, #b0dd63, #b0dd63);
+    background: #4d7a00;
 }
 .i_green.i_metro .i_btn.i_disable,
 .i_green .i_metro .i_btn.i_disable,
@@ -378,13 +416,21 @@
 }
 .i_red.i_bootstrap .i_btn:hover,
 .i_red .i_bootstrap .i_btn:hover,
-.i_bootstrap .i_red .i_btn:hover,
-.i_red.i_bootstrap .i_btn.i_active,
-.i_red .i_bootstrap .i_btn.i_active,
-.i_bootstrap .i_red .i_btn.i_active{
+.i_bootstrap .i_red .i_btn:hover{
     background-image: linear-gradient(to bottom, #ee9393, #ee9393);
     transition: background-position 0.5s linear 0s;
 }
+
+.i_red.i_bootstrap .i_btn:active,
+.i_red .i_bootstrap .i_btn:active,
+.i_bootstrap .i_red .i_btn:active,
+.i_red.i_bootstrap .i_btn.i_active,
+.i_red .i_bootstrap .i_btn.i_active,
+.i_bootstrap .i_red .i_btn.i_active{
+    background-image: linear-gradient(to bottom, #dd4444, #ee9393);
+    transition: background-position 0.5s linear 0s;
+}
+
 .i_red.i_bootstrap .i_btn.i_disable,
 .i_red .i_bootstrap .i_btn.i_disable,
 .i_bootstrap .i_red .i_btn.i_disable{
@@ -402,13 +448,19 @@
 }
 .i_red.i_metro .i_btn:hover,
 .i_red .i_metro .i_btn:hover,
-.i_metro .i_red .i_btn:hover,
+.i_metro .i_red .i_btn:hover{
+    background: #ee9393;
+}
+
 .i_red.i_metro .i_btn.i_active,
 .i_red .i_metro .i_btn.i_active,
-.i_metro .i_red .i_btn.i_active{
-    background-color: #ee9393;
-    background-image: linear-gradient(to bottom, #ee9393, #ee9393);
+.i_metro .i_red .i_btn.i_active,
+.i_red.i_metro .i_btn:active,
+.i_red .i_metro .i_btn:active,
+.i_metro .i_red .i_btn:active{
+    background: #901616;
 }
+
 .i_red.i_metro .i_btn.i_disable,
 .i_red .i_metro .i_btn.i_disable,
 .i_metro .i_red .i_btn.i_disable{
@@ -460,11 +512,18 @@
 }
 .i_orange.i_bootstrap .i_btn:hover,
 .i_orange .i_bootstrap .i_btn:hover,
-.i_bootstrap .i_orange .i_btn:hover,
+.i_bootstrap .i_orange .i_btn:hover{
+    background-image: linear-gradient(to bottom, #fdbe65, #fdbe65);
+    transition: background-position 0.5s linear 0s;
+}
+
+.i_orange.i_bootstrap .i_btn:active,
+.i_orange .i_bootstrap .i_btn:active,
+.i_bootstrap .i_orange .i_btn:active,
 .i_orange.i_bootstrap .i_btn.i_active,
 .i_orange .i_bootstrap .i_btn.i_active,
 .i_bootstrap .i_orange .i_btn.i_active{
-    background-image: linear-gradient(to bottom, #fdbe65, #fdbe65);
+    background-image: linear-gradient(to bottom, #faa732, #fdbe65);
     transition: background-position 0.5s linear 0s;
 }
 .i_orange.i_bootstrap .i_btn.i_disable,
@@ -484,12 +543,18 @@
 }
 .i_orange.i_metro .i_btn:hover,
 .i_orange .i_metro .i_btn:hover,
-.i_metro .i_orange .i_btn:hover,
+.i_metro .i_orange .i_btn:hover{
+    background-color: #fdce8d;
+    background-image: linear-gradient(to bottom, #fdce8d, #fdce8d);
+}
+
+.i_orange.i_metro .i_btn:active,
+.i_orange .i_metro .i_btn:active,
+.i_metro .i_orange .i_btn:active,
 .i_orange.i_metro .i_btn.i_active,
 .i_orange .i_metro .i_btn.i_active,
 .i_metro .i_orange .i_btn.i_active{
-    background-color: #fdce8d;
-    background-image: linear-gradient(to bottom, #fdce8d, #fdce8d);
+    background: #a36610;
 }
 .i_orange.i_metro .i_btn.i_disable,
 .i_orange .i_metro .i_btn.i_disable,

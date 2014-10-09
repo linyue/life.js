@@ -34,7 +34,7 @@ define(function (require) {
         editorNode.height(containerHeight);
 
         editorWrapper.css({
-            height: containerHeight - 41,
+            height: containerHeight - 61,
             minHeight: 'inherit',
             overflow: 'auto'
         })

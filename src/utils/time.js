@@ -47,16 +47,22 @@
                 case 3:
                     //处理2012-15-15 12:15:02
                     var times = time.split(' ');
+                    if(typeof times[1] == "undefined"){
+                        times[1] = '00:00:00';
+                    };
                     var part1 = times[0].split('-');    //分解日期
-                    var part2 = times[1].split(':');    //分解时间
-                    date = new Date(part1[0], part1[1]-1, part1[2], part2[0], part2[1], part1[2]);
+                    var part2 = times[1].indexOf(":") > 0 ? times[1].split(':') : [0, 0, 0];    //分解时间
+                    date = new Date(part1[0], part1[1]-1, part1[2], part2[0], part2[1], part2[2]);
                     break;
                 case 4:
                     //处理 2012/15/18 15:18:01
                     var times = time.split(' ');
+                    if(typeof times[1] == "undefined"){
+                        times[1] = '00:00:00';
+                    };
                     var part1 = times[0].split('/');    //分解日期
-                    var part2 = times[1].split(':');    //分解时间
-                    date = new Date(part1[0], part1[1]-1, part1[2], part2[0], part2[1], part1[2]);
+                    var part2 = times[1].indexOf(":") > 0 ? times[1].split(':') : [0, 0, 0];    //分解时间
+                    date = new Date(part1[0], part1[1]-1, part1[2], part2[0], part2[1], part2[2]);
                     break;
                 case 5:
                     //处理Mar 04, 2012 22:15:14时间表达式
@@ -140,21 +146,24 @@
 
             var opt = {
                 now: typeof options.now != 'undefined' ? options.now : new Date(),
-                deadline: typeof options.deadline != 'undefined' ? options.deadline : '',
+                deadline: typeof options.deadline != 'undefined' ? options.deadline : new Date(),
                 interval: typeof options.interval != 'undefined' ? options.interval : 1,
                 onInterval: typeof options.onInterval != 'undefined' ? options.onInterval : function(data){},
                 onTimeUp: typeof options.onTimeUp != 'undefined' ? options.onTimeUp : function(){}
             }
 
-            var localSec = parseInt(new Date().getTime() / 1000);
-            var nowSec = parseInt(this.string2Date(opt.now).getTime() / 1000);
-            var deadlineSec = parseInt(this.string2Date(opt.deadline).getTime() / 1000);
-            var differSec = nowSec - localSec;
+            var nowDate = typeof opt.now == 'object' ? opt.now : this.string2Date(opt.now);
+            var deadlineDate = typeof opt.deadline == 'object' ? opt.deadline : this.string2Date(opt.deadline);
 
+            var nowSec = parseInt(nowDate.getTime() / 1000);
+            var deadlineSec = parseInt(deadlineDate.getTime() / 1000);
+
+            var localSec = parseInt(new Date().getTime() / 1000);
+            var differSec = nowSec - localSec;
 
             var counter = 0;
             var intervalFun = function(){
-                //使用本地时间来时间差来重新计算，避免系统休眠引起的倒计时不准的问题
+                //使用本地时间来时间差来重新计算，避免系统休眠或cpu高引起的倒计时不准的问题
                 var curSec = parseInt(new Date().getTime() / 1000);
                 var secTotal = deadlineSec - curSec + differSec;
 
@@ -174,6 +183,8 @@
                 data.hour = Math.floor(secTotal / 60 / 60) % 24;
                 data.minute = Math.floor(secTotal / 60) % 60;
                 data.second = secTotal % 60;
+
+                counter++;
 
                 //触发回调
                 if(counter % opt.interval == 0){

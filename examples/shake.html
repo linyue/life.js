@@ -8,30 +8,85 @@
         <script src="../src/setup.js"></script>
     </head>
     <body>
+        <h1>摇一摇抽奖</h1>
         <div id="shake"></div>
 
         <script>
+            var prize = [{
+                grade : 1,
+                name : '一等奖',
+                img : '../../res/img/roulette/one.png'
+            },{
+                grade : 2,
+                name : '二等奖',
+                img : '../../res/img/roulette/two.png'
+            },{
+                grade : 3,
+                name : '三等奖',
+                img : '../../res/img/roulette/three.png'
+            }];
+
+            var resultArr = [{
+                grade: 0,
+                msg: '很遗憾，您没有中奖'
+            },{
+                grade: 1,
+                msg: '恭喜您抽中一等奖'
+            },{
+                grade: 2,
+                msg: '恭喜您抽中二等奖'
+            },{
+                grade: 3,
+                msg: '恭喜您抽中三等奖'
+            }]
+
+            var checkArr = [{
+                code: -1,
+                msg: '您没有抽奖资格'
+            },{
+                code: 0,
+                msg: '允许抽奖'
+            }]
+
             var options = {
-                id: 'shake',
+                query: '#shake',
                 width: 200,
                 height: 200,
                 row: 5,
                 line: 5,
-                wallImg: '../res/img/shake/shake.jpg',
-                thanksImg: '../../res/img/roulette/thanks.png',
-                onCheckDraw: function(){
-
+                data: [{
+                    grade : 1,
+                    name : '一等奖',
+                    img : '../../res/img/shake/one.png'
+                },{
+                    grade : 2,
+                    name : '二等奖',
+                    img : '../../res/img/shake/two.png'
+                },{
+                    grade : 3,
+                    name : '三等奖',
+                    img : '../../res/img/shake/three.png'
+                }],
+                exClass: '',
+                checkDraw: function(){
+                    return checkArr[parseInt(Math.random() * 1000) % 2]
                 },
-                onDraw: function(){
-
+                draw: function(){
+                    return {
+                        code: 0,
+                        msg: '抽奖成功',
+                        data: resultArr[parseInt(Math.random() * 1000) % 4]
+                    }
                 },
-                onUnAllow: function(){
-
+                onReady: function(){
+                    console.log('加载完成！');
                 },
-                callback: function(){
-
+                onError: function(msg){
+                    alert(msg)
                 },
-                exClass: 'myShake'
+                onSuccess: function(drawResult){
+                    alert(drawResult.msg)
+                }
             }
             life.shake(options);
         </script>

@@ -40,9 +40,9 @@ seajs.config({
         'url': 'src/utils/url',
         'time': 'src/utils/time',
         'include': 'src/utils/include',
-        'copyText': 'src/utils/copyText',
-        'areaSelect': 'src/utils/areaSelect',
+        'clipboard': 'src/utils/clipboard',
         'draggable': 'src/utils/draggable',
+        'qrcode': 'src/utils/qrcode',
 
         'report': 'src/monitor/report',
 
@@ -50,7 +50,6 @@ seajs.config({
         'dialog': 'src/ui/dialog',
         'gallery': 'src/ui/gallery',
         'mobileNav': 'src/ui/mobileNav',
-        'maps': 'src/ui/maps',
         'mobileUI': 'src/ui/mobileUI',
         'editor': 'src/ui/editor',
         'colorPicker': 'src/ui/colorPicker',
@@ -72,17 +71,12 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/(\/src\/utils\/template\.js)$/i, '$1?_v=20140820'],
-        [/(\/src\/ui\/gallery\.js)$/i, '$1?_v=20140910'],
-        [/(\/src\/ui\/video\.js)$/i, '$1?_v=20140910'],
-        [/(\/src\/ui\/datePicker\.js)$/i, '$1?_v=2014093001'],
-        [/(\/res\/css\/datePicker\.css)$/i, '$1?_v=2014093001']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101009001']
     ],
     charset: 'utf-8'
 });
 
 var life = {};
-
 life.setConfig = function(options){
 
     var opt = {
@@ -282,3 +276,8 @@ life.floatText = function(options){
     })
 }
 
+life.qrcode = function(options){
+    seajs.use('qrcode', function(Qrcode){
+        new Qrcode(options);
+    })
+}

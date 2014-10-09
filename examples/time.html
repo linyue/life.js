@@ -4,27 +4,46 @@
     	<meta charset="utf-8">
     	<title>Demo - time</title>
       <script src="../src/setup.js"></script>
+        <style>
+            a{
+                cursor: pointer;
+            }
+            input{
+                width: 200px;
+            }
+        </style>
   	</head>
   	<body>
         <h2>将字符串转成Date对象：</h2>
-        <label for="time_input">请输入时间字符串：</label>
+        <label for="time_input">时间：</label>
         <input type="text" id="time_input" value="2012-12-21 13:00:00">
+        <br />
         <a id="e_string2date">马上转化</a>
 
         <h2>时间格式化：</h2>
-        <label for="time_input2">请输入时间字符串：</label>
+        <label for="time_input2">时间：</label>
         <input type="text" id="time_input2" value="2012-12-21 13:00:00">
+        <br />
+        <label for="time_format">格式：</label>
+        <input type="text" id="time_format" value="yyyy年MM月dd日 HH时mm分ss秒">
+        <br />
         <a id="e_timeformat">马上转化</a>
 
         <h2>倒计时：</h2>
         <label for="deadline">截止时间：</label>
         <input type="text" id="deadline" value="2014-06-27 09:31:20">
         <p id="countdown" style="height: 35px;color: green;"></p>
+        <br />
         <a id="e_countdown">开始倒计时</a>
 
     	<script>
 
             seajs.use("time", function(time){
+
+                var deadline = new Date();
+                deadline.setTime(deadline.getTime() + 1000 * 60)
+                $("#deadline").val(time.format('yyyy-MM-dd HH:mm:ss', deadline))
+
                 $("#e_string2date").click(function(){
                     life.time.string2Date({
                         time: $("#time_input").val(),
@@ -35,29 +54,31 @@
                 })
 
                 $("#e_timeformat").click(function(){
-                    var format = time.format('yyyy年M月d日', $("#time_input2").val());
+                    var timeformat = $("#time_format").val();
+                    var format = time.format(timeformat, $("#time_input2").val());
                     alert(format);
                 })
 
-
-//                $("#now").val(time.format());
-
-//                $("#e_string2date").click(function(){
-//                    var str = $("#time_input").val();
-//                    var date = time.string2Date(str);
-//                    alert(date);
-//                })
-
                 $("#e_countdown").click(function(){
                     time.countdown({
-                        now: new Date(),
                         deadline: $("#deadline").val(),
-                        interval: 2,
+                        interval: 1,
                         onInterval: function(data){
+                            var str = (data.isTimeout ? '已过期' : '还剩') + data.day + '天' + data.hour + '时' + data.minute + '分' + data.second + '秒';
+                            $("#countdown").html(str);
+                            if(data.isTimeout){
+                                $("#countdown").css({
+                                    color: 'red'
+                                })
+                            }else{
+                                $("#countdown").css({
+                                    color: 'green'
+                                })
+                            }
                             console.log(data)
                         },
                         onTimeUp: function(){
-                            console.log('time up');
+                            alert('time up');
                         }
                     })
                 })

@@ -12,7 +12,7 @@ define(function (require, exports, module) {
     var $ = require('$');
     var Class = require('Class');
 
-    require("plugin/jquery.mobiscroll")($);
+    require("src/plugin/jquery.mobiscroll")($);
 
     require('baseCss');
     require('res/css/mobiscroll.css');
@@ -889,7 +889,6 @@ define(function (require, exports, module) {
             if(options.onChange){
                 options.onChange(value);
             }
-
         },
 
         //获取值

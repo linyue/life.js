@@ -4,12 +4,20 @@
         <meta charset="utf-8">
         <title>examples - sidebar</title>
         <script src="../src/setup.js"></script>
+        <style>
+            a{
+                cursor: pointer;
+            }
+        </style>
     </head>
     <body>
 
-        <a id="open1">打开sidebar1</a>
-        <a id="open2">打开sidebar2</a>
-        <a id="open3">打开sidebar3</a>
+        <ul>
+            <li><a id="open1">打开sidebar1[iframe]</a></li>
+            <li><a id="open2">打开sidebar2[html]</a></li>
+            <li><a id="open3">打开sidebar3[text]</a></li>
+        </ul>
+
         <script>
             seajs.use('sidebar', function(Sidebar){
                 var options1 = {

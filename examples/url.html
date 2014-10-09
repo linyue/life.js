@@ -4,15 +4,44 @@
     	<meta charset="utf-8">
     	<title>Demo - url</title>
         <script src="../src/setup.js"></script>
+        <style>
+            a{
+                cursor: pointer;
+            }
+        </style>
   	</head>
   	<body>
+        <h1>URL工具</h1>
+        <ul>
+            <li><a id="getHash">获取锚点</a></li>
+            <li><a id="getParam">获取参数a的值</a></li>
+            <li><a id="getParams">获取所有参数的值</a></li>
+            <li><a id="parse">解析URL</a></li>
+        </ul>
+
+        <a href="../tests/url.html" target="_blank">查看单元测试</a>
     	<script>
             seajs.use("url",function(url){
-                var search = "?a=123&b=abc456";
-                if(window.location.search != search){
-                    window.location.search = search;
+                var search = "?a=123&b=abc456#xyz";
+                if(window.location.href.indexOf("?") < 0){
+                    window.location.href = window.location.href + search;
                 };
-                alert(url.getParam("a"))
+
+                $("#getHash").click(function(){
+                    alert(url.getHash())
+                })
+
+                $("#getParam").click(function(){
+                    alert(url.getParam("a"))
+                })
+
+                $("#getParams").click(function(){
+                    alert(JSON.stringify(url.getParams()))
+                })
+
+                $("#parse").click(function(){
+                    alert(JSON.stringify(url.parse()))
+                })
             })
      	</script>
   	</body>

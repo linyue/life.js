@@ -15,7 +15,7 @@
     font-size: 14px;
     font-weight: bold;
 }
-.i_dialog .i_colseBtn{
+.i_dialog .i_closeBtn{
     position: absolute;
     right: 5px;
     top: 5px;
@@ -23,7 +23,7 @@
     font-weight: bold;
     cursor: pointer;
 }
-.i_dialog .i_dialogTitle .i_colseBtn{
+.i_dialog .i_dialogTitle .i_closeBtn{
     right: 10px;
     top: auto;
 }
@@ -47,15 +47,15 @@
     padding: 9px 15px;
     font-size: 24px;
 }
-.i_dialog.i_bootstrap .i_colseBtn{
+.i_dialog.i_bootstrap .i_closeBtn{
     right: 12px;
     top: 10px;
 }
-.i_dialog.i_bootstrap .i_dialogTitle .i_colseBtn{
+.i_dialog.i_bootstrap .i_dialogTitle .i_closeBtn{
     right: 15px;
     top: 15px;
 }
-.i_dialog .i_dialogTitle .i_colseBtn:hover{
+.i_dialog .i_dialogTitle .i_closeBtn:hover{
     color: #333333;
 }
 .i_dialog.i_bootstrap .i_dialogBtns{
@@ -75,21 +75,20 @@
 .i_dialog.i_metro .i_dialogTitle{
     font-size: 24px;
 }
-.i_dialog.i_metro .i_colseBtn{
-    background: ;
+.i_dialog.i_metro .i_closeBtn{
     right: -36px;
     top: -2px;
     padding: 8px;
     font-size: 14px;
 }
-.i_dialog.i_metro .i_dialogTitle .i_colseBtn{
+.i_dialog.i_metro .i_dialogTitle .i_closeBtn{
     right: 2px;
     top: 2px;
     padding: 5px 5px 3px;
     font-size: 16px;
     font-weight: 900;
 }
-.i_dialog.i_metro .i_colseBtn:hover{
+.i_dialog.i_metro .i_closeBtn:hover{
     background: #909090;
     color: #000;
 }
@@ -111,4 +110,284 @@
     left: 0;
     opacity: 0.7;
     filter: alpha(opacity=70);
+}
+
+
+
+/*蓝色风格*/
+.i_blue.i_dialog{
+    border-color: #67bce6;
+}
+.i_blue.i_dialog.i_default .i_btn{
+    background: #67bce6;
+}
+.i_blue.i_dialog.i_default .i_btn:hover{
+    background-color: #39ade6;
+    color: #fff;
+}
+.i_blue.i_dialog.i_default .i_btn:active{
+    background-color: #0088cc;
+    color: #fff;
+}
+.i_blue.i_dialog .i_dialogTitle{
+    background: #d2ebf7;
+    border-bottom-color: #67bce6;
+}
+.i_blue.i_dialog .i_dialogBtns{
+    background: #d2ebf7;
+    border-top-color: #67bce6;
+}
+.i_blue.i_dialog .i_closeBtn{
+    color: #005985;
+}
+.i_blue.i_dialog .i_closeBtn:hover{
+    color: #005985;
+    font-weight: bold;
+}
+.i_blue.i_bootstrap.i_dialog .i_dialogBtns{
+    background: #d2ebf7;
+    border-top-color: #67bce6;
+}
+.i_blue.i_dialog.i_metro{
+    border-color: #005985;
+}
+.i_blue.i_dialog.i_metro .i_btn{
+    color: #fff;
+}
+.i_blue.i_dialog.i_metro .i_dialogBtns{
+    background: #fff;
+}
+.i_blue.i_dialog.i_metro .i_dialogTitle{
+    background: none;
+}
+.i_blue.i_dialog.i_metro .i_closeBtn:hover{
+    background: #67bce6;
+    color: #fff;
+}
+.i_blue.i_dialog.i_metro .i_closeBtn:active{
+    background: #005985;
+    color: #fff;
+}
+
+
+/*红色风格*/
+.i_red.i_dialog{
+    border-color: #ee9393;
+}
+.i_red.i_dialog.i_default .i_btn{
+    background: #ee9393;
+}
+.i_red.i_dialog.i_default .i_btn:hover{
+    background-color: #ee7272;
+    color: #fff;
+}
+.i_red.i_dialog.i_default .i_btn:active{
+    background-color: #dd4444;
+    color: #fff;
+}
+.i_red.i_dialog .i_dialogTitle{
+    background: #f8dcdc;
+    border-bottom-color: #ee9393;
+}
+.i_red.i_dialog .i_dialogBtns{
+    background: #f8dcdc;
+    border-top-color: #ee9393;
+}
+.i_red.i_dialog .i_closeBtn{
+    color: #901616;
+}
+.i_red.i_dialog .i_closeBtn:hover{
+    color: #901616;
+    font-weight: bold;
+}
+.i_red.i_bootstrap.i_dialog .i_dialogBtns{
+    background: #f8dcdc;
+    border-top-color: #ee9393;
+}
+.i_red.i_dialog.i_metro{
+    border-color: #901616;
+}
+.i_red.i_dialog.i_metro .i_btn{
+    color: #fff;
+}
+.i_red.i_dialog.i_metro .i_dialogBtns{
+    background: #fff;
+}
+.i_red.i_dialog.i_metro .i_dialogTitle{
+    background: none;
+}
+.i_red.i_dialog.i_metro .i_closeBtn:hover{
+    background: #ee9393;
+    color: #fff;
+}
+.i_red.i_dialog.i_metro .i_closeBtn:active{
+    background: #901616;
+    color: #fff;
+}
+
+/*绿色风格*/
+.i_green.i_dialog{
+    border-color: #b0dd63;
+}
+.i_green.i_dialog.i_default .i_btn{
+    background: #b0dd63;
+}
+.i_green.i_dialog.i_default .i_btn:hover{
+    background-color: #a0dd37;
+    color: #fff;
+}
+.i_green.i_dialog.i_default .i_btn:active{
+    background-color: #77bb00;
+    color: #fff;
+}
+.i_green.i_dialog .i_dialogTitle{
+    background: #f4fee2;
+    border-bottom-color: #b0dd63;
+}
+.i_green.i_dialog .i_dialogBtns{
+    background: #f4fee2;
+    border-top-color: #b0dd63;
+}
+.i_green.i_dialog .i_closeBtn{
+    color: #4d7a00;
+}
+.i_green.i_dialog .i_closeBtn:hover{
+    color: #4d7a00;
+    font-weight: bold;
+}
+.i_green.i_bootstrap.i_dialog .i_dialogBtns{
+    background: #f4fee2;
+    border-top-color: #b0dd63;
+}
+.i_green.i_dialog.i_metro{
+    border-color: #4d7a00;
+}
+.i_green.i_dialog.i_metro .i_btn{
+    color: #fff;
+}
+.i_green.i_dialog.i_metro .i_dialogBtns{
+    background: #fff;
+}
+.i_green.i_dialog.i_metro .i_dialogTitle{
+    background: none;
+}
+.i_green.i_dialog.i_metro .i_closeBtn:hover{
+    background: #b0dd63;
+    color: #fff;
+}
+.i_green.i_dialog.i_metro .i_closeBtn:active{
+    background: #4d7a00;
+    color: #fff;
+}
+
+
+/*紫色风格*/
+.i_purple.i_dialog{
+    border-color: #d198ff;
+}
+.i_purple.i_dialog.i_default .i_btn{
+    background: #d198ff;
+}
+.i_purple.i_dialog.i_default .i_btn:hover{
+    background-color: #c073ff;
+    color: #fff;
+}
+.i_purple.i_dialog.i_default .i_btn:active{
+    background-color: #aa44ff;
+    color: #fff;
+}
+.i_purple.i_dialog .i_dialogTitle{
+    background: #f8f0ff;
+    border-bottom-color: #d198ff;
+}
+.i_purple.i_dialog .i_dialogBtns{
+    background: #f8f0ff;
+    border-top-color: #d198ff;
+}
+.i_purple.i_dialog .i_closeBtn{
+    color: #6516a6;
+}
+.i_purple.i_dialog .i_closeBtn:hover{
+    color: #6516a6;
+    font-weight: bold;
+}
+.i_purple.i_bootstrap.i_dialog .i_dialogBtns{
+    background: #f8f0ff;
+    border-top-color: #d198ff;
+}
+.i_purple.i_dialog.i_metro{
+    border-color: #6516a6;
+}
+.i_purple.i_dialog.i_metro .i_btn{
+    color: #fff;
+}
+.i_purple.i_dialog.i_metro .i_dialogBtns{
+    background: #fff;
+}
+.i_purple.i_dialog.i_metro .i_dialogTitle{
+    background: none;
+}
+.i_purple.i_dialog.i_metro .i_closeBtn:hover{
+    background: #d198ff;
+    color: #fff;
+}
+.i_purple.i_dialog.i_metro .i_closeBtn:active{
+    background: #6516a6;
+    color: #fff;
+}
+
+
+/*橙色风格*/
+.i_orange.i_dialog{
+    border-color: #fdce8d;
+}
+.i_orange.i_dialog.i_default .i_btn{
+    background: #fdce8d;
+}
+.i_orange.i_dialog.i_default .i_btn:hover{
+    background-color: #fdbe65;
+    color: #fff;
+}
+.i_orange.i_dialog.i_default .i_btn:active{
+    background-color: #faa732;
+    color: #fff;
+}
+.i_orange.i_dialog .i_dialogTitle{
+    background: #fff0db;
+    border-bottom-color: #fdce8d;
+}
+.i_orange.i_dialog .i_dialogBtns{
+    background: #fff0db;
+    border-top-color: #fdce8d;
+}
+.i_orange.i_dialog .i_closeBtn{
+    color: #a36610;
+}
+.i_orange.i_dialog .i_closeBtn:hover{
+    color: #a36610;
+    font-weight: bold;
+}
+.i_orange.i_bootstrap.i_dialog .i_dialogBtns{
+    background: #fff0db;
+    border-top-color: #fdce8d;
+}
+.i_orange.i_dialog.i_metro{
+    border-color: #a36610;
+}
+.i_orange.i_dialog.i_metro .i_btn{
+    color: #fff;
+}
+.i_orange.i_dialog.i_metro .i_dialogBtns{
+    background: #fff;
+}
+.i_orange.i_dialog.i_metro .i_dialogTitle{
+    background: none;
+}
+.i_orange.i_dialog.i_metro .i_closeBtn:hover{
+    background: #fdce8d;
+    color: #fff;
+}
+.i_orange.i_dialog.i_metro .i_closeBtn:active{
+    background: #a36610;
+    color: #fff;
 }
