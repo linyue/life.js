@@ -3838,7 +3838,10 @@ define(function (require, exports, module) {
                             return createInput();
                         });
                         _this.editor.undoManager.caretPosition(_this.editor.inputManager.lastCaretPosition);
+                    }else{
+                        $(this).val("")
                     }
+
                     return _this.wrapper.removeClass('menu-on');
                 });
                 return this._initUploader();
@@ -4033,7 +4036,15 @@ define(function (require, exports, module) {
         ImagePopover = (function (_super) {
             __extends(ImagePopover, _super);
 
-            ImagePopover.prototype._tpl = "<div class=\"link-settings\">\n  <div class=\"settings-field\">\n    <label>图片地址</label>\n    <input class=\"image-src\" type=\"text\"/>\n    <a class=\"btn-upload\" href=\"javascript:;\" title=\"上传图片\" tabindex=\"-1\">\n      <span class=\"fa fa-upload\"></span>\n    </a>\n  </div>\n</div>";
+            ImagePopover.prototype._tpl = "<div class=\"link-settings\">" +
+                    "<div class=\"settings-field\">" +
+                        "<label>图片地址</label>" +
+                        "<input class=\"image-src\" type=\"text\"/>" +
+                        "<a class=\"btn-upload\" href=\"javascript:;\" title=\"上传图片\" tabindex=\"-1\">" +
+                            "<span class=\"fa fa-upload\"></span>" +
+                        "</a>" +
+                    "</div>" +
+                "</div>";
 
             ImagePopover.prototype.offset = {
                 top: 6,

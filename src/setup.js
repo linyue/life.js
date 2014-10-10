@@ -71,7 +71,7 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101009001']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101010001']
     ],
     charset: 'utf-8'
 });
@@ -119,15 +119,24 @@ life.page = function(options){
     })
 }
 
-life.dialog = function(options){
-    seajs.use("dialog", function(Dialog){
-        new Dialog(options);
+life.dialog = function(options, callback){
+    seajs.use("dialog", function(dialog){
+        var d = dialog.common(options);
+        callback && callback(d);
     })
 }
 
-life.qzoneAlbums = function(options){
-    seajs.use("qzoneAlbums", function(qzoneAlbums){
-        new qzoneAlbums(options);
+life.alert = function(options, callback){
+    seajs.use("dialog", function(dialog){
+        var d = dialog.alert(options);
+        callback && callback(d);
+    })
+}
+
+life.confirm = function(options, callback){
+    seajs.use("dialog", function(dialog){
+        var d = dialog.confirm(options);
+        callback && callback(d);
     })
 }
 
@@ -137,13 +146,13 @@ life.include = function(url){
     })
 }
 
-life.base64_encode = function(text,callback){
+life.base64_encode = function(text, callback){
     seajs.use("base64", function(m){
         callback(m.base64_encode(text));
     })
 }
 
-life.base64_decode = function(text,callback){
+life.base64_decode = function(text, callback){
     seajs.use("base64", function(m){
         callback(m.base64_decode(text));
     })
@@ -179,21 +188,9 @@ life.shake = function(options){
     })
 }
 
-life.maps = function(options){
-    seajs.use("maps", function(Maps){
-        new Maps(options);
-    })
-}
-
 life.copyText = function(options){
     seajs.use("copyText", function(c){
         c.copyText(options);
-    })
-}
-
-life.areaSelect = function(options){
-    seajs.use("areaSelect", function(a){
-        a.areaSelect(options);
     })
 }
 
@@ -254,14 +251,6 @@ life.sidebar = function(options){
         options.callback && options.callback(sidebar);
     })
 }
-
-life.upload = {};
-life.upload.common = function(options){
-    seajs.use("upload", function(upload){
-        upload.common(options);
-    })
-}
-
 
 life.upload = {};
 life.upload.common = function(options){
