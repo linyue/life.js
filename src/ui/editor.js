@@ -10,9 +10,9 @@ define(function (require) {
     "use strict";
 
     var $ = require('$');
-    var $ = require('editorStyle');
     var Simditor = require('src/plugin/simditor/simditor-all');
 
+    require('editorStyle');
     require('src/plugin/simditor/simditor.css');
     require('src/plugin/simditor/font-awesome.css');
 
@@ -24,7 +24,7 @@ define(function (require) {
 
         //跟据原textarea的尺寸调整编辑器的尺寸
         var editorNode = editor.el;
-        var editorWrapper = editor.wrapper.find(".simditor-body");
+        var editorWrapper = editor.body;
         var textareaNode = editor.textarea;
 
         var containerWidth = textareaNode.width();
@@ -34,7 +34,7 @@ define(function (require) {
         editorNode.height(containerHeight);
 
         editorWrapper.css({
-            height: containerHeight - 61,
+            height: containerHeight - 41,
             minHeight: 'inherit',
             overflow: 'auto'
         })
