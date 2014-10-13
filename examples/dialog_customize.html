@@ -4,166 +4,71 @@
     	<meta charset="utf-8">
     	<title>Demo - Dialog</title>
         <script src="../src/setup.js"></script>
+        <style>
+            a{
+                cursor: pointer;
+            }
+        </style>
   	</head>
-  	<body style="background: #ffe8f5;">
-    <h1>示例：对话框组件【life.dialog()】</h1>
+  	<body>
+    <h1>示例：提示框组件【life.alert()】</h1>
     <ul>
         <li>
-            <label for="id">id:</label>
-            <input id="id" type="text" value="dialog1">
+            <label for="alert_title">title:</label>
+            <input id="alert_title" type="text" value="提示">
         </li>
         <li>
-            <label for="width">width:</label>
-            <input id="width" type="text" value="400">
-        </li>
-        <li>
-            <label for="height">height:</label>
-            <input id="height" type="text" value="auto">
-        </li>
-        <li>
-            <label for="title">title:</label>
-            <input id="title" type="text" value="浮层">
-        </li>
-        <li>
-            <label for="content">content:</label>
-            <input id="content" type="text" value="这是一个浮层">
-        </li>
-        <li>
-            <label for="btns">btns:</label>
-            <input id="btns" type="text" value="[{text: '确定', callback: function(){alert('我是确定按钮，我被点击了！返回值是false,将不关闭。'); return false;}}, {text: '取消', callback: function(){alert('我是取消按钮，我被点击了，马上要关闭浮层！');}}]">
-        </li>
-        <li>
-            <label>target:</label>
-            <input type="radio" name="target" checked="checked" value="self">self
-            <input type="radio" name="target" value="parent">parent
-            <input type="radio" name="target" value="top">top
-        </li>
-        <li>
-            <label for="onOpenBefore">onOpenBefore:</label>
-            <input id="onOpenBefore" name="onOpenBefore" type="text" value="function(){console.log('我是浮层打开前的事件');}">
-        </li>
-        <li>
-            <label for="onOpenAfter">onOpenAfter:</label>
-            <input id="onOpenAfter" name="onOpenAfter" type="text" value="function(){console.log('我是浮层打开后的事件');}">
-        </li>
-        <li>
-            <label for="onCloseBefore">onCloseBefore:</label>
-            <input id="onCloseBefore" name="onCloseBefore" type="text" value="function(){console.log('我是关闭浮层前的事件');}">
-        </li>
-        <li>
-            <label for="onCloseAfter">onCloseAfter:</label>
-            <input id="onCloseAfter" name="onCloseAfter" type="text" value="function(){console.log('我是关闭浮层后的事件');}">
-        </li>
-        <li>
-            <label for="timeout">timeout:</label>
-            <input id="timeout" name="timeout" type="number" value="0">
-        </li>
-        <li>
-            <label for="exClass">exClass:</label>
-            <input id="exClass" name="exClass" type="text" value="myDialog">
-        </li>
-        <li>
-            <label>theme:</label>
-            <input type="radio" name="theme" value="default" checked="checked"> default
-            <input type="radio" name="theme" value="bootstrap"> bootstrap
-            <input type="radio" name="theme" value="metro"> metro
-        </li>
-        <li>
-            <label>skin:</label>
-            <input type="radio" name="skin" value="grey" checked="checked"> grey
-            <input type="radio" name="skin" value="red"> red
-            <input type="radio" name="skin" value="blue"> blue
-            <input type="radio" name="skin" value="green"> green
-            <input type="radio" name="skin" value="orange"> orange
-            <input type="radio" name="skin" value="purple"> purple
-        </li>
-        <li>
-            <label for="padding">padding:</label>
-            <input id="padding" name="padding" type="text" value="50px 20px">
-        </li>
-        <li>
-            <label for="top">top:</label>
-            <input id="top" name="top" type="text" value="null">
-        </li>
-        <li>
-            <label for="left">left:</label>
-            <input id="left" name="left" type="text" value="null">
-        </li>
-        <li>
-            <label for="bottom">bottom:</label>
-            <input id="bottom" name="bottom" type="text" value="null">
-        </li>
-        <li>
-            <label for="right">right:</label>
-            <input id="right" name="right" type="text" value="null">
-        </li>
-        <li>
-            <label for="zIndex">zIndex:</label>
-            <input id="zIndex" name="zIndex" type="text" value="10000">
-        </li>
-        <li>
-            <label>isFixed:</label>
-            <input type="radio" name="isFixed" value="true" checked="checked"> 静止
-            <input type="radio" name="isFixed" value="false"> 滚动
-        </li>
-        <li>
-            <label>isMask:</label>
-            <input type="radio" name="isMask" value="true" checked="checked"> 显示
-            <input type="radio" name="isMask" value="false"> 隐藏
-        </li>
-        <li>
-            <label>isShowCloseBtn:</label>
-            <input type="radio" name="isShowCloseBtn" value="true" checked="checked"> 显示
-            <input type="radio" name="isShowCloseBtn" value="false"> 隐藏
-        </li>
-        <li>
-            <label>isMaskClose:</label>
-            <input type="radio" name="isMaskClose" value="true"> 开启
-            <input type="radio" name="isMaskClose" value="false" checked="checked"> 关闭
-        </li>
-        <li>
-            <label>isKeyControl:</label>
-            <input type="radio" name="isKeyControl" value="true" checked="checked"> 开启
-            <input type="radio" name="isKeyControl" value="false"> 关闭
+            <label for="alert_content">content:</label>
+            <input id="alert_content" type="text" value="这是一个提示框">
         </li>
     </ul>
 
-    <a id="dialog">弹出</a>
+    <a id="e_alert">弹出</a>
+
+    <h1>示例：确认框组件【life.confirm()】</h1>
+    <ul>
+        <li>
+            <label for="confirm_title">title:</label>
+            <input id="confirm_title" type="text" value="你确认吗">
+        </li>
+        <li>
+            <label for="confirm_content">content:</label>
+            <input id="confirm_content" type="text" value="这是一个确认框">
+        </li>
+    </ul>
+
+    <a id="e_confirm">弹出</a>
 
     <script>
         seajs.use(['$'],function($){
-            $("#dialog").click(function(){
+            $("#e_alert").click(function(){
                 var options = {
-                    id: $("#id").val(),
-                    width: $("#width").val(),
-                    height: $("#height").val(),
-                    title: $("#title").val(),
-                    content: $("#content").val(),
-                    btns: eval("(" + $("#btns").val() ? $("#btns").val() : [] + ")" ),
-                    target: $("input[name='target']:checked").val(),
-                    onOpenBefore: eval("(" + $("#onOpenBefore").val() + ")" ),
-                    onOpenAfter: eval("(" + $("#onOpenAfter").val() + ")" ),
-                    onCloseBefore: eval("(" + $("#onCloseBefore").val() + ")" ),
-                    onCloseAfter: eval("(" + $("#onCloseAfter").val() + ")" ),
-                    timeout: parseInt($("#timeout").val()),
-                    exClass: $("#exClass").val(),
-                    theme: $("input[name='theme']:checked").val(),
-                    skin: $("input[name='skin']:checked").val(),
-                    padding: $("#padding").val(),
-                    top: $("#top").val(),
-                    left: $("#left").val(),
-                    bottom: $("#bottom").val(),
-                    right: $("#right").val(),
-                    zIndex: $("#zIndex").val(),
-                    isFixed: $("input[name='isFixed']:checked").val() == "true",
-                    isMask: $("input[name='isMask']:checked").val() == "true",
-                    isShowCloseBtn: $("input[name='isShowCloseBtn']:checked").val() == "true",
-                    isMaskClose: $("input[name='isMaskClose']:checked").val() == "true",
-                    isKeyControl: $("input[name='isKeyControl']:checked").val() == "true"
+                    title: $("#alert_title").val(),
+                    content: $("#alert_content").val(),
+                    ok: function(){
+                        alert("你点击了确定")
+                    }
                 }
 
-                life.dialog(options, function(dialog){
-                    console.log(dialog)
+                life.alert(options, function(alert){
+                    console.log(alert)
+                })
+            })
+
+            $("#e_confirm").click(function(){
+                var options = {
+                    title: $("#confirm_title").val(),
+                    content: $("#confirm_content").val(),
+                    ok: function(){
+                        alert("你点击了确定")
+                    },
+                    cancel: function(){
+                        alert("你点击了取消")
+                    }
+                }
+
+                life.confirm(options, function(confirm){
+                    console.log(confirm)
                 })
             })
         })

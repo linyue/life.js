@@ -161,7 +161,10 @@
                     isMaskClose: $("input[name='isMaskClose']:checked").val() == "true",
                     isKeyControl: $("input[name='isKeyControl']:checked").val() == "true"
                 }
-                life.dialog(options)
+
+                life.dialog(options, function(dialog){
+                    console.log(dialog)
+                })
             })
         })
     </script>
