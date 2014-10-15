@@ -235,14 +235,14 @@ define(function (require, exports, module) {
         },
 
         clearLayer: function(){
-            this.context.fillStyle = 'gray';
+            this.context.fillStyle = 'grey';
             this.context.fillRect(0, 0, this.options.width, this.options.height);
             this.context.fill();
             this.context.save();
         },
 
         fullLayer: function(){
-            this.context.fillStyle = 'gray';
+            this.context.fillStyle = 'grey';
             this.context.fillRect(0, 0, this.options.width, this.options.height);
             this.context.fill();
             this.context.save();
@@ -273,7 +273,7 @@ define(function (require, exports, module) {
 
             this.context = this.canvas.getContext('2d');
 
-            this.context.fillStyle = 'gray';
+            this.context.fillStyle = 'grey';
             this.fullLayer();
 
             this.context.font="20px microsoft yahei";

@@ -9,9 +9,9 @@
 @blueColor: #2aa1d3;
 @blueColorDark: #1e88b4;
 
-@yellowName: "yellow";
-@yellowColor: #f0b017;
-@yellowColorDark: #d69d14;
+@orangeName: "orange";
+@orangeColor: #f0b017;
+@orangeColorDark: #d69d14;
 
 @greenName: "green";
 @greenColor: #8ab71b;
@@ -21,9 +21,9 @@
 @purpleColor: #bf58cb;
 @purpleColorDark: #953b9f;
 
-@grayName: "gray";
-@grayColor: #f0f0f0;
-@grayColorDark: #e6e0d5;
+@greyName: "grey";
+@greyColor: #e6e6e6;
+@greyColorDark: #909090;
 
 /*背景渐变效果*/
 .gradient(@lightColor,@darkColor) {
@@ -139,7 +139,7 @@
 .i_mui_select{
   width: 150px;
   height: 30px;
-  background: url('@{imgPath}select_gray.png') no-repeat #23252b center right;
+  background: url('@{imgPath}select_grey.png') no-repeat #23252b center right;
   background-size: 25px 30px;
   border: none;
   border-radius: 5px;
@@ -579,9 +579,9 @@
   .theme(@blueName, @blueColor, @blueColorDark);
 }
 
-/*黄色，i_mui_yellow*/
-.i_mui_yellow {
-  .theme(@yellowName, @yellowColor, @yellowColorDark);
+/*黄色，i_mui_orange*/
+.i_mui_orange {
+  .theme(@orangeName, @orangeColor, @orangeColorDark);
 }
 
 /*绿色，i_mui_green*/
@@ -594,9 +594,9 @@
   .theme(@purpleName, @purpleColor, @purpleColorDark);
 }
 
-/*灰色，i_mui_gray*/
-.i_mui_gray {
-  .theme(@grayName, @grayColor, @grayColorDark, #333);
+/*灰色，i_mui_grey*/
+.i_mui_grey {
+  .theme(@greyName, @greyColor, @greyColorDark, #333);
 }
 
 /*日期选择器控件样式*/
@@ -1891,34 +1891,34 @@
 }
 
 /*黄色*/
-.i_mui_yellow.android-ics .dw {
+.i_mui_orange.android-ics .dw {
   color: #f0b017;
 }
-.i_mui_yellow.android-ics .dwv {
+.i_mui_orange.android-ics .dwv {
   border-bottom-color: #f0b017;
 }
-.i_mui_yellow.android-ics .dww .dw-li.dw-hl {
+.i_mui_orange.android-ics .dww .dw-li.dw-hl {
   background: #f0b017;
   background: rgba(240,176,23,.5);
 }
-.i_mui_yellow.android-ics .dwwbm.dwb-a:after {
+.i_mui_orange.android-ics .dwwbm.dwb-a:after {
   border-color: transparent transparent #f0b017 transparent;
 }
-.i_mui_yellow.android-ics .dwwbp.dwb-a:after {
+.i_mui_orange.android-ics .dwwbp.dwb-a:after {
   border-color: #f0b017 transparent transparent transparent;
 }
-.i_mui_yellow.android-ics .dw .dwwol {
+.i_mui_orange.android-ics .dw .dwwol {
   border-top: 2px solid #f0b017;
   border-bottom: 2px solid #f0b017;
 }
-.i_mui_yellow.android-ics .dw .dwb-a {
+.i_mui_orange.android-ics .dw .dwb-a {
   background: #f0b017;
 }
-.i_mui_yellow.android-ics .dwwms .dw-li:after {
+.i_mui_orange.android-ics .dwwms .dw-li:after {
   color: #f0b017;
   text-shadow: 0 0 5px #f0b017;
 }
-.i_mui_yellow.android-ics.light .dwwms .dw-li:after {
+.i_mui_orange.android-ics.light .dwwms .dw-li:after {
   text-shadow: 0 0 5px #f0b017;
 }
 
@@ -1988,33 +1988,33 @@
 
 
 /*灰色*/
-.i_mui_gray.android-ics .dw {
-  color: #e6e0d5;
+.i_mui_grey.android-ics .dw {
+  color: #909090;
 }
-.i_mui_gray.android-ics .dwv {
-  border-bottom-color: #e6e0d5;
+.i_mui_grey.android-ics .dwv {
+  border-bottom-color: #909090;
 }
-.i_mui_gray.android-ics .dww .dw-li.dw-hl {
-  background: #e6e0d5;
+.i_mui_grey.android-ics .dww .dw-li.dw-hl {
+  background: #909090;
   background: rgba(230,224,213,.5);
 }
-.i_mui_gray.android-ics .dwwbm.dwb-a:after {
-  border-color: transparent transparent #e6e0d5 transparent;
+.i_mui_grey.android-ics .dwwbm.dwb-a:after {
+  border-color: transparent transparent #909090 transparent;
 }
-.i_mui_gray.android-ics .dwwbp.dwb-a:after {
-  border-color: #e6e0d5 transparent transparent transparent;
+.i_mui_grey.android-ics .dwwbp.dwb-a:after {
+  border-color: #909090 transparent transparent transparent;
 }
-.i_mui_gray.android-ics .dw .dwwol {
-  border-top: 2px solid #e6e0d5;
-  border-bottom: 2px solid #e6e0d5;
+.i_mui_grey.android-ics .dw .dwwol {
+  border-top: 2px solid #909090;
+  border-bottom: 2px solid #909090;
 }
-.i_mui_gray.android-ics .dw .dwb-a {
-  background: #e6e0d5;
+.i_mui_grey.android-ics .dw .dwb-a {
+  background: #909090;
 }
-.i_mui_gray.android-ics .dwwms .dw-li:after {
-  color: #e6e0d5;
-  text-shadow: 0 0 5px #e6e0d5;
+.i_mui_grey.android-ics .dwwms .dw-li:after {
+  color: #909090;
+  text-shadow: 0 0 5px #909090;
 }
-.i_mui_gray.android-ics.light .dwwms .dw-li:after {
-  text-shadow: 0 0 5px #e6e0d5;
+.i_mui_grey.android-ics.light .dwwms .dw-li:after {
+  text-shadow: 0 0 5px #909090;
 }

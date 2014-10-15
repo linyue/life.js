@@ -26,11 +26,11 @@ define(function (require, exports, module) {
             content: '',                //内容
             onOk: null,                 //加载完成后执行的回调函数
             isMask: true,               //是否打开遮罩
-            skin: 'gray',
+            skin: 'grey',
             exClass: ''                 //附加的 class
         },
 
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'yellow', 'green', 'purple'],
 
         //组件容器对象
         win: $(window.top),
@@ -129,10 +129,10 @@ define(function (require, exports, module) {
             var colorMap = {
                 red: '#ee4e10',
                 blue: '#2aa1d3',
-                yellow: '#f0b017',
-                green: '#8ab71b',
-                purple: '#bf58cb',
-                gray: '#e6e0d5'
+                orange: '#faa732',
+                green: '#77bb00',
+                purple: '#aa44ff',
+                grey: '#909090'
             }
             return colorMap[this.options.skin];
         },
@@ -204,7 +204,7 @@ define(function (require, exports, module) {
             onOk: null,                 //加载完成后执行的回调函数
             onCancel: null,
             isMask: true,                   //是否打开遮罩
-            skin: 'gray',
+            skin: 'grey',
             exClass: ''                     //附加的 class
         },
 
@@ -280,14 +280,14 @@ define(function (require, exports, module) {
             min: null,                      //最小值限制，null为不限制
             max: null,                      //最大值限制，null为不限制
             theme: 'light',
-            skin: 'gray',
+            skin: 'grey',
             type: 'int',                    //数字类型，int、float
             isModify: true                  //是否允许修改
         },
 
         //枚举值
         type: ['int', 'float'],
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
         theme: ['light', 'dark'],
 
         //组件容器对象
@@ -466,12 +466,12 @@ define(function (require, exports, module) {
             onChange: function(num){},      //进度更改时的回调,参数当前进度值
             onComplete: null,       //进度为100时的事件
             theme: 'light',
-            skin: 'gray',
+            skin: 'grey',
             exClass: '',                    //附加的 class
             isAnimate: true                 //是否有动画效果
         },
 
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
         theme: ['light', 'dark'],
 
         //组件容器对象
@@ -612,14 +612,14 @@ define(function (require, exports, module) {
             callback: null,                 //加载完成后执行的回调函数
             onChange: function(status){},   //状态更改时的回调,参数当前状态度值
             theme: 'light',
-            skin: 'gray',
+            skin: 'grey',
             exClass: '',                    //附加的 class
             isAnimate: true                 //是否有动画效果
         },
 
         //枚举值
         status: ['on', 'off'],
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
         theme: ['light', 'dark'],
 
         //组件容器对象
@@ -775,14 +775,14 @@ define(function (require, exports, module) {
             callback: null,                 //加载完成后执行的回调函数
             onChange: function(status){},   //状态更改时的回调,参数当前状态度值
             theme: 'light',
-            skin: 'gray',
+            skin: 'grey',
             type: 'int',                    //是否只允许为整数
             exClass: ''                     //附加的 class
         },
 
         //枚举值
         type: ['int', 'float'],
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
         theme: ['light', 'dark'],
 
         //组件容器对象
@@ -1015,14 +1015,14 @@ define(function (require, exports, module) {
             callback: null,                 //加载完成后执行的回调函数
             onChange: function(values){},   //状态更改时的回调,参数当前状态度值
             theme: 'light',
-            skin: 'gray',
+            skin: 'grey',
             type: 'int',
             exClass: ''                     //附加的 class
         },
 
         //枚举值
         type: ['int', 'float'],
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
         theme: ['light', 'dark'],
 
         //组件容器对象
@@ -1310,13 +1310,13 @@ define(function (require, exports, module) {
             max: null,
             minuteStep: 5,
             callback: null,                 //加载完成后执行的回调函数
-            skin: 'gray',
+            skin: 'grey',
             type: 'date'
         },
 
         //枚举值
         type: ['date', 'time'],
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
 
         theme:{
             defaults: {
@@ -1469,7 +1469,7 @@ define(function (require, exports, module) {
             isAnimate: true
         },
 
-        skin: ['gray', 'red', 'blue', 'yellow', 'green', 'purple'],
+        skin: ['grey', 'red', 'blue', 'orange', 'green', 'purple'],
 
         //组件容器对象
         container: null,

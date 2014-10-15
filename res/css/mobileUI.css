@@ -27,7 +27,7 @@
     appearance: listbox;
  }
 .i_mui_checkbox:checked{
-    background: #e6e0d5;
+    background: #909090;
 }
 .i_mui_checkbox:checked:after{
     content: '√';
@@ -53,7 +53,7 @@
 .i_mui_radio:checked:after{
     width: 10px;
     height: 10px;
-    background: #e6e0d5;
+    background: #909090;
     border-radius: 8px;
     display: block;
     content: '';
@@ -85,7 +85,7 @@
 .i_mui_button{
     width: 100px;
     height: 30px;
-    background: #e6e0d5;
+    background: #909090;
     border: none;
     border-radius: 5px;
     outline: none;
@@ -142,7 +142,7 @@
     max-width: 100%;
     height: 30px;
     background: url('../img/mobileUI/progress.png') repeat-x;
-    background-color: #e6e0d5;
+    background-color: #909090;
     border-radius: 4px;
     position: absolute;
     top: 0;
@@ -181,7 +181,7 @@
     cursor: pointer;
 }
 .i_mui_switchBar.i_active{
-    background: #e6e0d5;
+    background: #909090;
 }
 
 /*滑动条控件*/
@@ -193,7 +193,7 @@
 .i_mui_slideBar_bar{
     width: 100%;
     height: 12px;
-    background: #e6e0d5;
+    background: #909090;
     border-radius: 30px;
     position: absolute;
     bottom: 6px;
@@ -251,7 +251,7 @@
 .i_mui_rangeBar_bar{
     width: 100%;
     height: 12px;
-    background: #e6e0d5;
+    background: #909090;
     border-radius: 30px;
     position: absolute;
     bottom: 6px;
@@ -319,180 +319,180 @@
 
 /*红色，i_mui_red*/
 .i_mui_red.i_mui_checkbox:checked{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red.i_mui_radio:checked:after{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red.i_mui_button{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red.i_mui_number .i_mui_button{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red .i_mui_progress_chart{
-    background-color: #ee4e10;
+    background-color: #dd4444;
 }
 .i_mui_red.i_mui_switchBar.i_active{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red .i_mui_slideBar_bar{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red .i_mui_rangeBar_bar{
-    background: #ee4e10;
+    background: #dd4444;
 }
 .i_mui_red.i_mui_toTop.i_mui_button{
-    background: #ee4e10;
+    background: #dd4444;
 }
 
 
 /*蓝色，i_mui_blue*/
 .i_mui_blue.i_mui_checkbox:checked{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue.i_mui_radio:checked:after{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue.i_mui_button{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue.i_mui_number .i_mui_button{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue .i_mui_progress_chart{
-    background-color: #2aa1d3;
+    background-color: #0088cc;
 }
 .i_mui_blue.i_mui_switchBar.i_active{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue .i_mui_slideBar_bar{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue .i_mui_rangeBar_bar{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 .i_mui_blue.i_mui_toTop.i_mui_button{
-    background: #2aa1d3;
+    background: #0088cc;
 }
 
 
-/*黄色，i_mui_yellow*/
-.i_mui_yellow.i_mui_checkbox:checked{
-    background: #f0b017;
+/*橙色，i_mui_orange*/
+.i_mui_orange.i_mui_checkbox:checked{
+    background: #faa732;
 }
-.i_mui_yellow.i_mui_radio:checked:after{
-    background: #f0b017;
+.i_mui_orange.i_mui_radio:checked:after{
+    background: #faa732;
 }
-.i_mui_yellow.i_mui_button{
-    background: #f0b017;
+.i_mui_orange.i_mui_button{
+    background: #faa732;
 }
-.i_mui_yellow.i_mui_number .i_mui_button{
-    background: #f0b017;
+.i_mui_orange.i_mui_number .i_mui_button{
+    background: #faa732;
 }
-.i_mui_yellow .i_mui_progress_chart{
-    background-color: #f0b017;
+.i_mui_orange .i_mui_progress_chart{
+    background-color: #faa732;
 }
-.i_mui_yellow.i_mui_switchBar.i_active{
-    background: #f0b017;
+.i_mui_orange.i_mui_switchBar.i_active{
+    background: #faa732;
 }
-.i_mui_yellow .i_mui_slideBar_bar{
-    background: #f0b017;
+.i_mui_orange .i_mui_slideBar_bar{
+    background: #faa732;
 }
-.i_mui_yellow .i_mui_rangeBar_bar{
-    background: #f0b017;
+.i_mui_orange .i_mui_rangeBar_bar{
+    background: #faa732;
 }
-.i_mui_yellow.i_mui_toTop.i_mui_button{
-    background: #f0b017;
+.i_mui_orange.i_mui_toTop.i_mui_button{
+    background: #faa732;
 }
 
 
 
-/*灰色，i_mui_green*/
+/*绿色，i_mui_green*/
 .i_mui_green.i_mui_checkbox:checked{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green.i_mui_radio:checked:after{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green.i_mui_button{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green.i_mui_number .i_mui_button{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green .i_mui_progress_chart{
-    background-color: #8ab71b;
+    background-color: #77bb00;
 }
 .i_mui_green.i_mui_switchBar.i_active{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green .i_mui_slideBar_bar{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green .i_mui_rangeBar_bar{
-    background: #8ab71b;
+    background: #77bb00;
 }
 .i_mui_green.i_mui_toTop.i_mui_button{
-    background: #8ab71b;
+    background: #77bb00;
 }
 
 
 /*紫色，i_mui_purple*/
 .i_mui_purple.i_mui_checkbox:checked{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple.i_mui_radio:checked:after{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple.i_mui_button{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple.i_mui_number .i_mui_button{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple .i_mui_progress_chart{
-    background-color: #bf58cb;
+    background-color: #aa44ff;
 }
 .i_mui_purple.i_mui_switchBar.i_active{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple .i_mui_slideBar_bar{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple .i_mui_rangeBar_bar{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 .i_mui_purple.i_mui_toTop.i_mui_button{
-    background: #bf58cb;
+    background: #aa44ff;
 }
 
 
-/*灰色，i_mui_gray*/
-.i_mui_gray.i_mui_checkbox:checked{
-    background: #e6e0d5;
+/*灰色，i_mui_grey*/
+.i_mui_grey.i_mui_checkbox:checked{
+    background: #909090;
 }
-.i_mui_gray.i_mui_radio:checked:after{
-    background: #e6e0d5;
+.i_mui_grey.i_mui_radio:checked:after{
+    background: #909090;
 }
-.i_mui_gray.i_mui_button{
-    background: #e6e0d5;
+.i_mui_grey.i_mui_button{
+    background: #909090;
 }
-.i_mui_gray.i_mui_number .i_mui_button{
-    background: #e6e0d5;
+.i_mui_grey.i_mui_number .i_mui_button{
+    background: #909090;
 }
-.i_mui_gray .i_mui_progress_chart{
-    background-color: #e6e0d5;
+.i_mui_grey .i_mui_progress_chart{
+    background-color: #909090;
 }
-.i_mui_gray.i_mui_switchBar.i_active{
-    background: #e6e0d5;
+.i_mui_grey.i_mui_switchBar.i_active{
+    background: #909090;
 }
-.i_mui_gray .i_mui_slideBar_bar{
-    background: #e6e0d5;
+.i_mui_grey .i_mui_slideBar_bar{
+    background: #909090;
 }
-.i_mui_gray .i_mui_rangeBar_bar{
-    background: #e6e0d5;
+.i_mui_grey .i_mui_rangeBar_bar{
+    background: #909090;
 }
-.i_mui_gray.i_mui_toTop.i_mui_button{
-    background: #e6e0d5;
+.i_mui_grey.i_mui_toTop.i_mui_button{
+    background: #909090;
 }

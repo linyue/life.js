@@ -1,4 +1,4 @@
-seajs.use(["type", "$"],function(m,$){
+seajs.use(["type", "$"],function(type,$){
 
     module( "type(obj) 测试" );
 
@@ -32,9 +32,9 @@ seajs.use(["type", "$"],function(m,$){
             'undefined'
         ]
         for(var i in objs){
-            equal(m.type(objs[i]),types[i], objs[i] + " 的数据型是 " + m.type(objs[i]) );
+            equal(type.getName(objs[i]),types[i], objs[i] + " 的数据型是 " + type.getName(objs[i]) );
         }
-        equal(m.type(),'undefined', "不传参数时，获取的参数是undefined！");
+        equal(type.getName(),'undefined', "不传参数时，获取的参数是undefined！");
     });
 
 })

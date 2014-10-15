@@ -135,7 +135,7 @@
          * 倒计时
          *
          * @param string now            当前时间
-         * @param string url            截止时间
+         * @param string deadline       截止时间
          * @param int interval          间隔时间,单位 s
          * @param function onInterval   定时回调，function(data){}
          * @param function onTimeUp     倒计时为0的回调，function(){}
@@ -194,6 +194,64 @@
 
             intervalFun();
             setInterval(intervalFun, 1000);
+        },
+
+        /**
+         * 计算时间跨度
+         *
+         * @param string now            当前时间
+         * @param string before         需要计算的时间
+         * @return string               时间跨度
+         * @author adam[linyue@live.cn]
+         * @time 2014-10-14
+         */
+        span: function(options){
+            var opt = {
+                now: typeof options.now != 'undefined' ? options.now : new Date(),
+                before: typeof options.before != 'undefined' ? options.before : new Date(),
+                language: typeof options.language != 'undefined' ? options.language : 'cn'
+            }
+
+            var text = {
+                en: {
+                    just: 'Just now',
+                    mins: 'mins',
+                    hrs: 'hrs',
+                    yesterday: 'Yesterday'
+                },
+                cn: {
+                    just: '刚刚',
+                    mins: '分钟前',
+                    hrs: '小时前',
+                    yesterday: '昨天'
+                }
+            }
+
+            var nowDate = typeof opt.now == 'object' ? opt.now : this.string2Date(opt.now);
+            var beforeDate = typeof opt.before == 'object' ? opt.before : this.string2Date(opt.before);
+
+            var nowSec = parseInt(nowDate.getTime() / 1000);
+            var beforeSec = parseInt(beforeDate.getTime() / 1000);
+
+            var nowDay = nowDate.getDate();
+            var beforeDay = beforeDate.getDate();
+
+            var differSec = nowSec - beforeSec;
+            var rs = '';
+
+            if(differSec < 60){
+                rs = text[opt.language].just;
+            }else if(differSec < (60 * 60)){
+                rs = Math.floor(differSec / 60) + ' ' +text[opt.language].mins;
+            } else if (differSec < (60 * 60 * 24)) {
+                rs = Math.floor(differSec / (60 * 60)) + ' ' +text[opt.language].hrs;
+            } else if (nowDay == beforeDay + 1) {
+                rs = text[opt.language].yesterday + ' ' + this.format('HH:mm', beforeDate);
+            }else{
+                rs = this.format('yyyy-MM-dd', beforeDate);
+            }
+
+            return rs;
         }
     }
 

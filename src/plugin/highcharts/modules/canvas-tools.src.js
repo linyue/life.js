@@ -3011,8 +3011,8 @@ if (CanvasRenderingContext2D) {
 			// Optionally add shadow
 			if (options.shadow) {
 				tooltipDivStyle = merge(tooltipDivStyle, {
-					'box-shadow': '1px 1px 3px gray', // w3c
-					'-webkit-box-shadow': '1px 1px 3px gray' // webkit
+					'box-shadow': '1px 1px 3px grey', // w3c
+					'-webkit-box-shadow': '1px 1px 3px grey' // webkit
 				});
 			}
 			css(tooltipDiv, tooltipDivStyle);
