@@ -15,15 +15,15 @@
             var prize = [{
                 grade : 1,
                 name : '一等奖',
-                img : '../../res/img/roulette/one.png'
+                img : '../res/img/roulette/one.png'
             },{
                 grade : 2,
                 name : '二等奖',
-                img : '../../res/img/roulette/two.png'
+                img : '../res/img/roulette/two.png'
             },{
                 grade : 3,
                 name : '三等奖',
-                img : '../../res/img/roulette/three.png'
+                img : '../res/img/roulette/three.png'
             }];
 
             var resultArr = [{
@@ -54,19 +54,7 @@
                 height: 200,
                 row: 5,
                 line: 5,
-                data: [{
-                    grade : 1,
-                    name : '一等奖',
-                    img : '../../res/img/shake/one.png'
-                },{
-                    grade : 2,
-                    name : '二等奖',
-                    img : '../../res/img/shake/two.png'
-                },{
-                    grade : 3,
-                    name : '三等奖',
-                    img : '../../res/img/shake/three.png'
-                }],
+                data: prize,
                 exClass: '',
                 checkDraw: function(){
                     return checkArr[parseInt(Math.random() * 1000) % 2]
