@@ -341,6 +341,7 @@
 }
 
 .simditor .simditor-popover .settings-field {
+    height: 25px;
     margin: 0 0 5px 0;
     font-size: 12px;
 }

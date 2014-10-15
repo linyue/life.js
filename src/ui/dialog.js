@@ -11,6 +11,123 @@ define(function (require, exports, module) {
     var $ = require('$');
     var Class = require('Class');
 
+    exports.common = function(options){
+        return new Dialog(options);
+    }
+
+    exports.alert = function(options){
+        var setting = {
+            id: 'i_alert_' + new Date().getTime(),
+            title: '',
+            content: '',
+            theme: 'default',               //样式主题，可设置项有：default、bootstrap、metro
+            skin: 'grey',                   //主题颜色，可设置项有：grey、red、blue、green、orange、purple
+            exClass: '',
+            zIndex: 10000,                  //浮层的层级
+            isMask: true,                   //是否显示浮层
+            ok: function(){
+
+            }
+        }
+
+        setting = $.extend({}, setting, options);
+
+        var opt = {
+            id: setting.id,
+            width: 400,
+            height: 'auto',
+            title: setting.title,
+            content: setting.content,
+            btns: [{
+                text: '确定',
+                class: 'okButton',
+                callback: setting.ok
+            }],
+            target: setting.target,
+            onOpenBefore: function(){},
+            onOpenAfter: function(){},
+            onCloseBefore: function(){},
+            onCloseAfter: function(){},
+            timeout: 0,
+            exClass: setting.exClass,
+            theme: setting.theme,
+            skin: setting.skin,
+            padding: '40px 20px',
+            top: 'auto',
+            bottom: 'auto',
+            left: 'auto',
+            right: 'auto',
+            zIndex: setting.zIndex,
+            isMask: setting.isMask,
+            isFixed: true,
+            isShowCloseBtn: false,
+            isMaskClose: false,
+            isKeyControl: false
+        }
+
+        return new Dialog(opt);
+    }
+
+    exports.confirm = function(options){
+        var setting = {
+            id: 'i_confirm_' + new Date().getTime(),
+            title: '',
+            content: '',
+            theme: 'default',               //样式主题，可设置项有：default、bootstrap、metro
+            skin: 'grey',                   //主题颜色，可设置项有：grey、red、blue、green、orange、purple
+            exClass: '',
+            zIndex: 10000,                  //浮层的层级
+            isMask: true,                   //是否显示浮层
+            ok: function(){
+
+            },
+            cancel: function(){
+
+            }
+        }
+
+        setting = $.extend({}, setting, options);
+
+        var opt = {
+            id: setting.id,
+            width: 400,
+            height: 'auto',
+            title: setting.title,
+            content: setting.content,
+            btns: [{
+                text: '确定',
+                class: 'okButton',
+                callback: setting.ok
+            },{
+                text: '取消',
+                class: 'cancelButton',
+                callback: setting.cancel
+            }],
+            target: setting.target,
+            onOpenBefore: function(){},
+            onOpenAfter: function(){},
+            onCloseBefore: function(){},
+            onCloseAfter: function(){},
+            timeout: 0,
+            exClass: setting.exClass,
+            theme: setting.theme,
+            skin: setting.skin,
+            padding: '40px 20px',
+            top: 'auto',
+            bottom: 'auto',
+            left: 'auto',
+            right: 'auto',
+            zIndex: setting.zIndex,
+            isMask: setting.isMask,
+            isFixed: true,
+            isShowCloseBtn: false,
+            isMaskClose: false,
+            isKeyControl: false
+        }
+
+        return new Dialog(opt);
+    }
+
     var Dialog = Class.extend({
         //可配置参数
         options: {
@@ -363,7 +480,5 @@ define(function (require, exports, module) {
         }
 
     });
-
-    module.exports = Dialog;
 
 })
