@@ -35,12 +35,12 @@ define(function(require, exports, module) {
                 return 'infinity';
             }
         }
-     
+
         return type;
     }
 
 
-    exports.type = type;
+    exports.getName = type;
 
     ['Null',
      'Undefined',

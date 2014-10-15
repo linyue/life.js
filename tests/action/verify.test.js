@@ -27,6 +27,35 @@ seajs.use(["verify", "$"],function(m,$){
         }
     });
 
+    module( "isTelephone(text) 测试" );
+
+    test('isTelephone(text)正确用例', function() {
+        var texts = [
+            '5538226',
+            '075586013388',
+            '0753-5538226',
+            '020-5538226',
+            '110',
+            '400-320-5555'
+        ];
+        for(var i in texts){
+            ok(m.isTelephone(texts[i]), "验证“" + texts[i] + "”为电话号码");
+        }
+    });
+
+    test('isTelephone(text)异常用例', function() {
+        var texts = [
+            '1234',
+            '1234.',
+            '1234.a',
+            '1,234',
+            '123.4.5'
+        ];
+        for(var i in texts){
+            ok(!m.isTelephone(texts[i]), "验证“" + texts[i] + "”不是电话号码");
+        }
+    });
+
 
     module( "isZipCode(text) 测试" );
 
@@ -294,34 +323,6 @@ seajs.use(["verify", "$"],function(m,$){
             ok(!m.isFloat(texts[i]), "验证“" + texts[i] + "”不是浮点数");
         }
     });
-
-    module( "isFloat(text) 测试" );
-
-    test('isFloat(text)正确用例', function() {
-        var texts = [
-            '0.1',
-            '3.1415926',
-            '-6.18',
-            '123.0'
-        ];
-        for(var i in texts){
-            ok(m.isFloat(texts[i]), "验证“" + texts[i] + "”为浮点数");
-        }
-    });
-
-    test('isFloat(text)异常用例', function() {
-        var texts = [
-            '123',
-            '123.',
-            '123.a',
-            '1,23',
-            '123.3.3'
-        ];
-        for(var i in texts){
-            ok(!m.isFloat(texts[i]), "验证“" + texts[i] + "”不是浮点数");
-        }
-    });
-
 
     module( "isUrl(text) 测试" );
 

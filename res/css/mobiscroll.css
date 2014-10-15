@@ -1386,34 +1386,34 @@
 
 
 /*灰色*/
-.i_mui_gray.android-ics .dw {
+.i_mui_grey.android-ics .dw {
     color: #e6e0d5;
 }
-.i_mui_gray.android-ics .dwv {
+.i_mui_grey.android-ics .dwv {
     border-bottom-color: #e6e0d5;
 }
-.i_mui_gray.android-ics .dww .dw-li.dw-hl {
+.i_mui_grey.android-ics .dww .dw-li.dw-hl {
     background: #e6e0d5;
     background: rgba(230,224,213,.5);
 }
-.i_mui_gray.android-ics .dwwbm.dwb-a:after {
+.i_mui_grey.android-ics .dwwbm.dwb-a:after {
     border-color: transparent transparent #e6e0d5 transparent;
 }
-.i_mui_gray.android-ics .dwwbp.dwb-a:after {
+.i_mui_grey.android-ics .dwwbp.dwb-a:after {
     border-color: #e6e0d5 transparent transparent transparent;
 }
-.i_mui_gray.android-ics .dw .dwwol {
+.i_mui_grey.android-ics .dw .dwwol {
     border-top: 2px solid #e6e0d5;
     border-bottom: 2px solid #e6e0d5;
 }
-.i_mui_gray.android-ics .dw .dwb-a {
+.i_mui_grey.android-ics .dw .dwb-a {
     background: #e6e0d5;
 }
-.i_mui_gray.android-ics .dwwms .dw-li:after {
+.i_mui_grey.android-ics .dwwms .dw-li:after {
     color: #e6e0d5;
     text-shadow: 0 0 5px #e6e0d5;
 }
-.i_mui_gray.android-ics.light .dwwms .dw-li:after {
+.i_mui_grey.android-ics.light .dwwms .dw-li:after {
     text-shadow: 0 0 5px #e6e0d5;
 }
 

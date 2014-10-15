@@ -92,6 +92,10 @@
 
     <body>
 
+        <div id="qrcode" style="position: fixed;right: 20px; top: 20px;">
+
+        </div>
+
         <h2>风格选择</h2>
         <ul id="themeConfig">
             <li data_class="i_mui_dark" style="background: #444;color: #fff;">深色风格</li>
@@ -100,12 +104,12 @@
 
         <h2>颜色选择</h2>
         <ul id="colorConfig">
-            <li data_class="i_mui_red" style="background: #ee4e10">红色<br />#ee4e10</li>
-            <li data_class="i_mui_blue" style="background: #2aa1d3">蓝色<br />#2aa1d3</li>
-            <li data_class="i_mui_yellow" style="background: #f0b017">黄色<br />#f0b017</li>
-            <li data_class="i_mui_green" style="background: #8ab71b">绿色<br />#8ab71b</li>
-            <li data_class="i_mui_purple" style="background: #bf58cb">紫色<br />#bf58cb</li>
-            <li data_class="i_mui_gray" style="background: #e6e0d5">灰色<br />#e6e0d5</li>
+            <li data_class="i_mui_red" style="background: #dd4444">红色<br />#dd4444</li>
+            <li data_class="i_mui_blue" style="background: #0088cc">蓝色<br />#0088cc</li>
+            <li data_class="i_mui_orange" style="background: #faa732">橙色<br />#faa732</li>
+            <li data_class="i_mui_green" style="background: #77bb00">绿色<br />#77bb00</li>
+            <li data_class="i_mui_purple" style="background: #aa44ff">紫色<br />#aa44ff</li>
+            <li data_class="i_mui_grey" style="background: #909090">灰色<br />#909090</li>
         </ul>
 
         <h2>原生控件</h2>
@@ -256,16 +260,27 @@
         </ul>
 
         <script>
-            seajs.use(['mobileUI'],function(mui){
+            seajs.use([
+                'mobileUI',
+                'url'
+            ],function(mui, url){
 
+                var skin =  url.getParam("skin");
+
+                life.qrcode({
+                    query: '#qrcode',
+                    content: window.location.href,
+                    logoImg: 'img/logo.png',
+                    skin: skin
+                })
 
                 $("#colorConfig li,#themeConfig li").click(function(){
                     $(this).parents("ul").find("li").removeClass("active");
                     $(this).addClass("active");
                     var themeClass =  $("#themeConfig li.active").attr("data_class");
                     var skinClass = $("#colorConfig li.active").attr("data_class");
-                    var url = 'mobileui.html?skin=' + skinClass.replace("i_mui_","") + '&theme=' + themeClass.replace("i_mui_","");
-                    document.location.href = url;
+                    var search = '?skin=' + skinClass.replace("i_mui_","") + '&theme=' + themeClass.replace("i_mui_","");
+                    document.location.search = search;
                 })
 
                 $("#themeConfig li[data_class='" + themeClass + "']").addClass("active");
@@ -275,8 +290,6 @@
                 $(".skin").text(skinClass);
                 $(".theme").text(themeClass);
                 $("body,.i_mui_input,.i_mui_checkbox,.i_mui_radio,.i_mui_select,.i_mui_button,.i_mui_table").addClass(skinClass).addClass(themeClass);
-
-
 
                 $("#button1").click(function(){
                     mui.alert({
