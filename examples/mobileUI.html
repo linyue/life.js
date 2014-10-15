@@ -112,6 +112,7 @@
             <li data_class="i_mui_grey" style="background: #909090">灰色<br />#909090</li>
         </ul>
 
+        <div style="clear: both;"></div>
         <h2>原生控件</h2>
             <ul>
                 <li>
@@ -267,12 +268,16 @@
 
                 var skin =  url.getParam("skin");
 
-                life.qrcode({
-                    query: '#qrcode',
-                    content: window.location.href,
-                    logoImg: 'img/logo.png',
-                    skin: skin
-                })
+                console.log()
+                if(getMachineType() == 'pc'){
+                    life.qrcode({
+                        query: '#qrcode',
+                        content: window.location.href,
+                        logoImg: 'img/logo.png',
+                        skin: skin
+                    })
+                }
+
 
                 $("#colorConfig li,#themeConfig li").click(function(){
                     $(this).parents("ul").find("li").removeClass("active");
