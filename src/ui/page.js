@@ -20,27 +20,27 @@ define(function (require, exports, module) {
         //可配置参数
         options: {
             query: '',                      //容器 DOM 节点选择器
-            scope: window,                  //回调函数的this指向
             funName: '',                    //点击页码后执行的JS函数。函数原型为：function(curPage, pageSize[, exParams]){ }
             curPage: 1,                     //当前页码
             totalItem: 1,                   //列表数据总数，由cgi返回
             pageSize: 10,                   //每页显示的数据条数
+            scope: window,                  //funName方法的this指向
             callback: null,                 //加载完成后执行的回调函数
-            exClass: '',                    //附加的 class
             exParams: {},                   //附加参数，在回调中被使用
             type: 'normal',                 //组件类型，可设置项有： normal、number、simple
             theme: 'default',               //样式主题，可设置项有：default、bootstrap、metro
             skin: 'grey',                   //主题颜色，可设置项有：grey、red、blue、green、orange、purple
+            exClass: '',                    //附加的 class
             align: 'center',                //对齐方式，可设置项有：left、center、right
             pageLimit: 10,                  //页码显示个数，当 isShowNum 为 true 时有效，不小于3
-            isShowNum: true,                //是否显示数字页面，当 type 为 normal 时有效
+            sizeList: [10, 20, 30, 50, 100],//每页条数选择设置，当 isShowSize 为 true 时有效
+            isShowSize: true,               //是否支持每页条数选择，当 type 为 normal 时有效
+            isShowInfo: true,               //是否显示列表信息，当 type 为 normal 时有效
             isShowPN: true,                 //是否显示上一页和下一页按钮，当 type 不为 numbel 时有效
             isShowFE: true,                 //是否显示首页和尾页按钮，当 type 为 normal 时有效
-            isShowInfo: true,               //是否显示列表信息，当 type 为 normal 时有效
+            isShowNum: true,                //是否显示数字页面，当 type 为 normal 时有效
             isShowSkip: true,               //是否显示跳转按钮，当 type 为 normal 时有效
-            isShowSize: true,               //是否支持每页条数选择，当 type 为 normal 时有效
-            isKeyControl: true,             //是否支持键盘左右键进行前后页控制
-            sizeList: [10, 20, 30, 50, 100] //每页条数选择设置，当 isShowSize 为 true 时有效
+            isKeyControl: true              //是否支持键盘左右键进行前后页控制
         },
 
         //枚举值

@@ -29,47 +29,80 @@ body{
     padding: 0 20px 20px 20px;
     float: left;    
 }
-.apiType li h2{
-    margin-top: 20px;
+.apiType > li h2{
+    margin-top: 30px;
 }
-.apiType li h2 a{
-    border-bottom: 1px solid #F0F0F0;
+.apiType > li h2 a{
+    border-bottom: 2px solid #E87B10;
     display: block;
-    padding-bottom: 5px;
-    padding-left: 8px;    
     color: #E87B10;
     font-size: 16px;
+    line-height: 35px;
 }
-.apiType li ul li {
-    border-bottom: 1px solid #F0F0F0;
-    color: #555555;
-    padding: 1px 0 3px 20px;
-    position: relative;
+.apiType > li .apiList{
+    display: none;
+}
+.apiType > li.active .apiList{
+    display: block;
+}
+.apiType .apiList > li{
+    border-bottom: 1px solid #eee;
+    color: #555;
     cursor: pointer;
 }
-.apiType li ul li:hover{
-    background: #eee;
+
+.apiType .api_title{
+    margin: 3px;
+    padding: 3px 5px;
 }
-.apiType li ul li.active{
-    background: #ddd;
+.apiType .api_title h3 a{
+    color: #777;
+    font-size: 14px;
 }
-.apiType li ul li h4{
+.apiType .api_title h4{
     color: #999;
     font-size: 12px;
     font-weight: normal;
     text-indent: 1em;
 }
-.subNav{
+
+.apiType .api_title:hover,
+.apiType .api_title.active{
+    background: #ddd;
+}
+.apiType .api_title:hover h3 a,
+.apiType .api_title.active h3 a{
+    color: #222;
+}
+.apiType .api_title:hover h4,
+.apiType .api_title.active h4{
+    color: #444;
+}
+.apiType .subList{
     display: none;
 }
+.apiType .apiList .active .subList{
+    display: block;
+}
+.apiType .subList li{
+    margin-left: 25px;
+}
+.subList .api_title{
+    background: #f8f8f8;
+    border-left: 3px solid #aaa;
+}
+.apiType .subList li{
+    border-top: 1px dotted #ccc;
+}
+
 
 /*api说明*/
-.api{
+.doc{
     border-left: 1px solid #CCCCCC;
 	margin-left: 250px;
 	padding: 0 15px 20px 12px;
 }
-.api .name{
+.doc .name{
 	margin: 20px 0 5px;
 	line-height: 60px;
 	color: #fff;
@@ -78,11 +111,11 @@ body{
 	font-size: 18px;
 	text-indent: 20px;
 }
-.api .explain{
+.doc .explain{
 	line-height: 20px;
     text-indent: 2em;
 }
-.api h3{
+.doc h3{
 	line-height: 35px;
 	background: #777;
     border-radius: 2px;
@@ -91,20 +124,20 @@ body{
 	text-indent: 10px;
 	color: #fff;
 }
-.api .param li,
-.api .return li{
+.doc .param li,
+.doc .return li{
 	line-height: 28px;
 	background: #eee;
 	margin-top: 3px;
 	text-indent: 2em;
 }
-.api .open{
+.doc .open{
     margin-right: 10px;
     float: right;
     color: #E87B10;
     font-size: 12px;
 }
-.api .demoWrapper{
+.doc .demoWrapper{
     width: 1020px;
     height: 702px;
     border: 1px solid #444;
@@ -112,8 +145,23 @@ body{
     margin: 10px 0; 
     overflow: hidden;   
 }
-.api .demo{
+.doc .demo{
     width: 1218px;
     height: 700px;
     margin-left: -200px;
+}
+
+.doc .iframeContent{
+    overflow-x: hidden;
+
+}
+.doc .iframeContent iframe{
+    width: 1020px;
+    height: 800px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+}
+.doc .iframeContent .debugIframe{
+    width: 1223px;
+    margin-left: -202px;
 }
