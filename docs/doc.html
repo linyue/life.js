@@ -18,77 +18,147 @@
 
 						</ul>
 					</div>
-					<div class="api">
-						<div class="nameContent">
-                            <h1 class="name"></h1>
-                            <div class="info"></div>
-                            <div class="compatibility"></div>
-						</div>
-						<p class="explain"></p>
-						<h3>参数</h3>
-						<ul class="param">
+					<div class="doc">
 
-						</ul>
-                        <h3>接口</h3>
-                        <ul class="param">
 
-                        </ul>
-						<h3>返回值</h3>
-						<ul class="return">
-
-						</ul>
-						<h3>示例<a class="open">在新窗口中打开</a></h3>
-                        <div class="examplesContent">
-                            <iframe id="examples" name="examples" src=""></iframe>
-                        </div>
-						<h3>在线调试<a class="open">在新窗口中打开</a></h3>
-						<div class="debugContent">
-							<iframe id="debug" name="debug" src=""></iframe>
-						</div>
 					</div>
 					<div class="cb"></div>
 				</div>
 			</div>
 		</div>
-		<script id="nav" type="text/html">
-			<li>
+		<script id="tpl_nav" type="text/html">
+			<li class="apiType_item" date_id="<%=id%>">
 				<h2><a><%= type %><span>(<%= apiList.length %>)</span></a></h2>
-				<ul class="subNav">
-
+				<ul class="apiList">
+                    <%for(var i = 0; i < apiList.length; i++){%>
+                        <li class="apiList_item" date_id="<%=apiList[i].id%>">
+                            <%if(!apiList[i].subList){%>
+                                <div class="api_title">
+                                    <h3><a><%= apiList[i].name %></a></h3>
+                                    <h4><%= apiList[i].api %></h4>
+                                </div>
+                            <%}else{%>
+                                <div class="api_title sub_title">
+                                    <h3><a><%= apiList[i].name %><span>(<%= apiList[i].subList.length %>)</span></a></h3>
+                                    <h4><%= apiList[i].api %></h4>
+                                </div>
+                                <ul class="subList">
+                                    <%for(var j = 0; j < apiList[i].subList.length; j++){%>
+                                        <li date_id="<%=apiList[i].subList[j].id%>">
+                                            <div class="api_title">
+                                                <h3><a><%= apiList[i].subList[j].name %></a></h3>
+                                                <h4><%= apiList[i].subList[j].api %></h4>
+                                            </div>
+                                        </li>
+                                    <%}%>
+                                </ul>
+                            <%}%>
+                        </li>
+                    <%}%>
 				</ul>
 			</li>
 		</script>
-		<script id="subNav" type="text/html">
-			<li>
-				<h3><a><%= api %></a></h3>
-				<h4><%= name %></h4>
-			</li>
+		<script id="tpl_doc" type="text/html">
+            <div class="nameContent">
+                <h1 class="name"></h1>
+                <div class="info"></div>
+                <div class="compatibility"></div>
+            </div>
+
+            <p class="explain"><%=explain%></p>
+
+            <h3>参数</h3>
+            <ul class="param">
+                <%for(var i = 0; i < params.length; i++){%>
+                    <li>
+                        <% if(params[i].optional){ %>
+                        <span class="optional">【可选】</span>
+                        <% } %>
+
+                        <strong class="params[i].name"><%= params[i].name %></strong>
+
+                        <span class="params[i].dataType"> ( <%= params[i].dataType %> )：</span>
+
+                        <% if(params[i].value.length > 0){ %>
+                            <span class="value">可设置值：[<%= params[i].value.join(" , ") %>]，</span>
+                        <% } %>
+
+                        <% if(params[i].defaultVal){ %>
+                            <span class="defaultVal">默认值为：<%= params[i].defaultVal %>。</span>
+                        <% } %>
+
+                        <span class="explain"><%= params[i].explain %>。</span>
+
+                        <% if(params[i].dataType == 'function'){ %>
+                         <span class="define">函数原型为：<%= params[i].define %></span>
+                        <% } %>
+                    </li>
+                <%}%>
+            </ul>
+
+            <% if(method){ %>
+                <h3>方法</h3>
+                <ul class="param method">
+                    <%for(var i = 0; i < method.length; i++){%>
+                        <li>
+                            <p class="returnVal.dataType">方法名：<%= method[i].name %></p>
+                            <p class="explain">说明：<%= method[i].explain %>。</p>
+                            <p class="define">函数原型为：<%= method[i].define %></p>
+                            <% if(method[i].returnVal){ %>
+                                <%if(method[i].returnVal.dataType=="object"){%>
+                                    <p class="return"><span>返回值：（<%=method[i].returnVal.dataType%>）<%=method[i].returnVal.explain%>。数据结构：</span><pre style="margin-top: -35px;padding-left: 27px;">
+
+<%=method[i].returnVal.define%></pre></p>
+                                <%}else{%>
+                                    <p class="return">返回值：（<%=method[i].returnVal.dataType%>）<%=method[i].returnVal.explain%>。</p>
+                                <%}%>
+                            <%}else{%>
+                                <p class="return">返回值：null</p>
+                            <%}%>
+                        </li>
+                    <%}%>
+                </ul>
+            <% } %>
+
+            <% if(returnVal){ %>
+                <h3>返回值</h3>
+                <ul class="return">
+                    <li>
+                        <span class="returnVal.dataType"><%= returnVal.dataType %>：</span>
+                        <span class="explain"><%= returnVal.explain %>。</span>
+                        <% if(returnVal.dataType == 'object'){ %>
+                        <span class="define">数据结构：</span><pre style="margin-top: -35px;padding-left: 27px;">
+
+<%=returnVal.define%></pre>
+                        <% } %>
+                    </li>
+                </ul>
+            <% } %>
+
+
+            <% if(urls.debug){ %>
+                <h3>示例<a class="open" href="<%=urls.examples%>" target="_blank">在新窗口中打开</a></h3>
+                <div class="iframeContent">
+                    <iframe id="examples" name="examples" src="<%=urls.examples%>"></iframe>
+                </div>
+            <%}%>
+
+            <% if(urls.debug){ %>
+                <h3>在线调试<a class="open" href="<%=urls.debug%>" target="_blank">在新窗口中打开</a></h3>
+                <div class="iframeContent">
+                    <iframe id="debug" class="debugIframe" name="debug" src="<%=urls.debug%>"></iframe>
+                </div>
+            <%}%>
+
+            <% if(urls.unitTest){ %>
+                <h3>单元测试<a class="open" href="<%=urls.unitTest%>" target="_blank">在新窗口中打开</a></h3>
+                <div class="iframeContent">
+                    <iframe id="unitTest" name="unitTest" src="<%=urls.unitTest%>"></iframe>
+                </div>
+            <%}%>
+
 		</script>
-		<script id="param" type="text/html">
-			<li>
-				<strong class="key"><%= key %></strong>
-				<span class="dataType"> ( <%= dataType %> )：</span>
-			<% if(optional){ %>
-				<span class="optional">【可选】</span>
-			<% } %>
-			<% if(value.length > 0){ %>
-				<span class="value">可设置值：[<%= value.join(" , ") %>]，</span>
-			<% } %>
-			<% if(defaultVal){ %>
-				<span class="defaultVal">默认值为：<%= defaultVal %>。</span>
-			<% } %>
-				<span class="explain"><%= explain %></span>
-			</li>
-		</script>
-		<script id="return" type="text/html">
-			<li>
-				<span class="dataType">(<%= dataType %>)：</span>
-				<span class="explain"><%= explain %></span>
-			</li>
-		</script>
-		<script id="examples" type="text/html">
-			<li><a class="title"><%= title %></a></li>
-		</script>
+
 		<script type="text/javascript" src="doc.js"></script>
 	</body>
 </html>

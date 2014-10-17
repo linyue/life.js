@@ -1,202 +1,232 @@
 [{
-	"type": "登录类",
+    "id": "ui",
+	"type": "UI组件",
 	"apiList": [{
-		"name": "登录QQ",
-		"api": "$.loginQQ()"	
-	},{
-		"name": "退出QQ登录",
-		"api": "$.logoutQQ()"
-	},{
-		"name": "检查是否已登录QQ",
-		"api": "$.isLoginQQ()"
-	},{
-		"name": "检查是否已登录QQ(包含弱登录)",
-		"api": "$.isLLoginQQ()"
-	},{
-		"name": "获取当前登录的QQ号",
-		"api": "$.getQQ()"
-	},{
-		"name": "获取一个CSRF校验的Token",
-		"api": "$.getCSRFToken()"
-	}]
-},{
-	"type": "弹层类",
-	"apiList": [{
-		"name": "通用弹层",
-		"api": "$.dialog()"	
-	},{
-		"name": "确认框",
-		"api": "$.confirm()"	
-	},{
-		"name": "警告框",
-		"api": "$.alert()"	
-	},{
-		"name": "消息框",
-		"api": "$.tip()"	
-	},{
-		"name": "工具提示框",
-		"api": "$.tooltip()"	
-	},{
-		"name": "iframe弹层",
-		"api": "$.iframe()"	
-	},{
-		"name": "显示loading浮层",
-		"api": "$.fn.loading()"	
-	},{
-		"name": "隐藏loading浮层",
-		"api": "$.fn.unloading()"	
-	},{
-		"name": "弹出遮罩",
-		"api": "$.overlay.show()"	
-	},{
-		"name": "隐藏遮罩",
-		"api": "$.overlay.hide()"	
-	}]
-},{
-	"type": "服务类",
-	"apiList": [{
-		"name": "通用上传",
-		"api": "$.upload()"
-	},{
-		"name": "图片上传",
-		"api": "$.uploadPic()"	
-	},{
-		"name": "视频上传",
-		"api": "$.uploadVideo()"	
-	},{
-		"name": "上传结果验证",
-		"api": "$.uploadCheck()"	
-	},{
-		"name": "点击按钮上传图片(风驰定制)",
-		"api": "$.fn.uploadPicBtn()"	
-	},{
-		"name": "获取图片地址(风驰定制)",
-		"api": "$.fn.getPicUrl()"	
-	},{
-		"name": "设置图片地址(风驰定制)",
-		"api": "$.fn.setPicUrl()"	
-	},{
-		"name": "弹出验证码输入框",
-		"api": "$.vcodeShow()"	
-	},{
-		"name": "更新验证码",
-		"api": "$.vcodeChange()"
-	}]
-},{
-	"type": "组件类",
-	"apiList": [{
+        "id": "page",
+        "name": "分页组件",
+        "api": "life.page()"
+    },{
+        "id": "gallery",
 		"name": "幻灯片",
-		"api": "$.albums()"
+		"api": "life.gallery()"
 	},{
-		"name": "奖品幻灯片(风驰定制)",
-		"api": "$.fn.prizeAlbums()"	
-	},{
-		"name": "跑马灯",
-		"api": "$.scroll()"	
-	},{
-		"name": "自动补全",
-		"api": "$.fn.autoComplete()"	
-	},{
+        "id": "editor",
+        "name": "富文件编辑器",
+        "api": "life.editor()"
+    },{
+        "id": "colorPicker",
+        "name": "颜色选择器",
+        "api": "life.colorPicker()"
+    },{
+        "id": "datePicker",
 		"name": "日期选择器",
-		"api": "$.calendar()"	
+		"api": "life.datePicker()"
 	},{
-		"name": "分页组件",
-		"api": "$.page()"	
+        "id": "floatText",
+        "name": "文字浮动效果",
+        "api": "life.floatText()"
+    },{
+        "id": "sidebar",
+        "name": "侧边栏",
+        "api": "life.sidebar()"
+    },{
+        "id": "dialog",
+        "name": "弹层组件",
+        "api": "life.dialog",
+        "subList": [{
+            "id": "dialog_common",
+            "name": "通用弹层",
+            "api": "life.dialog.common()"
+        },{
+            "id": "dialog_alert",
+            "name": "警告框",
+            "api": "life.dialog.alert()"
+        },{
+            "id": "dialog_confirm",
+            "name": "确认框",
+            "api": "life.dialog.confirm()"
+        }]
+    }]
+},{
+    "id": "utils",
+	"type": "工具组件",
+	"apiList": [{
+        "id": "clipboard",
+        "name": "剪贴板",
+        "api": "life.clipboard()"
+    },{
+        "id": "qrcode",
+        "name": "二维码",
+        "api": "life.qrcode()"
+    },{
+        "id": "url",
+		"name": "URL工具",
+        "api": "life.url",
+		"subList": [{
+            "id": "url_getHash",
+            "name": "获取锚点",
+            "api": "life.url.getHash()"
+        },{
+            "id": "url_getParam",
+            "name": "获取参数",
+            "api": "life.url.getParam()"
+        },{
+            "id": "url_getParams",
+            "name": "获取所有参数",
+            "api": "life.url.getParams()"
+        },{
+            "id": "url_parse",
+            "name": "解析URL",
+            "api": "life.url.parse()"
+        }]
 	},{
-		"name": "表单验证",
-		"api": "$.validate()"	
+        "id": "time",
+		"name": "时间工具",
+        "api": "life.time",
+        "subList": [{
+            "id": "url_parse",
+            "name": "字符串转Date",
+            "api": "life.time.string2Date()"
+        },{
+            "name": "格式化",
+            "api": "life.time.format()"
+        },{
+            "name": "倒计时",
+            "api": "life.time.countdown()"
+        }]
+	},{
+        "id": "verify",
+		"name": "格式校验",
+        "api": "life.verify",
+        "subList": [{
+            "id": "verify_isMobile",
+            "name": "手机号",
+            "api": "life.verify.isMobile()"
+        },{
+            "id": "verify_isTelephone",
+            "name": "固定电话",
+            "api": "life.verify.isTelephone()"
+        },{
+            "id": "verify_isZipCode",
+            "name": "邮政编码",
+            "api": "life.verify.isZipCode()"
+        },{
+            "id": "verify_isQQ",
+            "name": "QQ号",
+            "api": "life.verify.isQQ()"
+        },{
+            "id": "verify_isIP",
+            "name": "IP",
+            "api": "life.verify.isIP()"
+        },{
+            "id": "verify_isMail",
+            "name": "邮箱",
+            "api": "life.verify.isMail()"
+        },{
+            "id": "verify_isCertificate",
+            "name": "身份证",
+            "api": "life.verify.isCertificate()"
+        },{
+            "id": "verify_Url",
+            "name": "链接（不带参数和锚点）",
+            "api": "life.verify.Url()"
+        },{
+            "id": "verify_Link",
+            "name": "链接（带参数和锚点）",
+            "api": "life.verify.Link()"
+        },{
+            "id": "verify_isChinese",
+            "name": "中文",
+            "api": "life.verify.isChinese()"
+        },{
+            "id": "verify_isLetter",
+            "name": "字母",
+            "api": "life.verify.isLetter()"
+        },{
+            "id": "verify_isNumber",
+            "name": "数字",
+            "api": "life.verify.isNumber()"
+        },{
+            "id": "verify_isInt",
+            "name": "整数",
+            "api": "life.verify.isInt()"
+        },{
+            "id": "verify_isFloat",
+            "name": "浮点数（小数）",
+            "api": "life.verify.isFloat()"
+        }]
+	},{
+        "id": "type",
+		"name": "数据类型",
+        "api": "life.type",
+        "subList": [{
+            "id": "type_getName",
+            "name": "获取类型名称",
+            "api": "life.type.getName()"
+        },{
+            "id": "type_isNumber",
+            "name": "数字",
+            "api": "life.type.isNumber()"
+        },{
+            "id": "type_isString",
+            "name": "字符串",
+            "api": "life.type.isString()"
+        },{
+            "id": "type_isArray",
+            "name": "数组",
+            "api": "life.type.isArray()"
+        },{
+            "id": "type_isObject",
+            "name": "对象",
+            "api": "life.type.isObject()"
+        },{
+            "id": "type_isBoolean",
+            "name": "布尔值",
+            "api": "life.type.isBoolean()"
+        },{
+            "id": "type_isFunction",
+            "name": "方法",
+            "api": "life.type.isFunction()"
+        },{
+            "id": "type_isRegExp",
+            "name": "正则表达示",
+            "api": "life.type.isRegExp()"
+        },{
+            "id": "type_isElement",
+            "name": "Dom节点",
+            "api": "life.type.isElement()"
+        },{
+            "id": "type_isNull",
+            "name": "Null",
+            "api": "life.type.isNull()"
+        },{
+            "id": "type_isUndefined",
+            "name": "Undefined",
+            "api": "life.type.isUndefined()"
+        },{
+            "id": "type_isNaN",
+            "name": "NaN",
+            "api": "life.type.isNaN()"
+        },{
+            "id": "type_isInfinite",
+            "name": "Infinite",
+            "api": "life.type.isInfinite()"
+        }]
 	}]
 },{
-	"type": "分享类",
+    "id": "lottery",
+	"type": "抽奖组件",
 	"apiList": [{
-		"name": "空间分享",
-		"api": "$.shareQzone()"
+        "id": "roulette",
+		"name": "大转盘",
+		"api": "life.roulette()"
 	},{
-		"name": "微博分享",
-		"api": "$.shareWeibo()"	
+        "id": "shake",
+		"name": "摇一摇",
+		"api": "life.shake()"
 	},{
-		"name": "QQ分享",
-		"api": "$.shareQQ()"	
-	}]
-},{
-	"type": "工具类",
-	"apiList": [{
-		"name": "渲染模版文件",
-		"api": "$.template.runURL()"	
-	},{
-		"name": "渲染模版变量",
-		"api": "$.template.runSource()"	
-	},{
-		"name": "渲染页面中script标签中的模版",
-		"api": "$.template.runId()"	
-	},{
-		"name": "获取url参数",
-		"api": "$.urlParam()"
-	},{
-		"name": "获取浏览器信息",
-		"api": "$.browserInfo()"	
-	},{
-		"name": "cookie设置",
-		"api": "$.cookie()"	
-	},{
-		"name": "cookie删除",
-		"api": "$.removeCookie()"	
-	},{
-		"name": "文本复制",
-		"api": "$.copyText()"	
-	},{
-		"name": "倒计时",
-		"api": "$.countdown()"	
-	},{
-		"name": "日期格式化",
-		"api": "$.formatDate()"	
-	},{
-		"name": "数字格式化",
-		"api": "$.formatNum()"	
-	},{
-		"name": "数字格式化输入框",
-		"api": "$.fn.numInput()"	
-	},{
-		"name": "flash加载器",
-		"api": "$.fn.swf()"	
-	},{
-		"name": "腾讯视频加载器",
-		"api": "$.fn.qqVideo()"	
-	},{
-		"name": "URL格式判断",
-		"api": "$.isUrl()"	
-	},{
-		"name": "XSS过滤器",
-		"api": "$.filterXss()"	
-	},{
-		"name": "日志工具，兼容IE",
-		"api": "$.log()"	
-	}]
-},{
-	"type": "上报类",
-	"apiList": [{
-		"name": "通用上报",
-		"api": "$.report()"
-	},{
-		"name": "网页速度上报",
-		"api": "$.speedReport()"	
-	},{
-		"name": "页面出错上报",
-		"api": "$.rpt.pageError()"	
-	},{
-		"name": "ajax出错上报",
-		"api": "$.rpt.ajaxError()"	
-	},{
-		"name": "ajax超时上报",
-		"api": "$.rpt.ajaxTimeout()"	
-	},{
-		"name": "ajax解析出错上报",
-		"api": "$.rpt.ajaxNotJson()"	
-	},{
-		"name": "api使用上报",
-		"api": "$.rpt.apiUsage()"	
-	},{
-		"name": "数据上报",
-		"api": "$.rpt.dataReport()"	
+        "id": "scratch",
+		"name": "刮刮乐",
+		"api": "life.scratch()"
 	}]
 }]
