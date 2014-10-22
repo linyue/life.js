@@ -14,6 +14,7 @@ define(function (require, exports, module) {
     var Class = require('Class');
 
     require('baseCss');
+    require('res/css/icons.css');
     require('res/css/page.css');
 
     var Page = Class.extend({
@@ -411,8 +412,8 @@ define(function (require, exports, module) {
 
             //上一页菜单控制
             if (show.prev) {
-                var text = options.type == 'simple' || options.type == 'mail' ? '上一页' : '‹';
-                var prev = $('<a>').text(text).addClass('i_pagePrev i_btn').attr({
+                var text = options.type == 'simple' || options.type == 'mail' ? '上一页' : '<span class="i_icon i_icon_chevron-left"></span>';
+                var prev = $('<a>').html(text).addClass('i_pagePrev i_btn').attr({
                     title: '上一页',
                     data_index: info.curPage == 1 ? 1 : (info.curPage - 1)
                 });
@@ -453,8 +454,8 @@ define(function (require, exports, module) {
 
             //下一页菜单控制
             if (show.next) {
-                var text = options.type == 'simple' || options.type == 'mail' ? '下一页' : '›';
-                var next = $('<a>').text(text).addClass('i_pageNext i_btn').attr({
+                var text = options.type == 'simple' || options.type == 'mail' ? '下一页' : '<span class="i_icon i_icon_chevron-right"></span>';
+                var next = $('<a>').html(text).addClass('i_pageNext i_btn').attr({
                     title: '下一页',
                     data_index: info.curPage == info.totalPage ? info.totalPage : (info.curPage + 1)
                 });
