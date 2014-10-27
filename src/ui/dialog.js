@@ -406,7 +406,7 @@ define(function (require, exports, module) {
             }
 
             if (show.closeBtn) {
-                var closeBtn = $("<a>").text("×").addClass("i_closeBtn").click(function () {
+                var closeBtn = $("<a>").addClass("i_closeBtn i_icon i_icon_close").click(function () {
                     self.close();
                 })
 
