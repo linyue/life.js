@@ -263,9 +263,11 @@ define(function (require, exports, module) {
 
             var baseCss = seajs.data.paths.res + '/css/base.css';
             var dialogCss = seajs.data.paths.res + '/css/dialog.css';
+            var iconsCss  = seajs.data.paths.res + '/css/icons.css';
 
             var baseCssStyle = '<link charset="utf-8" rel="stylesheet" href="' + baseCss + '">';
             var dialogCssStyle = '<link charset="utf-8" rel="stylesheet" href="' + dialogCss + '">';
+            var iconsCssStyle = '<link charset="utf-8" rel="stylesheet" href="' + iconsCss + '">';
 
             if(self.doc.find("link[href='" + baseCss + "']").length == 0){
                 self.doc.find("head").append(baseCssStyle);
@@ -273,6 +275,10 @@ define(function (require, exports, module) {
 
             if(self.doc.find("link[href='" + dialogCss + "']").length == 0){
                 self.doc.find("head").append(dialogCssStyle);
+            }
+
+            if(self.doc.find("link[href='" + iconsCss + "']").length == 0){
+                self.doc.find("head").append(iconsCssStyle);
             }
         },
 
