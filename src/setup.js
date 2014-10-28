@@ -64,6 +64,7 @@ seajs.config({
         'shake': 'src/lottery/shake',
 
         '$': 'src/plugin/jquery.js',
+        'cookie': 'src/plugin/jquery.cookie.js',
         'jqueryui': 'src/plugin/jquery.ui',
         'charts': 'src/plugin/highcharts/highcharts',
         'charts_more': 'src/plugin/highcharts/highcharts-more'
@@ -72,7 +73,7 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101028001']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101028002']
     ],
     charset: 'utf-8'
 });
