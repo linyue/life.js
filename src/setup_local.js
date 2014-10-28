@@ -43,6 +43,7 @@ seajs.config({
         'clipboard': 'src/utils/clipboard',
         'draggable': 'src/utils/draggable',
         'qrcode': 'src/utils/qrcode',
+        'code': 'src/utils/code',
 
         'report': 'src/monitor/report',
 
@@ -71,7 +72,7 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101013001']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101028001']
     ],
     charset: 'utf-8'
 });
