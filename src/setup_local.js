@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/src',
-        'res': window.location.protocol + '//res.xiaoman.cn' + (window.location.port ? (':' + window.location.port) : '') + '/life.js/res'
+        'src': window.location.protocol + '//res.xiaoman.cn/life.js/src',
+        'res': window.location.protocol + '//res.xiaoman.cn/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -43,6 +43,7 @@ seajs.config({
         'clipboard': 'src/utils/clipboard',
         'draggable': 'src/utils/draggable',
         'qrcode': 'src/utils/qrcode',
+        'code': 'src/utils/code',
 
         'report': 'src/monitor/report',
 
@@ -71,7 +72,7 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101013001']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101028001']
     ],
     charset: 'utf-8'
 });
