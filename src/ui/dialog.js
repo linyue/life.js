@@ -130,7 +130,7 @@ define(function (require, exports, module) {
 
     var Dialog = Class.extend({
         //可配置参数
-        options: {
+        setting: {
             id: null,                       //浮层ID
             width: 400,                     //浮层的宽
             height: 'auto',                 //浮层的高
@@ -159,6 +159,8 @@ define(function (require, exports, module) {
             isKeyControl: true              //是否开启esc快捷键关闭浮层
         },
 
+        options: {},
+
         //组件容器对象
         win: null,
         doc: null,
@@ -174,7 +176,7 @@ define(function (require, exports, module) {
         },
 
         init: function (options) {
-            this.options = $.extend({}, this.options, options);
+            this.options = $.extend({}, this.setting, options);
 
             this.checkOptions();
             this.getDocument();
