@@ -289,10 +289,14 @@ define(function (require, exports, module) {
 
             if (!options.title || options.title == "null" || options.title == "false") {
                 this.show.titleBar = false;
+            }else{
+                this.show.titleBar = true;
             }
 
             if (!options.btns || options.btns.length == 0) {
                 this.show.btnsBar = false;
+            }else{
+                this.show.btnsBar = true;
             }
 
             this.show.closeBtn = options.isShowCloseBtn && true;
