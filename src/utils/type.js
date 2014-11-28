@@ -42,7 +42,7 @@ define(function(require, exports, module) {
 
     exports.getName = type;
 
-    ['Null',
+    var types = ['Null',
      'Undefined',
      'Object',
      'Array',
@@ -54,11 +54,11 @@ define(function(require, exports, module) {
      'Element',
      'NaN',
      'Infinite'
-    ].forEach(function (t) {
-        exports['is' + t] = function (o) {
+    ];
+    for(var i = 0; i < types.length; i++){
+        exports['is' + types[i]] = function (o) {
             return type(o) === t.toLowerCase();
         };
-    });
-
+    };
 });
 
