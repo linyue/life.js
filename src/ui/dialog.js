@@ -40,7 +40,7 @@ define(function (require, exports, module) {
             content: setting.content,
             btns: [{
                 text: '确定',
-                class: 'okButton',
+                className: 'okButton',
                 callback: setting.ok
             }],
             target: setting.target,
@@ -96,11 +96,11 @@ define(function (require, exports, module) {
             content: setting.content,
             btns: [{
                 text: '确定',
-                class: 'okButton',
+                className: 'okButton',
                 callback: setting.ok
             },{
                 text: '取消',
-                class: 'cancelButton',
+                className: 'cancelButton',
                 callback: setting.cancel
             }],
             target: setting.target,
@@ -136,7 +136,7 @@ define(function (require, exports, module) {
             height: 'auto',                 //浮层的高
             title: '',                      //浮层标题
             content: '',                    //浮层内容
-            btns: [],                       //定义浮层按钮,结构：{text: '确定', class: 'submitBtn', callback:function(){}}
+            btns: [],                       //定义浮层按钮,结构：{text: '确定', className: 'submitBtn', callback:function(){}}
             target: 'self',                 //要弹层的页面,可设置项有：self、parent、top
             onOpenBefore: function(){},     //浮层打开前的事件
             onOpenAfter: function(){},      //浮层打开后的事件
@@ -442,7 +442,7 @@ define(function (require, exports, module) {
                 var btnsBar = $("<div>").addClass("i_dialogBtns");
                 for (var i in options.btns) {
                     (function(i){
-                        $("<a>").addClass("i_btn").addClass(options.btns[i].class).text(options.btns[i].text).click(function () {
+                        $("<a>").addClass("i_btn").addClass(options.btns[i].className).text(options.btns[i].text).click(function () {
                             var rs = options.btns[i].callback();
                             if(rs || typeof rs == "undefined"){
                                 self.close();
