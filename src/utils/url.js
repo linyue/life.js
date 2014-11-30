@@ -43,12 +43,10 @@
                 search = window.location.search.substr(1);
             }
 
-            search = decodeURIComponent(search);
-
             var reg = new RegExp("(^|&)" + key + "=([^&]*)(&|$)", "i");
             var r = search.match(reg);
             if (r != null){
-                return r[2];
+                return decodeURIComponent(r[2]);
             }
             return null;
         },
