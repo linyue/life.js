@@ -42,23 +42,24 @@ define(function(require, exports, module) {
 
     exports.getName = type;
 
-    var types = ['Null',
-     'Undefined',
-     'Object',
-     'Array',
-     'String',
-     'Number',
-     'Boolean',
-     'Function',
-     'RegExp',
-     'Element',
-     'NaN',
-     'Infinite'
-    ];
-    for(var i = 0; i < types.length; i++){
-        exports['is' + types[i]] = function (o) {
-            return type(o) === types[i].toLowerCase();
+    [
+        'Null',
+        'Undefined',
+        'Object',
+        'Array',
+        'String',
+        'Number',
+        'Boolean',
+        'Function',
+        'RegExp',
+        'Element',
+        'NaN',
+        'Infinite'
+    ].forEach(function (t) {
+        exports['is' + t] = function (o) {
+            return type(o) === t.toLowerCase();
         };
-    };
+    });
+
 });
 
