@@ -57,7 +57,7 @@ define(function(require, exports, module) {
     ];
     for(var i = 0; i < types.length; i++){
         exports['is' + types[i]] = function (o) {
-            return type(o) === t.toLowerCase();
+            return type(o) === types[i].toLowerCase();
         };
     };
 });
