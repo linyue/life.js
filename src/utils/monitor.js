@@ -16,7 +16,7 @@ define(function (require, exports, module) {
         for(var i in options){
             s.push(i + '=' + encodeURIComponent(typeof options[i] == 'undefined' ?  '' : options[i]));
         }
-        s.push('sample=' + sample ? sample : 1);
+        s.push('sample=' + (sample ? sample : 1));
 
         var surl = url + (url.indexOf("?") > 0 ? '&' : '?') + s.join('&');
 
