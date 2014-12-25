@@ -1,6 +1,6 @@
 define(function (require, exports, module) {
     /**
-     * 幻灯片组件
+     * 测试组件（已废，由utils/monitor.js替代）
      *
      * @author adam
      * @time 2014-05-09
@@ -35,12 +35,13 @@ define(function (require, exports, module) {
         return info;
     }
 
-    exports.report = function(url, options){
+    exports.report = function(url, options, sample){
 
         var s = [];
         for(var i in options){
             s.push(i + '=' + encodeURIComponent(typeof options[i] == 'undefined' ?  '' : options[i]));
         }
+        s.push('sample=' + sample ? sample : 1);
 
         var surl = url + (url.indexOf("?") > 0 ? '&' : '?') + s.join('&');
 

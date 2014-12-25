@@ -44,8 +44,8 @@ seajs.config({
         'draggable': 'src/utils/draggable',
         'qrcode': 'src/utils/qrcode',
         'code': 'src/utils/code',
-
-        'report': 'src/monitor/report',
+        'device' : 'src/utils/device',
+        'monitor': 'src/utils/monitor',
 
         'page': 'src/ui/page',
         'dialog': 'src/ui/dialog',
@@ -67,13 +67,15 @@ seajs.config({
         'cookie': 'src/plugin/jquery.cookie.js',
         'jqueryui': 'src/plugin/jquery.ui',
         'charts': 'src/plugin/highcharts/highcharts',
-        'charts_more': 'src/plugin/highcharts/highcharts-more'
+        'charts_more': 'src/plugin/highcharts/highcharts-more',
+
+        'report': 'src/monitor/report'      //已废弃，不再更新
 	},
     preload: [
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=20101130003']
+        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=2014122501']
     ],
     charset: 'utf-8'
 });
