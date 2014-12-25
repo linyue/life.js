@@ -27,19 +27,24 @@ define(function (require, exports, module) {
     exports.visit = function(url, sample){
         var self = this;
 
-        var info = device.getInfo();
-        var timeline = device.getTimeline();
-
-        for(var i in timeline){
-            info[i] = timeline[i];
-        }
-
         if(document.all) {
             window.attachEvent('onload', function(){
+                var info = device.getInfo();
+                var timeline = device.getTimeline();
+
+                for(var i in timeline){
+                    info[i] = timeline[i];
+                }
                 exports.report(url, info, sample ? sample : 1);
             });
         } else {
             window.addEventListener('load', function(){
+                var info = device.getInfo();
+                var timeline = device.getTimeline();
+
+                for(var i in timeline){
+                    info[i] = timeline[i];
+                }
                 exports.report(url, info, sample ? sample : 1);
             }, false);
         }
