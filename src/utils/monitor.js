@@ -36,11 +36,11 @@ define(function (require, exports, module) {
 
         if(document.all) {
             window.attachEvent('onload', function(){
-                exports.report(url, device.getInfo(), sample ? sample : 1);
+                exports.report(url, info, sample ? sample : 1);
             });
         } else {
             window.addEventListener('load', function(){
-                exports.report(url, device.getInfo(), sample ? sample : 1);
+                exports.report(url, info, sample ? sample : 1);
             }, false);
         }
     }

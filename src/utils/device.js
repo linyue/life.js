@@ -245,14 +245,21 @@ define(function (require, exports, module) {
 
         if(window.performance){
             var timing = window.performance.timing;
+            var redirect = timing.redirectEnd - timing.redirectStart;
+            var dns = timing.domainLookupEnd - timing.domainLookupStart;
+            var tcp = timing.connectEnd - timing.connectStart;
+            var request = timing.responseStart - timing.requestStart;
+            var response = timing.responseEnd - timing.responseStart;
+            var dom = timing.domComplete - timing.domLoading;
+            var all = timing.domComplete - timing.redirectStart;
             return {
-                redirect: timing.redirectEnd - timing.redirectStart,
-                dns: timing.domainLookupEnd - timing.domainLookupStart,
-                tcp: timing.connectEnd - timing.connectStart,
-                request: timing.responseStart - timing.requestStart,
-                response: timing.responseEnd - timing.responseStart,
-                dom: timing.domComplete - timing.domLoading,
-                all: timing.domComplete - timing.redirectStart
+                redirect: redirect < 0 ? 'unknown' : redirect,
+                dns: dns < 0 ? 'unknown' : dns,
+                tcp: tcp < 0 ? 'unknown' : tcp,
+                request: request < 0 ? 'unknown' : request,
+                response: response < 0 ? 'unknown' : response,
+                dom: dom < 0 ? 'unknown' : dom,
+                all: all < 0 ? 'unknown' : all
             }
         }else{
             return {
