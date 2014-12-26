@@ -251,7 +251,7 @@ define(function (require, exports, module) {
             var request = timing.responseStart - timing.requestStart;
             var response = timing.responseEnd - timing.responseStart;
             var dom = timing.domComplete - timing.domLoading;
-            var all = timing.domComplete - timing.redirectStart;
+            var all = timing.domComplete - timing.navigationStart;
             return {
                 redirect: redirect < 0 ? 'unknown' : redirect,
                 dns: dns < 0 ? 'unknown' : dns,
