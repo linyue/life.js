@@ -236,8 +236,8 @@ define(function (require, exports, module) {
                 this.options.left = "center";
             }
 
-            //fix IE 不支持fixed定位，作降级服务
-            if ($.browser.msie && $.browser.version == '6.0') {
+            //fix IE6 不支持fixed定位，作降级服务
+            if (!-[1,] && !window.XMLHttpRequest) {
                 this.options.isFixed = false;
             }
 
