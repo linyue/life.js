@@ -11,6 +11,10 @@ define(function (require, exports, module) {
     var $ = require('$');
     var Class = require('Class');
 
+    require('res/css/base.css');
+    require('res/css/dialog.css');
+    require('res/css/icons.css');
+
     exports.common = function(options){
         return new Dialog(options);
     }
