@@ -423,7 +423,7 @@ define(function (require, exports, module) {
                 }).attr({
                     title: options.title
                 })
-                titleBar.append()
+                titleBar.append(title);
                 content.append(titleBar);
             }
 
