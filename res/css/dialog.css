@@ -23,6 +23,11 @@
     font-weight: bold;
     cursor: pointer;
 }
+.i_dialog .i_dialogTitle h2{
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+}
 .i_dialog .i_dialogTitle .i_closeBtn{
     right: 10px;
     top: auto;

@@ -417,7 +417,13 @@ define(function (require, exports, module) {
             }
 
             if (show.titleBar) {
-                var titleBar = $("<div>").text(options.title).addClass("i_dialogTitle");
+                var titleBar = $("<div>").addClass("i_dialogTitle");
+                var title = $('<h2>').text(options.title).css({
+                    maxWidth: options.width - 50
+                }).attr({
+                    title: options.title
+                })
+                titleBar.append()
                 content.append(titleBar);
             }
 
