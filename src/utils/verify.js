@@ -17,7 +17,7 @@ define(function(require, exports, module) {
         ZipCode: /^[1-9]\d{5}(?!\d)$/,
         QQ: /^[1-9][0-9]{4,9}$/,
         IP: /^((?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))$/,
-        Mail: /^[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,
+        Mail: '',
         Certificate: /^\d{6}((\d{2}((0[1-9])|(1[0-2]))[0-3]\d{4})|((19|20)\d{2}((0[1-9])|(1[0-2]))[0-3]\d{4}[0-9xX]?))$/,
         Chinese: /^[\u4e00-\u9fa5]+$/,
         Letter: /^[a-zA-Z]+$/,
@@ -28,10 +28,26 @@ define(function(require, exports, module) {
         Link: /^(https|http):\/\/(((?:25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))\.){3}(25[0-5]|2[0-4]\d|((1\d{2})|([1-9]?\d)))|(([\w-]+).)+[a-zA-Z]{2,6}|localhost)(:[0-9]{1,6})?(\/[\w-]+)*((\/([\w-]+\.)+[\w-]{1,5})|\/)?((\?|\#)\S*)?$/
     }
 
+    var checkEmail = function (text){
+        var REG_MAIL = /^[a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/;
+        var REG_FULL = /^[\s\S]*<[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&\'*+\\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/;
+        if(REG_MAIL.test(text)){
+            return true;
+        }
+        if(REG_FULL.test(text)){
+            return true;
+        }
+        return false;
+    }
+
     for(var i in regulars){
         (function(i){
             exports['is' + i] = function(text){
-                return regulars[i].test(text);
+                if(i == 'Mail'){
+                    return checkEmail(text);
+                }else{
+                    return regulars[i].test(text);
+                }
             }
         })(i)
     }

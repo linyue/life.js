@@ -494,7 +494,6 @@ define(function (require, exports, module) {
             self.mask.height(maskHeight).css({
                 zIndex: self.options.zIndex - 1
             });
-
         },
 
         removeMask: function () {
