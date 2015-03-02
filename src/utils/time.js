@@ -197,6 +197,16 @@
         },
 
         /**
+         * 获取客户端当前时区
+         * @return int          时区，东半球为正数，西半球为负数
+         */
+        getTimezone: function(){
+            var timezone = parseInt(new Date().getTimezoneOffset() / 60) * -1;
+
+            return timezone;
+        },
+
+        /**
          * 计算时间跨度
          *
          * @param string now            当前时间
