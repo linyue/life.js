@@ -6,7 +6,10 @@
       <w>bsdi</w>
       <w>debian</w>
       <w>freebsd</w>
+      <w>highcharts</w>
       <w>irix</w>
+      <w>jqueryui</w>
+      <w>jqueryuicss</w>
       <w>lbbrowser</w>
       <w>linyue</w>
       <w>mins</w>
@@ -14,6 +17,8 @@
       <w>msie</w>
       <w>netbsd</w>
       <w>openbsd</w>
+      <w>preload</w>
+      <w>qrcode</w>
       <w>timeline</w>
       <w>winnt</w>
       <w>yyyy</w>

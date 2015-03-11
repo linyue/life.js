@@ -67,7 +67,7 @@
                 case 5:
                     //处理Mar 04, 2012 22:15:14时间表达式
                     date = Date.parse(time);
-                    date = new Date(date * 1000);
+                    date = new Date(date);
                     break;
             }
 
