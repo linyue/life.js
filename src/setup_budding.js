@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': 'https://res.budding.im/life.js/src',
-        'res': 'https://res.budding.im/life.js/res'
+        'src': 'http://res.budding.im/life.js/src',
+        'res': 'http://res.budding.im/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
