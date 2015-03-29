@@ -9024,7 +9024,7 @@ Pointer.prototype = {
 		this.options = options;
 		this.chart = chart;
 		
-		// Zoom status
+		// Zoom state
 		this.zoomX = zoomX = /x/.test(zoomType);
 		this.zoomY = zoomY = /y/.test(zoomType);
 		this.zoomHor = (zoomX && !inverted) || (zoomY && inverted);
@@ -17124,7 +17124,7 @@ extend(Chart.prototype, {
  */
 extend(Point.prototype, {
 	/**
-	 * Toggle the selection status of a point
+	 * Toggle the selection state of a point
 	 * @param {Boolean} selected Whether to select or unselect the point.
 	 * @param {Boolean} accumulate Whether to add to the previous selection. By default,
 	 *		 this happens if the control key (Cmd on Mac) was pressed during clicking.

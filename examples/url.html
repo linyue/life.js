@@ -11,12 +11,19 @@
         </style>
   	</head>
   	<body>
-        <h1>URL工具</h1>
+        <h1 id="title">URL工具</h1>
         <ul>
             <li><a id="getHash">获取锚点</a></li>
             <li><a id="getParam">获取参数a的值</a></li>
             <li><a id="getParams">获取所有参数的值</a></li>
             <li><a id="parse">解析URL</a></li>
+        </ul>
+
+        <ul>
+            <li><a class="jump" href="/a/b">跳转到/a/b</a></li>
+            <li><a class="jump" href="/c/d">跳转到/c/d</a></li>
+            <li><a class="jump" href="/e/f">跳转到/e/f</a></li>
+            <li><a class="jump" href="/g/h">跳转到/g/h</a></li>
         </ul>
 
         <a href="../tests/url.html" target="_blank">查看单元测试</a>
@@ -42,6 +49,34 @@
                 $("#parse").click(function(){
                     alert(JSON.stringify(url.parse()))
                 })
+
+
+
+
+                $(".jump").click(function(e){
+
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    var href = $(this).attr("href");
+
+                    var title = $("title").text();
+                    var state = {
+                        href: href,
+                        a: 123,
+                        b: 456
+                    };
+                    window.history.pushState(state, document.title, href);
+
+                    console.log(href);
+                })
+
+                window.addEventListener('popstate', function(e){
+                    if (history.state){
+                        var state = e.state;
+                        console.log(state)
+                    }
+                }, false);
             })
      	</script>
   	</body>

@@ -17,6 +17,7 @@
       <w>msie</w>
       <w>netbsd</w>
       <w>openbsd</w>
+      <w>popstate</w>
       <w>preload</w>
       <w>qrcode</w>
       <w>timeline</w>

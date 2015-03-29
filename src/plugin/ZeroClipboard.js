@@ -1523,7 +1523,7 @@
     return typeof zIndex === "number" ? zIndex : "auto";
   };
   /**
- * Detect the Flash Player status, version, and plugin type.
+ * Detect the Flash Player state, version, and plugin type.
  *
  * @see {@link https://code.google.com/p/doctype-mirror/wiki/ArticleDetectFlash#The_code}
  * @see {@link http://stackoverflow.com/questions/12866060/detecting-pepper-ppapi-flash-with-javascript}

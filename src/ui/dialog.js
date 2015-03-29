@@ -452,7 +452,7 @@ define(function (require, exports, module) {
                 var btnsBar = $("<div>").addClass("i_dialogBtns");
                 for (var i in options.btns) {
                     (function(i){
-                        $("<a>").addClass("i_btn").addClass(options.btns[i].className).text(options.btns[i].text).click(function () {
+                        $("<a>").addClass("i_btn").addClass(options.btns[i].className).html(options.btns[i].text).click(function () {
                             var rs = options.btns[i].callback();
                             if(rs || typeof rs == "undefined"){
                                 self.close();
