@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': 'https://res.xiaoman.cn/life.js/src',
-        'res': 'https://res.xiaoman.cn/life.js/res'
+        'src': 'http://res.xiaoman.cn/life.js/src',
+        'res': 'http://res.xiaoman.cn/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -75,7 +75,8 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=2015031101']
+        //life.js的资源需加上自己的版本号
+        [/^(.*life.*\.(css|js))$/i, '$1?_v=2015031101']
     ],
     charset: 'utf-8'
 });
@@ -106,7 +107,9 @@ life.setConfig = function(options){
         }
     }
 
-    map.push([/^(.*\.(?:css|js))(.*)$/i, '$1?_v=' + opt.versionGlobal]);
+    //加版本号
+    map.push([/^(.*\.(css|js))$/i, '$1?_v=' + opt.versionGlobal]);
+
 
     seajs.config({
         alias: alias,

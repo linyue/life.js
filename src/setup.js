@@ -75,7 +75,8 @@ seajs.config({
         this.$ ? '' : '$'
     ],
     map: [
-        [/^(.*\.(?:css|js))(.*)$/i, '$1?_v=2015031101']
+        //life.js的资源需加上自己的版本号
+        [/^(.*life.*\.(css|js))$/i, '$1?_v=2015031101']
     ],
     charset: 'utf-8'
 });
@@ -106,7 +107,7 @@ life.setConfig = function(options){
         }
     }
 
-    map.push([/^(.*\.(?:css|js))(.*)$/i, '$1?_v=' + opt.versionGlobal]);
+    map.push([/^(.*\.(css|js))$/i, '$1?_v=' + opt.versionGlobal]);
 
     seajs.config({
         alias: alias,
@@ -115,6 +116,8 @@ life.setConfig = function(options){
             versionGlobal: opt.versionGlobal
         }
     })
+
+    console.log(222, seajs)
 }
 
 life.page = function(options){
