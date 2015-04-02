@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/src',
-        'res': window.location.protocol + '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/res'
+        'src': '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/src',
+        'res': '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
@@ -76,7 +76,7 @@ seajs.config({
     ],
     map: [
         //life.js的资源需加上自己的版本号
-        [/^(.*life.*\.(css|js))$/i, '$1?_v=2015031101']
+        [/^(.*life(\.|-)js.*\.(css|js))$/i, '$1?_v=20150402001']
     ],
     charset: 'utf-8'
 });
