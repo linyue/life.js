@@ -76,7 +76,7 @@ seajs.config({
     ],
     map: [
         //life.js的资源需加上自己的版本号
-        [/^(.*life(\.|-)js.*\.(css|js))$/i, '$1?_v=20150402001']
+        [/^(.*life(\.|-)js.*\.(css|js))$/i, '$1?_v=20150403001']
     ],
     charset: 'utf-8'
 });
@@ -109,7 +109,6 @@ life.setConfig = function(options){
 
     //加版本号
     map.push([/^(.*\.(css|js))$/i, '$1?_v=' + opt.versionGlobal]);
-
 
     seajs.config({
         alias: alias,
