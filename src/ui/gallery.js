@@ -652,7 +652,7 @@ define(function (require, exports, module) {
                 for(var i = 0; i < options.data.length; i++){
                     var thumb = $('<li><a><img  /></a></li>');
                     if(i==0){
-                        thumb.addClass("active");js
+                        thumb.addClass("active");
                     }
                     thumb.find("img").attr({
                         src: options.data[i].url
