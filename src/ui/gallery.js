@@ -443,7 +443,6 @@ define(function (require, exports, module) {
 
         autoPlay: function(){
             var self = this;
-            console.log(111)
             if(self.options.interval != 0){
                 self.playInterval = setInterval(function(){
                     self.setCurImg(self.curImg + 1);

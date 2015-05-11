@@ -126,6 +126,31 @@
             res["origin"] = res["protocol"] + "//" + res["host"];
 
             return res;
+        },
+
+        /**
+         * 对象转换成一个序列化的字符串
+         * @param params
+         * @returns {string}
+         */
+        stringifyParams: function (params) {
+            if (!params){
+                return '';
+            }
+
+            var search = [];
+            for (var key in params) {
+                var value = params[key];
+                if (Array.isArray(value)) {
+                    for (var i = 0; i < value.length; ++i) {
+                        search.push(encodeURIComponent(key + '[' + i + ']') + '=' + encodeURIComponent(value[i]));
+                    }
+                    continue;
+                }
+                search.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
+            }
+
+            return search.join('&');
         }
     }
 
