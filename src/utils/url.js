@@ -82,7 +82,22 @@
 
             for(var i = 0; i < paramsArr.length; i++){
                 var param = paramsArr[i].split("=");
-                params[param[0]] = param[1];
+                var key = decodeURIComponent(param[0]);
+                var val = decodeURIComponent(param[1]);
+
+                // 数组
+                var execArr = /(\w+)(\[\d?\])$/.exec(key);
+                if (execArr) {
+                    key = execArr[1];
+
+                    if(!params[key]){
+                        params[key] = [];
+                    }
+
+                    params[key].push(decodeURIComponent(val));
+                }else{
+                    params[key] = val;
+                }
             }
             return params;
         },
@@ -97,6 +112,8 @@
          * @time 2014-10-09
          */
         parse: function(url){
+            var self = this;
+
             var res = {};
             var regulars = {
                 protocol: /([^\/]+:)\/\/(.*)/i,
@@ -125,6 +142,8 @@
 
             res["origin"] = res["protocol"] + "//" + res["host"];
 
+            res["params"] = self.getParams();
+
             return res;
         },
 
@@ -143,7 +162,7 @@
                 var value = params[key];
                 if (Array.isArray(value)) {
                     for (var i = 0; i < value.length; ++i) {
-                        search.push(encodeURIComponent(key + '[' + i + ']') + '=' + encodeURIComponent(value[i]));
+                        search.push(encodeURIComponent(key + '[]') + '=' + encodeURIComponent(value[i]));
                     }
                     continue;
                 }
