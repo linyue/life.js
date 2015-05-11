@@ -7,7 +7,6 @@ define(function (require, exports, module) {
      */
     "use strict";
 
-    var JSON = require('JSON');
     var $ = require('$');
     var Class = require('Class');
 

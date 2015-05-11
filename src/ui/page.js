@@ -9,7 +9,6 @@ define(function (require, exports, module) {
 
     "use strict";
 
-    var JSON = require('JSON');
     var $ = require('$');
     var Class = require('Class');
 
@@ -71,7 +70,7 @@ define(function (require, exports, module) {
             info: true,
             first: true,
             prev: true,
-            numble: true,
+            number: true,
             next: true,
             end: true,
             skip: true
@@ -150,7 +149,7 @@ define(function (require, exports, module) {
                         info: false,
                         first: false,
                         prev: true,
-                        numble: false,
+                        number: false,
                         next: true,
                         end: false,
                         skip: false
@@ -162,7 +161,7 @@ define(function (require, exports, module) {
                         info: false,
                         first: false,
                         prev: false,
-                        numble: true,
+                        number: true,
                         next: false,
                         end: false,
                         skip: false
@@ -174,7 +173,7 @@ define(function (require, exports, module) {
                         info: true,
                         first: false,
                         prev: true,
-                        numble: false,
+                        number: false,
                         next: true,
                         end: false,
                         skip: true
@@ -186,7 +185,7 @@ define(function (require, exports, module) {
                         info: options.isShowInfo && true,
                         first: options.isShowFE && true,
                         prev: options.isShowPN && true,
-                        numble: options.isShowNum && true,
+                        number: options.isShowNum && true,
                         next: options.isShowPN && true,
                         end: options.isShowFE && true,
                         skip: options.isShowSkip && true
@@ -438,7 +437,7 @@ define(function (require, exports, module) {
             }
 
             //页码展示
-            if (show.numble) {
+            if (show.number) {
                 for (var i = info.start; i <= info.end; i++) {
                     var num = $('<a>').text(i).addClass('i_pageNum i_btn').attr({
                         title: '第' + i + '页',

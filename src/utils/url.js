@@ -142,7 +142,7 @@
 
             res["origin"] = res["protocol"] + "//" + res["host"];
 
-            res["params"] = self.getParams();
+            res["params"] = self.getParams(url);
 
             return res;
         },
