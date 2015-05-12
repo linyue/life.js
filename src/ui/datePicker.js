@@ -29,6 +29,7 @@ define(function (require, exports, module) {
             this.language = options.language in dates ? options.language : 'en'
             this.pickDate = options.pickDate;
             this.pickTime = options.pickTime;
+            this.zIndex = options.zIndex ? options.zIndex : 99999;
             this.isInput = this.$element.is('input');
             this.component = false;
             this.showStatus = false;
@@ -318,7 +319,8 @@ define(function (require, exports, module) {
                 position: position,
                 top: offset.top,
                 left: offset.left,
-                right: offset.right
+                right: offset.right,
+                zIndex: this.zIndex
             });
         },
 
@@ -1352,6 +1354,7 @@ define(function (require, exports, module) {
             startDate: '',                  //最小限制
             endDate: '',                    //最大限制
             skin: 'blue',                   //主题颜色，可设置项有：red、blue、green、orange、purple
+            zIndex: 99999,
             onClose: function(){}
         }
 
@@ -1396,6 +1399,7 @@ define(function (require, exports, module) {
             startDate: opt.startDate == "" ? -Infinity : time.string2Date(opt.startDate),
             endDate: opt.endDate == "" ? Infinity : time.string2Date(opt.endDate),
             maskInput: true,
+            zIndex: opt.zIndex,
             pick12HourFormat: false,
             language: 'zh-CN',
             minViewMode: setting.minViewMode,
