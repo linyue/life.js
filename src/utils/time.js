@@ -4,6 +4,23 @@
 
     var time = {
 
+
+        /**
+         * 获取服务器当前时间
+         * @param callback
+         */
+        now: function(callback){
+            var xhr = new XMLHttpRequest();
+            xhr.open("HEAD",location.href,true);
+            xhr.onreadystatechange=function(){
+                if( xhr.readyState == 4 && xhr.status == 200 ){
+                    var date = xhr.getResponseHeader("Date");
+                    callback(date);
+                }
+            }
+            xhr.send(null);
+        },
+
         /**
          * 字符串转时间
          *

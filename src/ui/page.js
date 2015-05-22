@@ -241,7 +241,10 @@ define(function (require, exports, module) {
             var self = this;
 
             //页码点击事件
-            self.content.delegate('.i_pageControl a', 'click', function(){
+            self.content.delegate('.i_pageControl a', 'click', function(e){
+
+                e.stopPropagation();
+
                 var curPage = $(this).attr('data_index') * 1;
                 var pageSize = self.info.pageSize;
 
@@ -276,7 +279,9 @@ define(function (require, exports, module) {
             });
 
             //跳转事件
-            self.content.delegate('.i_pageSkip_submit', 'click', function(){
+            self.content.delegate('.i_pageSkip_submit', 'click', function(e){
+                e.stopPropagation();
+
                 var curPage = $(this).parents(".i_pageSkip").find('.i_pageSkip_input').val() * 1;
                 var pageSize = self.info.pageSize;
 
@@ -293,8 +298,8 @@ define(function (require, exports, module) {
             });
 
             //回车跳转页面
-            self.content.find('.i_pageSkip_input').keyup(function(event){
-                if(event.keyCode==13){
+            self.content.find('.i_pageSkip_input').keyup(function(e){
+                if(e.keyCode==13){
                     var curPage = $(this).val() * 1;
                     var pageSize = self.info.pageSize;
 
@@ -313,8 +318,8 @@ define(function (require, exports, module) {
 
             //键盘快捷键事件
             if(self.options.isKeyControl){
-                $(window).bind('keydown',function(event){
-                    switch(event.keyCode) {
+                $(window).bind('keydown',function(e){
+                    switch(e.keyCode) {
                         case 37:
                             if(!self.info.keyEvnet){
                                 return false;
