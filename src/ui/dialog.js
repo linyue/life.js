@@ -382,15 +382,16 @@ define(function (require, exports, module) {
 
             //点击浮层关闭
             if (self.mask && options.isMaskClose) {
-                self.mask.click(function () {
+                self.mask.click(function (e) {
+                    e.stopPropagation();
                     self.close();
                 })
             }
 
             //esc快捷键关闭
             if (options.isKeyControl) {
-                $(window).bind('keydown', function (event) {
-                    if(event.keyCode == 27){
+                $(window).bind('keydown', function (e) {
+                    if(e.keyCode == 27){
                         self.close();
                     }
                 })
