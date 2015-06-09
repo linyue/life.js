@@ -428,7 +428,8 @@ define(function (require, exports, module) {
             }
 
             if (show.closeBtn) {
-                var closeBtn = $("<a>").addClass("i_closeBtn i_icon i_icon_close").click(function () {
+                var closeBtn = $("<a>").addClass("i_closeBtn i_icon i_icon_close").click(function (e) {
+                    e.stopPropagation();
                     self.close();
                 })
 
@@ -452,7 +453,8 @@ define(function (require, exports, module) {
                 var btnsBar = $("<div>").addClass("i_dialogBtns");
                 for (var i in options.btns) {
                     (function(i){
-                        $("<a>").addClass("i_btn").addClass(options.btns[i].className).html(options.btns[i].text).click(function () {
+                        $("<a>").addClass("i_btn").addClass(options.btns[i].className).html(options.btns[i].text).click(function (e) {
+                            e.stopPropagation();
                             var rs = options.btns[i].callback();
                             if(rs || typeof rs == "undefined"){
                                 self.close();
