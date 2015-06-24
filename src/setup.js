@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/src',
-        'res': '//dn-life-js.qbox.me' + (window.location.port ? (':' + window.location.port) : '') + '/res'
+        'src': '//res.xiaoman.cn/life.js/src',
+        'res': '//res.xiaoman.cn/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
