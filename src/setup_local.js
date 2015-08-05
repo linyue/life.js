@@ -20,8 +20,8 @@ seajs.config({
         versionGlobal: ''
     },
     paths: {
-        'src': '//res-xiaoman-cn.alikunlun.com/life.js/src',
-        'res': '//res-xiaoman-cn.alikunlun.com/life.js/res'
+        'src': '//res.xiaoman.cn/life.js/src',
+        'res': '//res.xiaoman.cn/life.js/res'
     },
 	alias: {
         'baseCss': 'res/css/base.css',
