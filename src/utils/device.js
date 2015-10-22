@@ -169,6 +169,7 @@ define(function (require, exports, module) {
                 if(match){
                     self.browser = self.browsers[key];
                     self.browserVersion = match[0].match(/([0-9\.]+)/ig)[0];
+                    break;
                 };
             }
         },
