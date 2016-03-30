@@ -12,7 +12,7 @@ define(function(require, exports, module) {
     "use strict";
 
     var regulars = {
-        Mobile: /^1(3|4|5|8)\d{9}$/,
+        Mobile: /^1\d{10}$/,
         Telephone: /(^(\d{3,4}[-|——|_|\s]?)?\d{7,8}([-|——|_|\s]?\d{2,6})?$)|(^\d{3}$)|(^[4|8]00[-|——|_|\s]?\d{3}[-|——|_|\s]?\d{4}$)/,
         ZipCode: /^[1-9]\d{5}(?!\d)$/,
         QQ: /^[1-9][0-9]{4,9}$/,
